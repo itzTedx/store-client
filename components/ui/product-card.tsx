@@ -22,6 +22,7 @@ const ProductCard = ({ data }: ProductCardProps) => {
         <Image
           src={data?.images?.[0]?.url}
           alt={data.name}
+          title={data.name}
           fill
           className='object-cover rounded-md'
         />
