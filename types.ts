@@ -19,6 +19,7 @@ export interface Billboard {
   id: string;
   label: string;
   imageUrl: string;
+  description: string;
 }
 
 export interface Category {
