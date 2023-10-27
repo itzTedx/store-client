@@ -7,9 +7,9 @@ interface BillboardProps {
 
 const Billboard: React.FC<BillboardProps> = ({ data }) => {
   return (
-    <div className="p-4 sm:p-6 lg:p-8 rounded-xl grid grid-cols-2 overflow-hidden gap-4">
-      <div className="h-full w-full flex flex-col justify-center  gap-y-8">
-        <div className="block font-bold text-3xl sm:text-5xl sm:max-w-xl max-w-xs z-50">
+    <div className="p-4 sm:p-6 lg:p-8 rounded-xl flex flex-col-reverse md:grid md:grid-cols-2 overflow-hidden gap-4">
+      <div className="h-full w-full flex flex-col justify-center gap-y-8">
+        <div className="block font-bold text-3xl sm:text-5xl sm:max-w-xl max-w-xs">
           {data?.label}
         </div>
         {data?.description}

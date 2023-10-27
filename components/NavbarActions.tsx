@@ -22,7 +22,6 @@ const NavbarActions = () => {
         <ShoppingBag size={20} color="black" />
         <span className="ml-2 text-sm font-medium text-black">0</span>
       </Button>
-      <LogIn />
     </div>
   );
 };
