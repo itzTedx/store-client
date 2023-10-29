@@ -35,7 +35,7 @@ const MainNav: React.FC<MainNavProps> = ({ data }) => {
           ))}
         </ul>
         <ul className="flex gap-8 mx-auto">
-          <div className="h-auto w-px bg-neutral-200" />
+          <div className="h-auto w-px bg-neutral-200 hidden md:block" />
           <li>Blogs</li>
           <li>About</li>
           <li>Contact</li>
