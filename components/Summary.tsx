@@ -14,12 +14,12 @@ const Summary = () => {
 
   useEffect(() => {
     if (searchParams.get('success')) {
-      toast.success('Payment Completed')
+      toast.success('Payment completed.')
       removeAll()
     }
 
-    if (searchParams.get('cancelled')) {
-      toast.error('Something went wrong')
+    if (searchParams.get('canceled')) {
+      toast.error('Something went wrong.')
     }
   }, [searchParams, removeAll])
 
@@ -33,12 +33,13 @@ const Summary = () => {
 
   const onCheckout = async () => {
     const response = await axios.post(
-      `${process.env.NEXT_PUBLIC_API_KEY}/checkout`, //db connection
+      `${process.env.NEXT_PUBLIC_API_URL}/checkout`,
       {
         productIds: items.map((item) => item.id),
-      } //data passing to db
+      }
     )
-    window.location = response.data.url // redirecting to stripe checkout page
+
+    window.location = response.data.url
   }
 
   return (
