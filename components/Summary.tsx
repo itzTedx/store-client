@@ -37,7 +37,7 @@ const Summary = () => {
       {
         productIds: items.map((item) => item.id),
       },
-      { headers: { "Access-Control-Allow-Origin": "*" } }
+      { withCredentials: false }
     )
 
     window.location = response.data.url
