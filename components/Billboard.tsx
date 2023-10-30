@@ -56,9 +56,6 @@ const Billboard: React.FC<BillboardProps> = ({ data }) => {
           />
         </div>
       </div>
-      <div className="absolute -bottom-7 inset-x-0">
-        <Explore />
-      </div>
     </section>
   );
 };

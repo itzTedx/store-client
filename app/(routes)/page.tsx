@@ -1,12 +1,11 @@
 import Billboard from "@/components/Billboard";
-import Container from "@/components/ui/container";
 import getBillboard from "@/actions/get-billboard";
 import getProducts from "@/actions/get-products";
 import ProductList from "@/components/ProductList";
-import Explore from "./_components/Explore";
 import { Trusted } from "./_components/Trusted";
 import getCategories from "@/actions/get-categories";
 import { Suspense } from "react";
+import Explore from "./_components/Explore";
 
 export const revalidate = 30;
 
@@ -17,14 +16,18 @@ const HomePage = async () => {
 
   return (
     <div className="space-y-10 pb-10">
-      <Billboard data={billboard} />
-
+      <div>
+        <Billboard data={billboard} />
+        <div className="md:-mt-6 relative z-50 mt-6">
+          <Explore />
+        </div>
+      </div>
       <Trusted />
       <div className="flex flex-col gap-y-8 sm:px-6 lg:px-8 px-4 max-w-7xl mx-auto">
         <ProductList title="Featured Products" items={products} />
       </div>
       <Suspense fallback={`Loading`}>
-        <div className="sm:px-6 lg:px-8 px-4 max-w-7xl mx-auto">
+        <div className="sm:px-6 lg:px-8 px-4 max-w-7xl mx-auto space-y-4">
           {categories.map(async (categories) => {
             const allProducts = await getProducts({
               categoryId: categories.id,
