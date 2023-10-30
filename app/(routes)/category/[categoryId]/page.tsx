@@ -23,7 +23,6 @@ interface CategoryPageProps {
 
 export async function generateMetadata({
   params,
-  searchParams,
 }: CategoryPageProps): Promise<Metadata> {
   // read route params
   const id = params.categoryId;
