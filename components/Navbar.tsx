@@ -24,20 +24,24 @@ const Navbar = async () => {
   const products = await getProducts({ isFeatured: true });
 
   return (
-    <NextNav isBordered shouldHideOnScroll height="auto">
+    <NextNav isBordered shouldHideOnScroll height="4rem">
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle />
       </NavbarContent>
 
       <NavbarContent className="sm:hidden pr-3" justify="center">
         <NavbarBrand>
-          <p className="font-bold text-inherit">DIGITAL DESK</p>
+          <Link href="/">
+            <p className="font-bold text-inherit">DIGITAL DESK</p>
+          </Link>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="end">
         <NavbarBrand className="w-fit">
-          <p className="font-bold text-inherit">DIGITAL DESK</p>
+          <Link href="/">
+            <p className="font-bold text-inherit">DIGITAL DESK</p>
+          </Link>
         </NavbarBrand>
         <NavbarItem className="flex-1">
           <SearchBar data={products} />
@@ -69,19 +73,13 @@ const Navbar = async () => {
       </NavbarContent>
 
       <NavbarMenu>
+        <NavbarItem className="">
+          <SearchBar data={products} />
+        </NavbarItem>
+        <Separator />
         {categories.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
-            <Link
-              className="w-full"
-              color={
-                index === 2
-                  ? "warning"
-                  : index === categories.length - 1
-                  ? "danger"
-                  : "foreground"
-              }
-              href="#"
-            >
+            <Link className="w-full" href={`/category/${item.id}`}>
               {item.name}
             </Link>
           </NavbarMenuItem>
