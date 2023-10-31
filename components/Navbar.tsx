@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "next/link"
 import {
   Navbar as NextNav,
   NavbarBrand,
@@ -7,21 +7,21 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-} from "@nextui-org/react";
+} from "@nextui-org/react"
 
-import { Button } from "@/components/ui/button";
-import getCategories from "@/actions/get-categories";
-import NavbarActions from "./NavbarActions";
-import SearchBar from "./search-bar";
-import getProducts from "@/actions/get-products";
-import Image from "next/image";
-import { ChevronDown } from "lucide-react";
-import { ModeToggle } from "./mode-toggle";
-import { Separator } from "./ui/separator";
+import { Button } from "@/components/ui/button"
+import getCategories from "@/actions/get-categories"
+import NavbarActions from "./NavbarActions"
+import SearchBar from "./search-bar"
+import getProducts from "@/actions/get-products"
+import Image from "next/image"
+import { ChevronDown } from "lucide-react"
+import { ModeToggle } from "./mode-toggle"
+import { Separator } from "./ui/separator"
 
 const Navbar = async () => {
-  const categories = await getCategories();
-  const products = await getProducts({ isFeatured: true });
+  const categories = await getCategories()
+  const products = await getProducts({ isFeatured: true })
 
   return (
     <NextNav isBordered shouldHideOnScroll height="4rem" maxWidth="xl">
@@ -49,7 +49,7 @@ const Navbar = async () => {
       </NavbarContent>
 
       <NavbarContent justify="end" className="py-4">
-        <NavbarItem className="hidden md:flex">
+        <NavbarItem className="">
           <ModeToggle />
         </NavbarItem>
         <Separator orientation="vertical" className="h-6 hidden md:flex" />
@@ -102,7 +102,7 @@ const Navbar = async () => {
     //     <MainNav data={categories} />
     //   </Container>
     // </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

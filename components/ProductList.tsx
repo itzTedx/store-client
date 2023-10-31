@@ -1,20 +1,20 @@
-import { Product } from "@/types";
-import NoResults from "@/components/ui/no-results";
-import ProductCard from "./ui/product-card";
-import { Gloock } from "next/font/google";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { Product } from "@/types"
+import NoResults from "@/components/ui/no-results"
+import ProductCard from "./ui/product-card"
+import { Gloock } from "next/font/google"
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
 
 interface ProductsListProps {
-  title: string;
-  items: Product[];
-  link?: string;
+  title: string
+  items: Product[]
+  link?: string
 }
 
-const gloock = Gloock({ subsets: ["latin"], weight: "400" });
+const gloock = Gloock({ subsets: ["latin"], weight: "400" })
 
 const ProductList: React.FC<ProductsListProps> = ({ title, items, link }) => {
-  const limitedItems = items.slice(0, 4);
+  const limitedItems = items.slice(0, 4)
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
@@ -36,7 +36,7 @@ const ProductList: React.FC<ProductsListProps> = ({ title, items, link }) => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProductList;
+export default ProductList

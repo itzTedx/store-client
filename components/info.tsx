@@ -1,25 +1,25 @@
-"use client";
+"use client"
 
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart } from "lucide-react"
 
-import { Product } from "@/types";
-import Currency from "./ui/currency";
-import { Button } from "./ui/button";
-import { MouseEventHandler } from "react";
-import useCart from "@/hooks/use-cart";
+import { Product } from "@/types"
+import Currency from "./ui/currency"
+import { Button } from "./ui/button"
+import { MouseEventHandler } from "react"
+import useCart from "@/hooks/use-cart"
 
 interface InfoProps {
-  data: Product;
+  data: Product
 }
 
 const Info = ({ data }: InfoProps) => {
-  const cart = useCart();
+  const cart = useCart()
 
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = (e) => {
-    e.stopPropagation();
+    e.stopPropagation()
 
-    cart.addItem(data);
-  };
+    cart.addItem(data)
+  }
   return (
     <div className="space-y-4">
       <h1 className="text-3xl font-bold text-gray-900">{data.name}</h1>
@@ -56,7 +56,7 @@ const Info = ({ data }: InfoProps) => {
         </Button>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Info;
+export default Info
