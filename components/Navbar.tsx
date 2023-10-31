@@ -84,6 +84,7 @@ const Navbar = async () => {
             </Link>
           </NavbarMenuItem>
         ))}
+        <ModeToggle />
       </NavbarMenu>
     </NextNav>
     // <nav className="sticky top-0 bg-white/60 z-[998] backdrop-blur-lg">
