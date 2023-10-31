@@ -18,7 +18,7 @@ const HomePage = async () => {
     <div className="space-y-10 pb-10">
       <div>
         <Billboard data={billboard} />
-        <div className="md:-mt-6 relative z-50 mt-6">
+        <div className="md:-mt-6 relative z-40 mt-6">
           <Explore />
         </div>
       </div>

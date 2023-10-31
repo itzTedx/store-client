@@ -77,14 +77,15 @@ const Navbar = async () => {
           <SearchBar data={products} />
         </NavbarItem>
         <Separator />
-        {categories.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
-            <Link className="w-full" href={`/category/${item.id}`}>
-              {item.name}
-            </Link>
-          </NavbarMenuItem>
-        ))}
-        <ModeToggle />
+        <NavbarItem className="space-y-4">
+          {categories.map((item, index) => (
+            <NavbarMenuItem key={`${item}-${index}`}>
+              <Link className="w-full" href={`/category/${item.id}`}>
+                {item.name}
+              </Link>
+            </NavbarMenuItem>
+          ))}
+        </NavbarItem>
       </NavbarMenu>
     </NextNav>
     // <nav className="sticky top-0 bg-white/60 z-[998] backdrop-blur-lg">

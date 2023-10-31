@@ -1,13 +1,25 @@
+import { Separator } from "@/components/ui/separator";
+
 const Explore = () => {
   return (
-    <div className="flex gap-3 bg-white rounded-full items-center  shadow-md w-fit mx-auto py-4 px-9">
-      <h5>Start Exploring</h5>
-      <div className="h-4 w-px bg-neutral-200 hidden md:block" />
-      <ul className="flex gap-4">
-        <li>Business cards</li>
-        <li>Rollup Stand</li>
-        <li>Flyers</li>
-        <li>Stickers</li>
+    <div className="flex gap-3 bg-white rounded-full items-center shadow-md w-fit mx-auto py-2 sm:py-4 px-5 sm:px-9">
+      <h5 className="text-[10px] md:text-base font-semibold">
+        Start Exploring
+      </h5>
+      <Separator orientation="vertical" className="h-6" />
+      <ul className="flex gap-3 sm:gap-4 text-xs md:text-base">
+        <li className="hover:text-bold transition-all hover:text-lime-500 cursor-pointer">
+          Business cards
+        </li>
+        <li className="hover:text-bold transition-all hover:text-lime-500 cursor-pointer">
+          Rollup Stand
+        </li>
+        <li className="hover:text-bold transition-all hover:text-lime-500 cursor-pointer">
+          Flyers
+        </li>
+        <li className="hover:text-bold transition-all hover:text-lime-500 cursor-pointer">
+          Stickers
+        </li>
       </ul>
     </div>
   );
