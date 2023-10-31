@@ -4,8 +4,8 @@ import getProducts from "@/actions/get-products";
 import ProductList from "@/components/ProductList";
 import { Trusted } from "./_components/Trusted";
 import getCategories from "@/actions/get-categories";
-import { Suspense } from "react";
 import Explore from "./_components/Explore";
+import { Fragment } from "react";
 
 export const revalidate = 30;
 
@@ -23,23 +23,37 @@ const HomePage = async () => {
         </div>
       </div>
       <Trusted />
-      <div className="flex flex-col gap-y-8 sm:px-6 lg:px-8 px-4 max-w-7xl mx-auto">
+      <div className="flex flex-col gap-y-8 sm:px-6 lg:px-8 px-4 container mx-auto">
         <ProductList title="Featured Products" items={products} />
       </div>
-      <Suspense fallback={`Loading`}>
-        <div className="sm:px-6 lg:px-8 px-4 max-w-7xl mx-auto space-y-4">
-          {categories.map(async (categories) => {
-            const allProducts = await getProducts({
-              categoryId: categories.id,
-            });
-            return (
-              <div key={categories.id}>
-                <ProductList title={categories.name} items={allProducts} />
-              </div>
-            );
-          })}
+      <div className="sm:px-6 lg:px-8 px-4 container mx-auto space-y-12">
+        {categories.slice(0, 2).map((category) => (
+          <div key={category.id}>
+            <ProductList
+              title={category.name}
+              items={category.product}
+              link={category.id}
+            />
+          </div>
+        ))}
+        <div className="w-full h-96 bg-lime-300 grid place-content-center rounded-lg">
+          Our Popular Products
         </div>
-      </Suspense>
+        {categories.slice(3, categories.length).map((category) => (
+          <div key={category.id}>
+            <ProductList
+              title={category.name}
+              items={category.product}
+              link={category.id}
+            />
+          </div>
+        ))}
+        <div>
+          <h2 className="text-2xl font-bold">Splash of Colors</h2>
+          Blogs
+        </div>
+        <div className="max-w-6xl h-80 bg-[#102A2B] rounded-lg mx-auto"></div>
+      </div>
     </div>
   );
 };

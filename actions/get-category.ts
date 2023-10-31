@@ -2,7 +2,7 @@ import { Category } from "@/types";
 const URL = `${process.env.NEXT_PUBLIC_API_KEY}/categories`;
 
 const getCategory = async (id: string): Promise<Category> => {
-  const res = await fetch(`${URL}/${id}`);
+  const res = await fetch(`${URL}/${id}`, { cache: "force-cache" });
 
   return res.json();
 };

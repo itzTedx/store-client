@@ -1,75 +1,86 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { MouseEventHandler } from 'react'
-import { Expand, ShoppingCart } from 'lucide-react'
+import Image from "next/image";
+import { MouseEventHandler } from "react";
+import { Expand, ShoppingBag, ShoppingCart } from "lucide-react";
+import { useRouter } from "next/navigation";
 
-import { Product } from '@/types'
-import IconButton from '@/components/ui/icon-button'
-import Currency from './currency'
-import usePreviewModal from '@/hooks/use-preview-modal'
-import useCart from '@/hooks/use-cart'
+import Currency from "@/components/ui/currency";
+import IconButton from "@/components/ui/icon-button";
+import usePreviewModal from "@/hooks/use-preview-modal";
+import useCart from "@/hooks/use-cart";
+import { Product } from "@/types";
 
-interface ProductCardProps {
-  data: Product
+interface ProductCard {
+  data: Product;
 }
 
-const ProductCard = ({ data }: ProductCardProps) => {
-  const previewModal = usePreviewModal()
-  const cart = useCart()
-  const router = useRouter()
+const ProductCard: React.FC<ProductCard> = ({ data }) => {
+  const previewModal = usePreviewModal();
+  const cart = useCart();
+  const router = useRouter();
 
   const handleClick = () => {
-    router.push(`/product/${data?.id}`)
-  }
+    router.push(`/product/${data?.id}`);
+  };
 
-  const onPreview: MouseEventHandler<HTMLButtonElement> = (e) => {
-    e.stopPropagation()
+  const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
 
-    previewModal.onOpen(data)
-  }
+    previewModal.onOpen(data);
+  };
 
-  const onAddToCard: MouseEventHandler<HTMLButtonElement> = (e) => {
-    e.stopPropagation()
+  const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
+    event.stopPropagation();
 
-    cart.addItem(data)
-  }
+    cart.addItem(data);
+  };
+
   return (
     <div
       onClick={handleClick}
-      className='bg-white group cursor-pointer rounded-xl border p-3 space-y-4'
+      className="bg-white group cursor-pointer space-y-4 flex flex-col justify-between"
     >
-      <div className='aspect-square bg-gray-100 relative'>
-        <Image
-          src={data?.images?.[0]?.url}
-          alt={data.name}
-          title={data.name}
-          fill
-          className='object-cover rounded-md'
-        />
-        <div className='opacity-0 group-hover:opacity-100 absolute w-full px-6 bottom-5 transition-opacity'>
-          <div className='flex gap-x-4 justify-center'>
-            <IconButton onClick={onPreview} icon={<Expand size={20} />} />
-            <IconButton
-              onClick={onAddToCard}
-              icon={<ShoppingCart size={20} />}
-            />
+      {/* Image & actions */}
+      <div className="">
+        <div className="aspect-[4/3] bg-gray-100 relative">
+          <Image
+            src={data.images?.[0]?.url}
+            alt=""
+            fill
+            className="object-cover"
+          />
+          <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
+            <div className="flex gap-x-6 justify-center">
+              <IconButton
+                onClick={onPreview}
+                icon={<Expand size={20} className="text-gray-600" />}
+              />
+              <IconButton
+                onClick={onAddToCart}
+                icon={<ShoppingCart size={20} className="text-gray-600" />}
+              />
+            </div>
           </div>
         </div>
+
+        {/* Description */}
+        <div className="mt-3">
+          <p className="font-semibold">{data.name}</p>
+          <p className="text-sm text-gray-600 line-clamp-2 lg:line-clamp-none">
+            {data.description}
+          </p>
+        </div>
       </div>
-      <div>
-        <Link href={`/product/${data?.id}`}>
-          <p className='font-semibold text-lg'>{data.name}</p>
-        </Link>
-        <p className='text-sm text-gray-500'>{data.category?.name}</p>
-      </div>
-      <div className='flex items-center justify-between'>
-        <Currency value={data.price} />
+      {/* Price & Reiew */}
+      <div className="flex items-center gap-2">
+        Buy Now
+        <div className="p-2 bg-lime-300 rounded-full">
+          <ShoppingBag size={13} />
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProductCard
+export default ProductCard;

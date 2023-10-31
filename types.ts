@@ -26,6 +26,7 @@ export interface Category {
   id: string;
   name: string;
   billboard: Billboard;
+  product: Product[];
 }
 
 export interface Size {

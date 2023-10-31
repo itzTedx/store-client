@@ -2,10 +2,7 @@ import { Billboard as BillboardType } from "@/types";
 import Image from "next/image";
 import { Gloock } from "next/font/google";
 import Link from "next/link";
-import Button from "./ui/button";
-import { cn } from "@/lib/utils";
 import { ArrowUpRight } from "lucide-react";
-import Explore from "@/app/(routes)/_components/Explore";
 
 interface BillboardProps {
   data: BillboardType;
