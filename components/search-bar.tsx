@@ -36,7 +36,7 @@ export default function SearchBar({ data }: SearchBarProps) {
     <div className="w-full sm:max-w-xl mx-auto">
       <Combobox value={selected} onChange={setSelected}>
         <div className="relative mt-1">
-          <form className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left  focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-lime-300 sm:text-sm border">
+          <form className="relative w-full cursor-default overflow-hidden rounded-lg bg-white dark:bg-gray-900 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-lime-300 sm:text-sm border">
             <Combobox.Input
               className="w-full border-none py-2 pl-3 pr-10 text-sm leading-5 text-gray-900 focus:ring-0 focus:outline-none"
               placeholder="Search your printing needs"
@@ -54,7 +54,7 @@ export default function SearchBar({ data }: SearchBarProps) {
             leaveTo="opacity-0"
             afterLeave={() => setQuery("")}
           >
-            <Combobox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm pr-2 z-[9999]">
+            <Combobox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white dark:bg-gray-900 py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm pr-2 z-[9999]">
               {filteredQuery.length === 0 && query !== "" ? (
                 <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
                   Nothing found.
@@ -65,7 +65,9 @@ export default function SearchBar({ data }: SearchBarProps) {
                     key={search.id}
                     className={({ active }) =>
                       `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                        active ? "bg-lime-600 text-white" : "text-gray-900"
+                        active
+                          ? "bg-lime-600 text-white"
+                          : "text-gray-900 dark:text-gray-200"
                       }`
                     }
                     value={search}

@@ -1,6 +1,6 @@
-import { MouseEventHandler } from 'react'
+import { MouseEventHandler } from "react"
 
-import { cn } from '@/lib/utils'
+import { cn } from "@/lib/utils"
 
 interface IconButtonProps {
   onClick?: MouseEventHandler<HTMLButtonElement> | undefined
@@ -13,7 +13,7 @@ const IconButton = ({ onClick, className, icon }: IconButtonProps) => {
     <button
       onClick={onClick}
       className={cn(
-        'rounded-full flex items-center justify-center bg-white border shadow-md p-2 hover:scale-110 transition-transform',
+        "rounded-full flex items-center justify-center bg-white dark:bg-gray-900 border shadow-md p-1 md:p-2 hover:scale-110 transition-transform hover:dark:bg-gray-200 dark:text-gray-800",
         className
       )}
     >

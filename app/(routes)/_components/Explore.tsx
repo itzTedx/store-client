@@ -1,8 +1,8 @@
-import { Separator } from "@/components/ui/separator";
+import { Separator } from "@/components/ui/separator"
 
 const Explore = () => {
   return (
-    <div className="flex gap-3 bg-white rounded-full items-center shadow-md w-fit mx-auto py-2 sm:py-4 px-5 sm:px-9">
+    <div className="flex gap-3 bg-white dark:bg-gray-900 rounded-full items-center shadow-md dark:shadow-gray-800/50 w-fit mx-auto py-2 sm:py-4 px-5 sm:px-9">
       <h5 className="text-[10px] md:text-base font-semibold">
         Start Exploring
       </h5>
@@ -22,7 +22,7 @@ const Explore = () => {
         </li>
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default Explore;
+export default Explore

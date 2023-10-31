@@ -22,10 +22,12 @@ const Info = ({ data }: InfoProps) => {
   }
   return (
     <div className="space-y-4">
-      <h1 className="text-3xl font-bold text-gray-900">{data.name}</h1>
-      <p>{data.description}</p>
+      <h1 className="text-2xl md:text-3xl font-bold dark:text-gray-200 text-gray-900">
+        {data.name}
+      </h1>
+      <p className="text-muted-foreground font-light">{data.description}</p>
       <div className="mt-3 flex items-end justify-between">
-        <p className="text-2xl text-gray-900">
+        <p className="text-xl md:text-2xl">
           <Currency value={data.price} />
         </p>
       </div>
@@ -46,7 +48,7 @@ const Info = ({ data }: InfoProps) => {
         <h3 className="font-semibold">Category:</h3>
         <div>{data?.category?.name}</div>
       </div>
-      <div className="mt-10 flex items-center gap-x-3">
+      <div className="pt-4 flex items-center gap-x-3">
         <Button
           onClick={onAddToCart}
           className="w-auto rounded-full bg-black border-transparent px-5 py-3 disabled:cursor-not-allowed disabled:opacity-50 text-white hover:opacity-75 transition flex items-center gap-2 "
