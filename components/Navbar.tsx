@@ -24,7 +24,7 @@ const Navbar = async () => {
   const products = await getProducts({ isFeatured: true });
 
   return (
-    <NextNav isBordered shouldHideOnScroll height="4rem">
+    <NextNav isBordered shouldHideOnScroll height="4rem" maxWidth="xl">
       <NavbarContent className="sm:hidden" justify="start">
         <NavbarMenuToggle />
       </NavbarContent>
@@ -37,23 +37,23 @@ const Navbar = async () => {
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex gap-4" justify="end">
-        <NavbarBrand className="w-fit">
+      <NavbarContent className="hidden sm:flex" justify="end">
+        <NavbarBrand className="w-fit flex-grow-0">
           <Link href="/">
             <p className="font-bold text-inherit">DIGITAL DESK</p>
           </Link>
         </NavbarBrand>
-        <NavbarItem className="flex-1">
+        <NavbarItem className="flex-1 w-full">
           <SearchBar data={products} />
         </NavbarItem>
       </NavbarContent>
 
       <NavbarContent justify="end" className="py-4">
-        <NavbarItem className="hidden lg:flex">
+        <NavbarItem className="hidden md:flex">
           <ModeToggle />
         </NavbarItem>
-        <Separator orientation="vertical" className="h-6 hidden lg:flex" />
-        <NavbarItem className="hidden lg:flex">
+        <Separator orientation="vertical" className="h-6 hidden md:flex" />
+        <NavbarItem className="hidden md:flex">
           <Image
             src="/icons/account.svg"
             width={40}
