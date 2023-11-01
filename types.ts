@@ -1,42 +1,43 @@
 export interface Product {
-  id: string;
-  category: Category;
-  name: string;
-  description: string;
-  price: string;
-  isFeatured: boolean;
-  size: Size;
-  color: Color;
-  images: Image[];
+  id: string
+  category: Category
+  name: string
+  description: string
+  price: string
+  isFeatured: boolean
+  size: Size
+  color: Color
+  images: Image[]
 }
 
 export interface Image {
-  id: string;
-  url: string;
+  id: string
+  url: string
 }
 
 export interface Billboard {
-  id: string;
-  label: string;
-  imageUrl: string;
-  description: string;
+  id: string
+  label: string
+  imageUrl: string
+  description: string
 }
 
 export interface Category {
-  id: string;
-  name: string;
-  billboard: Billboard;
-  product: Product[];
+  id: string
+  name: string
+  billboard: Billboard
+  slug: string
+  product: Product[]
 }
 
 export interface Size {
-  id: string;
-  name: string;
-  value: string;
+  id: string
+  name: string
+  value: string
 }
 
 export interface Color {
-  id: string;
-  name: string;
-  value: string;
+  id: string
+  name: string
+  value: string
 }
