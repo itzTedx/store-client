@@ -1,17 +1,17 @@
-import Billboard from "@/components/Billboard"
-import getBillboard from "@/actions/get-billboard"
-import getProducts from "@/actions/get-products"
-import ProductList from "@/components/ProductList"
-import { Trusted } from "./_components/Trusted"
-import getCategories from "@/actions/get-categories"
-import Explore from "./_components/Explore"
+import Billboard from "@/components/Billboard";
+import getBillboard from "@/actions/get-billboard";
+import getProducts from "@/actions/get-products";
+import ProductList from "@/components/ProductList";
+import { Trusted } from "./_components/Trusted";
+import getCategories from "@/actions/get-categories";
+import Explore from "./_components/Explore";
 
-export const revalidate = 30
+export const revalidate = 30;
 
 const HomePage = async () => {
-  const billboard = await getBillboard("90f88b2f-7192-4d66-ae65-9fc4170773d9")
-  const products = await getProducts({ isFeatured: true })
-  const categories = await getCategories()
+  const billboard = await getBillboard("634f8aad-c692-4fb1-89cc-9660254f8d49");
+  const products = await getProducts({ isFeatured: true });
+  const categories = await getCategories();
 
   return (
     <div className="space-y-10 pb-10">
@@ -54,7 +54,7 @@ const HomePage = async () => {
         <div className="max-w-6xl h-80 bg-[#102A2B] rounded-lg mx-auto"></div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
