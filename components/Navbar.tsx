@@ -22,7 +22,7 @@ import MainNav from "./MainNav"
 
 const Navbar = async () => {
   const categories = await getCategories()
-  const allProducts = await getAllProducts()
+  // const allProducts = await getAllProducts()
 
   return (
     <>
@@ -46,7 +46,7 @@ const Navbar = async () => {
             </Link>
           </NavbarBrand>
           <NavbarItem className="flex-1 w-full">
-            <SearchBar data={allProducts} />
+            <SearchBar data={[]} />
           </NavbarItem>
         </NavbarContent>
 
@@ -77,13 +77,13 @@ const Navbar = async () => {
         <NavbarMenu className="flex justify-between flex-col">
           <div className="space-y-3">
             <NavbarItem className="">
-              <SearchBar data={allProducts} />
+              <SearchBar data={[]} />
             </NavbarItem>
             <Separator />
             <NavbarItem className="space-y-4">
               {categories.map((item, index) => (
                 <NavbarMenuItem key={`${item}-${index}`}>
-                  <Link className="w-full" href={`/category/${item.id}`}>
+                  <Link className="w-full" href={`/category/${item.slug}`}>
                     {item.name}
                   </Link>
                 </NavbarMenuItem>

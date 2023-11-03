@@ -27,7 +27,14 @@ export interface Category {
   name: string
   billboard: Billboard
   slug: string
-  product: Product[]
+  subcategory: Subcategory[]
+}
+
+export interface Subcategory {
+  id: string
+  name: string
+  slug: string
+  products: Product[]
 }
 
 export interface Size {

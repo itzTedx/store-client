@@ -9,9 +9,9 @@ import Explore from "./_components/Explore"
 export const revalidate = 30
 
 const HomePage = async () => {
-  const billboard = await getBillboard("634f8aad-c692-4fb1-89cc-9660254f8d49")
-  const products = await getProducts({ isFeatured: true })
-  const categories = await getCategories()
+  const billboard = await getBillboard("b356ae0a-c51c-47e5-86c6-baae568ef665")
+  // const products = await getProducts({ isFeatured: true })
+  // const categories = await getCategories()
 
   return (
     <>
