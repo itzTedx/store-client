@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import Link from "next/link";
+import * as React from "react"
+import Link from "next/link"
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,68 +12,34 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from "@/components/ui/navigation-menu";
-import { usePathname } from "next/navigation";
-import { Category } from "@/types";
-
-const components: { title: string; href: string; description: string }[] = [
-  {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
-  },
-  {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
-    description:
-      "For sighted users to preview content available behind a link.",
-  },
-  {
-    title: "Progress",
-    href: "/docs/primitives/progress",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  },
-  {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  },
-];
+} from "@/components/ui/navigation-menu"
+import { usePathname } from "next/navigation"
+import { Category } from "@/types"
 
 interface MainNavProps {
-  data: Category[];
+  data: Category[]
 }
 
 export function DropdownMenu({ data }: MainNavProps) {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   const routes = data.map((route) => ({
     href: `/category/${route.slug}`,
     label: route.name,
     active: pathname === `/category/${route.slug}`,
     subcategory: route.subcategory,
-  }));
+  }))
 
   return (
-    <NavigationMenu className="container w-full mx-auto flex flex-col md:flex-row items-center md:justify-between py-3 max-w-7xl ">
+    <NavigationMenu className="container w-full mx-auto sm:flex flex-col md:flex-row items-center md:justify-between py-3 max-w-7xl hidden">
       <NavigationMenuList>
         {routes.map((route) => (
           <NavigationMenuItem key={route.href}>
-            <NavigationMenuTrigger>{route.label}</NavigationMenuTrigger>
+            <NavigationMenuTrigger>
+              <NavigationMenuLink href={route.href}>
+                {route.label}
+              </NavigationMenuLink>
+            </NavigationMenuTrigger>
             <NavigationMenuContent className="">
               <ul className="grid gap-3 p-6 md:w-[500px] lg:w-[880px] lg:grid-cols-[.80fr_1fr]">
                 {route.subcategory.map((sub) => (
@@ -98,7 +64,7 @@ export function DropdownMenu({ data }: MainNavProps) {
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
-  );
+  )
 }
 
 const ListItem = React.forwardRef<
@@ -123,6 +89,6 @@ const ListItem = React.forwardRef<
         </a>
       </NavigationMenuLink>
     </li>
-  );
-});
-ListItem.displayName = "ListItem";
+  )
+})
+ListItem.displayName = "ListItem"
