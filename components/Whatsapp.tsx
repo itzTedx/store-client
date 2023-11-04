@@ -7,7 +7,7 @@ const WhatsAppButton = () => {
   return (
     <>
       <div className="block sm:hidden">
-        <Draggable allowAnyClick={true}>
+        <Draggable>
           <div className="fixed bottom-5 right-5 w-12 h-12 bg-green-500 rounded-full flex items-center justify-center cursor-pointer z-50">
             <Link
               href="https://wa.me/+971509807452"
