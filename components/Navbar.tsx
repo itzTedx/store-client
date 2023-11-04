@@ -96,7 +96,7 @@ const Navbar = async () => {
           </NavbarItem>
           <NavbarItem className="sm:hidden">
             <Button variant="ghost" size="icon">
-              <NavbarMenuToggle as="div" className="text-blue-500 " />
+              <NavbarMenuToggle as="div" className="text-sky-500 " />
             </Button>
           </NavbarItem>
         </NavbarContent>

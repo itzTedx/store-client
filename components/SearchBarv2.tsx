@@ -69,7 +69,7 @@ export function SearchBar({ data }: SearchProps) {
         className="sm:hidden"
       >
         <Search
-          className="h-6 w-6 text-blue-500 fill-sky-500/20"
+          className="h-6 w-6 text-sky-500 fill-sky-500/20"
           aria-hidden="true"
         />
       </Button>
