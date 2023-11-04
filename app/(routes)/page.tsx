@@ -37,7 +37,7 @@ const HomePage = async () => {
           <div className="w-full h-96 bg-lime-300 grid place-content-center rounded-lg">
             Our Popular Products
           </div>
-          {categories.slice(4, categories.length).map((category) => (
+          {categories.slice(3, categories.length).map((category) => (
             <div key={category.id} className="py-6">
               <CategoryList
                 title={category.name}
