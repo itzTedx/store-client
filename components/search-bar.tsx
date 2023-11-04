@@ -1,21 +1,22 @@
-"use client"
+"use client";
 
-import { Fragment, useState, MouseEventHandler } from "react"
-import { Combobox, Transition } from "@headlessui/react"
-import { CheckIcon, Search } from "lucide-react"
-import { Product } from "@/types"
-import Link from "next/link"
-import { useRouter } from "next/navigation"
+import { Fragment, useState, useEffect } from "react";
+import { Combobox, Transition } from "@headlessui/react";
+import { CheckIcon, Search } from "lucide-react";
+import { Product } from "@/types";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 interface SearchBarProps {
-  data: Product[]
+  data: Product[];
 }
 
 export default function SearchBar({ data }: SearchBarProps) {
-  const router = useRouter()
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
 
-  const [selected, setSelected] = useState()
-  const [query, setQuery] = useState("")
+  const [selected, setSelected] = useState();
+  const [query, setQuery] = useState("");
 
   const filteredQuery =
     query === ""
@@ -25,12 +26,7 @@ export default function SearchBar({ data }: SearchBarProps) {
             .toLowerCase()
             .replace(/\s+/g, "")
             .includes(query.toLowerCase().replace(/\s+/g, ""))
-        )
-
-  // const handleSubmit: MouseEventHandler<HTMLButtonElement> = (e) => {
-  //   e.stopPropagation()
-  //   router.push(`/product/${}`)
-  // }
+        );
 
   return (
     <div className="w-full sm:max-w-xl mx-auto">
@@ -43,7 +39,10 @@ export default function SearchBar({ data }: SearchBarProps) {
               displayValue={(search: { name: string }) => search.name}
               onChange={(event) => setQuery(event.target.value)}
             />
-            <Combobox.Button className="absolute inset-y-0 right-2 flex items-center">
+            <Combobox.Button className="absolute inset-y-0 right-2 flex items-center space-x-2">
+              <kbd className="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100 ">
+                <span className="text-xs">Ctrl</span>J
+              </kbd>
               <Search className="h-5 w-5 text-gray-400" aria-hidden="true" />
             </Combobox.Button>
           </form>
@@ -101,5 +100,5 @@ export default function SearchBar({ data }: SearchBarProps) {
         </div>
       </Combobox>
     </div>
-  )
+  );
 }

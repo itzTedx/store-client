@@ -1,43 +1,43 @@
-import getCategory from "@/actions/get-category"
-import getColors from "@/actions/get-colors"
-import getProducts from "@/actions/get-products"
-import getSizes from "@/actions/get-sizes"
-import Billboard from "@/components/Billboard"
-import Container from "@/components/ui/container"
-import NoResults from "@/components/ui/no-results"
-import ProductCard from "@/components/ui/product-card"
+import getCategory from "@/actions/get-category";
+import getColors from "@/actions/get-colors";
+import getProducts from "@/actions/get-products";
+import getSizes from "@/actions/get-sizes";
+import Billboard from "@/components/Billboard";
+import Container from "@/components/ui/container";
+import NoResults from "@/components/ui/no-results";
+import ProductCard from "@/components/ui/product-card";
 
-import Filter from "./components/filter"
-import MobileFilters from "./components/mobile-filters"
-import { Metadata } from "next"
+import Filter from "./components/filter";
+import MobileFilters from "./components/mobile-filters";
+import { Metadata } from "next";
 
 interface CategoryPageProps {
   params: {
-    slug: string
-  }
+    slug: string;
+  };
   searchParams: {
-    colorId: string
-    sizeId: string
-  }
+    colorId: string;
+    sizeId: string;
+  };
 }
 
-// export async function generateMetadata({
-//   params,
-// }: CategoryPageProps): Promise<Metadata> {
-//   // read route params
-//   const slug = params.slug
+export async function generateMetadata({
+  params,
+}: CategoryPageProps): Promise<Metadata> {
+  // read route params
+  const slug = params.slug;
 
-//   // fetch data
-//   const category = await getCategory(params.slug)
+  // fetch data
+  const category = await getCategory(params.slug);
 
-//   return {
-//     title: category.name,
-//   }
-// }
+  return {
+    title: category.billboard.label,
+    description: category.billboard.description,
+  };
+}
 
 const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
-  const category = await getCategory(params.slug)
-  console.log(category)
+  const category = await getCategory(params.slug);
 
   // const products = await getProducts({{
   //   slug: params.slug
@@ -50,7 +50,7 @@ const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
   // const categories = await getCategory(params.categoryId)
 
   return (
-    <div className="">
+    <>
       <Billboard data={category.billboard} />
       <div className="px-4 pb-24 sm:px-6 lg:px-8">
         <div className="lg:grid lg:grid-cols-5 lg:gap-x-8">
@@ -76,8 +76,8 @@ const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
           </div>
         </div>
       </div>
-    </div>
-  )
-}
+    </>
+  );
+};
 
-export default CategoryPage
+export default CategoryPage;

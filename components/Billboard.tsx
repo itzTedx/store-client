@@ -13,7 +13,7 @@ const gloock = Gloock({ subsets: ["latin"], weight: "400" });
 const Billboard: React.FC<BillboardProps> = ({ data }) => {
   return (
     <section className=" bg-[url('/bg-hero.jpg')] dark:bg-[url('/hero-dark.jpeg')] bg-cover relative">
-      <div className="p-4 pb-12 sm:p-12 sm:pb-16 rounded-xl flex flex-col-reverse md:grid md:grid-cols-2 overflow-hidden gap-11 max-w-7xl mx-auto">
+      <div className="p-6 py-12 xl:px-1 pb-12 sm:pb-16 rounded-xl flex flex-col-reverse md:grid md:grid-cols-2 overflow-hidden gap-11 max-w-7xl mx-auto">
         <div className="h-full w-full flex flex-col justify-center gap-y-6 sm:gap-y-8">
           <h1
             className={`${gloock.className} block font-bold text-4xl lg:text-6xl sm:max-w-xl dark:bg-gray-800 bg-gray-100 dark:sm:bg-transparent sm:bg-transparent p-6 sm:p-0 leading-[1.4] text-center sm:text-left`}

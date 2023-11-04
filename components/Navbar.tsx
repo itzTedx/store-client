@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Link from "next/link";
 import {
   Navbar as NextNav,
   NavbarBrand,
@@ -7,21 +7,22 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-} from "@nextui-org/react"
-import Image from "next/image"
-import { ChevronDown } from "lucide-react"
+} from "@nextui-org/react";
+import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import getCategories from "@/actions/get-categories"
-import NavbarActions from "./NavbarActions"
-import SearchBar from "./search-bar"
-import { ModeToggle } from "./mode-toggle"
-import { Separator } from "./ui/separator"
-import getAllProducts from "@/actions/get-all-products"
-import MainNav from "./MainNav"
+import { Button } from "@/components/ui/button";
+import getCategories from "@/actions/get-categories";
+import NavbarActions from "./NavbarActions";
+import SearchBar from "./search-bar";
+import { ModeToggle } from "./mode-toggle";
+import { Separator } from "./ui/separator";
+import getAllProducts from "@/actions/get-all-products";
+import MainNav from "./MainNav";
+import { CommandDialogDemo } from "./SearchBarv2";
 
 const Navbar = async () => {
-  const categories = await getCategories()
+  const categories = await getCategories();
   // const allProducts = await getAllProducts()
 
   return (
@@ -46,7 +47,7 @@ const Navbar = async () => {
             </Link>
           </NavbarBrand>
           <NavbarItem className="flex-1 w-full">
-            <SearchBar data={[]} />
+            <CommandDialogDemo data={categories} />
           </NavbarItem>
         </NavbarContent>
 
@@ -99,7 +100,7 @@ const Navbar = async () => {
       </NextNav>
       <MainNav data={categories} />
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

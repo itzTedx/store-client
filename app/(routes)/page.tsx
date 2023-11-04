@@ -1,17 +1,18 @@
-import Billboard from "@/components/Billboard"
-import getBillboard from "@/actions/get-billboard"
-import getProducts from "@/actions/get-products"
-import ProductList from "@/components/ProductList"
-import { Trusted } from "./_components/Trusted"
-import getCategories from "@/actions/get-categories"
-import Explore from "./_components/Explore"
+import Billboard from "@/components/Billboard";
+import getBillboard from "@/actions/get-billboard";
+import getProducts from "@/actions/get-products";
+import ProductList from "@/components/ProductList";
+import { Trusted } from "./_components/Trusted";
+import getCategories from "@/actions/get-categories";
+import Explore from "./_components/Explore";
+import CategoryList from "@/components/CategoryList";
 
-export const revalidate = 30
+export const revalidate = 30;
 
 const HomePage = async () => {
-  const billboard = await getBillboard("b356ae0a-c51c-47e5-86c6-baae568ef665")
+  const billboard = await getBillboard("b356ae0a-c51c-47e5-86c6-baae568ef665");
   // const products = await getProducts({ isFeatured: true })
-  // const categories = await getCategories()
+  const categories = await getCategories();
 
   return (
     <>
@@ -23,6 +24,17 @@ const HomePage = async () => {
           </div>
         </div>
         <Trusted />
+        <div className="px-6 container mx-auto space-y-12">
+          {categories.slice(0, 3).map((category) => (
+            <div key={category.id}>
+              <CategoryList
+                title={category.name}
+                items={category.subcategory}
+                link={category.slug}
+              />
+            </div>
+          ))}
+        </div>
         {/* <div className="flex flex-col gap-y-8 sm:px-6 lg:px-8 px-4 container mx-auto">
           <ProductList title="Featured Products" items={products} />
         </div>
@@ -56,7 +68,7 @@ const HomePage = async () => {
         </div>*/}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
