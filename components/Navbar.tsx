@@ -14,12 +14,12 @@ import { ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import getCategories from "@/actions/get-categories";
 import NavbarActions from "./NavbarActions";
-import SearchBar from "./search-bar";
+// import SearchBar from "./search-bar";
 import { ModeToggle } from "./mode-toggle";
 import { Separator } from "./ui/separator";
 import getAllProducts from "@/actions/get-all-products";
 import MainNav from "./MainNav";
-import { CommandDialogDemo } from "./SearchBarv2";
+import { SearchBar } from "./SearchBarv2";
 
 const Navbar = async () => {
   const categories = await getCategories();
@@ -47,7 +47,7 @@ const Navbar = async () => {
             </Link>
           </NavbarBrand>
           <NavbarItem className="flex-1 w-full">
-            <CommandDialogDemo data={categories} />
+            <SearchBar data={categories} />
           </NavbarItem>
         </NavbarContent>
 
@@ -78,7 +78,7 @@ const Navbar = async () => {
         <NavbarMenu className="flex justify-between flex-col">
           <div className="space-y-3">
             <NavbarItem className="">
-              <SearchBar data={[]} />
+              <SearchBar data={categories} />
             </NavbarItem>
             <Separator />
             <NavbarItem className="space-y-4">

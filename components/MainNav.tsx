@@ -21,13 +21,13 @@ const MainNav = ({ data }: MainNavProps) => {
 
   return (
     <div className="border-b py-4 md:flex items-center justify-betweens hidden container mx-auto overflow-x-auto">
-      <ul className="flex flex-1 items-center gap-6 lg:px-8">
+      <ul className="flex flex-1 items-center gap-3 lg:gap-6 lg:px-8 text-xs sm:text-sm">
         {routes.map((route) => (
           <Link
             href={route.href}
             key={route.href}
             className={cn(
-              "tracking-tight font-medium transition-colors hover:text-black dark:hover:text-white",
+              "tracking-tight font-medium transition-colors hover:text-black dark:hover:text-white truncate",
               route.active
                 ? "text-lime-700"
                 : "text-gray-600 dark:text-gray-300"
@@ -37,7 +37,7 @@ const MainNav = ({ data }: MainNavProps) => {
           </Link>
         ))}
       </ul>
-      <ul className="flex gap-8 justify-end">
+      <ul className="flex md:gap-3 lg:gap-8 justify-end ml-3">
         <Separator className="h-6" orientation="vertical" />
         <li>
           <Link href="/blogs">Blogs</Link>
