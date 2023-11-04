@@ -20,6 +20,7 @@ import { Separator } from "./ui/separator";
 import getAllProducts from "@/actions/get-all-products";
 import MainNav from "./MainNav";
 import { SearchBar } from "./SearchBarv2";
+import { DropdownMenu } from "./dropdown-navbar";
 
 const Navbar = async () => {
   const categories = await getCategories();
@@ -75,7 +76,7 @@ const Navbar = async () => {
           </NavbarItem>
         </NavbarContent>
 
-        <NavbarMenu className="flex justify-between flex-col">
+        <NavbarMenu className="flex flex-col justify-between">
           <div className="space-y-3">
             <NavbarItem className="">
               <SearchBar data={categories} />
@@ -91,14 +92,17 @@ const Navbar = async () => {
               ))}
             </NavbarItem>
           </div>
-          <div className="py-12 space-y-4">
+          <div className="flex justify-between my-16">
             <NavbarItem>Blogs</NavbarItem>
             <NavbarItem>About</NavbarItem>
             <NavbarItem>Contact</NavbarItem>
           </div>
         </NavbarMenu>
       </NextNav>
-      <MainNav data={categories} />
+      <div className="flex">
+        <DropdownMenu data={categories} />
+        {/* <MainNav data={categories} /> */}
+      </div>
     </>
   );
 };
