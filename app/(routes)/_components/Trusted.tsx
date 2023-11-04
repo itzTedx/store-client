@@ -1,9 +1,9 @@
-import Image from "next/image"
-import React from "react"
+import Image from "next/image";
+import React from "react";
 
 export const Trusted = () => {
   return (
-    <div className="text-center flex-col py-6 flex justify-center items-center">
+    <div className="text-center flex-col py-4 px-4 flex justify-center items-center">
       <h6 className="text-neutral-900 dark:text-neutral-200 font-semibold text-lg mb-4">
         Trusted by These Great Brands
       </h6>
@@ -25,5 +25,5 @@ export const Trusted = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

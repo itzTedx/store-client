@@ -24,9 +24,9 @@ const HomePage = async () => {
           </div>
         </div>
         <Trusted />
-        <div className="px-6 container mx-auto space-y-12">
+        <div>
           {categories.slice(0, 3).map((category) => (
-            <div key={category.id}>
+            <div key={category.id} className="py-6">
               <CategoryList
                 title={category.name}
                 items={category.subcategory}
@@ -38,7 +38,7 @@ const HomePage = async () => {
             Our Popular Products
           </div>
           {categories.slice(4, categories.length).map((category) => (
-            <div key={category.id}>
+            <div key={category.id} className="py-6">
               <CategoryList
                 title={category.name}
                 items={category.subcategory}

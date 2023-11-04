@@ -12,16 +12,16 @@ const gloock = Gloock({ subsets: ["latin"], weight: "400" });
 
 const Billboard: React.FC<BillboardProps> = ({ data }) => {
   return (
-    <section className=" bg-[url('/bg-hero.jpg')] dark:bg-[url('/hero-dark.jpeg')] bg-cover relative">
-      <div className="p-6 py-12 xl:px-1 pb-12 sm:pb-16 rounded-xl flex flex-col-reverse md:grid md:grid-cols-2 overflow-hidden gap-11 max-w-7xl mx-auto">
-        <div className="h-full w-full flex flex-col justify-center gap-y-6 sm:gap-y-8">
+    <section className="bg-[url('/bg-hero.jpg')] dark:bg-[url('/hero-dark.jpeg')] bg-cover relative">
+      <div className="px-4 xs:px-6 pt-6 sm:pt-10 pb-16 rounded-xl grid grid-cols-1 sm:grid-cols-2 overflow-hidden gap-6 sm:gap-11 max-w-7xl mx-auto">
+        <div className="h-full w-full flex flex-col justify-center gap-y-6 sm:gap-y-8 order-2 sm:order-1">
           <h1
-            className={`${gloock.className} block font-bold text-4xl lg:text-6xl sm:max-w-xl dark:bg-gray-800 bg-gray-100 dark:sm:bg-transparent sm:bg-transparent p-6 sm:p-0 leading-[1.4] text-center sm:text-left`}
+            className={`${gloock.className} block font-bold text-2xl sm:text-3xl md:text-4xl lg:text-6xl sm:max-w-xl dark:bg-gray-800 bg-gray-100 dark:sm:bg-transparent sm:bg-transparent p-4 sm:p-0 leading-[1.4] text-center sm:text-left`}
           >
             {data?.label}
           </h1>
 
-          <p className="sm:text-xl lg:text-3xl tracking-tight leading-[1.75] font-light">
+          <p className="sm:text-xl lg:text-3xl tracking-tight leading-[1.75] ">
             {data?.description}
           </p>
           <div className="flex justify-between">
@@ -33,18 +33,18 @@ const Billboard: React.FC<BillboardProps> = ({ data }) => {
             </Link>
             <Link
               href="/"
-              className="group flex items-center gap-4 text-right font-medium"
+              className="group flex items-center gap-4 text-right font-medium hover:font-bold transition"
             >
               Browse
               <br />
               Catalogue
-              <span className="rounded-full border border-black p-3 group-hover:bg-lime-100">
+              <span className="rounded-full border border-black p-3 group-hover:bg-lime-300 group-hover:text-black transition-colors">
                 <ArrowUpRight />
               </span>
             </Link>
           </div>
         </div>
-        <div className="rounded-[53px] relative aspect-square overflow-hidden !bg-cover ">
+        <div className="rounded-xl sm:rounded-[53px] relative aspect-square overflow-hidden !bg-cover order-1 sm:order-2">
           <Image
             src={data?.imageUrl}
             fill
