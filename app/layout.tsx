@@ -33,7 +33,7 @@ export default function RootLayout({
           <ToastProvider />
           <ModalProvider />
           <Navbar />
-          <WhatsAppButton />
+          {/* <WhatsAppButton /> */}
           <main>{children}</main>
           <Footer />
         </ThemeProvider>
