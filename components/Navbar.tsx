@@ -51,7 +51,7 @@ const Navbar = async () => {
           </NavbarItem>
         </NavbarContent>
 
-        <NavbarContent justify="end" className="py-4">
+        <NavbarContent justify="end" className="py-4 gap-0 sm:gap-4">
           <NavbarItem className="">
             <ModeToggle />
           </NavbarItem>
