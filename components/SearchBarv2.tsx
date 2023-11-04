@@ -1,6 +1,6 @@
-"use client";
+"use client"
 
-import { useState, useEffect, Fragment } from "react";
+import { useState, useEffect, Fragment } from "react"
 import {
   Calculator,
   Calendar,
@@ -10,7 +10,7 @@ import {
   Settings,
   Smile,
   User,
-} from "lucide-react";
+} from "lucide-react"
 
 import {
   CommandDialog,
@@ -21,19 +21,20 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "@/components/ui/command";
-import { Category } from "@/types";
-import { Combobox, Transition } from "@headlessui/react";
-import Link from "next/link";
+} from "@/components/ui/command"
+import { Category } from "@/types"
+import { Combobox, Transition } from "@headlessui/react"
+import Link from "next/link"
+import { Button } from "./ui/button"
 
 interface SearchProps {
-  data: Category[];
+  data: Category[]
 }
 
 export function SearchBar({ data }: SearchProps) {
-  const [open, setOpen] = useState(false);
-  const [query, setQuery] = useState("");
-  const [selected, setSelected] = useState();
+  const [open, setOpen] = useState(false)
+  const [query, setQuery] = useState("")
+  const [selected, setSelected] = useState()
 
   const filteredQuery =
     query === ""
@@ -45,23 +46,34 @@ export function SearchBar({ data }: SearchProps) {
               .replace(/\s+/g, "")
               .includes(query.toLowerCase().replace(/\s+/g, ""))
           )
-        );
+        )
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "j" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault();
-        setOpen((open) => !open);
+        e.preventDefault()
+        setOpen((open) => !open)
       }
-    };
+    }
 
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
-  }, []);
+    document.addEventListener("keydown", down)
+    return () => document.removeEventListener("keydown", down)
+  }, [])
 
   return (
     <>
-      <div className="w-full sm:max-w-xl mx-auto">
+      <Button
+        onClick={() => setOpen(true)}
+        size="icon"
+        variant="ghost"
+        className="sm:hidden"
+      >
+        <Search
+          className="h-6 w-6 text-blue-500 fill-sky-500/20"
+          aria-hidden="true"
+        />
+      </Button>
+      <div className="w-full sm:max-w-xl mx-auto hidden sm:block">
         <Combobox value={selected} onChange={setSelected}>
           <div className="relative mt-1">
             <form className="relative w-full cursor-default overflow-hidden rounded-lg bg-white dark:bg-gray-900 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-lime-300 sm:text-sm border">
@@ -156,5 +168,5 @@ export function SearchBar({ data }: SearchProps) {
         </CommandList>
       </CommandDialog>
     </>
-  );
+  )
 }

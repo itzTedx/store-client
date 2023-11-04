@@ -1,24 +1,22 @@
-"use client";
+"use client"
 
-import Image from "next/image";
-import { MouseEventHandler } from "react";
-import { Expand, ShoppingBag, ShoppingCart } from "lucide-react";
-import { useRouter } from "next/navigation";
+import Image from "next/image"
+import { MouseEventHandler } from "react"
+import { Expand, ShoppingBag, ShoppingCart } from "lucide-react"
+import { useRouter } from "next/navigation"
 
-import { Product, Subcategory } from "@/types";
+import { Product, Subcategory } from "@/types"
 
 interface CategoryCardProps {
-  data: Subcategory;
+  data: Subcategory
 }
 
 const CategoryCard: React.FC<CategoryCardProps> = ({ data }) => {
-  const router = useRouter();
-
-  console.log(data);
+  const router = useRouter()
 
   const handleClick = () => {
-    router.push(`/category/${data?.slug}`);
-  };
+    router.push(`/category/${data?.slug}`)
+  }
 
   return (
     <div
@@ -66,7 +64,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ data }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CategoryCard;
+export default CategoryCard

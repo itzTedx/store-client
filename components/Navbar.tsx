@@ -1,4 +1,6 @@
-import Link from "next/link";
+"use client"
+
+import Link from "next/link"
 import {
   Navbar as NextNav,
   NavbarBrand,
@@ -7,32 +9,45 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-} from "@nextui-org/react";
-import Image from "next/image";
-import { ChevronDown } from "lucide-react";
+} from "@nextui-org/react"
+import Image from "next/image"
+import { ChevronDown, Search } from "lucide-react"
 
-import { Button } from "@/components/ui/button";
-import getCategories from "@/actions/get-categories";
-import NavbarActions from "./NavbarActions";
+import { Button } from "@/components/ui/button"
+import getCategories from "@/actions/get-categories"
+import NavbarActions from "./NavbarActions"
 // import SearchBar from "./search-bar";
-import { ModeToggle } from "./mode-toggle";
-import { Separator } from "./ui/separator";
-import getAllProducts from "@/actions/get-all-products";
-import MainNav from "./MainNav";
-import { SearchBar } from "./SearchBarv2";
-import { DropdownMenu } from "./dropdown-navbar";
+import { ModeToggle } from "./mode-toggle"
+import { Separator } from "./ui/separator"
+import getAllProducts from "@/actions/get-all-products"
+import MainNav from "./MainNav"
+import { SearchBar } from "./SearchBarv2"
+import { DropdownMenu } from "./dropdown-navbar"
+import {
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from "./ui/command"
+import { useEffect, useState } from "react"
 
 const Navbar = async () => {
-  const categories = await getCategories();
+  const categories = await getCategories()
   // const allProducts = await getAllProducts()
+
+  // const [open, setOpen] = useState(false)
 
   return (
     <>
-      <NextNav isBordered shouldHideOnScroll height="4rem" maxWidth="xl">
-        <NavbarContent className="sm:hidden" justify="start">
-          <NavbarMenuToggle />
-        </NavbarContent>
-
+      <NextNav
+        isBordered
+        shouldHideOnScroll
+        height="4rem"
+        maxWidth="full"
+        className="container mx-auto px-3"
+      >
         <NavbarContent className="sm:hidden pr-3" justify="center">
           <NavbarBrand>
             <Link href="/">
@@ -41,18 +56,20 @@ const Navbar = async () => {
           </NavbarBrand>
         </NavbarContent>
 
-        <NavbarContent className="hidden sm:flex" justify="end">
-          <NavbarBrand className="w-fit flex-grow-0">
+        <NavbarContent className="hidden sm:flex">
+          <NavbarBrand className="w-fit">
             <Link href="/">
               <p className="font-bold text-inherit">DIGITAL DESK</p>
             </Link>
           </NavbarBrand>
-          <NavbarItem className="flex-1 w-full">
+        </NavbarContent>
+        <NavbarContent>
+          <NavbarItem className="flex-1 w-full hidden sm:block">
             <SearchBar data={categories} />
           </NavbarItem>
         </NavbarContent>
 
-        <NavbarContent justify="end" className="py-4 gap-0 sm:gap-4">
+        <NavbarContent className="py-4 gap-2 sm:gap-4">
           <NavbarItem className="">
             <ModeToggle />
           </NavbarItem>
@@ -73,6 +90,14 @@ const Navbar = async () => {
           </NavbarItem>
           <NavbarItem>
             <NavbarActions />
+          </NavbarItem>
+          <NavbarItem className="sm:hidden">
+            <SearchBar data={categories} />
+          </NavbarItem>
+          <NavbarItem className="sm:hidden">
+            <Button variant="ghost" size="icon">
+              <NavbarMenuToggle as="div" className="text-blue-500 " />
+            </Button>
           </NavbarItem>
         </NavbarContent>
 
@@ -104,7 +129,7 @@ const Navbar = async () => {
         {/* <MainNav data={categories} /> */}
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

@@ -17,7 +17,6 @@ const ProductPage = async ({ params }: ProductPageProps) => {
   const suggestedProducts = await getProducts({
     categoryId: product?.category?.id,
   })
-  console.log(product)
 
   return (
     <div className="">
