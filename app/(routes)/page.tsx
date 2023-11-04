@@ -34,6 +34,18 @@ const HomePage = async () => {
               />
             </div>
           ))}
+          <div className="w-full h-96 bg-lime-300 grid place-content-center rounded-lg">
+            Our Popular Products
+          </div>
+          {categories.slice(4, categories.length).map((category) => (
+            <div key={category.id}>
+              <CategoryList
+                title={category.name}
+                items={category.subcategory}
+                link={category.slug}
+              />
+            </div>
+          ))}
         </div>
         {/* <div className="flex flex-col gap-y-8 sm:px-6 lg:px-8 px-4 container mx-auto">
           <ProductList title="Featured Products" items={products} />
