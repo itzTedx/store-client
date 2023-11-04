@@ -77,7 +77,11 @@ export function DropdownMenu({ data }: MainNavProps) {
             <NavigationMenuContent className="">
               <ul className="grid gap-3 p-6 md:w-[500px] lg:w-[880px] lg:grid-cols-[.80fr_1fr]">
                 {route.subcategory.map((sub) => (
-                  <ListItem href={`category/${sub.slug}`} title={sub.name}>
+                  <ListItem
+                    key={sub.id}
+                    href={`category/${sub.slug}`}
+                    title={sub.name}
+                  >
                     <div>description</div>
                   </ListItem>
                 ))}
