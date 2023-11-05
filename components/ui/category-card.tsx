@@ -6,6 +6,7 @@ import { Expand, ShoppingBag, ShoppingCart } from "lucide-react"
 import { useRouter } from "next/navigation"
 
 import { Product, Subcategory } from "@/types"
+import Link from "next/link"
 
 interface CategoryCardProps {
   data: Subcategory
@@ -19,11 +20,11 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ data }) => {
   }
 
   return (
-    <div
-      onClick={handleClick}
+    <Link
+      href={`/category/${data.slug}`}
       className="group cursor-pointer space-y-4 flex flex-col justify-between"
     >
-      {/* Image & actions */}
+      {/* Image */}
       <div className="">
         <div className="aspect-[4/3] bg-gray-100 relative">
           {/* {data.images && (
@@ -34,36 +35,17 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ data }) => {
               className="object-cover"
             />
           )} */}
-          {/* <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
-            <div className="flex gap-x-6 justify-center">
-              <IconButton
-                onClick={onPreview}
-                icon={<Expand size={20} className="text-gray-600" />}
-              />
-              <IconButton
-                onClick={onAddToCart}
-                icon={<ShoppingCart size={20} className="text-gray-600" />}
-              />
-            </div>
-          </div> */}
         </div>
 
         {/* Description */}
         <div className="mt-3">
           <p className="font-semibold">{data.name}</p>
-          <p className="text-sm text-gray-600 line-clamp-2 lg:line-clamp-none">
-            {data.slug}
+          <p className="text-sm text-foreground-500 line-clamp-2 lg:line-clamp-none text-light">
+            {data.description}
           </p>
         </div>
       </div>
-      {/* Price & Reiew */}
-      <div className="flex items-center gap-2">
-        Buy Now
-        <div className="p-2 bg-lime-300 rounded-full">
-          <ShoppingBag size={13} />
-        </div>
-      </div>
-    </div>
+    </Link>
   )
 }
 
