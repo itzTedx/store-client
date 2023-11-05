@@ -1,5 +1,3 @@
-"use client"
-
 import Link from "next/link"
 import {
   Navbar as NextNav,
@@ -11,7 +9,7 @@ import {
   NavbarMenuItem,
 } from "@nextui-org/react"
 import Image from "next/image"
-import { ChevronDown, Search } from "lucide-react"
+import { ChevronDown } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import getCategories from "@/actions/get-categories"
@@ -19,19 +17,8 @@ import NavbarActions from "./NavbarActions"
 // import SearchBar from "./search-bar";
 import { ModeToggle } from "./mode-toggle"
 import { Separator } from "./ui/separator"
-import getAllProducts from "@/actions/get-all-products"
-import MainNav from "./MainNav"
 import { SearchBar } from "./SearchBarv2"
 import { DropdownMenu } from "./dropdown-navbar"
-import {
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-} from "./ui/command"
-import { useEffect, useState } from "react"
 
 const Navbar = async () => {
   const categories = await getCategories()
@@ -41,13 +28,7 @@ const Navbar = async () => {
 
   return (
     <>
-      <NextNav
-        isBordered
-        shouldHideOnScroll
-        height="4rem"
-        maxWidth="full"
-        className="container mx-auto px-3"
-      >
+      <NextNav isBordered shouldHideOnScroll height="4rem" maxWidth="2xl">
         <NavbarContent className="sm:hidden pr-3" justify="center">
           <NavbarBrand>
             <Link href="/">
@@ -56,20 +37,20 @@ const Navbar = async () => {
           </NavbarBrand>
         </NavbarContent>
 
-        <NavbarContent className="hidden sm:flex">
-          <NavbarBrand className="w-fit">
+        <NavbarContent className="hidden sm:flex" justify="start">
+          <NavbarBrand>
             <Link href="/">
               <p className="font-bold text-inherit">DIGITAL DESK</p>
             </Link>
           </NavbarBrand>
         </NavbarContent>
-        <NavbarContent>
+        {/* <NavbarContent>
           <NavbarItem className="flex-1 w-full hidden sm:block">
             <SearchBar data={categories} />
           </NavbarItem>
-        </NavbarContent>
+        </NavbarContent> */}
 
-        <NavbarContent className="py-4 gap-2 sm:gap-4">
+        <NavbarContent className="py-4 gap-2 sm:gap-4" justify="end">
           <NavbarItem className="">
             <ModeToggle />
           </NavbarItem>
@@ -91,7 +72,7 @@ const Navbar = async () => {
           <NavbarItem>
             <NavbarActions />
           </NavbarItem>
-          <NavbarItem className="sm:hidden">
+          <NavbarItem className="">
             <SearchBar data={categories} />
           </NavbarItem>
           <NavbarItem className="sm:hidden">

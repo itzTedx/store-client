@@ -40,17 +40,23 @@ export function DropdownMenu({ data }: MainNavProps) {
                 {route.label}
               </NavigationMenuLink>
             </NavigationMenuTrigger>
-            <NavigationMenuContent className="">
+
+            <NavigationMenuContent className="relative z-50">
               <ul className="grid gap-3 p-6 md:w-[500px] lg:w-[880px] lg:grid-cols-[.80fr_1fr]">
-                {route.subcategory.map((sub) => (
-                  <ListItem
-                    key={sub.id}
-                    href={`category/${sub.slug}`}
-                    title={sub.name}
-                  >
-                    <div>description</div>
-                  </ListItem>
-                ))}
+                {route.subcategory.map((sub) => {
+                  console.log(sub)
+                  return (
+                    <ListItem
+                      key={sub.id}
+                      href={`category/${sub.slug}`}
+                      title={sub.name}
+                    >
+                      <div className="text-xs text-foreground-400">
+                        {sub.description}
+                      </div>
+                    </ListItem>
+                  )
+                })}
               </ul>
             </NavigationMenuContent>
           </NavigationMenuItem>
@@ -82,7 +88,7 @@ const ListItem = React.forwardRef<
           )}
           {...props}
         >
-          <div className="text-sm font-medium leading-none">{title}</div>
+          <div className="text font-medium leading-none">{title}</div>
           <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
             {children}
           </p>
