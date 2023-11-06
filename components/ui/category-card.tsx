@@ -1,11 +1,4 @@
-"use client"
-
-import Image from "next/image"
-import { MouseEventHandler } from "react"
-import { Expand, ShoppingBag, ShoppingCart } from "lucide-react"
-import { useRouter } from "next/navigation"
-
-import { Product, Subcategory } from "@/types"
+import { Subcategory } from "@/types"
 import Link from "next/link"
 
 interface CategoryCardProps {
@@ -13,21 +6,15 @@ interface CategoryCardProps {
 }
 
 const CategoryCard: React.FC<CategoryCardProps> = ({ data }) => {
-  const router = useRouter()
-
-  const handleClick = () => {
-    router.push(`/category/${data?.slug}`)
-  }
-
   return (
     <Link
-      href={`/category/${data.slug}`}
-      className="group cursor-pointer space-y-4 flex flex-col justify-between"
+      href={`/${data.slug}`}
+      className="group cursor-pointer sm:space-y-4 grid grid-cols-3 gap-3 sm:gap-0 sm:flex sm:flex-col"
     >
       {/* Image */}
-      <div className="">
-        <div className="aspect-[4/3] bg-gray-100 relative">
-          {/* {data.images && (
+
+      <div className="aspect-[4/3] bg-gray-100 relative">
+        {/* {data.images && (
             <Image
               src={data.images?.[0]?.url}
               alt=""
@@ -35,15 +22,14 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ data }) => {
               className="object-cover"
             />
           )} */}
-        </div>
+      </div>
 
-        {/* Description */}
-        <div className="mt-3">
-          <p className="font-semibold">{data.name}</p>
-          <p className="text-sm text-foreground-500 line-clamp-2 lg:line-clamp-none text-light">
-            {data.description}
-          </p>
-        </div>
+      {/* Description */}
+      <div className="space-y-3 col-span-2 ">
+        <p className="font-semibold">{data.name}</p>
+        <p className="text-sm text-foreground-500 line-clamp-3 lg:line-clamp-none text-light">
+          {data.description}
+        </p>
       </div>
     </Link>
   )

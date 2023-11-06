@@ -14,7 +14,7 @@ import { ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import getCategories from "@/actions/get-categories"
 import NavbarActions from "./NavbarActions"
-// import SearchBar from "./search-bar";
+import { Accordion, AccordionItem } from "@nextui-org/react"
 import { ModeToggle } from "./mode-toggle"
 import { Separator } from "./ui/separator"
 import { SearchBar } from "./SearchBarv2"
@@ -84,21 +84,30 @@ const Navbar = async () => {
 
         <NavbarMenu className="flex flex-col justify-between">
           <div className="space-y-3">
-            <NavbarItem className="">
-              <SearchBar data={categories} />
-            </NavbarItem>
-            <Separator />
             <NavbarItem className="space-y-4">
-              {categories.map((item, index) => (
+              {/* <Accordion>
+                {categories.map((item, i) => (
+                  <AccordionItem
+                    key={i}
+                    aria-label="Accordion 1"
+                    title="Accordion 1"
+                  >
+                    <NavbarMenuItem key={`${item}-${i}`}>
+                      {item.name}
+                    </NavbarMenuItem>
+                  </AccordionItem>
+                ))}
+              </Accordion> */}
+              {/* {categories.map((item, index) => (
                 <NavbarMenuItem key={`${item}-${index}`}>
                   <Link className="w-full" href={`/category/${item.slug}`}>
                     {item.name}
                   </Link>
                 </NavbarMenuItem>
-              ))}
+              ))} */}
             </NavbarItem>
           </div>
-          <div className="flex justify-between my-16">
+          <div className="flex justify-between my-20">
             <NavbarItem>Blogs</NavbarItem>
             <NavbarItem>About</NavbarItem>
             <NavbarItem>Contact</NavbarItem>

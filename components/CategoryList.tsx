@@ -1,18 +1,18 @@
-import { Category, Product, Subcategory } from "@/types";
-import NoResults from "@/components/ui/no-results";
-import ProductCard from "./ui/product-card";
-import { Gloock } from "next/font/google";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import CategoryCard from "./ui/category-card";
+import { Category, Product, Subcategory } from "@/types"
+import NoResults from "@/components/ui/no-results"
+import ProductCard from "./ui/product-card"
+import { Gloock } from "next/font/google"
+import Link from "next/link"
+import { ArrowRight } from "lucide-react"
+import CategoryCard from "./ui/category-card"
 
 interface CategorysListProps {
-  title: string;
-  items: Subcategory[];
-  link?: string;
+  title: string
+  items: Subcategory[]
+  link?: string
 }
 
-const gloock = Gloock({ subsets: ["latin"], weight: "400" });
+const gloock = Gloock({ subsets: ["latin"], weight: "400" })
 
 const CategoryList: React.FC<CategorysListProps> = ({ title, items, link }) => {
   // const limitedItems = items.slice(0, 3)
@@ -35,7 +35,7 @@ const CategoryList: React.FC<CategorysListProps> = ({ title, items, link }) => {
       </div>
 
       {items.length === 0 && <NoResults />}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-9 px-6 container mx-auto py-3">
+      <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6 px-4 sm:gap-9 sm:px-6 container mx-auto py-3">
         {items.map((item) => (
           <CategoryCard key={item.id} data={item} />
         ))}
@@ -44,7 +44,7 @@ const CategoryList: React.FC<CategorysListProps> = ({ title, items, link }) => {
         ))} */}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CategoryList;
+export default CategoryList
