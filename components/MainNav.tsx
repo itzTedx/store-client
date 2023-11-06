@@ -14,9 +14,9 @@ const MainNav = ({ data }: MainNavProps) => {
   const pathname = usePathname();
 
   const routes = data.map((route) => ({
-    href: `/category/${route.slug}`,
+    href: `/${route.slug}`,
     label: route.name,
-    active: pathname === `/category/${route.slug}`,
+    active: pathname === `/${route.slug}`,
   }));
 
   return (

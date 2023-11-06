@@ -1,18 +1,18 @@
-import { Category, Product, Subcategory } from "@/types"
-import NoResults from "@/components/ui/no-results"
-import ProductCard from "./ui/product-card"
-import { Gloock } from "next/font/google"
-import Link from "next/link"
-import { ArrowRight } from "lucide-react"
-import CategoryCard from "./ui/category-card"
+import { Category, Product, Subcategory } from "@/types";
+import NoResults from "@/components/ui/no-results";
+import ProductCard from "./ui/product-card";
+import { Gloock } from "next/font/google";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import CategoryCard from "./ui/category-card";
 
 interface CategorysListProps {
-  title: string
-  items: Subcategory[]
-  link?: string
+  title: string;
+  items: Subcategory[];
+  link?: string;
 }
 
-const gloock = Gloock({ subsets: ["latin"], weight: "400" })
+const gloock = Gloock({ subsets: ["latin"], weight: "400" });
 
 const CategoryList: React.FC<CategorysListProps> = ({ title, items, link }) => {
   // const limitedItems = items.slice(0, 3)
@@ -26,7 +26,7 @@ const CategoryList: React.FC<CategorysListProps> = ({ title, items, link }) => {
         </h3>
         {link && (
           <Link
-            href={`/category/${link}`}
+            href={`/${link}`}
             className="flex gap-2 items-center hover:text-lime-500 text-xs sm:text-sm hover:font-semibold transition-all flex-1 justify-end"
           >
             Explore More <ArrowRight size={16} />
@@ -44,7 +44,7 @@ const CategoryList: React.FC<CategorysListProps> = ({ title, items, link }) => {
         ))} */}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default CategoryList
+export default CategoryList;

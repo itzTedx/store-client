@@ -1,43 +1,43 @@
-import getCategory from "@/actions/get-category"
-import getColors from "@/actions/get-colors"
-import getProducts from "@/actions/get-products"
-import getSizes from "@/actions/get-sizes"
-import Billboard from "@/components/Billboard"
-import Container from "@/components/ui/container"
-import NoResults from "@/components/ui/no-results"
-import ProductCard from "@/components/ui/product-card"
+import getCategory from "@/actions/get-category";
+import getColors from "@/actions/get-colors";
+import getProducts from "@/actions/get-products";
+import getSizes from "@/actions/get-sizes";
+import Billboard from "@/components/Billboard";
+import Container from "@/components/ui/container";
+import NoResults from "@/components/ui/no-results";
+import ProductCard from "@/components/ui/product-card";
 
-import Filter from "./components/filter"
-import MobileFilters from "./components/mobile-filters"
-import { Metadata } from "next"
-import Link from "next/link"
-import Breadcrumb from "@/components/ui/breadcrumb"
+import Filter from "./components/filter";
+import MobileFilters from "./components/mobile-filters";
+import { Metadata } from "next";
+import Link from "next/link";
+import Breadcrumb from "@/components/ui/breadcrumb";
 
 interface CategoryPageProps {
   params: {
-    slug: string
-  }
+    slug: string;
+  };
   searchParams: {
-    colorId: string
-    sizeId: string
-  }
+    colorId: string;
+    sizeId: string;
+  };
 }
 
 export async function generateMetadata({
   params,
 }: CategoryPageProps): Promise<Metadata> {
   // fetch data
-  const category = await getCategory(params.slug)
+  const category = await getCategory(params.slug);
 
   return {
     title: category.billboard.label,
     description: category.billboard.description,
-  }
+  };
 }
 
 const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
-  const category = await getCategory(params.slug)
-  console.log(category)
+  const category = await getCategory(params.slug);
+
   return (
     <>
       <Billboard data={category.billboard} />
@@ -69,7 +69,7 @@ const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default CategoryPage
+export default CategoryPage;
