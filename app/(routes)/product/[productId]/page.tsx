@@ -1,22 +1,22 @@
-import getProduct from "@/actions/get-product"
-import getProducts from "@/actions/get-products"
-import ProductList from "@/components/ProductList"
-import Gallery from "@/components/gallery"
-import Info from "@/components/info"
-import Container from "@/components/ui/container"
-import React from "react"
+import getProduct from "@/actions/get-product";
+import getProducts from "@/actions/get-products";
+import ProductList from "@/components/ProductList";
+import Gallery from "@/components/gallery";
+import Info from "@/components/info";
+import Container from "@/components/ui/container";
+import React from "react";
 
 interface ProductPageProps {
   params: {
-    productId: string
-  }
+    productId: string;
+  };
 }
 
 const ProductPage = async ({ params }: ProductPageProps) => {
-  const product = await getProduct(params.productId)
-  const suggestedProducts = await getProducts({
-    categoryId: product?.category?.id,
-  })
+  const product = await getProduct(params.productId);
+  // const suggestedProducts = await getProducts({
+  //   categoryId: product?.category?.id,
+  // })
 
   return (
     <div className="">
@@ -31,11 +31,11 @@ const ProductPage = async ({ params }: ProductPageProps) => {
             </div>
           </div>
           <hr className="my-10" />
-          <ProductList title="Related Items" items={suggestedProducts} />
+          {/* <ProductList title="Related Items" items={suggestedProducts} /> */}
         </div>
       </Container>
     </div>
-  )
-}
+  );
+};
 
-export default ProductPage
+export default ProductPage;
