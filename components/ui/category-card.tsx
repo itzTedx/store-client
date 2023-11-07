@@ -1,27 +1,29 @@
-import { Subcategory } from "@/types";
-import Link from "next/link";
+import { Subcategory } from "@/types"
+import Image from "next/image"
+import Link from "next/link"
 
 interface CategoryCardProps {
-  data: Subcategory;
+  data: Subcategory
+  category: string | undefined
 }
 
-const CategoryCard: React.FC<CategoryCardProps> = ({ data }) => {
+const CategoryCard: React.FC<CategoryCardProps> = ({ data, category }) => {
   return (
     <Link
-      href={`/${data.slug}`}
+      href={`/${category}/${data.slug}`}
       className="group cursor-pointer sm:space-y-4 grid grid-cols-5 sm:gap-0 sm:flex sm:flex-col"
     >
       {/* Image */}
 
       <div className="aspect-square sm:aspect-[4/3] bg-gray-100 relative col-span-2">
-        {/* {data.images && (
-            <Image
-              src={data.images?.[0]?.url}
-              alt=""
-              fill
-              className="object-cover"
-            />
-          )} */}
+        {data.products && (
+          <Image
+            src={data.products?.[0]?.images?.[0]?.url}
+            alt=""
+            fill
+            className="object-cover"
+          />
+        )}
       </div>
 
       {/* Description */}
@@ -32,7 +34,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ data }) => {
         </p>
       </div>
     </Link>
-  );
-};
+  )
+}
 
-export default CategoryCard;
+export default CategoryCard

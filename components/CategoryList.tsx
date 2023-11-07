@@ -15,7 +15,6 @@ interface CategorysListProps {
 const gloock = Gloock({ subsets: ["latin"], weight: "400" })
 
 const CategoryList: React.FC<CategorysListProps> = ({ title, items, link }) => {
-  // const limitedItems = items.slice(0, 3)
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-3 md:grid-cols-5 justify-between items-center sticky top-3 sm:top-0 py-3 bg-background/50 backdrop-blur-md z-10 px-6 container mx-auto rounded-full sm:rounded-md border sm:border-0 sm:border-b shadow-sm shadow-background/10 sm:shadow-none">
@@ -34,14 +33,10 @@ const CategoryList: React.FC<CategorysListProps> = ({ title, items, link }) => {
         )}
       </div>
 
-      {items.length === 0 && <NoResults />}
       <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6 px-4 sm:gap-9 sm:px-6 container mx-auto py-3">
         {items.map((item) => (
-          <CategoryCard key={item.id} data={item} />
+          <CategoryCard key={item.id} data={item} category={link} />
         ))}
-        {/* {items.map((item, i) => (
-          <ProductCard key={i} data={item} />
-        ))} */}
       </div>
     </div>
   )

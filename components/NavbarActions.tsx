@@ -1,22 +1,22 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import { ChevronDown, LogIn, ShoppingBag } from "lucide-react";
+import { useState, useEffect } from "react"
+import { ChevronDown, LogIn, ShoppingBag } from "lucide-react"
 
-import { Button } from "@/components/ui/button";
-import useCart from "@/hooks/use-cart";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
+import { Button } from "@/components/ui/button"
+import useCart from "@/hooks/use-cart"
+import { useRouter } from "next/navigation"
+import Image from "next/image"
 
 const NavbarActions = () => {
-  const [isMounted, setIsMounted] = useState(false);
+  const [isMounted, setIsMounted] = useState(false)
 
-  const cart = useCart();
-  const router = useRouter();
+  const cart = useCart()
+  const router = useRouter()
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    setIsMounted(true)
+  }, [])
 
   if (!isMounted) {
     return (
@@ -41,7 +41,7 @@ const NavbarActions = () => {
             </div>
           </div>
         </Button>
-        <Button
+        {/* <Button
           onClick={() => router.push("/cart")}
           className="flex sm:hidden items-center md:px-4 py-4"
           variant="ghost"
@@ -55,9 +55,9 @@ const NavbarActions = () => {
               {cart.items.length}
             </span>
           </div>
-        </Button>
+        </Button> */}
       </>
-    );
+    )
   }
 
   return (
@@ -82,7 +82,7 @@ const NavbarActions = () => {
           </div>
         </div>
       </Button>
-      <Button
+      {/* <Button
         onClick={() => router.push("/cart")}
         className="flex sm:hidden items-center md:px-4 py-4"
         variant="ghost"
@@ -96,9 +96,9 @@ const NavbarActions = () => {
             {cart.items.length}
           </span>
         </div>
-      </Button>
+      </Button> */}
     </>
-  );
-};
+  )
+}
 
-export default NavbarActions;
+export default NavbarActions

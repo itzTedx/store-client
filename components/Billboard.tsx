@@ -3,12 +3,19 @@ import Image from "next/image"
 import { Gloock } from "next/font/google"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
+import localFont from "next/font/local"
+
+// Font files can be colocated inside of `app`
+const argesta = localFont({
+  src: "./fonts/argesta.woff2",
+  display: "swap",
+})
 
 interface BillboardProps {
   data: BillboardType
 }
 
-const gloock = Gloock({ subsets: ["latin"], weight: "400" })
+const gloock = Gloock({ subsets: ["latin"], weight: "400", display: "swap" })
 
 const Billboard: React.FC<BillboardProps> = ({ data }) => {
   return (
@@ -16,14 +23,12 @@ const Billboard: React.FC<BillboardProps> = ({ data }) => {
       <div className="px-4 xs:px-6 pt-6 sm:pt-10 pb-16 rounded-xl grid grid-cols-1 sm:grid-cols-2 overflow-hidden gap-6 sm:gap-11 max-w-7xl mx-auto">
         <div className="h-full w-full grid grid-cols-2 gap-3 sm:flex flex-col justify-center gap-y-6 sm:gap-y-8">
           <h1
-            className={`${gloock.className} block font-bold text-2xl sm:text-3xl md:text-4xl lg:text-6xl sm:max-w-xl dark:bg-gray-800 bg-gray-100 dark:sm:bg-transparent sm:bg-transparent p-4 sm:p-0 leading-[1.4] text-center sm:text-left`}
+            className={`${gloock.className} block font-bold text-2xl sm:text-3xl md:text-4xl lg:text-6xl sm:max-w-xl dark:bg-gray-800 bg-gray-100 dark:sm:bg-transparent sm:bg-transparent p-4 sm:p-0 !leading-9 sm:!leading-[1.25] text-center sm:text-left`}
           >
             {data?.label}
           </h1>
 
-          <p className="sm:text-xl lg:text-3xl tracking-tight leading-[1.75] ">
-            {data?.description}
-          </p>
+          <p className="lg:text-xl sm:!leading-9 ">{data?.description}</p>
           <div className="flex justify-between col-span-2">
             <Link
               href="/products"

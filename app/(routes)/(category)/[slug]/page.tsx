@@ -1,17 +1,18 @@
-import getCategory from "@/actions/get-category";
-import Billboard from "@/components/Billboard";
-import { Metadata } from "next";
-import Link from "next/link";
-import Breadcrumb from "@/components/ui/breadcrumb";
+import getCategory from "@/actions/get-category"
+import Billboard from "@/components/Billboard"
+import { Metadata } from "next"
+import Link from "next/link"
+import Breadcrumb from "@/components/ui/breadcrumb"
+import Image from "next/image"
 
 interface CategoryPageProps {
   params: {
-    slug: string;
-  };
+    slug: string
+  }
   searchParams: {
-    colorId: string;
-    sizeId: string;
-  };
+    colorId: string
+    sizeId: string
+  }
 }
 
 // export async function generateMetadata({
@@ -27,7 +28,7 @@ interface CategoryPageProps {
 // }
 
 const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
-  const category = await getCategory(params.slug);
+  const category = await getCategory(params.slug)
 
   return (
     <>
@@ -44,7 +45,14 @@ const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
               key={sub.id}
             >
               <div className="">
-                <div className="aspect-[4/3] bg-gray-100 relative"></div>
+                <div className="aspect-[4/3] bg-gray-100 relative">
+                  <Image
+                    src={sub.products[0]?.images[0]?.url}
+                    alt=""
+                    fill
+                    className="object-cover"
+                  />
+                </div>
 
                 {/* Description */}
                 <div className="mt-3">
@@ -59,7 +67,7 @@ const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default CategoryPage;
+export default CategoryPage

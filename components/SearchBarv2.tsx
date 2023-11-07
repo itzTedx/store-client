@@ -74,7 +74,7 @@ export function SearchBar({ data }: SearchProps) {
           aria-hidden="true"
         />
       </Button>
-      <div className="w-full sm:max-w-xl mx-auto hidden sm:block">
+      <div className="w-96 hidden sm:block">
         <Combobox value={selected} onChange={setSelected}>
           <div className="relative mt-1">
             <form className="relative w-full cursor-default overflow-hidden rounded-lg bg-white dark:bg-gray-900 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-lime-300 sm:text-sm border">

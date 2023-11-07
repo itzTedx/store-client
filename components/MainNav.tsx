@@ -1,23 +1,23 @@
-"use client";
+"use client"
 
-import { cn } from "@/lib/utils";
-import { Category } from "@/types";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { Separator } from "./ui/separator";
+import { cn } from "@/lib/utils"
+import { Category } from "@/types"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { Separator } from "./ui/separator"
 
 interface MainNavProps {
-  data: Category[];
+  data: Category[]
 }
 
 const MainNav = ({ data }: MainNavProps) => {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   const routes = data.map((route) => ({
     href: `/${route.slug}`,
     label: route.name,
     active: pathname === `/${route.slug}`,
-  }));
+  }))
 
   return (
     <div className="border-b py-4 md:flex items-center justify-betweens hidden container mx-auto overflow-x-auto">
@@ -50,7 +50,7 @@ const MainNav = ({ data }: MainNavProps) => {
         </li>
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default MainNav;
+export default MainNav

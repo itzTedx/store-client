@@ -10,6 +10,7 @@ import IconButton from "@/components/ui/icon-button"
 import usePreviewModal from "@/hooks/use-preview-modal"
 import useCart from "@/hooks/use-cart"
 import { Product } from "@/types"
+import Link from "next/link"
 
 interface ProductCard {
   data: Product
@@ -21,7 +22,7 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
   const router = useRouter()
 
   const handleClick = () => {
-    router.push(`/product/${data?.id}`)
+    router.push(`/d/${data?.slug}`)
   }
 
   const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
@@ -43,15 +44,17 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
     >
       {/* Image & actions */}
       <div className="">
-        <div className="aspect-[4/3] bg-gray-100 relative">
-          {data.images && (
-            <Image
-              src={data.images?.[0]?.url}
-              alt=""
-              fill
-              className="object-cover"
-            />
-          )}
+        <div className="aspect-[4/3]  relative">
+          <Link href={`/d/${data.slug}`}>
+            {data.images && (
+              <Image
+                src={data.images?.[0]?.url}
+                alt=""
+                fill
+                className="object-cover"
+              />
+            )}
+          </Link>
           <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
             <div className="flex gap-x-6 justify-center">
               <IconButton
