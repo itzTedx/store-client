@@ -14,24 +14,24 @@ interface CategoryPageProps {
   };
 }
 
-export async function generateMetadata({
-  params,
-}: CategoryPageProps): Promise<Metadata> {
-  // fetch data
-  const category = await getCategory(params.slug);
+// export async function generateMetadata({
+//   params,
+// }: CategoryPageProps): Promise<Metadata> {
+//   // fetch data
+//   const category = await getCategory(params.slug);
 
-  return {
-    title: category.billboard.label,
-    description: category.billboard.description,
-  };
-}
+//   return {
+//     title: category.billboard.label,
+//     description: category.billboard.description,
+//   };
+// }
 
 const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
   const category = await getCategory(params.slug);
 
   return (
     <>
-      <Billboard data={category.billboard} />
+      {/* <Billboard data={category.billboard} /> */}
       <div className="container mx-auto">
         <Breadcrumb page={category} />
       </div>
