@@ -30,7 +30,7 @@ const SubCategoryPage = async ({ params }: SubCategoryPageProps) => {
 
   return (
     <div className="container mx-auto ">
-      <Breadcrumb page={category.name} subPage={subcategory.name} />
+      <Breadcrumb page={category} subPage={subcategory} />
     </div>
   );
 };

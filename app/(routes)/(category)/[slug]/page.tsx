@@ -32,8 +32,8 @@ const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
   return (
     <>
       <Billboard data={category.billboard} />
-      <div className="container mx-auto py-12">
-        <Breadcrumb page={category.name} />
+      <div className="container mx-auto">
+        <Breadcrumb page={category} />
       </div>
       <div className="container mx-auto ">
         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
