@@ -1,42 +1,33 @@
-import getCategory from "@/actions/get-category"
-import getColors from "@/actions/get-colors"
-import getProducts from "@/actions/get-products"
-import getSizes from "@/actions/get-sizes"
-import Billboard from "@/components/Billboard"
-import Container from "@/components/ui/container"
-import NoResults from "@/components/ui/no-results"
-import ProductCard from "@/components/ui/product-card"
-
-import Filter from "./components/filter"
-import MobileFilters from "./components/mobile-filters"
-import { Metadata } from "next"
-import Link from "next/link"
-import Breadcrumb from "@/components/ui/breadcrumb"
+import getCategory from "@/actions/get-category";
+import Billboard from "@/components/Billboard";
+import { Metadata } from "next";
+import Link from "next/link";
+import Breadcrumb from "@/components/ui/breadcrumb";
 
 interface CategoryPageProps {
   params: {
-    slug: string
-  }
+    slug: string;
+  };
   searchParams: {
-    colorId: string
-    sizeId: string
-  }
+    colorId: string;
+    sizeId: string;
+  };
 }
 
 export async function generateMetadata({
   params,
 }: CategoryPageProps): Promise<Metadata> {
   // fetch data
-  const category = await getCategory(params.slug)
+  const category = await getCategory(params.slug);
 
   return {
     title: category.billboard.label,
     description: category.billboard.description,
-  }
+  };
 }
 
 const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
-  const category = await getCategory(params.slug)
+  const category = await getCategory(params.slug);
 
   return (
     <>
@@ -48,7 +39,7 @@ const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
           {category.subcategory.map((sub) => (
             <Link
-              href={`/category/${sub.slug}`}
+              href={`/${params.slug}/${sub.slug}`}
               className="group cursor-pointer space-y-4 flex flex-col justify-between"
               key={sub.id}
             >
@@ -64,12 +55,11 @@ const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
                 </div>
               </div>
             </Link>
-            // <div key={sub.id}>{sub.name}</div>
           ))}
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default CategoryPage
+export default CategoryPage;

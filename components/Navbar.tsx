@@ -1,4 +1,6 @@
-import Link from "next/link"
+"use client";
+
+import Link from "next/link";
 import {
   Navbar as NextNav,
   NavbarBrand,
@@ -7,28 +9,31 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-} from "@nextui-org/react"
-import Image from "next/image"
-import { ChevronDown } from "lucide-react"
+} from "@nextui-org/react";
+import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import getCategories from "@/actions/get-categories"
-import NavbarActions from "./NavbarActions"
-import { Accordion, AccordionItem } from "@nextui-org/react"
-import { ModeToggle } from "./mode-toggle"
-import { Separator } from "./ui/separator"
-import { SearchBar } from "./SearchBarv2"
-import { DropdownMenu } from "./dropdown-navbar"
+import { Button } from "@/components/ui/button";
+import getCategories from "@/actions/get-categories";
+import NavbarActions from "./NavbarActions";
+import { ModeToggle } from "./mode-toggle";
+import { Separator } from "./ui/separator";
+import { SearchBar } from "./SearchBarv2";
+import { DropdownMenu } from "./dropdown-navbar";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 const Navbar = async () => {
-  const categories = await getCategories()
+  const categories = await getCategories();
   // const allProducts = await getAllProducts()
-
-  // const [open, setOpen] = useState(false)
 
   return (
     <>
-      <NextNav isBordered shouldHideOnScroll height="4rem" maxWidth="2xl">
+      <NextNav isBordered shouldHideOnScroll height="4rem" maxWidth="xl">
         <NavbarContent className="sm:hidden pr-3" justify="center">
           <NavbarBrand>
             <Link href="/">
@@ -85,26 +90,22 @@ const Navbar = async () => {
         <NavbarMenu className="flex flex-col justify-between">
           <div className="space-y-3">
             <NavbarItem className="space-y-4">
-              {/* <Accordion>
+              <Accordion type="single" collapsible>
                 {categories.map((item, i) => (
-                  <AccordionItem
-                    key={i}
-                    aria-label="Accordion 1"
-                    title="Accordion 1"
-                  >
-                    <NavbarMenuItem key={`${item}-${i}`}>
-                      {item.name}
-                    </NavbarMenuItem>
+                  <AccordionItem value={`item-${i}`} key={i}>
+                    <AccordionTrigger>
+                      <Link href={`/${item.slug}`}>{item.name}</Link>
+                    </AccordionTrigger>
+                    {item.subcategory.map((sub, i) => (
+                      <AccordionContent key={i}>
+                        <Link href={`/${item.slug}/${sub.slug}`}>
+                          {sub.name}
+                        </Link>
+                      </AccordionContent>
+                    ))}
                   </AccordionItem>
                 ))}
-              </Accordion> */}
-              {/* {categories.map((item, index) => (
-                <NavbarMenuItem key={`${item}-${index}`}>
-                  <Link className="w-full" href={`/category/${item.slug}`}>
-                    {item.name}
-                  </Link>
-                </NavbarMenuItem>
-              ))} */}
+              </Accordion>
             </NavbarItem>
           </div>
           <div className="flex justify-between my-20">
@@ -114,12 +115,11 @@ const Navbar = async () => {
           </div>
         </NavbarMenu>
       </NextNav>
-      <div className="flex">
+      <div className="flex bg-background">
         <DropdownMenu data={categories} />
-        {/* <MainNav data={categories} /> */}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
