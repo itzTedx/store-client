@@ -2,14 +2,14 @@
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Color, Size } from "@/types";
+import { Quantity, Size } from "@/types";
 import { useRouter, useSearchParams } from "next/navigation";
 import qs from "query-string";
 
 interface FilterProps {
   valueKey: string;
   name: string;
-  data: (Size | Color)[];
+  data: (Size | Quantity)[];
 }
 
 const Filter = ({ valueKey, name, data }: FilterProps) => {

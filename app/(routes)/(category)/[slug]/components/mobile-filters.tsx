@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import { Color, Size } from "@/types";
+import { Quantity, Size } from "@/types";
 import { Button } from "@/components/ui/button";
 import { Plus, X } from "lucide-react";
 import { Dialog } from "@headlessui/react";
@@ -11,7 +11,7 @@ import Filter from "./filter";
 
 interface MobileFiltersProps {
   sizes: Size[];
-  colors: Color[];
+  colors: Quantity[];
 }
 
 const MobileFilters = ({ sizes, colors }: MobileFiltersProps) => {
