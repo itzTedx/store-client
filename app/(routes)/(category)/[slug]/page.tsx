@@ -27,6 +27,8 @@ export async function generateMetadata({
   };
 }
 
+export const revalidate = 300;
+
 const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
   const category = await getCategory(params.slug);
 
