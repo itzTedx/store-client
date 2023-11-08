@@ -11,20 +11,30 @@ interface BreadcrumbProps {
     name: string;
     slug: string;
   };
+  product?: {
+    name: string;
+    slug: string;
+  };
 }
 
-const Breadcrumb = ({ page, subPage }: BreadcrumbProps) => {
+const Breadcrumb = ({ page, subPage, product }: BreadcrumbProps) => {
   return (
     <div className="flex items-center gap-3 text-muted-foreground py-4">
       <Link href="/">
         <Home size={16} />
       </Link>
-      <ChevronRight className="w-5 h-5" />
+      <ChevronRight className="w-5 h-5 text-muted-foreground" />
       <Link href={`/${page.slug}`}>{page.name}</Link>
       {subPage && (
         <>
-          <ChevronRight className="w-5 h-5" />
+          <ChevronRight className="w-5 h-5  text-muted-foreground" />
           <Link href={`/${page.slug}/${subPage.slug}`}>{subPage.name}</Link>
+        </>
+      )}
+      {product && (
+        <>
+          <ChevronRight className="w-5 h-5  text-muted-foreground" />
+          <Link href={`/${page.slug}/${product.slug}`}>{product.name}</Link>
         </>
       )}
     </div>

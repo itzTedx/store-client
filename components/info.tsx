@@ -1,64 +1,92 @@
-"use client"
+"use client";
 
-import { ShoppingCart } from "lucide-react"
+import { ChevronDown, ShoppingCart } from "lucide-react";
 
-import { Product } from "@/types"
-import Currency from "./ui/currency"
-import { Button } from "./ui/button"
-import { MouseEventHandler } from "react"
-import useCart from "@/hooks/use-cart"
+import { Product } from "@/types";
+import Currency from "./ui/currency";
+import { Button } from "./ui/button";
+import { MouseEventHandler } from "react";
+import useCart from "@/hooks/use-cart";
+import { toPlural } from "@/lib/utils";
 
 interface InfoProps {
-  data: Product
+  data: Product;
 }
 
 const Info = ({ data }: InfoProps) => {
-  const cart = useCart()
+  const cart = useCart();
 
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = (e) => {
-    e.stopPropagation()
+    e.stopPropagation();
 
-    cart.addItem(data)
-  }
+    cart.addItem(data);
+  };
+
   return (
-    <div className="space-y-4">
+    <div className="space-y-6">
       <h1 className="text-2xl md:text-3xl font-bold dark:text-gray-200 text-gray-900">
         {data.name}
       </h1>
       <p className="text-muted-foreground font-light">{data.description}</p>
-      <div className="mt-3 flex items-end justify-between">
-        <p className="text-xl md:text-2xl">
-          <Currency value={data.price} />
-        </p>
-      </div>
-      <hr className="my-4" />
 
-      <div className="flex items-center gap-x-4">
-        <h3 className="font-semibold">Size:</h3>
-        <div>{data?.size?.name}</div>
-      </div>
-      <div className="flex items-center gap-x-4">
-        <h3 className="font-semibold">Color:</h3>
-        <div
-          className="h-6 w-6 rounded-full"
-          style={{ backgroundColor: data?.color?.value }}
-        />
-      </div>
-      <div className="flex items-center gap-x-4">
-        <h3 className="font-semibold">Category:</h3>
-        <div>{data?.category?.name}</div>
-      </div>
-      <div className="pt-4 flex items-center gap-x-3">
-        <Button
-          onClick={onAddToCart}
-          className="w-auto rounded-full bg-black border-transparent px-5 py-3 disabled:cursor-not-allowed disabled:opacity-50 text-white hover:opacity-75 transition flex items-center gap-2 "
-        >
-          Add to Cart
-          <ShoppingCart />
-        </Button>
-      </div>
+      <section className="bg-foreground-100 rounded-md border p-9 space-y-6">
+        <div className="space-y-3">
+          <h3 className="font-semibold">Size:</h3>
+          <div className="border rounded-md bg-background px-4 py-3 flex justify-between items-center">
+            <p>
+              {data?.size?.name} {data?.size.value}
+            </p>
+            <ChevronDown />
+          </div>
+        </div>
+        <div className="space-y-3">
+          <h3 className="font-semibold">Quantity:</h3>
+          <div className="border border-lime-400 bg-background px-4 py-2 rounded-md w-fit">
+            {data?.quantity?.name}
+          </div>
+        </div>
+        <div className="space-y-3">
+          <h3 className="font-semibold">Lamination:</h3>
+          <div className="border px-4 py-3 rounded-md">Matte</div>
+        </div>
+        <div className="space-y-4">
+          <h3 className="font-semibold">Timeframe:</h3>
+          <div className="border px-4 py-3 rounded-md">
+            {data?.timeFrame} {toPlural("Working Day", data?.timeFrame)}
+          </div>
+        </div>
+        <div className="flex items-center gap-x-4">
+          <h3 className="font-semibold">Category:</h3>
+          <div>{data?.subcategory?.name}</div>
+        </div>
+        <div className="flex justify-between">
+          <div className="">- 1 +</div>
+          <div className="flex gap-3">
+            <p className="flex text-xs font-bold bg-red-500 items-center px-3 text-white">
+              Save{` `}
+              <Currency
+                value={data.actualPrice - data.discountPrice}
+                fraction={0}
+              />
+            </p>
+            <h6 className="font-bold">
+              <Currency value={data.discountPrice} />
+            </h6>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-x-3">
+          <Button
+            onClick={onAddToCart}
+            className="rounded-full bg-black border-transparent px-5 py-3 disabled:cursor-not-allowed disabled:opacity-50 text-white hover:opacity-90 transition flex items-center gap-2 w-full"
+          >
+            Add to Cart
+            <ShoppingCart size={16} />
+          </Button>
+        </div>
+      </section>
     </div>
-  )
-}
+  );
+};
 
-export default Info
+export default Info;

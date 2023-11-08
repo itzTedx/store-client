@@ -1,28 +1,30 @@
-'use client'
+"use client";
 
-import { useEffect, useState } from 'react'
-
-const formatter = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'AED',
-})
+import { useEffect, useState } from "react";
 
 interface CurrencyProps {
-  value?: string | number
+  value?: string | number;
+  fraction?: number;
 }
 
-const Currency: React.FC<CurrencyProps> = ({ value = 0 }) => {
-  const [isMounted, setIsMounted] = useState(false)
+const Currency: React.FC<CurrencyProps> = ({ value = 0, fraction = 2 }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "AED",
+    minimumFractionDigits: fraction,
+  });
 
   useEffect(() => {
-    setIsMounted(true)
-  }, [])
+    setIsMounted(true);
+  }, []);
 
   if (!isMounted) {
-    return null
+    return null;
   }
 
-  return <div className='font-semibold '>{formatter.format(Number(value))}</div>
-}
+  return formatter.format(Number(value));
+};
 
-export default Currency
+export default Currency;
