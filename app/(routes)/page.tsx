@@ -1,18 +1,16 @@
-import Billboard from "@/components/Billboard"
-import getBillboard from "@/actions/get-billboard"
-import getProducts from "@/actions/get-products"
-import ProductList from "@/components/ProductList"
-import { Trusted } from "./_components/Trusted"
-import getCategories from "@/actions/get-categories"
-import Explore from "./_components/Explore"
-import CategoryList from "@/components/CategoryList"
+import Billboard from "@/components/Billboard";
+import getBillboard from "@/actions/get-billboard";
+import { Trusted } from "./_components/Trusted";
+import getCategories from "@/actions/get-categories";
+import Explore from "./_components/Explore";
+import CategoryList from "@/components/CategoryList";
 
-export const revalidate = 30
+export const revalidate = 30;
 
 const HomePage = async () => {
-  const billboard = await getBillboard("b356ae0a-c51c-47e5-86c6-baae568ef665")
+  const billboard = await getBillboard("b356ae0a-c51c-47e5-86c6-baae568ef665");
   // const products = await getProducts({ isFeatured: true })
-  const categories = await getCategories()
+  const categories = await getCategories();
 
   return (
     <>
@@ -24,6 +22,7 @@ const HomePage = async () => {
           </div>
         </div>
         <Trusted />
+
         <div>
           {categories.slice(0, 3).map((category) => (
             <div key={category.id} className="py-6">
@@ -80,7 +79,7 @@ const HomePage = async () => {
         </div>*/}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
