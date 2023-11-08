@@ -1,7 +1,7 @@
-import { Color } from "@/types";
+import { Quantity } from "@/types";
 const URL = `${process.env.NEXT_PUBLIC_API_KEY}/colors`;
 
-const getColors = async (): Promise<Color[]> => {
+const getColors = async (): Promise<Quantity[]> => {
   const res = await fetch(URL);
 
   return res.json();
