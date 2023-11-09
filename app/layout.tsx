@@ -32,9 +32,9 @@ export default function RootLayout({
         >
           <ToastProvider />
           <ModalProvider />
-          <WelcomeModal />
+          {/* <WelcomeModal /> */}
           <Navbar />
-          {/* <WhatsAppButton /> */}
+
           <BreakpointIndicator />
           <main className=" ">{children}</main>
           <Footer />

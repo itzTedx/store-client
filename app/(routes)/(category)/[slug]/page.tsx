@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Breadcrumb from "@/components/ui/breadcrumb";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 interface CategoryPageProps {
   params: {
@@ -21,6 +22,10 @@ export async function generateMetadata({
   // fetch data
   const category = await getCategory(params.slug);
 
+  if (!category) {
+    notFound();
+  }
+
   return {
     title: category.billboard.label,
     description: category.billboard.description,
@@ -31,6 +36,10 @@ export const revalidate = 300;
 
 const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
   const category = await getCategory(params.slug);
+
+  if (!category) {
+    notFound();
+  }
 
   return (
     <>

@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { usePathname } from "next/navigation";
 import { Category } from "@/types";
+import { Separator } from "./ui/separator";
 
 interface MainNavProps {
   data: Category[];
@@ -31,7 +32,7 @@ export function DropdownMenu({ data }: MainNavProps) {
   }));
 
   return (
-    <NavigationMenu className="container w-full mx-auto md:flex flex-col lg:flex-row items-center md:justify-between py-3 hidden border-b">
+    <NavigationMenu className="md:flex flex-col lg:flex-row items-center md:justify-between py-3 hidden max-w-7xl container">
       <NavigationMenuList>
         {routes.map((route) => (
           <NavigationMenuItem key={route.href}>
@@ -61,9 +62,10 @@ export function DropdownMenu({ data }: MainNavProps) {
           </NavigationMenuItem>
         ))}
       </NavigationMenuList>
+      <Separator orientation="vertical" />
       <NavigationMenuList>
-        <NavigationMenuItem className="space-x-4 mt-3">
-          <NavigationMenuLink href="/blog">Blog</NavigationMenuLink>
+        <NavigationMenuItem className="space-x-4">
+          <NavigationMenuLink href="/blogs">Blog</NavigationMenuLink>
           <NavigationMenuLink href="/about">About us</NavigationMenuLink>
           <NavigationMenuLink href="/contact">Contact</NavigationMenuLink>
         </NavigationMenuItem>

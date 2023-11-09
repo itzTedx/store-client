@@ -6,6 +6,7 @@ import ProductList from "@/components/ProductList";
 import Breadcrumb from "@/components/ui/breadcrumb";
 import ProductCard from "@/components/ui/product-card";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 interface SubCategoryPageProps {
   params: {
@@ -20,6 +21,10 @@ export async function generateMetadata({
   // fetch data
   const subcategory = await getSubcategory(params.subcategorySlug);
   const category = await getCategory(params.slug);
+
+  if (!category) {
+    notFound();
+  }
 
   return {
     title: `${subcategory.name} - ${category.name}`,

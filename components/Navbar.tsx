@@ -32,17 +32,30 @@ const Navbar = async () => {
   return (
     <>
       <NextNav isBordered shouldHideOnScroll height="4rem" maxWidth="xl">
-        <div className="flex justify-between items-center w-full">
-          <Link href="/" className="col-span-2 sm:col-auto">
-            <p className="font-bold text-inherit">DIGITAL DESK</p>
+        <div className="flex md:justify-between items-center w-full gap-3">
+          <Link href="/" className="col-span-2 sm:col-auto relative h-14 w-44">
+            <Image
+              src="/digitaldesk.svg"
+              fill
+              alt="Digital Desk Logo"
+              className="object-contain"
+            />
           </Link>
-          <div className="sm:order-1 ml-auto">
+          <div className="ml-auto flex gap-x-3">
+            <div className="md:hidden">
+              <ModeToggle />
+            </div>
             <SearchBar data={categories} />
+            <div className="ml-auto">
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <NavbarMenuToggle as="div" className="text-sky-500 " />
+              </Button>
+            </div>
           </div>
-          <div className="flex items-center gap-x-4 sm:order-2 ml-auto">
+          <div className="items-center gap-x-4 ml-auto hidden md:flex">
             <ModeToggle />
-            <Separator orientation="vertical" className="h-6 hidden md:flex" />
-            <div className="hidden md:flex sm:order-3">
+            <Separator orientation="vertical" className="h-6" />
+            <div className="hidden md:flex">
               <Image
                 src="/icons/account.svg"
                 width={40}
@@ -56,15 +69,10 @@ const Navbar = async () => {
                 </Button>
               </div>
             </div>
-            <div className="sm:order-4">
+            <div className="">
               <NavbarActions />
             </div>
           </div>
-        </div>
-        <div className="ml-auto">
-          <Button variant="ghost" size="icon" className="md:hidden">
-            <NavbarMenuToggle as="div" className="text-sky-500 " />
-          </Button>
         </div>
 
         <NavbarMenu className="flex flex-col justify-between">
@@ -89,13 +97,15 @@ const Navbar = async () => {
             </NavbarItem>
           </div>
           <div className="flex justify-between my-20">
-            <NavbarItem>Blogs</NavbarItem>
+            <NavbarItem>
+              <Link href="/blogs">Blogs</Link>
+            </NavbarItem>
             <NavbarItem>About</NavbarItem>
             <NavbarItem>Contact</NavbarItem>
           </div>
         </NavbarMenu>
       </NextNav>
-      <div className="flex bg-background">
+      <div className="bg-background border-b">
         <DropdownMenu data={categories} />
       </div>
     </>
