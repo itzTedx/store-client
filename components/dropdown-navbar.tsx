@@ -31,7 +31,7 @@ export function DropdownMenu({ data }: MainNavProps) {
   }));
 
   return (
-    <NavigationMenu className="container w-full mx-auto md:flex flex-col md:flex-row items-center md:justify-between py-3 max-w-7xl hidden border-b">
+    <NavigationMenu className="container w-full mx-auto md:flex flex-col lg:flex-row items-center md:justify-between py-3 hidden border-b">
       <NavigationMenuList>
         {routes.map((route) => (
           <NavigationMenuItem key={route.href}>
@@ -41,7 +41,7 @@ export function DropdownMenu({ data }: MainNavProps) {
               </NavigationMenuLink>
             </NavigationMenuTrigger>
 
-            <NavigationMenuContent className="relative z-50">
+            <NavigationMenuContent className="relative z-[999]">
               <ul className="grid gap-3 p-6 md:w-[500px] lg:w-[880px] lg:grid-cols-[.80fr_1fr]">
                 {route.subcategory.map((sub) => {
                   return (
@@ -62,7 +62,7 @@ export function DropdownMenu({ data }: MainNavProps) {
         ))}
       </NavigationMenuList>
       <NavigationMenuList>
-        <NavigationMenuItem className="space-x-4">
+        <NavigationMenuItem className="space-x-4 mt-3">
           <NavigationMenuLink href="/blog">Blog</NavigationMenuLink>
           <NavigationMenuLink href="/about">About us</NavigationMenuLink>
           <NavigationMenuLink href="/contact">Contact</NavigationMenuLink>

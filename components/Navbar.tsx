@@ -1,4 +1,4 @@
-import Link from "next/link"
+import Link from "next/link";
 import {
   Navbar as NextNav,
   NavbarBrand,
@@ -7,46 +7,41 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-} from "@nextui-org/react"
-import Image from "next/image"
-import { ChevronDown } from "lucide-react"
+} from "@nextui-org/react";
+import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import getCategories from "@/actions/get-categories"
-import NavbarActions from "./NavbarActions"
-import { ModeToggle } from "./mode-toggle"
-import { Separator } from "./ui/separator"
-import { SearchBar } from "./SearchBarv2"
-import { DropdownMenu } from "./dropdown-navbar"
+import { Button } from "@/components/ui/button";
+import getCategories from "@/actions/get-categories";
+import NavbarActions from "./NavbarActions";
+import { ModeToggle } from "./mode-toggle";
+import { Separator } from "./ui/separator";
+import { SearchBar } from "./SearchBarv2";
+import { DropdownMenu } from "./dropdown-navbar";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion"
+} from "@/components/ui/accordion";
 
 const Navbar = async () => {
-  const categories = await getCategories()
+  const categories = await getCategories();
   // const allProducts = await getAllProducts()
 
   return (
     <>
       <NextNav isBordered shouldHideOnScroll height="4rem" maxWidth="xl">
-        <div className="grid grid-cols-4 sm:grid-cols-3 w-full sm:place-items-center items-center">
+        <div className="flex justify-between items-center w-full">
           <Link href="/" className="col-span-2 sm:col-auto">
             <p className="font-bold text-inherit">DIGITAL DESK</p>
           </Link>
-
-          <div className="gap-x-2 md:gap-x-4 grid grid-flow-col place-items-center ">
-            <div className="flex items-center gap-x-4 sm:order-2">
-              <ModeToggle />
-
-              <Separator
-                orientation="vertical"
-                className="h-6 hidden md:flex"
-              />
-            </div>
-
+          <div className="sm:order-1 ml-auto">
+            <SearchBar data={categories} />
+          </div>
+          <div className="flex items-center gap-x-4 sm:order-2 ml-auto">
+            <ModeToggle />
+            <Separator orientation="vertical" className="h-6 hidden md:flex" />
             <div className="hidden md:flex sm:order-3">
               <Image
                 src="/icons/account.svg"
@@ -64,16 +59,14 @@ const Navbar = async () => {
             <div className="sm:order-4">
               <NavbarActions />
             </div>
-            <div className="sm:order-1">
-              <SearchBar data={categories} />
-            </div>
-          </div>
-          <div className="ml-auto">
-            <Button variant="ghost" size="icon" className="md:hidden">
-              <NavbarMenuToggle as="div" className="text-sky-500 " />
-            </Button>
           </div>
         </div>
+        <div className="ml-auto">
+          <Button variant="ghost" size="icon" className="md:hidden">
+            <NavbarMenuToggle as="div" className="text-sky-500 " />
+          </Button>
+        </div>
+
         <NavbarMenu className="flex flex-col justify-between">
           <div className="space-y-3">
             <NavbarItem className="space-y-4">
@@ -106,7 +99,7 @@ const Navbar = async () => {
         <DropdownMenu data={categories} />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

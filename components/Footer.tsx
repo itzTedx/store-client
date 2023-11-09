@@ -1,15 +1,15 @@
-import Link from "next/link"
-import { buttonVariants } from "./ui/button"
-import { footerNav } from "@/lib/footer"
-import { cn } from "@/lib/utils"
+import Link from "next/link";
+import { buttonVariants } from "./ui/button";
+import { footerNav } from "@/lib/footer";
+import { cn } from "@/lib/utils";
 
 const Footer = () => {
-  const currentDate = new Date()
-  const currentYear = currentDate.getFullYear()
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
   return (
     <footer className="border-t">
       <div className="container">
-        <div className="grid md:grid-cols-4 items-center justify-between py-10">
+        <div className="grid lg:grid-cols-4 items-center justify-between py-10">
           <div className="col-span-2">
             <div className="">Logo</div>
             <div className="">Social Media</div>
@@ -88,7 +88,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

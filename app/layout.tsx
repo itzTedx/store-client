@@ -7,6 +7,7 @@ import ModalProvider from "@/providers/modal-provider";
 import ToastProvider from "@/providers/toast-provider";
 import { ThemeProvider } from "@/providers/theme-provider";
 import WelcomeModal from "@/components/WelcomeModal";
+import BreakpointIndicator from "@/components/BreakpointIndicator";
 
 const font = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -34,6 +35,7 @@ export default function RootLayout({
           <WelcomeModal />
           <Navbar />
           {/* <WhatsAppButton /> */}
+          <BreakpointIndicator />
           <main className=" ">{children}</main>
           <Footer />
         </ThemeProvider>

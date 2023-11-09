@@ -14,8 +14,17 @@ const WelcomeModal = () => {
       setIsOpen(true);
     }, 60000); // 60000 is the time in milliseconds, equivalent to 1 minute
 
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", down);
     return () => {
       clearTimeout(timeout);
+      document.removeEventListener("keydown", down);
     };
   }, []);
   return <SpringModal isOpen={isOpen} setIsOpen={setIsOpen} />;
