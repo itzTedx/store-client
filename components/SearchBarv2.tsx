@@ -1,16 +1,7 @@
 "use client";
 
-import { useState, useEffect, Fragment } from "react";
-import {
-  Calculator,
-  Calendar,
-  CheckIcon,
-  CreditCard,
-  Search,
-  Settings,
-  Smile,
-  User,
-} from "lucide-react";
+import { useState, useEffect } from "react";
+import { Calendar, Search } from "lucide-react";
 import { isAppleDevice } from "@react-aria/utils";
 
 import {
@@ -37,7 +28,7 @@ export function SearchBar({ data }: SearchProps) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState();
-  const [commandKey, setCommandKey] = useState<"ctrl" | "command">("command");
+  const [commandKey, setCommandKey] = useState<"Ctrl" | "Cmd">("Ctrl");
 
   const category = data.map((cat) => cat.subcategory);
 
@@ -65,10 +56,14 @@ export function SearchBar({ data }: SearchProps) {
   //         )
   //       );
 
-  console.log(category);
+  useEffect(() => {
+    setCommandKey(isAppleDevice() ? "Cmd" : "Ctrl");
+  }, []);
+
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      if (e.key === "j" && (e.metaKey || e.ctrlKey)) {
+      const hotkey = isAppleDevice() ? "metaKey" : "ctrlKey";
+      if (e.key === "k" && e[hotkey]) {
         e.preventDefault();
         setOpen((open) => !open);
       }
@@ -91,7 +86,18 @@ export function SearchBar({ data }: SearchProps) {
           aria-hidden="true"
         />
       </Button>
-      <div className="w-72 lg:w-96 hidden sm:block">
+      <Button
+        onClick={() => setOpen(true)}
+        variant="ghost"
+        className="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-focus focus-visible:outline-offset-2 px-unit-4 min-w-unit-20 h-unit-10 gap-unit-2 rounded-medium [&>svg]:max-w-[theme(spacing.unit-8)] active:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none data-[hover=true]:opacity-hover text-sm font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20"
+      >
+        Search your printing needs...
+        <Search
+          className="h-6 w-6 text-sky-500 fill-sky-500/20"
+          aria-hidden="true"
+        />
+      </Button>
+      {/* <div className="w-72 lg:w-96 hidden sm:block">
         <Combobox value={selected} onChange={setSelected}>
           <div className="relative mt-1">
             <form className="relative w-full cursor-default overflow-hidden rounded-lg bg-white dark:bg-gray-900 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-lime-300 sm:text-sm border">
@@ -104,7 +110,7 @@ export function SearchBar({ data }: SearchProps) {
 
               <Combobox.Button className="absolute inset-y-0 right-2 flex items-center space-x-2">
                 <kbd className="pointer-events-none h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100 hidden md:inline-flex">
-                  <span className="text-xs">Ctrl</span>J
+                  <span className="text-xs">{commandKey}</span>K
                 </kbd>
                 <Search className="h-5 w-5 text-gray-400" aria-hidden="true" />
               </Combobox.Button>
@@ -167,10 +173,10 @@ export function SearchBar({ data }: SearchProps) {
             </Transition>
           </div>
         </Combobox>
-      </div>
+      </div> */}
 
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Type a command or search..." />
+        <CommandInput placeholder="Search your printing needs..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           {data.map((d) => (
