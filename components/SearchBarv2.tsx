@@ -11,6 +11,7 @@ import {
   Smile,
   User,
 } from "lucide-react";
+import { isAppleDevice } from "@react-aria/utils";
 
 import {
   Command,
@@ -36,12 +37,15 @@ export function SearchBar({ data }: SearchProps) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState();
+  const [commandKey, setCommandKey] = useState<"ctrl" | "command">("command");
 
-  const filteredQuery =
+  const category = data.map((cat) => cat.subcategory);
+
+  const filteredCat =
     query === ""
-      ? data
-      : data.filter((d) =>
-          d.subcategory.filter((search) =>
+      ? category
+      : category.filter((sub) =>
+          sub.filter((search) =>
             search.name
               .toLowerCase()
               .replace(/\s+/g, "")
@@ -49,6 +53,19 @@ export function SearchBar({ data }: SearchProps) {
           )
         );
 
+  // const filteredQuery =
+  //   query === ""
+  //     ? data
+  //     : data.filter((d) =>
+  //         d.subcategory.filter((search) =>
+  //           search.name
+  //             .toLowerCase()
+  //             .replace(/\s+/g, "")
+  //             .includes(query.toLowerCase().replace(/\s+/g, ""))
+  //         )
+  //       );
+
+  console.log(category);
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "j" && (e.metaKey || e.ctrlKey)) {
@@ -84,6 +101,7 @@ export function SearchBar({ data }: SearchProps) {
                 displayValue={(search: { name: string }) => search.name}
                 onChange={(event) => setQuery(event.target.value)}
               />
+
               <Combobox.Button className="absolute inset-y-0 right-2 flex items-center space-x-2">
                 <kbd className="pointer-events-none h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100 hidden md:inline-flex">
                   <span className="text-xs">Ctrl</span>J
@@ -99,13 +117,13 @@ export function SearchBar({ data }: SearchProps) {
               afterLeave={() => setQuery("")}
             >
               <Combobox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white dark:bg-gray-900 py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm pr-2 z-[9999]">
-                {filteredQuery.length === 0 && query !== "" ? (
+                {filteredCat.length === 0 && query !== "" ? (
                   <div className="relative cursor-default select-none py-2 px-4 text-gray-700">
                     Nothing found.
                   </div>
                 ) : (
-                  filteredQuery.map((search) =>
-                    search.subcategory.map((sub) => (
+                  filteredCat.map((search) =>
+                    search.map((sub) => (
                       <Combobox.Option
                         key={sub.id}
                         className={({ active }) =>
@@ -120,7 +138,7 @@ export function SearchBar({ data }: SearchProps) {
                         {({ selected, active }) => (
                           <>
                             <Link
-                              href={`/product/${sub.id}`}
+                              href={`/d/${sub.slug}`}
                               className={`block truncate ${
                                 selected ? "font-medium" : "font-normal"
                               }`}
