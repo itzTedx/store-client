@@ -46,9 +46,9 @@ const HomePage = async () => {
             </div>
           ))}
         </section>
-        <section className="container max-w-6xl lg:rounded-md bg-[#102A2B] text-background">
+        <section className="container max-w-6xl lg:rounded-md bg-[#102A2B] text-background py-9">
           {/* Jumpstart business offer section */}
-          <div className="grid grid-cols-3 py-4 gap-4">
+          <div className="grid md:grid-cols-3 gap-4 gap-y-9">
             <div className="flex flex-col justify-between gap-3">
               <div className="">
                 <h5 className="font-glirock text-2xl text-transparent bg-clip-text bg-gradient-to-r from-lime-500 to-green-600">
@@ -60,15 +60,15 @@ const HomePage = async () => {
                   letterhead, and eye-catching A5 flyer.
                 </p>
               </div>
-              <Button variant="outline">548AED</Button>
+              <Button variant="outline" className="w-fit">
+                548AED
+              </Button>
             </div>
-            <div className="h-96 col-span-2 grid grid-cols-3 grid-rows-2 gap-3">
-              <div className="bg-red-300 "></div>
-              <div className="bg-red-300 "></div>
-              <div className="bg-red-300 "></div>
-              <div className="bg-red-300 "></div>
-              <div className="bg-red-300 "></div>
-              <div className="bg-red-300 "></div>
+            <div className="h-64 md:h-96 col-span-2 grid grid-cols-3 grid-rows-2 gap-2">
+              <div className="bg-yellow-300 row-span-2 rounded-md"></div>
+              <div className="bg-red-500 rounded-md"></div>
+              <div className="bg-red-300  rounded-md"></div>
+              <div className="bg-violet-500 col-span-2 rounded-md"></div>
             </div>
           </div>
         </section>
