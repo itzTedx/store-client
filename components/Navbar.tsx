@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from "next/link"
 import {
   Navbar as NextNav,
   NavbarBrand,
@@ -7,33 +7,34 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-} from "@nextui-org/react";
-import Image from "next/image";
-import { ChevronDown } from "lucide-react";
+} from "@nextui-org/react"
+import Image from "next/image"
+import { ChevronDown } from "lucide-react"
 
-import { Button } from "@/components/ui/button";
-import getCategories from "@/actions/get-categories";
-import NavbarActions from "./NavbarActions";
-import { ModeToggle } from "./mode-toggle";
-import { Separator } from "./ui/separator";
-import { SearchBar } from "./SearchBarv2";
-import { DropdownMenu } from "./dropdown-navbar";
+import { Button } from "@/components/ui/button"
+import getCategories from "@/actions/get-categories"
+import NavbarActions from "./NavbarActions"
+import { ModeToggle } from "./mode-toggle"
+import { Separator } from "./ui/separator"
+import { SearchBar } from "./SearchBarv2"
+import { DropdownMenu } from "./dropdown-navbar"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "@/components/ui/accordion"
+import { cn } from "@/lib/utils"
 
 const Navbar = async () => {
-  const categories = await getCategories();
+  const categories = await getCategories()
   // const allProducts = await getAllProducts()
 
   return (
     <>
       <NextNav isBordered shouldHideOnScroll height="4rem" maxWidth="xl">
-        <div className="flex md:justify-between items-center w-full gap-3">
-          <Link href="/" className="col-span-2 sm:col-auto relative h-14 w-44">
+        <div className="flex items-center w-full gap-3 md:justify-between">
+          <Link href="/" className="relative col-span-2 sm:col-auto h-14 w-44">
             <Image
               src="/digitaldesk.svg"
               fill
@@ -41,18 +42,21 @@ const Navbar = async () => {
               className="object-contain"
             />
           </Link>
-          <div className="ml-auto flex gap-x-3">
+          <div className="flex ml-auto gap-x-3">
             <div className="md:hidden">
               <ModeToggle />
             </div>
             <SearchBar data={categories} />
             <div className="ml-auto">
               <Button variant="ghost" size="icon" className="md:hidden">
-                <NavbarMenuToggle as="div" className="text-sky-500 " />
+                <NavbarMenuToggle
+                  as="div"
+                  className="text-sky-500 [&>span:before]:h-[2px] [&>span:after]:h-[2px]"
+                />
               </Button>
             </div>
           </div>
-          <div className="items-center gap-x-4 ml-auto hidden md:flex">
+          <div className="items-center hidden ml-auto gap-x-4 md:flex">
             <ModeToggle />
             <Separator orientation="vertical" className="h-6" />
             <div className="hidden md:flex">
@@ -64,7 +68,7 @@ const Navbar = async () => {
               />
               <div className="ml-2">
                 <p className="text-sm">Hello, Digital</p>
-                <Button variant="ghost" className="p-0 h-auto font-bold">
+                <Button variant="ghost" className="h-auto p-0 font-bold">
                   My Account <ChevronDown size={16} />
                 </Button>
               </div>
@@ -79,6 +83,9 @@ const Navbar = async () => {
           <div className="space-y-3">
             <NavbarItem className="space-y-4">
               <Accordion type="multiple">
+                <span className="text-xs font-medium text-gray-400 ">
+                  Products
+                </span>
                 {categories.map((item, i) => (
                   <AccordionItem value={`item-${i}`} key={i}>
                     <AccordionTrigger>
@@ -94,6 +101,31 @@ const Navbar = async () => {
                   </AccordionItem>
                 ))}
               </Accordion>
+              <div className="space-y-3">
+                <span className="text-xs font-medium text-gray-400 ">
+                  Account
+                </span>
+                <ul className="space-y-6 font-medium">
+                  <li>
+                    <Link href="/account">Account</Link>
+                  </li>
+                  <li>
+                    <Link href="/orders">My Orders</Link>
+                  </li>
+                  <li>
+                    <Link href="/cart">Cart</Link>
+                  </li>
+                  <li>
+                    <Button
+                      className={cn(
+                        "bg-transparent px-0 py-0 text-red-600 h-0"
+                      )}
+                    >
+                      Log Out
+                    </Button>
+                  </li>
+                </ul>
+              </div>
             </NavbarItem>
           </div>
           <div className="flex justify-between my-20">
@@ -105,11 +137,11 @@ const Navbar = async () => {
           </div>
         </NavbarMenu>
       </NextNav>
-      <div className="bg-background border-b">
+      <div className="border-b bg-background">
         <DropdownMenu data={categories} />
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
