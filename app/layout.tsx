@@ -1,15 +1,17 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
+
+import type { Metadata } from "next";
+
+import { albert, glirock } from "@/app/fonts/fonts";
+
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
-import ModalProvider from "@/providers/modal-provider";
-import ToastProvider from "@/providers/toast-provider";
-import { ThemeProvider } from "@/providers/theme-provider";
 import WelcomeModal from "@/components/WelcomeModal";
 import BreakpointIndicator from "@/components/BreakpointIndicator";
 
-const font = Inter({ subsets: ["latin"], display: "swap" });
+import ModalProvider from "@/providers/modal-provider";
+import ToastProvider from "@/providers/toast-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
 
 export const metadata: Metadata = {
   title: "Store",
@@ -23,7 +25,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${font.className} grainy bg-blend-multiply`}>
+      <body
+        className={`${albert.className} ${glirock.variable} grainy bg-blend-multiply`}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

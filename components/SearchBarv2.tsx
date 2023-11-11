@@ -77,21 +77,10 @@ export function SearchBar({ data }: SearchProps) {
     <>
       <Button
         onClick={() => setOpen(true)}
-        size="icon"
         variant="ghost"
-        className="sm:hidden"
+        className="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-focus focus-visible:outline-offset-2 px-unit-4 min-w-unit-20 h-10 gap-4 rounded-md [&>svg]:max-w-[theme(spacing.unit-8)] active:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none data-[hover=true]:opacity-hover text-sm font-normal"
       >
-        <Search
-          className="h-6 w-6 text-sky-500 fill-sky-500/20"
-          aria-hidden="true"
-        />
-      </Button>
-      <Button
-        onClick={() => setOpen(true)}
-        variant="ghost"
-        className="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-focus focus-visible:outline-offset-2 px-unit-4 min-w-unit-20 h-unit-10 gap-unit-2 rounded-medium [&>svg]:max-w-[theme(spacing.unit-8)] active:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none data-[hover=true]:opacity-hover text-sm font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20"
-      >
-        Search your printing needs...
+        <span className="hidden sm:block">Search your printing needs...</span>
         <Search
           className="h-6 w-6 text-sky-500 fill-sky-500/20"
           aria-hidden="true"
