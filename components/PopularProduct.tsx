@@ -8,12 +8,12 @@ const PopularProduct = () => {
         Our Popular Products
       </h3>
       <div className="hover:bg-lime-400/50 bg-foreground-100  aspect-[3/3.5] col-span-2 rounded-lg p-6 flex justify-between flex-col relative">
-        <p className="text-3xl font-bold">
+        <p className="font-bold md:text-3xl">
           Standard <br />
           Business Card
         </p>
         <Link href="/">Buy</Link>
-        <div className="absolute bottom-0 w-48 right-6 h-60">
+        <div className="absolute bottom-0 w-16 h-20 bg-white md:w-48 right-6 md:h-60">
           <Image
             src="/images/business-card.png"
             fill
