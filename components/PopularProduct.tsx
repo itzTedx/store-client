@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { popularProducts } from "@/constants/popular-products";
+import { cn } from "@/lib/utils";
 
 const PopularProduct = () => {
   return (
@@ -12,7 +13,9 @@ const PopularProduct = () => {
       {popularProducts.map((product, i) => (
         <div
           key={i}
-          className="bg-foreground-100 rounded-lg p-6 flex justify-between flex-col relative hover:bg-lime-200 transition"
+          className={cn(
+            "bg-foreground-100 rounded-lg p-6 flex justify-between flex-col relative hover:bg-lime-200 transition"
+          )}
         >
           <div>
             <h5 className="font-bold md:text-3xl">{product.title}</h5>

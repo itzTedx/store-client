@@ -29,7 +29,7 @@ const Info = ({ data }: InfoProps) => {
       </h1>
       <p className="text-muted-foreground font-light">{data.description}</p>
 
-      <section className="bg-foreground-100 rounded-md border p-9 space-y-6">
+      <section className="bg-foreground-100 rounded-md border p-6 sm:p-9 space-y-6">
         <div className="space-y-3">
           <h3 className="font-semibold">Size:</h3>
           <div className="border rounded-md bg-background px-4 py-3 flex justify-between items-center">

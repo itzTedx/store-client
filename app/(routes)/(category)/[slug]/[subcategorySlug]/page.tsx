@@ -40,7 +40,7 @@ const SubCategoryPage = async ({ params }: SubCategoryPageProps) => {
   const category = await getCategory(params.slug);
 
   return (
-    <div className="container mx-auto space-y-9">
+    <div className="container mx-auto space-y-6 mb-9">
       <Breadcrumb page={category} subPage={subcategory} />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {subcategory.products.map((product) => (
