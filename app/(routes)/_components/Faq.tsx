@@ -26,7 +26,7 @@ export function Faq() {
           <AccordionTrigger>Some Questions here?</AccordionTrigger>
           <AccordionContent>Answer Here</AccordionContent>
         </AccordionItem>
-        <AccordionItem value="item-3">
+        <AccordionItem value="item-4">
           <AccordionTrigger>Some Questions here?</AccordionTrigger>
           <AccordionContent>Answer Here</AccordionContent>
         </AccordionItem>
