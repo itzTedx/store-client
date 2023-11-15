@@ -15,13 +15,13 @@ export default function ProductTab() {
               <p className="text-lg [text-wrap:balance]">
                 Our 350gsm standard business cards blend contemporary design
                 with a luxurious feel. Ideal for the innovative entrepreneur or
-                the vibrant creative, these cards exude elegance. Whether you're
-                a startup enthusiast, designer, or business owner, this card
-                amplifies your brand. The matte finish is not only stylish but
-                also functional, perfect for note-taking. Ready in just 3 days,
-                Elevate your networking game and stand out from the crowd with
-                our matte business cards your gateway to making a memorable and
-                lasting connection in the business world.
+                the vibrant creative, these cards exude elegance. Whether you
+                {`'`}re a startup enthusiast, designer, or business owner, this
+                card amplifies your brand. The matte finish is not only stylish
+                but also functional, perfect for note-taking. Ready in just 3
+                days, Elevate your networking game and stand out from the crowd
+                with our matte business cards your gateway to making a memorable
+                and lasting connection in the business world.
               </p>
             </div>
             <div className="relative aspect-square md:aspect-[3/4] lg:aspect-[4/3] rounded-lg overflow-hidden">
