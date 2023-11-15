@@ -1,8 +1,8 @@
-import Link from "next/link"
-import { Button, buttonVariants } from "./ui/button"
-import { cn } from "@/lib/utils"
-import { ArrowRight } from "lucide-react"
-import Image from "next/image"
+import Link from "next/link";
+import { Button, buttonVariants } from "./ui/button";
+import { cn } from "@/lib/utils";
+import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 const StarterKit = () => {
   return (
@@ -14,7 +14,7 @@ const StarterKit = () => {
             <h5 className="text-5xl text-transparent md:text-5xl lg:text-3xl font-glirock bg-clip-text bg-gradient-to-r from-lime-500 to-green-600">
               STARTER KIT OFFER
             </h5>
-            <p className="font-light sm:text-xl md:text-base lg:text-xl">
+            <p className="font-light sm:text-xl md:text-base lg:text-xl text-lime-50">
               Get a head start on your business with our all-in-one Starter Kit
               combo offer - including a professional business card, letterhead,
               and eye-catching A5 flyer.
@@ -48,7 +48,7 @@ const StarterKit = () => {
             />
           </div>
           <div className="relative p-3 bg-red-500 rounded-md aspect-square">
-            <h5 className="text-3xl font-extrabold leading-8 lg:leading-[1.05] md:text-[32px] lg:text-[42px]">
+            <h5 className="text-3xl font-extrabold leading-8 lg:leading-[1.05] md:text-[32px] lg:text-[42px] text-white">
               Jump Start Your Business
             </h5>
             <p className="absolute inline-flex items-center text-xl font-medium text-red-900 -rotate-90 top-9 -right-3">
@@ -87,7 +87,7 @@ const StarterKit = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default StarterKit
+export default StarterKit;

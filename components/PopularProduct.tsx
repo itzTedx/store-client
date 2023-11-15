@@ -1,5 +1,7 @@
-import Image from "next/image"
-import Link from "next/link"
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "./ui/button";
+import { popularProducts } from "@/constants/popular-products";
 
 const PopularProduct = () => {
   return (
@@ -7,25 +9,27 @@ const PopularProduct = () => {
       <h3 className="col-span-4 py-3 text-3xl text-center font-glirock">
         Our Popular Products
       </h3>
-      <div className="hover:bg-lime-400/50 bg-foreground-100  aspect-[3/3.5] col-span-2 rounded-lg p-6 flex justify-between flex-col relative">
-        <p className="font-bold md:text-3xl">
-          Standard <br />
-          Business Card
-        </p>
-        <Link href="/">Buy</Link>
-        <div className="absolute bottom-0 w-16 h-20 bg-white md:w-48 right-6 md:h-60">
-          <Image
-            src="/images/business-card.png"
-            fill
-            alt="fdf"
-            className="object-contain"
-          />
+      {popularProducts.map((product, i) => (
+        <div
+          key={i}
+          className="bg-foreground-100 rounded-lg p-6 flex justify-between flex-col relative hover:bg-lime-200 transition"
+        >
+          <div>
+            <h5 className="font-bold md:text-3xl">{product.title}</h5>
+            <p className="">{product.description}</p>
+          </div>
+          <Button
+            variant="ghost"
+            size="sm"
+            asChild
+            className="justify-start w-fit px-4"
+          >
+            <Link href={product.href}>Buy</Link>
+          </Button>
         </div>
-      </div>
-      <div className="p-4 rounded-lg bg-foreground-100"></div>
-      <div className="p-4 rounded-lg bg-foreground-100"></div>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default PopularProduct
+export default PopularProduct;
