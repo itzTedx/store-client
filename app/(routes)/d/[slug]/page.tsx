@@ -43,7 +43,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
               width={60}
               alt="Contact"
             />
-            <h5 className="font-glirock text-2xl">We're here to help</h5>
+            <h5 className="font-glirock text-2xl">Were here to help</h5>
             <p>Contact our customer service team for any questions you have.</p>
           </div>
           <Faq />
