@@ -1,5 +1,5 @@
 "use client";
-import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
+import { Tabs, Tab } from "@nextui-org/react";
 import Image from "next/image";
 
 export default function ProductTab() {
