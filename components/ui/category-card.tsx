@@ -1,10 +1,10 @@
-import { Subcategory } from "@/types";
-import Image from "next/image";
-import Link from "next/link";
+import { Subcategory } from '@/types'
+import Image from 'next/image'
+import Link from 'next/link'
 
 interface CategoryCardProps {
-  data: Subcategory;
-  category: string | undefined;
+  data: Subcategory
+  category: string | undefined
 }
 
 const CategoryCard: React.FC<CategoryCardProps> = ({ data, category }) => {
@@ -15,7 +15,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ data, category }) => {
     >
       {/* Image */}
 
-      <div className="aspect-square sm:aspect-[4/3] bg-gray-100 relative col-span-2">
+      <div className="aspect-square sm:aspect-[4/3] bg-gray-100 relative col-span-2 rounded-md overflow-hidden">
         {data.products?.[0]?.images && (
           <Image
             src={data.products?.[0]?.images?.[0]?.url}
@@ -34,7 +34,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ data, category }) => {
         </p>
       </div>
     </Link>
-  );
-};
+  )
+}
 
-export default CategoryCard;
+export default CategoryCard

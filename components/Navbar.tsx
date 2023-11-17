@@ -34,7 +34,10 @@ const Navbar = async () => {
     <>
       <NextNav isBordered shouldHideOnScroll height="4rem" maxWidth="xl">
         <div className="flex items-center w-full gap-3 md:justify-between">
-          <Link href="/" className="relative col-span-2 sm:col-auto h-14 w-44">
+          <Link
+            href="/"
+            className="relative col-span-2 sm:col-auto h-14 w-44 shrink-0"
+          >
             <Image
               src="/digitaldesk-dark.svg"
               fill

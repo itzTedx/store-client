@@ -1,22 +1,20 @@
-import { Subcategory } from "@/types";
-import { Gloock } from "next/font/google";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import CategoryCard from "./ui/category-card";
-import { glirock } from "@/app/fonts/fonts";
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 
-interface CategorysListProps {
-  title: string;
-  items: Subcategory[];
-  link?: string;
+import { Subcategory } from '@/types'
+
+import CategoryCard from './ui/category-card'
+
+interface CategoryListProps {
+  title: string
+  items: Subcategory[]
+  link?: string
 }
 
-const gloock = Gloock({ subsets: ["latin"], weight: "400" });
-
-const CategoryList: React.FC<CategorysListProps> = ({ title, items, link }) => {
+const CategoryList: React.FC<CategoryListProps> = ({ title, items, link }) => {
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-3 md:grid-cols-5 justify-between items-center sticky top-3 sm:top-0 py-3 bg-background/50 backdrop-blur-md z-10 px-6 container mx-auto rounded-full sm:rounded-md border sm:border-0 sm:border-b shadow-sm shadow-background/10 sm:shadow-none">
+      <div className="grid grid-cols-3 md:grid-cols-5 justify-between items-center sticky top-3 py-3 bg-background/50 backdrop-blur-md z-10 px-6 container mx-auto rounded-full sm:rounded-md border sm:border-0 sm:border-b shadow-sm shadow-background/10 sm:shadow-none">
         <h3
           className={`font-glirock text-xl sm:text-3xl col-span-2 md:col-span-4`}
         >
@@ -38,7 +36,7 @@ const CategoryList: React.FC<CategorysListProps> = ({ title, items, link }) => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CategoryList;
+export default CategoryList

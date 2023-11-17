@@ -80,7 +80,12 @@ export function SearchBar({ data }: SearchProps) {
         variant="ghost"
         className="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-focus focus-visible:outline-offset-2 md:min-w-20 h-10 gap-12 rounded-md md:[&>svg]:max-w-[theme(spacing.unit-8)] active:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none data-[hover=true]:opacity-hover text-sm font-normal w-10 md:w-full px-0 py-0 md:px-4 md:py-2 md:border"
       >
-        <span className="hidden md:block">Search your printing needs...</span>
+        <span className="hidden md:block lg:hidden text-muted-foreground">
+          Search...
+        </span>
+        <span className="hidden lg:block text-muted-foreground">
+          Search your printing needs...
+        </span>
         <Search
           className="w-6 h-6 text-sky-500 fill-sky-500/20"
           aria-hidden="true"

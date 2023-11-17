@@ -1,8 +1,8 @@
-import Link from "next/link";
-import { Button, buttonVariants } from "./ui/button";
-import { cn } from "@/lib/utils";
-import { ArrowRight } from "lucide-react";
-import Image from "next/image";
+import Link from 'next/link'
+import { Button, buttonVariants } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
+import { ArrowRight } from 'lucide-react'
+import Image from 'next/image'
 
 const StarterKit = () => {
   return (
@@ -23,8 +23,8 @@ const StarterKit = () => {
           <Link
             href="/"
             className={cn(
-              buttonVariants({ variant: "outline" }),
-              "w-fit text-lime-500 hover:bg-lime-300/30 text-lg hover:text-lime-200 font-bold"
+              buttonVariants({ variant: 'outline' }),
+              'w-fit text-lime-500 hover:bg-lime-300/30 text-lg hover:text-lime-200 font-bold'
             )}
           >
             Starts at 548AED
@@ -87,7 +87,7 @@ const StarterKit = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default StarterKit;
+export default StarterKit
