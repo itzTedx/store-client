@@ -1,17 +1,17 @@
-import Billboard from "@/components/Billboard"
-import getBillboard from "@/actions/get-billboard"
-import { Trusted } from "./_components/Trusted"
-import getCategories from "@/actions/get-categories"
-import Explore from "./_components/Explore"
-import CategoryList from "@/components/CategoryList"
-import { Button } from "@/components/ui/button"
-import StarterKit from "@/components/StarterKit"
-import PopularProduct from "@/components/PopularProduct"
+import Billboard from '@/components/Billboard'
+import getBillboard from '@/actions/get-billboard'
+import { Trusted } from './_components/Trusted'
+import getCategories from '@/actions/get-categories'
+import Explore from './_components/Explore'
+import CategoryList from '@/components/CategoryList'
+import { Button } from '@/components/ui/button'
+import StarterKit from '@/components/StarterKit'
+import PopularProduct from '@/components/PopularProduct'
 
 export const revalidate = 30
 
 const HomePage = async () => {
-  const billboard = await getBillboard("b356ae0a-c51c-47e5-86c6-baae568ef665")
+  const billboard = await getBillboard('b356ae0a-c51c-47e5-86c6-baae568ef665')
   // const products = await getProducts({ isFeatured: true })
   const categories = await getCategories()
 
@@ -19,7 +19,7 @@ const HomePage = async () => {
     <>
       <div className="space-y-10">
         <Billboard data={billboard} />
-        <section className="relative z-10 hidden mt-6 sm:-mt-7 sm:block">
+        <section className="relative z-[1] hidden mt-6 sm:-mt-7 sm:block">
           <Explore />
         </section>
 

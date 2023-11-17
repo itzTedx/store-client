@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link'
 import {
   Navbar as NextNav,
   NavbarBrand,
@@ -7,27 +7,27 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-} from "@nextui-org/react";
-import Image from "next/image";
-import { ChevronDown } from "lucide-react";
+} from '@nextui-org/react'
+import Image from 'next/image'
+import { ChevronDown } from 'lucide-react'
 
-import { Button } from "@/components/ui/button";
-import getCategories from "@/actions/get-categories";
-import NavbarActions from "./NavbarActions";
-import { ModeToggle } from "./mode-toggle";
-import { Separator } from "./ui/separator";
-import { SearchBar } from "./SearchBarv2";
-import { DropdownMenu } from "./dropdown-navbar";
+import { Button } from '@/components/ui/button'
+import getCategories from '@/actions/get-categories'
+import NavbarActions from './NavbarActions'
+import { ModeToggle } from './mode-toggle'
+import { Separator } from './ui/separator'
+import { SearchBar } from './SearchBarv2'
+import { DropdownMenu } from './dropdown-navbar'
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { cn } from "@/lib/utils";
+} from '@/components/ui/accordion'
+import { cn } from '@/lib/utils'
 
 const Navbar = async () => {
-  const categories = await getCategories();
+  const categories = await getCategories()
   // const allProducts = await getAllProducts()
 
   return (
@@ -124,7 +124,7 @@ const Navbar = async () => {
                   <li>
                     <Button
                       className={cn(
-                        "bg-transparent px-0 py-0 text-red-600 h-0"
+                        'bg-transparent px-0 py-0 text-red-600 h-0'
                       )}
                     >
                       Log Out
@@ -147,7 +147,7 @@ const Navbar = async () => {
         <DropdownMenu data={categories} />
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

@@ -1,8 +1,8 @@
-"use client"
+'use client'
 
-import { useState, useEffect } from "react"
-import { Calendar, Search } from "lucide-react"
-import { isAppleDevice } from "@react-aria/utils"
+import { useState, useEffect } from 'react'
+import { Calendar, Search } from 'lucide-react'
+import { isAppleDevice } from '@react-aria/utils'
 
 import {
   Command,
@@ -14,11 +14,11 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "@/components/ui/command"
-import { Category } from "@/types"
-import { Combobox, Transition } from "@headlessui/react"
-import Link from "next/link"
-import { Button } from "./ui/button"
+} from '@/components/ui/command'
+import { Category } from '@/types'
+import { Combobox, Transition } from '@headlessui/react'
+import Link from 'next/link'
+import { Button } from './ui/button'
 
 interface SearchProps {
   data: Category[]
@@ -26,21 +26,21 @@ interface SearchProps {
 
 export function SearchBar({ data }: SearchProps) {
   const [open, setOpen] = useState(false)
-  const [query, setQuery] = useState("")
+  const [query, setQuery] = useState('')
   const [selected, setSelected] = useState()
-  const [commandKey, setCommandKey] = useState<"Ctrl" | "Cmd">("Ctrl")
+  const [commandKey, setCommandKey] = useState<'Ctrl' | 'Cmd'>('Ctrl')
 
   const category = data.map((cat) => cat.subcategory)
 
   const filteredCat =
-    query === ""
+    query === ''
       ? category
       : category.filter((sub) =>
           sub.filter((search) =>
             search.name
               .toLowerCase()
-              .replace(/\s+/g, "")
-              .includes(query.toLowerCase().replace(/\s+/g, ""))
+              .replace(/\s+/g, '')
+              .includes(query.toLowerCase().replace(/\s+/g, ''))
           )
         )
 
@@ -57,20 +57,20 @@ export function SearchBar({ data }: SearchProps) {
   //       );
 
   useEffect(() => {
-    setCommandKey(isAppleDevice() ? "Cmd" : "Ctrl")
+    setCommandKey(isAppleDevice() ? 'Cmd' : 'Ctrl')
   }, [])
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
-      const hotkey = isAppleDevice() ? "metaKey" : "ctrlKey"
-      if (e.key === "k" && e[hotkey]) {
+      const hotkey = isAppleDevice() ? 'metaKey' : 'ctrlKey'
+      if (e.key === 'k' && e[hotkey]) {
         e.preventDefault()
         setOpen((open) => !open)
       }
     }
 
-    document.addEventListener("keydown", down)
-    return () => document.removeEventListener("keydown", down)
+    document.addEventListener('keydown', down)
+    return () => document.removeEventListener('keydown', down)
   }, [])
 
   return (
@@ -80,7 +80,7 @@ export function SearchBar({ data }: SearchProps) {
         variant="ghost"
         className="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-focus focus-visible:outline-offset-2 md:min-w-20 h-10 gap-12 rounded-md md:[&>svg]:max-w-[theme(spacing.unit-8)] active:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none data-[hover=true]:opacity-hover text-sm font-normal w-10 md:w-full px-0 py-0 md:px-4 md:py-2 md:border"
       >
-        <span className="hidden sm:block">Search your printing needs...</span>
+        <span className="hidden md:block">Search your printing needs...</span>
         <Search
           className="w-6 h-6 text-sky-500 fill-sky-500/20"
           aria-hidden="true"
