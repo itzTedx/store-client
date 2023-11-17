@@ -18,7 +18,7 @@ import {
 import { Category } from '@/types'
 import { Combobox, Transition } from '@headlessui/react'
 import Link from 'next/link'
-import { Button } from './ui/button'
+import { Button } from '../ui/button'
 
 interface SearchProps {
   data: Category[]

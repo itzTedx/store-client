@@ -9,7 +9,7 @@ interface BillboardProps {
 
 const Billboard: React.FC<BillboardProps> = ({ data }) => {
   return (
-    <section className="bg-[url('/bg-hero.jpg')] dark:bg-[url('/hero-dark.jpeg')] bg-cover relative">
+    <section className="bg-[url('/bg-hero.webp')] dark:bg-[url('/hero-dark.webp')] bg-cover relative">
       <div className="px-4 xs:px-6 pt-6 sm:pt-10 pb-16 rounded-xl grid grid-cols-1 sm:grid-cols-2 overflow-hidden gap-6 sm:gap-11 max-w-7xl mx-auto">
         <div className="h-full w-full grid grid-cols-2 gap-3 sm:flex flex-col justify-center gap-y-6 sm:gap-y-8">
           <h1
@@ -35,7 +35,7 @@ const Billboard: React.FC<BillboardProps> = ({ data }) => {
               Browse
               <br />
               Catalogue
-              <span className="rounded-full border border-black p-3 group-hover:bg-lime-300 group-hover:text-black transition-colors">
+              <span className="rounded-full border border-muted-foreground p-3 group-hover:bg-lime-300 group-hover:text-black transition-colors">
                 <ArrowUpRight />
               </span>
             </Link>

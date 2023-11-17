@@ -15,7 +15,7 @@ import {
 } from '@/components/ui/navigation-menu'
 import { usePathname } from 'next/navigation'
 import { Category } from '@/types'
-import { Separator } from './ui/separator'
+import { Separator } from '../ui/separator'
 
 interface MainNavProps {
   data: Category[]

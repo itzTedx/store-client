@@ -1,5 +1,5 @@
-import Container from "@/components/ui/container"
-import Skeleton from "@/components/ui/skeleton"
+import Container from '@/components/ui/container'
+import Skeleton from '@/components/ui/skeleton'
 
 const Loading = () => {
   return (

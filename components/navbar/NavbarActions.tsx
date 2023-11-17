@@ -1,35 +1,35 @@
-"use client";
+'use client'
 
-import { useState, useEffect } from "react";
-import { ChevronDown, LogIn, ShoppingBag } from "lucide-react";
+import { useState, useEffect } from 'react'
+import { ChevronDown, LogIn, ShoppingBag } from 'lucide-react'
 
-import { Button } from "@/components/ui/button";
-import useCart from "@/hooks/use-cart";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
-import Currency from "./ui/currency";
+import { Button } from '@/components/ui/button'
+import useCart from '@/hooks/use-cart'
+import { useRouter } from 'next/navigation'
+import Image from 'next/image'
+import Currency from '../ui/currency'
 
 const NavbarActions = () => {
-  const [isMounted, setIsMounted] = useState(false);
+  const [isMounted, setIsMounted] = useState(false)
 
-  const cart = useCart();
-  const router = useRouter();
+  const cart = useCart()
+  const router = useRouter()
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    setIsMounted(true)
+  }, [])
 
-  const items = cart.items.map((item) => item);
+  const items = cart.items.map((item) => item)
 
   const totalPrice = items.reduce((total, item) => {
-    return total + Number(item.discountPrice);
-  }, 0);
+    return total + Number(item.discountPrice)
+  }, 0)
 
   if (!isMounted) {
     return (
       <>
         <Button
-          onClick={() => router.push("/cart")}
+          onClick={() => router.push('/cart')}
           className="hidden sm:flex items-center md:px-4 py-4"
           variant="ghost"
         >
@@ -64,13 +64,13 @@ const NavbarActions = () => {
           </div>
         </Button> */}
       </>
-    );
+    )
   }
 
   return (
     <>
       <Button
-        onClick={() => router.push("/cart")}
+        onClick={() => router.push('/cart')}
         className="hidden sm:flex items-center md:px-2 py-4"
         variant="ghost"
       >
@@ -106,7 +106,7 @@ const NavbarActions = () => {
         </div>
       </Button> */}
     </>
-  );
-};
+  )
+}
 
-export default NavbarActions;
+export default NavbarActions
