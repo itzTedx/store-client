@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from "next/link";
 import {
   Navbar as NextNav,
   NavbarBrand,
@@ -7,27 +7,34 @@ import {
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-} from '@nextui-org/react'
-import Image from 'next/image'
-import { ChevronDown } from 'lucide-react'
+} from "@nextui-org/react";
+import Image from "next/image";
+import { ChevronDown } from "lucide-react";
+import {
+  DropdownMenu as ShadDrop,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuGroup,
+} from "@/components/ui/dropdown-menu";
 
-import { Button } from '@/components/ui/button'
-import getCategories from '@/actions/get-categories'
-import NavbarActions from './NavbarActions'
-import { ModeToggle } from './mode-toggle'
-import { Separator } from './ui/separator'
-import { SearchBar } from './SearchBarv2'
-import { DropdownMenu } from './dropdown-navbar'
+import { Button } from "@/components/ui/button";
+import getCategories from "@/actions/get-categories";
+import NavbarActions from "./NavbarActions";
+import { ModeToggle } from "./ModeToggle";
+import { Separator } from "./ui/separator";
+import { SearchBar } from "./SearchBarv2";
+import { DropdownMenu } from "./dropdown-navbar";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/ui/accordion'
-import { cn } from '@/lib/utils'
+} from "@/components/ui/accordion";
+import { cn } from "@/lib/utils";
 
 const Navbar = async () => {
-  const categories = await getCategories()
+  const categories = await getCategories();
   // const allProducts = await getAllProducts()
 
   return (
@@ -65,20 +72,35 @@ const Navbar = async () => {
           <div className="items-center hidden ml-auto gap-x-4 md:flex">
             <ModeToggle />
             <Separator orientation="vertical" className="h-6" />
-            <div className="hidden md:flex">
-              <Image
-                src="/icons/account.svg"
-                width={40}
-                height={40}
-                alt="My Account"
-              />
-              <div className="ml-2">
-                <p className="text-sm">Hello, Digital</p>
-                <Button variant="ghost" className="h-auto p-0 font-bold">
-                  My Account <ChevronDown size={16} />
-                </Button>
-              </div>
+            <Image
+              src="/icons/account.svg"
+              width={40}
+              height={40}
+              alt="My Account"
+            />
+            <div className="">
+              <p className="text-sm">Hello, Digital</p>
+              <Button variant="ghost" className="h-auto p-0 font-bold">
+                My Account <ChevronDown size={16} />
+              </Button>
             </div>
+            {/* <ShadDrop>
+              <DropdownMenuTrigger className="hidden md:flex">
+                <Image
+                  src="/icons/account.svg"
+                  width={40}
+                  height={40}
+                  alt="My Account"
+                />
+                <div className="">
+                  <p className="text-sm">Hello, Digital</p>
+                  <Button variant="ghost" className="h-auto p-0 font-bold">
+                    My Account <ChevronDown size={16} />
+                  </Button>
+                </div>
+              </DropdownMenuTrigger>
+            </ShadDrop> */}
+
             <div className="">
               <NavbarActions />
             </div>
@@ -124,7 +146,7 @@ const Navbar = async () => {
                   <li>
                     <Button
                       className={cn(
-                        'bg-transparent px-0 py-0 text-red-600 h-0'
+                        "bg-transparent px-0 py-0 text-red-600 h-0"
                       )}
                     >
                       Log Out
@@ -147,7 +169,7 @@ const Navbar = async () => {
         <DropdownMenu data={categories} />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
