@@ -62,7 +62,7 @@ const Info = ({ data }: InfoProps) => {
         <div className="flex justify-between">
           <div className="">- 1 +</div>
           <div className="flex gap-3">
-            <p className="flex text-xs font-bold bg-red-500 items-center px-3 text-white">
+            <p className="flex text-xs font-bold bg-red-500 items-center px-3 text-red-50">
               Save{` `}
               <Currency
                 value={data.actualPrice - data.discountPrice}
@@ -78,10 +78,10 @@ const Info = ({ data }: InfoProps) => {
         <div className="flex items-center gap-x-3">
           <Button
             onClick={onAddToCart}
-            className="rounded-full bg-black border-transparent px-5 py-3 disabled:cursor-not-allowed disabled:opacity-50 text-white hover:opacity-90 transition flex items-center gap-2 w-full"
+            className="rounded-full bg-black border-transparent px-5 py-3 disabled:cursor-not-allowed disabled:opacity-50 text-white hover:opacity-90 transition flex items-center gap-2 w-full text-lg font-semi-bold"
           >
             Add to Cart
-            <ShoppingCart size={16} />
+            <ShoppingCart size={16} className="stroke-2" />
           </Button>
         </div>
       </section>

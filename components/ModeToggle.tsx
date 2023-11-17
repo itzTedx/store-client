@@ -1,7 +1,5 @@
 "use client";
 
-import * as React from "react";
-import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 
 import { Button } from "@/components/ui/button";
@@ -34,12 +32,42 @@ export function ModeToggle() {
             alt="Dark Mode"
             className="absolute h-6 w-6 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
           />
-
+          {/* {theme === "system" ? (
+            <React.Suspense fallback={"load"}>
+              <Image
+                src="/icons/system.svg"
+                width={38}
+                height={38}
+                alt="Light Mode"
+                className="h-6 w-6"
+              />
+            </React.Suspense>
+          ) : (
+            <>
+              <Image
+                src="/icons/light.svg"
+                width={38}
+                height={38}
+                alt="Light Mode"
+                className="h-6 w-6 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+              />
+              <Image
+                src="/icons/dark.svg"
+                width={38}
+                height={38}
+                alt="Dark Mode"
+                className="absolute h-6 w-6 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
+              />
+            </>
+          )} */}
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="center">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
+        <DropdownMenuItem
+          onClick={() => setTheme("light")}
+          className="cursor-pointer hover:bg-muted-foreground"
+        >
           <Image
             src="/icons/light.svg"
             width={38}
@@ -49,13 +77,16 @@ export function ModeToggle() {
           />
           Light
         </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
+        <DropdownMenuItem
+          onClick={() => setTheme("dark")}
+          className="cursor-pointer hover:bg-muted-foreground"
+        >
           <Image
             src="/icons/dark.svg"
             width={38}
             height={38}
             alt="Light Mode"
-            className="h-[1.2rem] w-[1.2rem] mr-2"
+            className="h-[1.2rem] w-[1.2rem] mr-2 "
           />
           Dark
         </DropdownMenuItem>
@@ -63,6 +94,7 @@ export function ModeToggle() {
           onClick={() => {
             setTheme("system");
           }}
+          className="cursor-pointer hover:bg-muted-foreground"
         >
           <Image
             src="/icons/system.svg"

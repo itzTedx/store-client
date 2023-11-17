@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import useCart from "@/hooks/use-cart";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import Currency from "./ui/currency";
 
 const NavbarActions = () => {
   const [isMounted, setIsMounted] = useState(false);
@@ -17,6 +18,12 @@ const NavbarActions = () => {
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  const items = cart.items.map((item) => item);
+
+  const totalPrice = items.reduce((total, item) => {
+    return total + Number(item.discountPrice);
+  }, 0);
 
   if (!isMounted) {
     return (
@@ -78,7 +85,8 @@ const NavbarActions = () => {
         <div className="ml-2 text-sm hidden md:block">
           <p className="text-left">My Cart</p>
           <div className="flex items-center font-bold">
-            0.00AED <ChevronDown size={16} />
+            <Currency value={totalPrice} />
+            {/* <ChevronDown size={16} /> */}
           </div>
         </div>
       </Button>
