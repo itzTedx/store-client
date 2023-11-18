@@ -1,6 +1,6 @@
 # Digital Desk | E-Commerce Client
 
-**Implemented Features**
+###Implemented Features
 
 - Multilevel dynamic dropdown menu
 - Search Bar with hotkey trigger
@@ -9,9 +9,9 @@
 - Stripe Checkout Implementation
 - Dynamic Contents from Backend
 
-**TODO**
+###TODO
 
-- ### Pages
+**Pages**
 - My profile & Account
 - Ordee Tracker
 - About
