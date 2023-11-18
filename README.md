@@ -1,6 +1,6 @@
 # Digital Desk | E-Commerce Client
 
-**Implemented Features**
+### Implemented Features
 
 - Multilevel dynamic dropdown menu
 - Search Bar with hotkey trigger
@@ -9,6 +9,14 @@
 - Stripe Checkout Implementation
 - Dynamic Contents from Backend
 
-**TODO**
+### TODO
 
+**Pages**
+- My profile & Account
+- Order Tracker
+- About
 - Contact
+- Blogs
+- Privacy policy
+- Terms & Conditions
+
