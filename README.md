@@ -11,4 +11,12 @@
 
 **TODO**
 
+- ###Pages
+- My profile & Account
+- Ordee Tracker
+- About
 - Contact
+- Blogs
+- Privacy policy
+- Terms & Conditions
+
