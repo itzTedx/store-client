@@ -39,8 +39,8 @@ export default function RootLayout({
           {/* <WelcomeModal /> */}
           <Navbar />
 
+          <main>{children}</main>
           <BreakpointIndicator />
-          <main className=" ">{children}</main>
           <Footer />
         </ThemeProvider>
       </body>
