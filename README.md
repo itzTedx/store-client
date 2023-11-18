@@ -13,7 +13,7 @@
 
 **Pages**
 - My profile & Account
-- Ordee Tracker
+- Order Tracker
 - About
 - Contact
 - Blogs
