@@ -54,9 +54,13 @@ const HomePage = async () => {
           ))}
         </Suspense>
       </section>
-      <section aria-label="Splash of Colors">
+      <section aria-label="Splash of Colors" className="overflow-hidden">
         <Heading title="Splash of Colors" link="blogs" action="All Articles" />
-        <div className="grid lg:grid-cols-2 gap-12 container py-9">
+        <div className="grid lg:grid-cols-2 gap-12 container py-9 relative">
+          <div className="absolute w-72 h-72 top-3 left-0 blur-3xl rounded-full bg-orange-500/10" />
+          <div className="absolute w-72 h-72 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 blur-3xl rounded-full bg-lime-400/5" />
+          <div className="absolute w-72 h-72 top-1/2 right-9 blur-3xl rounded-full bg-sky-400/10" />
+          <div className="absolute w-72 h-72 bottom-3 right-3 blur-3xl rounded-full bg-fuchsia-400/10" />
           <div className="space-y-6 border-b pb-9 lg:pb-0 lg:border-0">
             <h3 className="sr-only">Featured Blog</h3>
             <div className="relative aspect-video lg:aspect-[4/3]">
