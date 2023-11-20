@@ -12,6 +12,7 @@ import BreakpointIndicator from '@/components/BreakpointIndicator'
 import ModalProvider from '@/providers/modal-provider'
 import ToastProvider from '@/providers/toast-provider'
 import { ThemeProvider } from '@/providers/theme-provider'
+import { cn } from '@/lib/utils'
 
 export const metadata: Metadata = {
   title: 'Store',
@@ -24,9 +25,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-full">
       <body
-        className={`${albert.className} ${glirock.variable} grainy bg-blend-multiply min-h-screen antialiased`}
+        className={cn(
+          'grainy bg-blend-multiply min-h-screen antialiased flex flex-col',
+          albert.className,
+          glirock.variable
+        )}
       >
         <ThemeProvider
           attribute="class"

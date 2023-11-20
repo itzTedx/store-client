@@ -1,8 +1,10 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "./ui/button";
-import { popularProducts } from "@/constants/popular-products";
-import { cn } from "@/lib/utils";
+import Image from 'next/image'
+import Link from 'next/link'
+
+import { Button } from './ui/button'
+
+import { popularProducts } from '@/constants/popular-products'
+import { cn } from '@/lib/utils'
 
 const PopularProduct = () => {
   return (
@@ -10,11 +12,12 @@ const PopularProduct = () => {
       <h3 className="col-span-4 py-3 text-3xl text-center font-glirock">
         Our Popular Products
       </h3>
+
       {popularProducts.map((product, i) => (
         <div
           key={i}
           className={cn(
-            "bg-foreground-100 rounded-lg p-6 flex justify-between flex-col relative hover:bg-lime-200 transition"
+            'bg-foreground-100 rounded-lg p-6 flex justify-between flex-col relative hover:bg-lime-200 transition'
           )}
         >
           <div>
@@ -32,7 +35,7 @@ const PopularProduct = () => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default PopularProduct;
+export default PopularProduct

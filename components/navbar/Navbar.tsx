@@ -131,9 +131,9 @@ const Navbar = async () => {
           </div>
         </NavbarMenu>
       </NextNav>
-      <div className="border-b bg-background">
+      <nav className="border-b bg-background">
         <DropdownMenu data={categories} />
-      </div>
+      </nav>
     </>
   )
 }
