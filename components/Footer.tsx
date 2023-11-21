@@ -1,12 +1,12 @@
-import Link from 'next/link'
-import { buttonVariants } from './ui/button'
-import { footerNav } from '@/lib/footer'
-import { cn } from '@/lib/utils'
-import Image from 'next/image'
+import Link from "next/link";
+import { buttonVariants } from "./ui/button";
+import { footerNav } from "@/constants/footer";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 const Footer = () => {
-  const currentDate = new Date()
-  const currentYear = currentDate.getFullYear()
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
   return (
     <footer className="border-t mt-auto" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
@@ -85,19 +85,19 @@ const Footer = () => {
         </div>
         <div className="text-center text-xs text-primary flex flex-col md:flex-row items-center justify-between border-t py-4">
           <div className="">
-            &copy; {currentYear} Digital Desk General Trading L.L.C.{' '}
+            &copy; {currentYear} Digital Desk General Trading L.L.C.{" "}
             <span>All rights Reserved</span>
           </div>
           <div className="text-muted-foreground">
             <Link
               href="/privacy"
-              className={cn(buttonVariants({ variant: 'link', size: 'sm' }))}
+              className={cn(buttonVariants({ variant: "link", size: "sm" }))}
             >
               Privacy Policy
             </Link>
             <Link
               href="/terms-conditions"
-              className={cn(buttonVariants({ variant: 'link', size: 'sm' }))}
+              className={cn(buttonVariants({ variant: "link", size: "sm" }))}
             >
               Terms & Conditions
             </Link>
@@ -105,7 +105,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
