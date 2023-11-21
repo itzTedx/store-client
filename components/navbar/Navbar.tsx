@@ -73,7 +73,7 @@ const Navbar = async () => {
           </div>
         </div>
 
-        <NavbarMenu className="flex flex-col justify-between">
+        <NavbarMenu className="flex flex-col justify-between h-[100dvh]">
           <div className="space-y-3">
             <NavbarItem className="space-y-4">
               <Accordion type="multiple">
