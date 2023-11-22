@@ -1,8 +1,8 @@
-import Link from 'next/link'
-import { Button, buttonVariants } from '@/components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const StarterKit = () => {
   return (
@@ -20,6 +20,7 @@ const StarterKit = () => {
               and eye-catching A5 flyer.
             </p>
           </div>
+
           <Link
             href="/"
             className={cn(

@@ -10,6 +10,7 @@ import PopularProduct from '@/components/PopularProduct'
 import { Suspense } from 'react'
 import { Heading } from '@/components/ui/Heading'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export const revalidate = 300
 
@@ -72,7 +73,9 @@ const HomePage = async () => {
               />
             </div>
             <h3 className="text-4xl font-glirock">
-              5 Major steps for Signboard Fixing - A Complete Guide
+              <Link href="/" className="underline-animation">
+                5 Major steps for Signboard Fixing - A Complete Guide
+              </Link>
             </h3>
             <p className="text-sm font-light">
               From concept to reality, signboard creation and installation
@@ -89,7 +92,9 @@ const HomePage = async () => {
               <div className="space-y-4">
                 <p>LEARN</p>
                 <h3 className="text-2xl font-glirock">
-                  5 Major steps for Signboard Fixing - A Complete Guide
+                  <Link href="/" className="underline-animation">
+                    5 Major steps for Signboard Fixing - A Complete Guide
+                  </Link>
                 </h3>
                 <div className="text-foreground-400">Oct 2, 2023</div>
               </div>
@@ -106,7 +111,9 @@ const HomePage = async () => {
               <div className="space-y-4">
                 <p>LEARN</p>
                 <h3 className="text-2xl font-glirock">
-                  5 Major steps for Signboard Fixing - A Complete Guide
+                  <Link href="/" className="underline-animation">
+                    5 Major steps for Signboard Fixing - A Complete Guide
+                  </Link>
                 </h3>
                 <div className="text-foreground-400">Oct 2, 2023</div>
               </div>
@@ -123,7 +130,9 @@ const HomePage = async () => {
               <div className="space-y-4">
                 <p>LEARN</p>
                 <h3 className="text-2xl font-glirock">
-                  5 Major steps for Signboard Fixing - A Complete Guide
+                  <Link href="/" className="underline-animation">
+                    5 Major steps for Signboard Fixing - A Complete Guide
+                  </Link>
                 </h3>
                 <div className="text-foreground-400">Oct 2, 2023</div>
               </div>
@@ -139,6 +148,7 @@ const HomePage = async () => {
           </div>
         </div>
       </section>
+
       <section className="bg-[url('/bg-hero.jpg')] dark:bg-[url('/hero-dark.jpeg')] bg-cover py-12">
         <StarterKit />
       </section>
