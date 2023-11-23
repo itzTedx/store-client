@@ -1,14 +1,13 @@
-import Link from 'next/link'
-import { buttonVariants } from './ui/button'
-import { footerNav } from '@/constants/footer'
-import { cn } from '@/lib/utils'
-import Image from 'next/image'
-import { Magnetic } from './ui/Magnetic'
-import { Facebook, Instagram, Pin, Twitter, Youtube } from 'lucide-react'
+import Link from "next/link";
+import { buttonVariants } from "./ui/button";
+import { footerNav } from "@/constants/footer";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+import { SocialIcons } from "./SocialIcons";
 
 const Footer = () => {
-  const currentDate = new Date()
-  const currentYear = currentDate.getFullYear()
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
   return (
     <footer className="border-t mt-auto" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
@@ -37,33 +36,7 @@ const Footer = () => {
               awareness for success. Trust us to guide your brand.
             </p>
             <h6 className="font-bold text-primary mb-2">Social Links</h6>
-            <div className="flex gap-3">
-              <Magnetic>
-                <div className="aspect-square bg-[#1877F2] rounded flex items-center justify-center text-xl font-bold p-1.5 w-8 h-8">
-                  <Facebook />
-                </div>
-              </Magnetic>
-              <Magnetic>
-                <div className="aspect-square bg-gradient-to-tr from-orange-500 via-pink-500 to-violet-600 rounded flex items-center justify-center text-xl font-bold p-1.5 w-8 h-8">
-                  <Instagram />
-                </div>
-              </Magnetic>
-              <Magnetic>
-                <div className="aspect-square bg-[#CB2027] rounded flex items-center justify-center text-xl font-bold p-1.5 w-8 h-8">
-                  <Pin />
-                </div>
-              </Magnetic>
-              <Magnetic>
-                <div className="aspect-square bg-white text-black rounded flex items-center justify-center text-xl font-bold p-1.5 w-8 h-8">
-                  <Twitter />
-                </div>
-              </Magnetic>
-              <Magnetic>
-                <div className="aspect-square bg-[#B00] rounded flex items-center justify-center text-xl font-bold p-1.5 w-8 h-8">
-                  <Youtube />
-                </div>
-              </Magnetic>
-            </div>
+            <SocialIcons />
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 col-span-2">
             {footerNav.map((nav, i) => (
@@ -119,7 +92,7 @@ const Footer = () => {
         </div>
         <div className="text-center text-xs text-foreground-400 flex flex-col md:flex-row items-center justify-between border-t py-4">
           <div className="">
-            &copy; {currentYear} Digital Desk General Trading L.L.C.{' '}
+            &copy; {currentYear} Digital Desk General Trading L.L.C.{" "}
             <span>All rights Reserved</span>
           </div>
           <div className="text-muted-foreground">
@@ -127,9 +100,9 @@ const Footer = () => {
               href="/privacy"
               className={cn(
                 buttonVariants({
-                  variant: 'link',
-                  size: 'sm',
-                  className: 'text-foreground-400',
+                  variant: "link",
+                  size: "sm",
+                  className: "text-foreground-400",
                 })
               )}
             >
@@ -139,9 +112,9 @@ const Footer = () => {
               href="/terms-conditions"
               className={cn(
                 buttonVariants({
-                  variant: 'link',
-                  size: 'sm',
-                  className: 'text-foreground-400',
+                  variant: "link",
+                  size: "sm",
+                  className: "text-foreground-400",
                 })
               )}
             >
@@ -151,7 +124,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

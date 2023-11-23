@@ -1,30 +1,31 @@
-import Link from 'next/link'
 import {
-  Navbar as NextNav,
   NavbarItem,
-  NavbarMenuToggle,
   NavbarMenu,
-} from '@nextui-org/react'
-import Image from 'next/image'
+  NavbarMenuToggle,
+  Navbar as NextNav,
+} from "@nextui-org/react";
+import Image from "next/image";
+import Link from "next/link";
 
-import { Button } from '@/components/ui/button'
-import getCategories from '@/actions/get-categories'
-import NavbarActions from './NavbarActions'
-import { ModeToggle } from './ModeToggle'
-import { Separator } from '../ui/separator'
-import { SearchBar } from './SearchBarv2'
-import { DropdownMenu } from './dropdown-navbar'
+import getCategories from "@/actions/get-categories";
+import { cn } from "@/lib/utils";
+
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/ui/accordion'
-import { cn } from '@/lib/utils'
-import { ProfileActions } from './ProfileActions'
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import { Separator } from "../ui/separator";
+import { ModeToggle } from "./ModeToggle";
+import NavbarActions from "./NavbarActions";
+import { ProfileActions } from "./ProfileActions";
+import { SearchBar } from "./SearchBarv2";
+import { DropdownMenu } from "./dropdown-navbar";
 
 const Navbar = async () => {
-  const categories = await getCategories()
+  const categories = await getCategories();
   // const allProducts = await getAllProducts()
 
   return (
@@ -112,7 +113,7 @@ const Navbar = async () => {
                   <li>
                     <Button
                       className={cn(
-                        'bg-transparent px-0 py-0 text-red-600 h-0'
+                        "bg-transparent px-0 py-0 text-red-600 h-0"
                       )}
                     >
                       Log Out
@@ -135,7 +136,7 @@ const Navbar = async () => {
         <DropdownMenu data={categories} />
       </nav>
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
