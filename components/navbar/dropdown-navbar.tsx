@@ -42,7 +42,7 @@ export function DropdownMenu({ data }: MainNavProps) {
       <NavigationMenuList aria-label="Categories of products">
         {routes.map((route) => (
           <NavigationMenuItem key={route.href} aria-label={route.label}>
-            <NavigationMenuTrigger aria-hidden>
+            <NavigationMenuTrigger>
               <NavigationMenuLink href={route.href}>
                 {route.label}
               </NavigationMenuLink>
