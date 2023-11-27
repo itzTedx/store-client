@@ -26,27 +26,38 @@ import { DropdownMenu } from "./dropdown-navbar";
 
 const Navbar = async () => {
   const categories = await getCategories();
-  // const allProducts = await getAllProducts()
 
   return (
     <>
-      <NextNav isBordered shouldHideOnScroll height="4rem" maxWidth="xl">
+      <NextNav
+        isBordered
+        shouldHideOnScroll
+        height="4rem"
+        maxWidth="xl"
+        role="header"
+        aria-label="Header"
+      >
         <div className="flex items-center w-full gap-3 md:justify-between">
           <Link
             href="/"
             className="relative col-span-2 sm:col-auto h-14 w-44 shrink-0"
+            title="Go to homepage"
           >
             <Image
               src="/digitaldesk-dark.svg"
               fill
               alt="Digital Desk Logo"
               className="object-contain dark:block hidden"
+              role="logo"
+              aria-hidden
             />
             <Image
               src="/digitaldesk-light.svg"
               fill
               alt="Digital Desk Logo"
               className="object-contain dark:hidden block"
+              role="logo"
+              aria-hidden
             />
           </Link>
           <div className="flex ml-auto gap-x-3">
@@ -55,7 +66,12 @@ const Navbar = async () => {
             </div>
             <SearchBar data={categories} />
             <div className="ml-auto">
-              <Button variant="ghost" size="icon" className="md:hidden">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="md:hidden"
+                aria-label="Open Menu"
+              >
                 <NavbarMenuToggle
                   as="div"
                   className="text-sky-500 [&>span:before]:h-[2px] [&>span:after]:h-[2px]"
@@ -132,9 +148,9 @@ const Navbar = async () => {
           </div>
         </NavbarMenu>
       </NextNav>
-      <nav className="border-b bg-background">
+      <div className="border-b bg-background">
         <DropdownMenu data={categories} />
-      </nav>
+      </div>
     </>
   );
 };

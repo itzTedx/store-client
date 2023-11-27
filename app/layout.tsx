@@ -11,11 +11,12 @@ export const metadata: Metadata = {
 };
 
 export default function DomLayout({ children }: { children: React.ReactNode }) {
+  // grainy bg-blend-multiply
   return (
     <html lang="en" className="h-full">
       <body
         className={cn(
-          "grainy bg-blend-multiply min-h-screen antialiased flex flex-col",
+          "min-h-screen antialiased flex flex-col",
           albert.className,
           glirock.variable
         )}

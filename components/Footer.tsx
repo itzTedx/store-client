@@ -38,7 +38,10 @@ const Footer = () => {
             <h6 className="font-bold text-primary mb-2">Social Links</h6>
             <SocialIcons />
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 col-span-2">
+          <nav
+            className="grid grid-cols-2 md:grid-cols-3 col-span-2"
+            role="navigation"
+          >
             {footerNav.map((nav, i) => (
               <div key={i} className="space-y-4">
                 <h5 className="font-semibold text-primary">
@@ -88,7 +91,7 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-          </div>
+          </nav>
         </div>
         <div className="text-center text-xs text-foreground-400 flex flex-col md:flex-row items-center justify-between border-t py-4">
           <div className="">
