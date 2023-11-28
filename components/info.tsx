@@ -21,9 +21,10 @@ const Info = ({ data }: InfoProps) => {
 
     cart.addItem(data);
   };
+  console.log(data);
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-3 md:space-y-6">
       <h1 className="text-2xl md:text-3xl font-bold dark:text-gray-200 text-gray-900">
         {data.name}
       </h1>
@@ -33,9 +34,7 @@ const Info = ({ data }: InfoProps) => {
         <div className="space-y-3">
           <h3 className="font-semibold">Size:</h3>
           <div className="border rounded-md bg-background px-4 py-3 flex justify-between items-center">
-            <p>
-              {data?.size?.name} {data?.size.value}
-            </p>
+            <p>{data?.size?.name}</p>
             <ChevronDown />
           </div>
         </div>

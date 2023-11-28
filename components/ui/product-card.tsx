@@ -57,10 +57,10 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
           </Link>
           <div className="opacity-0 group-hover:opacity-100 transition absolute w-full px-6 bottom-5">
             <div className="flex gap-x-6 justify-center">
-              <IconButton onClick={onPreview} icon={<Expand size={20} />} />
+              <IconButton onClick={onPreview} icon={<Expand size={18} />} />
               <IconButton
                 onClick={onAddToCart}
-                icon={<ShoppingCart size={20} />}
+                icon={<ShoppingCart size={18} />}
               />
             </div>
           </div>
@@ -83,7 +83,7 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
       <div className="flex items-center gap-2 dark:hover:text-lime-600 hover:text-lime-900 font-medium transition">
         Buy Now
         <div className="p-2 bg-lime-300 dark:bg-lime-400 rounded-full text-lime-900 ">
-          <ShoppingBag size={13} />
+          <ShoppingBag size={14} />
         </div>
       </div>
     </div>

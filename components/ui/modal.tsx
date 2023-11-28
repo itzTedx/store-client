@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { Dialog, Transition } from "@headlessui/react"
-import { Fragment } from "react"
-import IconButton from "./icon-button"
-import { X } from "lucide-react"
+import { Dialog, Transition } from "@headlessui/react";
+import { Fragment } from "react";
+import IconButton from "./icon-button";
+import { X } from "lucide-react";
 
 interface ModalProps {
-  open: boolean
-  onClose: () => void
-  children: React.ReactNode
+  open: boolean;
+  onClose: () => void;
+  children: React.ReactNode;
 }
 
 const Modal: React.FC<ModalProps> = ({ open, onClose, children }) => {
@@ -29,7 +29,7 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, children }) => {
             >
               <Dialog.Panel className="w-full max-w-3xl overflow-hidden rounded-lg text-left align-middle">
                 <div className="relative flex w-full items-center overflow-hidden px-4 pb-8 pt-14 bg-background shadow-3xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
-                  <div className="absolute right-4 top-4">
+                  <div className="absolute right-2 top-2">
                     <IconButton icon={<X size={15} />} onClick={onClose} />
                   </div>
                   {children}
@@ -40,7 +40,7 @@ const Modal: React.FC<ModalProps> = ({ open, onClose, children }) => {
         </div>
       </Dialog>
     </Transition>
-  )
-}
+  );
+};
 
-export default Modal
+export default Modal;
