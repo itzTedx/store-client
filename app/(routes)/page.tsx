@@ -11,6 +11,7 @@ import { Suspense } from "react";
 import { Heading } from "@/components/ui/Heading";
 import Image from "next/image";
 import Link from "next/link";
+import Portfolio from "./_components/Portfolio";
 
 export const revalidate = 300;
 
@@ -165,6 +166,9 @@ const HomePage = async () => {
         aria-label="Starter Kit Offer"
       >
         <StarterKit />
+      </section>
+      <section>
+        <Portfolio />
       </section>
     </>
   );

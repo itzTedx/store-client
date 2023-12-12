@@ -21,7 +21,6 @@ const Info = ({ data }: InfoProps) => {
 
     cart.addItem(data);
   };
-  console.log(data);
 
   return (
     <div className="space-y-3 md:space-y-6">
