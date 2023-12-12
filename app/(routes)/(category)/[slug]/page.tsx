@@ -17,6 +17,8 @@ interface CategoryPageProps {
   }
 }
 
+export const dynamic = 'force-static'
+
 export async function generateStaticParams() {
   const categories = await getCategories()
 
