@@ -1,43 +1,40 @@
-import getCategory from "@/actions/get-category";
-import getProduct from "@/actions/get-product";
-import getProducts from "@/actions/get-products";
-import getSubcategory from "@/actions/get-subcategory";
-import ProductList from "@/components/ProductList";
-import Breadcrumb from "@/components/ui/breadcrumb";
-import ProductCard from "@/components/ui/product-card";
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
+import getCategory from '@/actions/get-category'
+import getSubcategory from '@/actions/get-subcategory'
+import Breadcrumb from '@/components/ui/breadcrumb'
+import ProductCard from '@/components/ui/product-card'
+import { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 
 interface SubCategoryPageProps {
   params: {
-    slug: string;
-    subcategorySlug: string;
-  };
+    slug: string
+    subcategorySlug: string
+  }
 }
 
 export async function generateMetadata({
   params,
 }: SubCategoryPageProps): Promise<Metadata> {
   // fetch data
-  const subcategory = await getSubcategory(params.subcategorySlug);
-  const category = await getCategory(params.slug);
+  const subcategory = await getSubcategory(params.subcategorySlug)
+  const category = await getCategory(params.slug)
 
   if (!category) {
-    notFound();
+    notFound()
   }
 
   return {
     title: `${subcategory.name} - ${category.name}`,
     description: subcategory.description,
-  };
+  }
 }
 
-export const revalidate = 300;
+export const revalidate = 300
 
 const SubCategoryPage = async ({ params }: SubCategoryPageProps) => {
   // fetch data
-  const subcategory = await getSubcategory(params.subcategorySlug);
-  const category = await getCategory(params.slug);
+  const subcategory = await getSubcategory(params.subcategorySlug)
+  const category = await getCategory(params.slug)
 
   return (
     <div className="container mx-auto space-y-6 mb-9">
@@ -48,7 +45,7 @@ const SubCategoryPage = async ({ params }: SubCategoryPageProps) => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SubCategoryPage;
+export default SubCategoryPage

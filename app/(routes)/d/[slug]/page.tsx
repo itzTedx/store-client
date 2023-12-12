@@ -1,26 +1,34 @@
-import getCategory from "@/actions/get-category";
-import getProduct from "@/actions/get-product";
-import ProductList from "@/components/ProductList";
-import Gallery from "@/components/gallery";
-import Info from "@/components/info";
-import Breadcrumb from "@/components/ui/breadcrumb";
-import ProductTab from "../../_components/ProductTab";
-import { Faq } from "../../_components/Faq";
-import Image from "next/image";
-import PopularProduct from "@/components/PopularProduct";
+import getCategory from '@/actions/get-category'
+import getProduct from '@/actions/get-product'
+import ProductList from '@/components/ProductList'
+import Gallery from '@/components/gallery'
+import Info from '@/components/info'
+import Breadcrumb from '@/components/ui/breadcrumb'
+import ProductTab from '../../_components/ProductTab'
+import { Faq } from '../../_components/Faq'
+import Image from 'next/image'
+import PopularProduct from '@/components/PopularProduct'
+import getAllProducts from '@/actions/get-all-products'
 
 interface ProductPageProps {
   params: {
-    slug: string;
-  };
+    slug: string
+  }
 }
-export const revalidate = 300;
+
+export const dynamic = 'force-static'
+
+export async function generateStaticParams() {
+  const products = await getAllProducts()
+
+  return products.map((product) => product.slug)
+}
 
 const ProductPage = async ({ params }: ProductPageProps) => {
-  const product = await getProduct(params.slug);
-  const category = await getCategory(params.slug);
+  const product = await getProduct(params.slug)
+  const category = await getCategory(params.slug)
 
-  const suggestedProducts = product.subcategory.products;
+  const suggestedProducts = product.subcategory.products
 
   return (
     <div className="bg-background">
@@ -55,7 +63,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProductPage;
+export default ProductPage
