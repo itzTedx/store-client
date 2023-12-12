@@ -1,9 +1,8 @@
-import { Product } from "@/types"
-import NoResults from "@/components/ui/no-results"
-import ProductCard from "./ui/product-card"
-import { Gloock } from "next/font/google"
-import Link from "next/link"
-import { ArrowRight } from "lucide-react"
+import { Product } from '@/types'
+import NoResults from '@/components/ui/no-results'
+import ProductCard from './ui/product-card'
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 
 interface ProductsListProps {
   title: string
@@ -11,15 +10,13 @@ interface ProductsListProps {
   link?: string
 }
 
-const gloock = Gloock({ subsets: ["latin"], weight: "400" })
-
 const ProductList: React.FC<ProductsListProps> = ({ title, items, link }) => {
   // const limitedItems = items.slice(0, 3)
   return (
     <div className="space-y-4">
       <div className="grid grid-cols-3 md:grid-cols-5 justify-between items-center">
         <h3
-          className={`${gloock.className} text-xl sm:text-3xl font-bold col-span-2 md:col-span-4`}
+          className={`font-glirock text-xl sm:text-3xl font-bold col-span-2 md:col-span-4`}
         >
           {title}
         </h3>

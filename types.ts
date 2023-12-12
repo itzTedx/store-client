@@ -39,6 +39,7 @@ export interface Subcategory {
   name: string
   description: string
   slug: string
+  categoryId: string
   products: Product[]
 }
 

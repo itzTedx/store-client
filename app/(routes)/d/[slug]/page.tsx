@@ -9,6 +9,7 @@ import { Faq } from '../../_components/Faq'
 import Image from 'next/image'
 import PopularProduct from '@/components/PopularProduct'
 import getAllProducts from '@/actions/get-all-products'
+import getCategoryById from '@/actions/get-category-by-id'
 
 interface ProductPageProps {
   params: {
@@ -26,14 +27,18 @@ export async function generateStaticParams() {
 
 const ProductPage = async ({ params }: ProductPageProps) => {
   const product = await getProduct(params.slug)
-  const category = await getCategory(params.slug)
+  const category = await getCategoryById(product.subcategory.categoryId)
 
   const suggestedProducts = product.subcategory.products
 
   return (
     <div className="bg-background">
       <div className="px-4 py-10 sm:px-6 lg:px-8 container space-y-12">
-        {/* <Breadcrumb page={category.subcategory} /> */}
+        <Breadcrumb
+          page={category}
+          subPage={product.subcategory}
+          product={product}
+        />
         <div className="md:grid md:grid-cols-2 lg:grid-cols-3 md:items-start md:gap-x-8 pb-12 relative">
           <div className="md:sticky md:top-12 lg:col-span-2">
             <Gallery images={product.images} />
