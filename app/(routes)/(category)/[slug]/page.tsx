@@ -17,11 +17,11 @@ interface CategoryPageProps {
   }
 }
 
-// export async function generateStaticParams() {
-//   const categories = await getCategories()
+export async function generateStaticParams() {
+  const categories = await getCategories()
 
-//   return categories.map((category) => category.slug)
-// }
+  return categories.map((category) => category.slug)
+}
 
 export async function generateMetadata({
   params,
