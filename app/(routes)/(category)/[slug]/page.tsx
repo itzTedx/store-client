@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Breadcrumb from '@/components/ui/breadcrumb'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
+import getCategories from '@/actions/get-categories'
 
 interface CategoryPageProps {
   params: {
@@ -15,6 +16,12 @@ interface CategoryPageProps {
     sizeId: string
   }
 }
+
+// export async function generateStaticParams() {
+//   const categories = await getCategories()
+
+//   return categories.map((category) => category.slug)
+// }
 
 export async function generateMetadata({
   params,
@@ -31,8 +38,6 @@ export async function generateMetadata({
     description: category.billboard.description,
   }
 }
-
-export const revalidate = 300
 
 const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
   const category = await getCategory(params.slug)
