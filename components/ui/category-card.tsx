@@ -9,12 +9,9 @@ interface CategoryCardProps {
 
 const CategoryCard: React.FC<CategoryCardProps> = ({ data, category }) => {
   return (
-    <Link
-      href={`/${category}/${data.slug}`}
-      className="group cursor-pointer sm:space-y-4 grid grid-cols-5 sm:gap-0 sm:flex sm:flex-col"
-    >
+    <Link href={`/${category}/${data.slug}`} className="group cursor-pointer">
       {/* Image */}
-      <figure>
+      <figure className="sm:space-y-4 grid grid-cols-5 sm:gap-0 sm:flex sm:flex-col">
         <div className="aspect-square sm:aspect-[4/3] bg-gray-100 relative col-span-2 rounded-md overflow-hidden">
           {data.products?.[0]?.images && (
             <Image
@@ -27,12 +24,12 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ data, category }) => {
         </div>
 
         {/* Description */}
-        <div className="space-y-4 col-span-3 px-5 sm:px-0">
+        <figcaption className="space-y-4 col-span-3 px-5 sm:px-0">
           <p className="font-semibold">{data.name}</p>
-          <figcaption className="text-sm text-foreground-500 line-clamp-3 lg:line-clamp-none text-light">
+          <p className="text-sm text-foreground-500 line-clamp-3 lg:line-clamp-none text-light">
             {data.description}
-          </figcaption>
-        </div>
+          </p>
+        </figcaption>
       </figure>
     </Link>
   );
