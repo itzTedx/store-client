@@ -12,10 +12,10 @@ const slider1 = [
     src: "instant-bcs.jpg",
   },
   {
-    src: "instant-lh.jpg",
+    src: "Instant-lh.jpg",
   },
   {
-    src: "Laptop-sticker.jpg",
+    src: "Laptop-Sticker.jpg",
   },
   {
     src: "rollup.jpg",
