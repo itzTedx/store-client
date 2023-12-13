@@ -34,8 +34,8 @@ const Navbar = async () => {
         shouldHideOnScroll
         height="4rem"
         maxWidth="xl"
-        role="header"
-        aria-label="Header"
+        role="navigation"
+        aria-label="Navigate"
       >
         <div className="flex items-center w-full gap-3 md:justify-between">
           <Link
