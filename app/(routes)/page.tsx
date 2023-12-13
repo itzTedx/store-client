@@ -12,6 +12,7 @@ import { Heading } from "@/components/ui/Heading";
 import Image from "next/image";
 import Link from "next/link";
 import Portfolio from "./_components/Portfolio";
+import Featured from "./_components/Featured";
 
 export const revalidate = 300;
 
@@ -31,6 +32,8 @@ const HomePage = async () => {
       </section>
 
       <Trusted />
+
+      <Featured />
 
       <div aria-label="Products">
         <Suspense fallback={"Loading..."}>
@@ -161,14 +164,15 @@ const HomePage = async () => {
         </div>
       </section>
 
+      <section className="w-full overflow-hidden">
+        <Portfolio />
+      </section>
+
       <section
         className="bg-[url('/bg-hero.jpg')] dark:bg-[url('/hero-dark.jpeg')] bg-cover py-12"
         aria-label="Starter Kit Offer"
       >
         <StarterKit />
-      </section>
-      <section>
-        <Portfolio />
       </section>
     </>
   );

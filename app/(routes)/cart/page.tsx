@@ -5,17 +5,33 @@ import CartItem from "@/components/CartItem";
 import Summary from "@/components/Summary";
 import Container from "@/components/ui/container";
 import useCart from "@/hooks/use-cart";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const CartPage = () => {
+const CartPage = async () => {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const [isMounted, setIsMounted] = useState(false);
   const cart = useCart();
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const addByUrl = searchParams.get("add");
+      if (!addByUrl) {
+        return null;
+      }
+
+      const product = await getProduct(addByUrl);
+      cart.addItem(product);
+    };
+
+    fetchData();
+    router.push("/cart");
+  }, [searchParams]);
 
   return (
     <div>
