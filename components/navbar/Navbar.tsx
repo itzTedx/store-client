@@ -143,7 +143,9 @@ const Navbar = async () => {
             <NavbarItem>
               <Link href="/blogs">Blogs</Link>
             </NavbarItem>
-            <NavbarItem>About</NavbarItem>
+            <NavbarItem>
+              <Link href="/about">About us</Link>
+            </NavbarItem>
             <NavbarItem>Contact</NavbarItem>
           </div>
         </NavbarMenu>

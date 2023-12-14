@@ -14,7 +14,7 @@ const ScrollCarousel = () => {
 
   return (
     <section ref={targetRef} className="relative h-[300vh]">
-      What we Really do?
+      <h3 className="text-center text-4xl font-bold">What we Really do?</h3>
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <motion.div style={{ x }} className="flex gap-4">
           {cards.map((card) => {

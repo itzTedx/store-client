@@ -48,7 +48,7 @@ export function DropdownMenu({ data }: MainNavProps) {
               </NavigationMenuLink>
             </NavigationMenuTrigger>
 
-            <NavigationMenuContent className="relative z-[999]">
+            <NavigationMenuContent className="relative z-[9999999]">
               <ul className="grid gap-3 p-6 md:w-[500px] lg:w-[880px] lg:grid-cols-[.80fr_1fr_1fr] ">
                 <li className="row-span-6">
                   <NavigationMenuLink asChild>

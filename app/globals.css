@@ -162,3 +162,8 @@ body {
   background-position: 0 95%;
   background-size: 0 var(--background-size), 100% var(--background-size);
 }
+
+.text-stroke {
+  text-shadow: -1px -1px 0 #a3e635, 1px -1px 0 #a3e635, -1px 1px 0 #a3e635,
+    1px 1px 0 #a3e635;
+}
