@@ -22,7 +22,7 @@ const PopularProduct = () => {
   }, []);
 
   return (
-    <div className="container w-full overflow-hidden">
+    <div className="container px-3">
       <h3 className="py-6 text-3xl text-center font-glirock">
         Our Popular Products
       </h3>
@@ -34,6 +34,7 @@ const PopularProduct = () => {
           breakpoints={{
             1024: {
               slidesPerView: 4,
+              spaceBetween: 3,
             },
           }}
         >
@@ -43,7 +44,7 @@ const PopularProduct = () => {
               className="transition-all rounded-md overflow-hidden"
             >
               <Link
-                className="flex aspect-square cursor-grab active:cursor-grabbing select-none flex-col justify-end bg-gradient-to-b from-background/0 via-background/0 hover:via-background/20 to-background/40 hover:to-background/80 p-6 no-underline outline-none focus:shadow-md relative overflow-hidden group"
+                className="flex aspect-square cursor-grab active:cursor-grabbing select-none flex-col justify-end bg-background/20 sm:bg-transparent bg-gradient-to-b from-background/0 via-background/0 hover:via-background/20 to-background/40 hover:to-background/80 p-6 no-underline outline-none focus:shadow-md relative overflow-hidden group"
                 href="/"
               >
                 <Image
@@ -54,10 +55,10 @@ const PopularProduct = () => {
                 />
 
                 <Link href={product.href} className="justify-start">
-                  <div className="mb-1.5 text-lg leading-tight font-bold hover:text-primary transition-colors">
+                  <div className="mb-1.5 sm:text-lg leading-tight font-bold hover:text-primary transition-colors">
                     {product.title}
                   </div>
-                  <p className="text-sm font-medium text-foreground-700">
+                  <p className="text-[12px] sm:text-sm font-medium text-foreground-700">
                     {product.description}
                   </p>
                 </Link>

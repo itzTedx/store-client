@@ -1,17 +1,17 @@
-import { ArrowRight } from 'lucide-react'
-import Link from 'next/link'
-import React from 'react'
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
+import React from "react";
 
 interface HeadingProps {
-  title: string
-  link?: string
-  action?: string
+  title: string;
+  link?: string;
+  action?: string;
 }
 
 export const Heading = ({
   title,
   link,
-  action = 'Explore More',
+  action = "Explore More",
 }: HeadingProps) => {
   return (
     <div className="grid grid-cols-3 md:grid-cols-5 justify-between items-center sticky top-0 py-3 bg-background/50 backdrop-blur-md z-10 px-6 container mx-auto rounded-full sm:rounded-md border sm:border-0 sm:border-b shadow-sm shadow-background/10 sm:shadow-none">
@@ -29,5 +29,5 @@ export const Heading = ({
         </Link>
       )}
     </div>
-  )
-}
+  );
+};
