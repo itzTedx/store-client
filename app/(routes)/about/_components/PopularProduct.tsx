@@ -29,12 +29,12 @@ const PopularProduct = () => {
 
       {isMounted ? (
         <Swiper
-          spaceBetween={15}
+          spaceBetween={4}
           slidesPerView={2}
           breakpoints={{
             1024: {
               slidesPerView: 4,
-              spaceBetween: 3,
+              spaceBetween: 15,
             },
           }}
         >
