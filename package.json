@@ -30,6 +30,7 @@
     "react-dom": "^18",
     "react-draggable": "^4.4.6",
     "react-hot-toast": "^2.4.1",
+    "swiper": "^11.0.5",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
     "zustand": "^4.4.4"

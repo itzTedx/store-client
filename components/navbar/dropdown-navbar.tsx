@@ -49,7 +49,7 @@ export function DropdownMenu({ data }: MainNavProps) {
             </NavigationMenuTrigger>
 
             <NavigationMenuContent className="relative z-[9999999]">
-              <ul className="grid gap-3 p-6 md:w-[500px] lg:w-[880px] lg:grid-cols-[.80fr_1fr_1fr] ">
+              <ul className="grid gap-3 p-6 md:w-screen lg:w-[880px] lg:grid-cols-[.80fr_1fr_1fr] mx-auto">
                 <li className="row-span-6">
                   <NavigationMenuLink asChild>
                     <Link
@@ -91,6 +91,40 @@ export function DropdownMenu({ data }: MainNavProps) {
             </NavigationMenuContent>
           </NavigationMenuItem>
         ))}
+        <Separator
+          orientation="vertical"
+          className="h-6 hidden md:block lg:hidden"
+        />
+        <NavigationMenuItem
+          aria-label="About us"
+          className="pl-3 hidden md:block lg:hidden relative"
+        >
+          <NavigationMenuTrigger className="bg-foreground-100">
+            Links
+          </NavigationMenuTrigger>
+          <NavigationMenuContent className="relative z-[9999999]">
+            <ul className="grid gap-3 p-6 md:w-screen mx-auto lg:w-[880px] lg:grid-cols-[.80fr_1fr_1fr] ">
+              <NavigationMenuLink
+                href="/blogs"
+                className="hover:bg-muted p-3 rounded-md"
+              >
+                Blog
+              </NavigationMenuLink>
+              <NavigationMenuLink
+                href="/about"
+                className="hover:bg-muted p-3 rounded-md"
+              >
+                About us
+              </NavigationMenuLink>
+              <NavigationMenuLink
+                href="/contact"
+                className="hover:bg-muted p-3 rounded-md"
+              >
+                Contact
+              </NavigationMenuLink>
+            </ul>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
       </NavigationMenuList>
       <Separator orientation="vertical" />
       <NavigationMenuList className="mr-4" aria-label="Company Details">
