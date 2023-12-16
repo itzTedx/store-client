@@ -24,7 +24,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ data, category }) => {
         </div>
 
         {/* Description */}
-        <figcaption className="space-y-4 col-span-3 px-5 sm:px-0">
+        <figcaption className="space-y-1.5 col-span-3 px-5 sm:px-0">
           <p className="font-semibold">{data.name}</p>
           <p className="text-sm text-foreground-500 line-clamp-3 lg:line-clamp-none text-light">
             {data.description}
