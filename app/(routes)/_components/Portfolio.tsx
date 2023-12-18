@@ -64,6 +64,9 @@ export default function Portfolio() {
         Discover Our Creative Achievements: A Showcase of Our Impressive Works
         and Projects.
       </p>
+
+      <div className="absolute left-0 w-[15%] h-[120%] bg-gradient-to-r from-background via-background/30 to-background/0 -top-[10%] z-40" />
+      <div className="absolute right-0 w-[15%] h-[120%] bg-gradient-to-l from-background via-background/30 to-background/0 -top-[10%] z-40" />
       <motion.div
         style={{ x: x1 }}
         className="flex relative gap-3 w-[200vw] md:w-[120vw] -left-[20vw] mt-6 will-change-transform"
