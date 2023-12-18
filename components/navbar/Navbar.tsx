@@ -25,9 +25,12 @@ import { ProfileActions } from "./ProfileActions";
 import { SearchBar } from "./SearchBarv2";
 import { DropdownMenu } from "./dropdown-navbar";
 import { useState } from "react";
+import Helpline from "./Helpline";
+import getAllProducts from "@/actions/get-all-products";
 
 const Navbar = async () => {
   const categories = await getCategories();
+  const products = await getAllProducts();
 
   return (
     <>
@@ -67,7 +70,7 @@ const Navbar = async () => {
             <div className="md:hidden">
               <ModeToggle />
             </div>
-            <SearchBar data={categories} />
+            <SearchBar data={categories} products={products} />
             <div className="ml-auto">
               <Button
                 variant="ghost"
@@ -85,6 +88,7 @@ const Navbar = async () => {
           <div className="items-center hidden ml-auto gap-x-4 md:flex">
             <ModeToggle />
             <Separator orientation="vertical" className="h-6" />
+            <Helpline />
             <ProfileActions />
 
             <div className="">

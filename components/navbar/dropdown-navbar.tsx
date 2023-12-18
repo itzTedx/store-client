@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
-import * as React from 'react'
-import Link from 'next/link'
+import * as React from "react";
+import Link from "next/link";
 
-import { cn } from '@/lib/utils'
+import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,32 +12,32 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from '@/components/ui/navigation-menu'
-import { usePathname } from 'next/navigation'
-import { Category } from '@/types'
-import { Separator } from '../ui/separator'
-import Image from 'next/image'
+} from "@/components/ui/navigation-menu";
+import { usePathname } from "next/navigation";
+import { Category } from "@/types";
+import { Separator } from "../ui/separator";
+import Image from "next/image";
 
 interface MainNavProps {
-  data: Category[]
+  data: Category[];
 }
 
 export function DropdownMenu({ data }: MainNavProps) {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   const routes = data.map((route) => ({
     href: `/${route.slug}`,
     label: route.name,
     active: pathname === `/${route.slug}`,
     subcategory: route.subcategory,
-  }))
+  }));
 
   return (
     <NavigationMenu
       className="md:flex flex-col lg:flex-row items-center md:justify-between py-3 hidden max-w-7xl container relative z-[999]"
       role="navigation"
       id="main-nav"
-      aria-label="Navbar"
+      aria-label="Navigate our Categories"
     >
       <NavigationMenuList aria-label="Categories of products">
         {routes.map((route) => (
@@ -83,7 +83,7 @@ export function DropdownMenu({ data }: MainNavProps) {
                     >
                       {sub.description}
                     </ListItem>
-                  )
+                  );
                 })}
               </ul>
             </NavigationMenuContent>
@@ -136,12 +136,12 @@ export function DropdownMenu({ data }: MainNavProps) {
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
-  )
+  );
 }
 
 const ListItem = React.forwardRef<
-  React.ElementRef<'a'>,
-  React.ComponentPropsWithoutRef<'a'>
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
 >(({ className, title, children, ...props }, ref) => {
   return (
     <li>
@@ -149,7 +149,7 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
           {...props}
@@ -161,6 +161,6 @@ const ListItem = React.forwardRef<
         </a>
       </NavigationMenuLink>
     </li>
-  )
-})
-ListItem.displayName = 'ListItem'
+  );
+});
+ListItem.displayName = "ListItem";

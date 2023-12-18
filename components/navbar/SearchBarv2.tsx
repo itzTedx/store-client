@@ -2,11 +2,15 @@
 
 import { isAppleDevice } from "@react-aria/utils";
 import {
+  BookDown,
+  Building2,
   CircleDashed,
   LaptopIcon,
   ListChecks,
   LogOut,
   MoonIcon,
+  Newspaper,
+  PhoneCall,
   Search,
   Settings2,
   ShoppingBag,
@@ -24,16 +28,17 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
-import { Category } from "@/types";
+import { Category, Product } from "@/types";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
 
 interface SearchProps {
   data: Category[];
+  products: Product[];
 }
 
-export function SearchBar({ data }: SearchProps) {
+export function SearchBar({ data, products }: SearchProps) {
   const router = useRouter();
 
   const { theme, setTheme } = useTheme();
@@ -104,47 +109,78 @@ export function SearchBar({ data }: SearchProps) {
                     )
                   }
                 >
-                  <CircleDashed className="w-4 h-4 mr-2" />
+                  <CircleDashed className="w-4 h-4 mr-2 text-foreground-400" />
                   <span>{category.name}</span>
                 </CommandItem>
               ))}
             </CommandGroup>
           ))}
           <CommandSeparator />
+          <CommandGroup heading="All products"></CommandGroup>
+          <CommandSeparator />
+          <CommandGroup heading="Pages">
+            <CommandItem>
+              <Newspaper className="mr-2 text-foreground-400 h-4 w-4" />
+              Blog
+            </CommandItem>
+            <CommandItem>
+              <Building2 className="mr-2 text-foreground-400 h-4 w-4" />
+              About Digital Desk
+            </CommandItem>
+            <CommandItem>
+              <PhoneCall className="mr-2 text-foreground-400 h-4 w-4" />
+              Contact us
+            </CommandItem>
+            <CommandItem>
+              <BookDown className="mr-2 text-foreground-400 h-4 w-4" />
+              Browse Catalgoue
+            </CommandItem>
+          </CommandGroup>
+          <CommandSeparator />
+          <CommandGroup heading="All products">
+            {products.map((product, i) => (
+              <CommandItem key={i}>{product.name}</CommandItem>
+            ))}
+          </CommandGroup>
+          <CommandSeparator />
           <CommandGroup heading="Account">
             <CommandItem>
-              <User2 className="mr-2 h-4 w-4" />
+              <User2 className="mr-2 text-foreground-400 h-4 w-4" />
               My Account
             </CommandItem>
             <CommandItem>
-              <ShoppingBag className="mr-2 h-4 w-4" />
+              <ShoppingBag className="mr-2 text-foreground-400 h-4 w-4" />
               Cart
             </CommandItem>
             <CommandItem>
-              <ListChecks className="mr-2 h-4 w-4" />
+              <ListChecks className="mr-2 text-foreground-400 h-4 w-4" />
               My Orders
             </CommandItem>
             <CommandItem>
-              <Settings2 className="mr-2 h-4 w-4" />
+              <Settings2 className="mr-2 text-foreground-400 h-4 w-4" />
               Account Settings
             </CommandItem>
             <CommandItem>
-              <LogOut className="mr-2 h-4 w-4" />
+              <LogOut className="mr-2 text-foreground-400 h-4 w-4" />
               Log Out
             </CommandItem>
           </CommandGroup>
           <CommandSeparator />
           <CommandGroup heading="Theme">
-            <CommandItem onSelect={() => runCommand(() => setTheme("light"))}>
-              <SunIcon className="mr-2 h-4 w-4" />
+            <CommandItem
+              onSelect={() => runCommand(() => setTheme("light"))}
+              className="relative"
+            >
+              <SunIcon className="mr-2 text-foreground-400 h-4 w-4" />
+              <SunIcon className="mr-2 text-foreground-400 h-4 w-4 absolute" />
               Light
             </CommandItem>
             <CommandItem onSelect={() => runCommand(() => setTheme("dark"))}>
-              <MoonIcon className="mr-2 h-4 w-4" />
+              <MoonIcon className="mr-2 text-foreground-400 h-4 w-4" />
               Dark
             </CommandItem>
             <CommandItem onSelect={() => runCommand(() => setTheme("system"))}>
-              <LaptopIcon className="mr-2 h-4 w-4" />
+              <LaptopIcon className="mr-2 text-foreground-400 h-4 w-4" />
               System
             </CommandItem>
           </CommandGroup>

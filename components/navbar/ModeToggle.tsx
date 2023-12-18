@@ -38,7 +38,7 @@ export function ModeToggle() {
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="center">
+      <DropdownMenuContent align="center" className="z-[999999] space-y-3 py-3">
         <DropdownMenuItem
           aria-label="Light Mode"
           onClick={() => setTheme("light")}

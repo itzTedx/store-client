@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ChevronDown, LogIn, ShoppingBag } from "lucide-react";
+import { ChevronDown, Loader2, LogIn, ShoppingBag } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import useCart from "@/hooks/use-cart";
@@ -38,32 +38,18 @@ const NavbarActions = () => {
             <div className="relative h-8 w-8 sm:w-10 sm:h-10">
               <Image src="/icons/cart.svg" fill alt="Cart" />
             </div>
-            <span className="absolute top-0 right-0 text-[8px] sm:text-[10px] font-semibold rounded-full border-sky-500 border-1.5 bg-gray-100 text-black h-3 w-3 sm:h-4 sm:w-4 flex items-center justify-center">
-              -
+            <span className="absolute top-0 right-0 text-[8px] sm:text-[10px] font-semibold rounded-full border-sky-500 border-1.5 bg-gray-100 h-3 w-3 sm:h-4 sm:w-4 flex items-center justify-center">
+              <Loader2 className="w-full h-full animate-spin text-sky-800" />
             </span>
           </div>
-          <div className="ml-2 text-sm hidden md:block">
+          {/* <div className="ml-2 text-sm hidden md:block">
             <p className="text-left">My Cart</p>
             <div className="flex items-center font-bold">
-              -.--AED <ChevronDown size={16} />
+              <Loader2 className="w-4 h-4 mr-2 animate-spin text-sky-800" /> AED{" "}
+              <ChevronDown size={16} />
             </div>
-          </div>
+          </div> */}
         </Button>
-        {/* <Button
-          onClick={() => router.push("/cart")}
-          className="flex sm:hidden items-center md:px-4 py-4"
-          variant="ghost"
-          size="icon"
-        >
-          <div className="relative">
-            <div className="relative h-8 w-8 sm:w-10 sm:h-10">
-              <Image src="/icons/cart.svg" fill alt="Cart" />
-            </div>
-            <span className="absolute top-0 right-0 text-[8px] sm:text-[10px] font-semibold rounded-full border-sky-500 border-1.5 bg-gray-100 text-black h-3 w-3 sm:h-4 sm:w-4 flex items-center justify-center">
-              {cart.items.length}
-            </span>
-          </div>
-        </Button> */}
       </>
     );
   }
@@ -89,7 +75,7 @@ const NavbarActions = () => {
             {cart.items.length}
           </span>
         </div>
-        <div className="ml-2 text-sm hidden md:block">
+        {/* <div className="ml-2 text-sm hidden md:block">
           <p className="text-left" aria-hidden>
             My Cart
           </p>
@@ -98,9 +84,8 @@ const NavbarActions = () => {
             aria-label={cart.items.length ? "Total Amount in cart" : ""}
           >
             <Currency value={totalPrice} />
-            {/* <ChevronDown size={16} /> */}
           </div>
-        </div>
+        </div> */}
       </Button>
       {/* <Button
         onClick={() => router.push("/cart")}

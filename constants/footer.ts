@@ -5,7 +5,7 @@ export const footerNav = [
     items: [
       {
         name: "About us",
-        link: "/",
+        link: "/about",
       },
       {
         name: "Blogs",
