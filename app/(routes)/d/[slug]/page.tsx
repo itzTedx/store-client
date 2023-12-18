@@ -33,7 +33,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
 
   return (
     <div className="bg-background">
-      <div className="px-4 py-10 sm:px-6 lg:px-8 container space-y-12">
+      <div className="px-4 sm:px-6 lg:px-8 container space-y-4 md:space-y-12">
         <Breadcrumb
           page={category}
           subPage={product.subcategory}
