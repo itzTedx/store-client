@@ -1,53 +1,64 @@
-"use client";
+'use client'
 
-import Image from "next/image";
-import { X } from "lucide-react";
+import Image from 'next/image'
+import { X } from 'lucide-react'
 
-import { Product } from "@/types";
-import IconButton from "./ui/icon-button";
-import useCart from "@/hooks/use-cart";
-import Currency from "./ui/currency";
+import { Product } from '@/types'
+import IconButton from './ui/icon-button'
+import useCart from '@/hooks/use-cart'
+import Currency from './ui/currency'
+import { Badge } from './ui/badge'
+import { Separator } from './ui/separator'
 
 interface CartItemProps {
-  data: Product;
+  data: Product
 }
 
 const CartItem: React.FC<CartItemProps> = ({ data }) => {
-  const cart = useCart();
+  const cart = useCart()
 
   const onRemove = () => {
-    cart.removeItem(data.id);
-  };
+    cart.removeItem(data.id)
+  }
+
+  console.log(data)
 
   return (
-    <li className="flex py-6 border-b">
-      <div className="relative h-24 w-24 rounded-md overflow-hidden sm:h-40 sm:w-40">
-        <Image
-          fill
-          src={data.images[0].url}
-          alt={data.name}
-          className="object-cover object-center"
-        />
-      </div>
-      <div className="relative ml-4 flex flex-1 flex-col justify-between">
-        <div className="absolute z-10 right-0 top-0">
-          <IconButton icon={<X />} onClick={onRemove} />
-        </div>
-        <div className="relative pr-9 sm:grid sm:grid-cols-2 sm: gap-x-6 sm:pr-0">
-          <div className="flex justify-between">
-            <p className="text-lg font-semibold">{data.name}</p>
+    <>
+      <li className="py-6 border-b last:border-b-0 first:pt-0">
+        <div className="grid grid-cols-4 sm:grid-cols-3 sm:gap-6">
+          <div className="aspect-square relative">
+            <Image
+              fill
+              src={data.images[0].url}
+              alt={data.name}
+              className="object-cover rounded-md"
+            />
           </div>
-          <div className="mt-1 flex text-sm">
-            <p className="text-gray-500">{data.quantity?.name}</p>
-            <p className="text-gray-500 ml-4 border-l border-gray-200 pl-4">
-              {data?.size?.value}
-            </p>
-          </div>
-          <Currency value={data.discountPrice} />
-        </div>
-      </div>
-    </li>
-  );
-};
+          <div className="col-span-2 sm:col-span-1 space-y-2 sm:space-y-3 flex flex-col justify-between px-3 sm:px-0 sm:py-4">
+            <div className="">
+              <Badge variant="outline">{data.subcategory?.name}</Badge>
+              <p className="text-lg font-bold">{data.name}</p>
 
-export default CartItem;
+              <div className="mt-1 flex text-sm gap-3 ">
+                <p className="text-gray-500 shrink-0">
+                  Quantity: {data.quantity?.name}
+                </p>
+                <Separator orientation="vertical" className="h-5" />
+                <p className="text-gray-500 shrink-0">
+                  Size: {data?.size?.value}
+                </p>
+              </div>
+            </div>
+            <Currency value={data.discountPrice} />
+          </div>
+          <div className="justify-self-end">
+            <IconButton icon={<X />} onClick={onRemove} />
+          </div>
+        </div>
+      </li>
+    </>
+  )
+}
+
+export default CartItem
