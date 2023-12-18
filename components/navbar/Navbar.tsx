@@ -3,29 +3,29 @@ import {
   NavbarMenu,
   NavbarMenuToggle,
   Navbar as NextNav,
-} from "@nextui-org/react";
-import Image from "next/image";
-import Link from "next/link";
+} from '@nextui-org/react'
+import Image from 'next/image'
+import Link from 'next/link'
 
-import getCategories from "@/actions/get-categories";
-import { cn } from "@/lib/utils";
+import getCategories from '@/actions/get-categories'
+import { cn } from '@/lib/utils'
 
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
-import { Separator } from "../ui/separator";
-import { ModeToggle } from "./ModeToggle";
-import NavbarActions from "./NavbarActions";
-import { ProfileActions } from "./ProfileActions";
-import { SearchBar } from "./SearchBarv2";
-import { DropdownMenu } from "./dropdown-navbar";
+} from '@/components/ui/accordion'
+import { Button } from '@/components/ui/button'
+import { Separator } from '../ui/separator'
+import { ModeToggle } from './ModeToggle'
+import NavbarActions from './NavbarActions'
+import { ProfileActions } from './ProfileActions'
+import { SearchBar } from './SearchBarv2'
+import { DropdownMenu } from './dropdown-navbar'
 
 const Navbar = async () => {
-  const categories = await getCategories();
+  const categories = await getCategories()
 
   return (
     <>
@@ -36,6 +36,7 @@ const Navbar = async () => {
         maxWidth="xl"
         role="navigation"
         aria-label="Navigate"
+        className="z-[99999]"
       >
         <div className="flex items-center w-full gap-3 md:justify-between">
           <Link
@@ -129,7 +130,7 @@ const Navbar = async () => {
                   <li>
                     <Button
                       className={cn(
-                        "bg-transparent px-0 py-0 text-red-600 h-0"
+                        'bg-transparent px-0 py-0 text-red-600 h-0'
                       )}
                     >
                       Log Out
@@ -154,7 +155,7 @@ const Navbar = async () => {
         <DropdownMenu data={categories} />
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

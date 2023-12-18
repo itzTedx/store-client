@@ -1,16 +1,19 @@
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
+import EmojiEyeTracking from './EmojiEyeTracking'
 
 function AboutHero() {
   return (
     <>
-      <section className="bg-[url('/bg-hero.webp')] dark:bg-[url('/hero-dark.webp')] bg-cover w-full h-[70vh] relative">
-        <div className="text-center space-y-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[9999]">
-          <h1 className="text-9xl font-extrabold leading-tighter">
+      <section className=" bg-[url('/bg-hero.webp')] dark:bg-[url('/hero-dark.webp')] bg-cover w-full h-[70vh] relative">
+        <div className="text-center space-y-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
+          <h1 className="text-6xl sm:text-7xl md:text-9xl font-extrabold leading-tighter">
             We <span className="text-lime-500">print</span>
             <br />
             <span className="font-glirock font-medium">everything</span>
             <br />
-            you want
+            <span className="flex items-center justify-center">
+              y<EmojiEyeTracking />u want
+            </span>
           </h1>
           <p>You think, We print!</p>
 
@@ -24,7 +27,7 @@ function AboutHero() {
         </div>
       </section>
     </>
-  );
+  )
 }
 
-export default AboutHero;
+export default AboutHero
