@@ -116,7 +116,11 @@ export function SearchBar({ data, products }: SearchProps) {
             </CommandGroup>
           ))}
           <CommandSeparator />
-          <CommandGroup heading="All products"></CommandGroup>
+          <CommandGroup heading="All products">
+            {products.map((product, i) => (
+              <CommandItem key={i}>{product.name}</CommandItem>
+            ))}
+          </CommandGroup>
           <CommandSeparator />
           <CommandGroup heading="Pages">
             <CommandItem>
@@ -136,12 +140,7 @@ export function SearchBar({ data, products }: SearchProps) {
               Browse Catalgoue
             </CommandItem>
           </CommandGroup>
-          <CommandSeparator />
-          <CommandGroup heading="All products">
-            {products.map((product, i) => (
-              <CommandItem key={i}>{product.name}</CommandItem>
-            ))}
-          </CommandGroup>
+
           <CommandSeparator />
           <CommandGroup heading="Account">
             <CommandItem>
