@@ -58,7 +58,10 @@ export default function Portfolio() {
   const height = useTransform(scrollYProgress, [0, 0.9], [50, 0]);
 
   return (
-    <div ref={container} className="flex flex-col gap-3 relative my-9 z-[1]">
+    <div
+      ref={container}
+      className="flex flex-col gap-3 relative my-9 z-[1] overflow-hidden"
+    >
       <h5 className="font-glirock text-6xl text-center">Portfolio Showcase</h5>
       <p className="text-center max-w-sm mx-auto">
         Discover Our Creative Achievements: A Showcase of Our Impressive Works

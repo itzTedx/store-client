@@ -15,8 +15,6 @@ interface CartItemProps {
 const CartItem: React.FC<CartItemProps> = ({ data }) => {
   const cart = useCart();
 
-  console.log(data);
-
   const onRemove = () => {
     cart.removeItem(data.id);
   };

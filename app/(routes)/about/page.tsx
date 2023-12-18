@@ -1,11 +1,12 @@
-import Image from 'next/image'
-import AboutHero from './_components/Hero'
-import { Badge } from '@/components/ui/badge'
-import ScrollCarousel from './_components/ScrollCarousel'
-import { MouseImageTrail } from './_components/ImageTrails'
-import ParallaxText from './_components/ParallaxText'
-import { Trusted } from '../_components/Trusted'
-import Commitment from './_components/Commitment'
+import Image from "next/image";
+import AboutHero from "./_components/Hero";
+import { Badge } from "@/components/ui/badge";
+import ScrollCarousel from "./_components/ScrollCarousel";
+import { MouseImageTrail } from "./_components/ImageTrails";
+import ParallaxText from "./_components/ParallaxText";
+import { Trusted } from "../_components/Trusted";
+import Commitment from "./_components/Commitment";
+import Portfolio from "../_components/Portfolio";
 
 function About() {
   return (
@@ -14,19 +15,19 @@ function About() {
         renderImageBuffer={10}
         rotationRange={25}
         images={[
-          '/images/bottle.webp',
-          '/images/Business-card-holding.jpg',
-          '/images/Catalogue.jpg',
-          '/images/instant-bcs.jpg',
-          '/images/Instant-lh.jpg',
-          '/images/Laptop-Sticker.jpg',
-          '/images/Letterhead.jpg',
-          '/images/Poster.jpg',
-          '/images/rollup.jpg',
-          '/images/spot-uv-bcs.jpg',
-          '/images/instant-bcs.jpg',
-          '/images/Instant-lh.jpg',
-          '/images/Laptop-Sticker.jpg',
+          "/images/bottle.webp",
+          "/images/Business-card-holding.jpg",
+          "/images/Catalogue.jpg",
+          "/images/instant-bcs.jpg",
+          "/images/Instant-lh.jpg",
+          "/images/Laptop-Sticker.jpg",
+          "/images/Letterhead.jpg",
+          "/images/Poster.jpg",
+          "/images/rollup.jpg",
+          "/images/spot-uv-bcs.jpg",
+          "/images/instant-bcs.jpg",
+          "/images/Instant-lh.jpg",
+          "/images/Laptop-Sticker.jpg",
         ]}
       >
         <AboutHero />
@@ -59,7 +60,7 @@ function About() {
           </div>
         </div>
       </section>
-      <section className="sm:grid sm:grid-cols-6 space-y-3 sm:gap-3 h-full max-w-6xl px-6 mx-auto">
+      <section className="sm:grid sm:grid-cols-6 sm:gap-3 h-full max-w-6xl px-6 mx-auto space-y-6 sm:space-y-0">
         <div className="bg-[#EF4444] sm:col-span-3 p-6 rounded-[12px] relative text-background bg-[url('/spiral-bg.svg')] bg-cover bg-center">
           <h5 className="font-glirock uppercase text-2xl tracking-wider mb-1.5">
             Our Client Support
@@ -122,8 +123,9 @@ function About() {
 
       <Commitment />
       <Trusted />
+      <Portfolio />
     </>
-  )
+  );
 }
 
-export default About
+export default About;

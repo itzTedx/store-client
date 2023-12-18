@@ -1,7 +1,7 @@
-'use client'
+"use client";
 
-import { useAnimate } from 'framer-motion'
-import React, { MouseEventHandler, ReactNode, useRef } from 'react'
+import { useAnimate } from "framer-motion";
+import React, { MouseEventHandler, ReactNode, useRef } from "react";
 
 export const MouseImageTrail = ({
   children,
@@ -13,34 +13,33 @@ export const MouseImageTrail = ({
   // alternating between a positive and negative rotation
   rotationRange,
 }: {
-  children: ReactNode
-  images: string[]
-  renderImageBuffer: number
-  rotationRange: number
+  children: ReactNode;
+  images: string[];
+  renderImageBuffer: number;
+  rotationRange: number;
 }) => {
-  const [scope, animate] = useAnimate()
+  const [scope, animate] = useAnimate();
 
-  const lastRenderPosition = useRef({ x: 0, y: 0 })
-  const imageRenderCount = useRef(0)
+  const lastRenderPosition = useRef({ x: 0, y: 0 });
+  const imageRenderCount = useRef(0);
 
   const handleMouseMove: MouseEventHandler<HTMLDivElement> = (e) => {
-    const { clientX, clientY } = e
+    const { clientX, clientY } = e;
 
     const distance = calculateDistance(
       clientX,
       clientY,
       lastRenderPosition.current.x,
       lastRenderPosition.current.y
-    )
+    );
 
     if (distance >= renderImageBuffer) {
-      lastRenderPosition.current.x = clientX
-      lastRenderPosition.current.y = clientY
+      lastRenderPosition.current.x = clientX;
+      lastRenderPosition.current.y = clientY;
 
-      renderNextImage()
+      renderNextImage();
     }
-    console.log({ clientX, clientY })
-  }
+  };
 
   const calculateDistance = (
     x1: number,
@@ -48,26 +47,26 @@ export const MouseImageTrail = ({
     x2: number,
     y2: number
   ) => {
-    const deltaX = x2 - x1
-    const deltaY = y2 - y1
+    const deltaX = x2 - x1;
+    const deltaY = y2 - y1;
 
     // Using the Pythagorean theorem to calculate the distance
-    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY)
+    const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
-    return distance
-  }
+    return distance;
+  };
 
   const renderNextImage = () => {
-    const imageIndex = imageRenderCount.current % images.length
-    const selector = `[data-mouse-move-index="${imageIndex}"]`
+    const imageIndex = imageRenderCount.current % images.length;
+    const selector = `[data-mouse-move-index="${imageIndex}"]`;
 
-    const el = document.querySelector(selector) as HTMLElement
+    const el = document.querySelector(selector) as HTMLElement;
 
-    el.style.top = `${lastRenderPosition.current.y}px`
-    el.style.left = `${lastRenderPosition.current.x}px`
-    el.style.zIndex = imageRenderCount.current.toString()
+    el.style.top = `${lastRenderPosition.current.y}px`;
+    el.style.left = `${lastRenderPosition.current.x}px`;
+    el.style.zIndex = imageRenderCount.current.toString();
 
-    const rotation = Math.random() * rotationRange
+    const rotation = Math.random() * rotationRange;
 
     animate(
       selector,
@@ -86,19 +85,19 @@ export const MouseImageTrail = ({
           }`,
         ],
       },
-      { type: 'spring', damping: 15, stiffness: 200 }
-    )
+      { type: "spring", damping: 15, stiffness: 200 }
+    );
 
     animate(
       selector,
       {
         opacity: [1, 0],
       },
-      { ease: 'linear', duration: 0.5, delay: 2.5 }
-    )
+      { ease: "linear", duration: 0.5, delay: 2.5 }
+    );
 
-    imageRenderCount.current = imageRenderCount.current + 1
-  }
+    imageRenderCount.current = imageRenderCount.current + 1;
+  };
 
   return (
     <div
@@ -118,5 +117,5 @@ export const MouseImageTrail = ({
         />
       ))}
     </div>
-  )
-}
+  );
+};

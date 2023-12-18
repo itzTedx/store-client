@@ -1,13 +1,14 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
+import { motion } from "framer-motion";
 
-import { Badge } from '@/components/ui/badge'
+import { Badge } from "@/components/ui/badge";
 
 const Commitment = () => {
   return (
-    <section className="relative h-screen">
-      <div className="max-w-5xl mx-auto py-9 pb-40 px-4 bg-[url('/grid-bg.svg')] bg-cover bg-no-repeat w-full bg-center md:bg-top">
+    // <section className="relative overflow-hidden before:absolute before:top-0 before:start-1/2 before:bg-[url('https://preline.co/assets/svg/component/squared-bg-element.svg')] before:bg-no-repeat before:bg-top before:w-full before:h-full before:-z-[1] before:transform before:-translate-x-1/2 dark:before:bg-[url('https://preline.co/assets/svg/component/squared-bg-element-dark.svg')]">
+    <section className="relative bg-[url('/grid-bg.svg')] bg-cover bg-no-repeat w-full pb-20 md:pb-40 ">
+      <div className="max-w-5xl mx-auto py-9 px-4">
         <Badge
           variant="outline"
           className="tracking-normal py-2 backdrop-blur-sm"
@@ -22,7 +23,7 @@ const Commitment = () => {
         </p>
       </div>
 
-      <div className="absolute bottom-1/4 inset-x-0 gap-9 grid grid-cols-4 px-6">
+      <div className="gap-3 md:gap-9 grid grid-cols-4 px-3 md:px-16 md:py-6">
         <motion.div
           initial={{ y: 200 }}
           whileInView={{ y: 1 }}
@@ -30,7 +31,7 @@ const Commitment = () => {
           transition={{
             duration: 0.5,
           }}
-          className="aspect-[3/4] bg-lime-500"
+          className="aspect-[3/4] bg-lime-500 rounded-lg p-3"
         >
           Hello
         </motion.div>
@@ -41,7 +42,7 @@ const Commitment = () => {
           transition={{
             duration: 0.5,
           }}
-          className="aspect-[3/4] bg-lime-500"
+          className="aspect-[3/4] bg-lime-500 rounded-lg p-3"
         >
           Hello
         </motion.div>
@@ -52,7 +53,7 @@ const Commitment = () => {
           transition={{
             duration: 0.5,
           }}
-          className="aspect-[3/4] bg-lime-500"
+          className="aspect-[3/4] bg-lime-500 rounded-lg p-3"
         >
           Hello
         </motion.div>
@@ -63,13 +64,13 @@ const Commitment = () => {
           transition={{
             duration: 0.5,
           }}
-          className="aspect-[3/4] bg-lime-500"
+          className="aspect-[3/4] bg-lime-500 rounded-lg p-3"
         >
           Hello
         </motion.div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default Commitment
+export default Commitment;
