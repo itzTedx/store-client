@@ -16,7 +16,7 @@ const ProductList: React.FC<ProductsListProps> = ({ title, items, link }) => {
     <div className="space-y-4">
       <div className="grid grid-cols-3 md:grid-cols-5 justify-between items-center">
         <h3
-          className={`font-glirock text-xl sm:text-3xl font-bold col-span-2 md:col-span-4`}
+          className={`font-glirock text-xl sm:text-3xl col-span-2 md:col-span-4`}
         >
           {title}
         </h3>

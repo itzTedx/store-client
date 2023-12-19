@@ -1,15 +1,15 @@
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 
-import { Subcategory } from "@/types";
+import { Subcategory } from '@/types'
 
-import CategoryCard from "./ui/category-card";
-import { Heading } from "./ui/Heading";
+import CategoryCard from './ui/category-card'
+import { Heading } from './ui/Heading'
 
 interface CategoryListProps {
-  title: string;
-  items: Subcategory[];
-  link?: string;
+  title: string
+  items: Subcategory[]
+  link?: string
 }
 
 const CategoryList: React.FC<CategoryListProps> = ({ title, items, link }) => {
@@ -23,7 +23,7 @@ const CategoryList: React.FC<CategoryListProps> = ({ title, items, link }) => {
         ))}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CategoryList;
+export default CategoryList

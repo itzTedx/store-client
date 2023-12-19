@@ -1,42 +1,42 @@
-import getCategory from "@/actions/get-category";
-import getProduct from "@/actions/get-product";
-import ProductList from "@/components/ProductList";
-import Gallery from "@/components/gallery";
-import Info from "@/components/info";
-import Breadcrumb from "@/components/ui/breadcrumb";
-import ProductTab from "../../_components/ProductTab";
-import { Faq } from "../../_components/Faq";
-import Image from "next/image";
-import PopularProduct from "@/app/(routes)/_components/PopularProduct";
-import getAllProducts from "@/actions/get-all-products";
-import getCategoryById from "@/actions/get-category-by-id";
-import { notFound } from "next/navigation";
+import getCategory from '@/actions/get-category'
+import getProduct from '@/actions/get-product'
+import ProductList from '@/components/ProductList'
+import Gallery from '@/components/gallery'
+import Info from '@/components/info'
+import Breadcrumb from '@/components/ui/breadcrumb'
+import ProductTab from '../../_components/ProductTab'
+import { Faq } from '../../_components/Faq'
+import Image from 'next/image'
+import PopularProduct from '@/app/(routes)/_components/PopularProduct'
+import getAllProducts from '@/actions/get-all-products'
+import getCategoryById from '@/actions/get-category-by-id'
+import { notFound } from 'next/navigation'
 
 interface ProductPageProps {
   params: {
-    slug: string;
-  };
+    slug: string
+  }
 }
 
-export const dynamic = "force-static";
+export const dynamic = 'force-static'
 
 export async function generateStaticParams() {
-  const products = await getAllProducts();
+  const products = await getAllProducts()
 
-  return products.map((product) => product.slug);
+  return products.map((product) => product.slug)
 }
 
 const ProductPage = async ({ params }: ProductPageProps) => {
-  const product = await getProduct(params.slug);
-  if (!product) return notFound();
+  const product = await getProduct(params.slug)
+  if (!product) return notFound()
 
-  const category = await getCategoryById(product.subcategory.categoryId);
+  const category = await getCategoryById(product.subcategory.categoryId)
 
-  const suggestedProducts = product.subcategory.products;
+  const suggestedProducts = product.subcategory.products
 
   return (
     <div className="bg-background">
-      <div className="px-4 sm:px-6 lg:px-8 container space-y-4 md:space-y-12">
+      <div className="px-4 sm:px-6 lg:px-8 container space-y-4 md:space-y-12 mb-9">
         <Breadcrumb
           page={category}
           subPage={product.subcategory}
@@ -64,14 +64,14 @@ const ProductPage = async ({ params }: ProductPageProps) => {
           </div>
           <Faq />
         </section>
-        <PopularProduct />
+        <PopularProduct className="text-left" />
         <ProductList
           title="Related products you may like"
           items={suggestedProducts}
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProductPage;
+export default ProductPage

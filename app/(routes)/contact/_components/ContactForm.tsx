@@ -16,6 +16,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import toast from 'react-hot-toast'
+import { sendEmail } from '@/actions/send-email'
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Please enter your name').max(50),
@@ -23,6 +24,8 @@ const contactSchema = z.object({
   phone: z.string().min(10).max(14),
   message: z.string().min(1).max(256, 'Exceed the limit'),
 })
+
+export type ContactFormProps = z.infer<typeof contactSchema>
 
 const ContactForm = () => {
   // 1. Define your form.
@@ -34,9 +37,12 @@ const ContactForm = () => {
   })
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof contactSchema>) {
+  async function onSubmit(values: ContactFormProps) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
+
+    await sendEmail(values)
+
     toast.success('Form Data Send Sucessfully')
   }
 
@@ -97,7 +103,7 @@ const ContactForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit" className="w-full rounded-lg p-3">
+        <Button type="submit" className="w-full rounded-lg p-6 font-bold">
           Send Message
         </Button>
       </form>
@@ -106,15 +112,3 @@ const ContactForm = () => {
 }
 
 export default ContactForm
-{
-  /* <form>
-  <div>
-    <button
-      type="submit"
-      className="w-full rounded border border-primary bg-primary p-3 text-white transition hover:bg-opacity-90"
-    >
-      Send Message
-    </button>
-  </div>
-</form>; */
-}

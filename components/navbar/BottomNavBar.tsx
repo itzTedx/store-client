@@ -25,29 +25,36 @@ const BottomNav = () => {
 
   return (
     <div
-      className={`sticky py-2 z-10 border-t bg-background/70 transition-all duration-500 sm:hidden shadow-xl ${navClass}`}
+      className={`sticky py-2 z-10 border-t bg-background/70 transition-all duration-500 md:hidden shadow-xl ${navClass}`}
     >
       <div className="flex flex-row justify-around items-center bg-transparent w-full">
         <Button
           onClick={() => router.push('/')}
           variant="ghost"
-          size="icon"
-          className={'flex flex-col items-center relative'}
+          className={'flex gap-1.5 items-center relative px-4'}
         >
           <Home
             className={cn(
-              'transition-all relative z-10',
-              pathname === '/' ? 'stroke-2 text-primary-800' : 'stroke-1'
+              'transition-all relative z-10 shrink-0',
+              pathname === '/' ? 'stroke-2 text-background' : 'stroke-1'
             )}
-          />
+          />{' '}
+          <span
+            className={cn(
+              pathname === '/' && 'font-bold text-background z-10',
+              'hidden sm:block'
+            )}
+          >
+            Home
+          </span>
           {pathname === '/' && (
             <motion.span
               layoutId="pill-tab"
               transition={{ type: 'spring', duration: 0.5 }}
               className={cn(
-                'absolute inset-0 z-0 bg-gradient-to-br rounded-md',
+                'absolute inset-0 z-0 bg-gradient-to-br rounded-xl',
                 scrollDirection === 'up'
-                  ? 'from-primary-600/70 to-primary-400/70 '
+                  ? 'from-sky-500/80 to-primary-400/80 '
                   : 'bg-primary-500/20'
               )}
             />
@@ -56,23 +63,30 @@ const BottomNav = () => {
         <Button
           onClick={onOpen}
           variant="ghost"
-          size="icon"
-          className="flex flex-col items-center relative"
+          className="flex gap-1.5 items-center relative px-4"
         >
           <Search
             className={cn(
-              'transition-all relative',
-              pathname === '/shop' ? 'stroke-2 text-primary-800' : 'stroke-1'
+              'transition-all relative z-10 shrink-0',
+              pathname === '/shop' ? 'stroke-2 text-background' : 'stroke-1'
             )}
-          />
+          />{' '}
+          <span
+            className={cn(
+              isOpen && 'font-bold text-background z-10',
+              'hidden sm:block'
+            )}
+          >
+            Search
+          </span>
           {isOpen && (
             <motion.span
               layoutId="pill-tab"
               transition={{ type: 'spring', duration: 0.5 }}
               className={cn(
-                'absolute inset-0 z-0 bg-gradient-to-br rounded-md',
+                'absolute inset-0 z-0 bg-gradient-to-br rounded-xl',
                 scrollDirection === 'up'
-                  ? 'from-primary-600/70 to-primary-400/70 '
+                  ? 'from-sky-500/80 to-primary-400/80 '
                   : 'bg-primary-500/20'
               )}
             />
@@ -81,23 +95,30 @@ const BottomNav = () => {
         <Button
           onClick={() => router.push('/cart')}
           variant="ghost"
-          size="icon"
-          className="flex flex-col items-center relative"
+          className="flex gap-1.5 items-center relative px-4"
         >
           <ShoppingBag
             className={cn(
               'transition-all relative z-10',
-              pathname === '/cart' ? 'stroke-2 text-primary-800' : 'stroke-1'
+              pathname === '/cart' ? 'stroke-2 text-background' : 'stroke-1'
             )}
           />
+          <span
+            className={cn(
+              pathname === '/cart' && 'font-bold text-background z-10',
+              'hidden sm:block'
+            )}
+          >
+            Cart
+          </span>
           {pathname === '/cart' && (
             <motion.span
               layoutId="pill-tab"
               transition={{ type: 'spring', duration: 0.5 }}
               className={cn(
-                'absolute inset-0 z-0 bg-gradient-to-br rounded-md',
+                'absolute inset-0 z-0 bg-gradient-to-br rounded-xl',
                 scrollDirection === 'up'
-                  ? 'from-primary-600/70 to-primary-400/70 '
+                  ? 'from-sky-500/80 to-primary-400/80 '
                   : 'bg-primary-500/20'
               )}
             />
@@ -106,23 +127,30 @@ const BottomNav = () => {
         <Button
           onClick={() => router.push('/account')}
           variant="ghost"
-          size="icon"
-          className="flex flex-col items-center relative"
+          className="flex gap-1.5 items-center relative px-4"
         >
           <User2
             className={cn(
               'transition-all relative z-10',
-              pathname === '/account' ? 'stroke-2 text-primary-800' : 'stroke-1'
+              pathname === '/account' ? 'stroke-2 text-background' : 'stroke-1'
             )}
           />
+          <span
+            className={cn(
+              pathname === '/account' && 'font-bold text-background z-10',
+              'hidden sm:block'
+            )}
+          >
+            Account
+          </span>
           {pathname === '/account' && (
             <motion.span
               layoutId="pill-tab"
               transition={{ type: 'spring', duration: 0.5 }}
               className={cn(
-                'absolute inset-0 z-0 bg-gradient-to-br rounded-md',
+                'absolute inset-0 z-0 bg-gradient-to-br rounded-xl',
                 scrollDirection === 'up'
-                  ? 'from-primary-600/70 to-primary-400/70 '
+                  ? 'from-sky-500/80 to-primary-400/80 '
                   : 'bg-primary-500/20'
               )}
             />

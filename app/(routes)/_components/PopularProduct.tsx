@@ -1,29 +1,31 @@
-"use client";
+'use client'
 
-import Image from "next/image";
-import Link from "next/link";
-import { useEffect, useState } from "react";
+import Image from 'next/image'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from 'swiper/react'
 // Import Swiper styles
-import "swiper/css";
+import 'swiper/css'
 
-import { Button, buttonVariants } from "@/components/ui/button";
+import Skeleton from '@/components/ui/skeleton'
+import { popularProducts } from '@/constants/popular-products'
+import { cn } from '@/lib/utils'
 
-import { popularProducts } from "@/constants/popular-products";
-import { cn } from "@/lib/utils";
-import Skeleton from "@/components/ui/skeleton";
+interface PopularProductProps {
+  className?: string
+}
 
-const PopularProduct = () => {
-  const [isMounted, setIsMounted] = useState(false);
+const PopularProduct = ({ className }: PopularProductProps) => {
+  const [isMounted, setIsMounted] = useState(false)
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    setIsMounted(true)
+  }, [])
 
   return (
     <div className="container px-3">
-      <h3 className="py-6 text-3xl text-center font-glirock">
+      <h3 className={cn('py-6 text-3xl text-center font-glirock', className)}>
         Our Popular Products
       </h3>
 
@@ -76,7 +78,7 @@ const PopularProduct = () => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default PopularProduct;
+export default PopularProduct

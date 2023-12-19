@@ -1,41 +1,41 @@
-"use client";
+'use client'
 
-import Image from "next/image";
-import { MouseEventHandler } from "react";
-import { Expand, ShoppingBag, ShoppingCart } from "lucide-react";
-import { useRouter } from "next/navigation";
+import Image from 'next/image'
+import { MouseEventHandler } from 'react'
+import { Expand, ShoppingBag, ShoppingCart } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
-import Currency from "@/components/ui/currency";
-import IconButton from "@/components/ui/icon-button";
-import usePreviewModal from "@/hooks/use-preview-modal";
-import useCart from "@/hooks/use-cart";
-import { Product } from "@/types";
-import Link from "next/link";
+import Currency from '@/components/ui/currency'
+import IconButton from '@/components/ui/icon-button'
+import usePreviewModal from '@/hooks/use-preview-modal'
+import useCart from '@/hooks/use-cart'
+import { Product } from '@/types'
+import Link from 'next/link'
 
 interface ProductCard {
-  data: Product;
+  data: Product
 }
 
 const ProductCard: React.FC<ProductCard> = ({ data }) => {
-  const previewModal = usePreviewModal();
-  const cart = useCart();
-  const router = useRouter();
+  const previewModal = usePreviewModal()
+  const cart = useCart()
+  const router = useRouter()
 
   const handleClick = () => {
-    router.push(`/d/${data?.slug}`);
-  };
+    router.push(`/d/${data?.slug}`)
+  }
 
   const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
-    event.stopPropagation();
+    event.stopPropagation()
 
-    previewModal.onOpen(data);
-  };
+    previewModal.onOpen(data)
+  }
 
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
-    event.stopPropagation();
+    event.stopPropagation()
 
-    cart.addItem(data);
-  };
+    cart.addItem(data)
+  }
 
   return (
     <div
@@ -51,7 +51,7 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
                 src={data.images?.[0]?.url}
                 alt=""
                 fill
-                className="object-cover hover:scale-105 transition"
+                className="object-cover hover:scale-105 transition rounded-md"
               />
             )}
           </Link>
@@ -67,27 +67,34 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
         </div>
 
         {/* Description */}
-        <div className="mt-3">
+        <div className="mt-2">
           <Link
             href={`/d/${data.slug}`}
             className="font-bold hover:text-lime-500 transition"
           >
             {data.name}
           </Link>
-          <p className="text-sm text-gray-600 line-clamp-2 lg:line-clamp-none">
+          <p className="text-sm text-gray-600 leading-tight line-clamp-2 lg:line-clamp-none">
             {data.description}
           </p>
         </div>
       </div>
       {/* Price & Reiew */}
-      <div className="flex items-center gap-2 dark:hover:text-lime-600 hover:text-lime-900 font-medium transition">
-        Buy Now
-        <div className="p-2 bg-lime-300 dark:bg-lime-400 rounded-full text-lime-900 ">
-          <ShoppingBag size={14} />
+      <div className="flex justify-between items-center">
+        <div className="font-bold">
+          <Currency
+            value={data.discountPrice ? data.discountPrice : data.actualPrice}
+          />
+        </div>
+        <div className="flex items-center gap-2 dark:hover:text-lime-500 hover:text-lime-900 text-sm transition">
+          Buy Now
+          <div className="p-1.5 bg-lime-300 dark:bg-lime-400 rounded-full text-lime-900 ">
+            <ShoppingBag className="w-4 h-4" />
+          </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProductCard;
+export default ProductCard

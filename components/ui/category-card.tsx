@@ -1,10 +1,10 @@
-import { Subcategory } from "@/types";
-import Image from "next/image";
-import Link from "next/link";
+import { Subcategory } from '@/types'
+import Image from 'next/image'
+import Link from 'next/link'
 
 interface CategoryCardProps {
-  data: Subcategory;
-  category: string | undefined;
+  data: Subcategory
+  category: string | undefined
 }
 
 const CategoryCard: React.FC<CategoryCardProps> = ({ data, category }) => {
@@ -18,7 +18,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ data, category }) => {
               src={data.products?.[0]?.images?.[0]?.url}
               alt={data.products?.[0]?.name}
               fill
-              className="object-cover"
+              className="object-cover scale-100 hover:scale-105 transition"
             />
           )}
         </div>
@@ -32,7 +32,7 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ data, category }) => {
         </figcaption>
       </figure>
     </Link>
-  );
-};
+  )
+}
 
-export default CategoryCard;
+export default CategoryCard
