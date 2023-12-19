@@ -17,7 +17,7 @@ function ContactPage() {
         </div>
         <div className="space-y-3">
           <h1 className="text-4xl sm:text-6xl font-glirock text-primary-900">
-            We're Here to Help
+            We&apos;re Here to Help
           </h1>
           <p className="text-lg">
             Have a question or need assistance? <br />

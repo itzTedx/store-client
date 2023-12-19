@@ -11,8 +11,8 @@ const Contact = () => {
                 Get in touch with us!
               </h2>
               <p className="mb-9 text-base leading-relaxed text-body-color dark:text-dark-6">
-                Write us a few words about your project and product we'll get
-                back to you within 24 hours.
+                Write us a few words about your project and product we&apos;ll
+                get back to you within 24 hours.
               </p>
               <div className="border-l-8  pl-6">
                 <div className="mb-8 flex w-full max-w-[370px] ">
