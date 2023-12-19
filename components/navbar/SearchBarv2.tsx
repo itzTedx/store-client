@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { isAppleDevice } from "@react-aria/utils";
+import { isAppleDevice } from '@react-aria/utils'
 import {
   BookDown,
   Building2,
@@ -16,8 +16,8 @@ import {
   ShoppingBag,
   SunIcon,
   User2,
-} from "lucide-react";
-import { useCallback, useEffect, useState } from "react";
+} from 'lucide-react'
+import { useCallback, useEffect, useState } from 'react'
 
 import {
   CommandDialog,
@@ -27,53 +27,66 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@/components/ui/command";
-import { Category, Product } from "@/types";
-import { useTheme } from "next-themes";
-import { useRouter } from "next/navigation";
-import { Button } from "../ui/button";
+} from '@/components/ui/command'
+import { Category, Product } from '@/types'
+import { useTheme } from 'next-themes'
+import { useRouter } from 'next/navigation'
+import { Button } from '../ui/button'
+import useSearchToggle from '@/store/use-search-toggle'
 
 interface SearchProps {
-  data: Category[];
-  products: Product[];
+  data: Category[]
+  products: Product[]
 }
 
 export function SearchBar({ data, products }: SearchProps) {
-  const router = useRouter();
+  const router = useRouter()
 
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme()
 
-  const [open, setOpen] = useState(false);
-  const [commandKey, setCommandKey] = useState<"Ctrl" | "Cmd">("Ctrl");
+  const isOpen = useSearchToggle((state) => state.isOpen)
+  const onOpen = useSearchToggle((state) => state.onOpen)
+  const toggleOpen = useSearchToggle((state) => state.toggleOpen)
+  const onClose = useSearchToggle((state) => state.onClose)
 
-  const category = data.map((cat) => cat.subcategory);
+  const [open, setOpen] = useState(false)
+  const [commandKey, setCommandKey] = useState<'Ctrl' | 'Cmd'>('Ctrl')
+
+  const category = data.map((cat) => cat.subcategory)
 
   useEffect(() => {
-    setCommandKey(isAppleDevice() ? "Cmd" : "Ctrl");
-  }, []);
+    setCommandKey(isAppleDevice() ? 'Cmd' : 'Ctrl')
+  }, [])
 
   useEffect(() => {
-    const down = (e: KeyboardEvent) => {
-      const hotkey = isAppleDevice() ? "metaKey" : "ctrlKey";
-      if (e.key === "k" && e[hotkey]) {
-        e.preventDefault();
-        setOpen((open) => !open);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const hotkey = isAppleDevice() ? 'metaKey' : 'ctrlKey'
+      if (e.key === 'k' && e[hotkey]) {
+        e.preventDefault()
+        // setOpen((open) => !open)
+        toggleOpen()
       }
-    };
+    }
 
-    document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
-  }, []);
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [toggleOpen])
 
-  const runCommand = useCallback((command: () => unknown) => {
-    setOpen(false);
-    command();
-  }, []);
+  const runCommand = useCallback(
+    (command: () => unknown) => {
+      // setOpen(false)
+      onClose()
+      command()
+    },
+    [onClose]
+  )
+
+  console.log(isOpen)
 
   return (
     <>
       <Button
-        onClick={() => setOpen(true)}
+        onClick={onOpen}
         variant="ghost"
         className="z-0 group relative inline-flex items-center justify-center box-border appearance-none select-none whitespace-nowrap subpixel-antialiased overflow-hidden tap-highlight-transparent outline-none focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-focus focus-visible:outline-offset-2 md:min-w-20 h-10 gap-12 rounded-md md:[&>svg]:max-w-[theme(spacing.unit-8)] active:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none data-[hover=true]:opacity-hover text-sm font-normal w-10 md:w-full px-0 py-0 md:px-4 md:py-2 md:border"
         aria-label={`Press ${commandKey} + k for search`}
@@ -93,7 +106,7 @@ export function SearchBar({ data, products }: SearchProps) {
         />
       </Button>
 
-      <CommandDialog open={open} onOpenChange={setOpen}>
+      <CommandDialog open={isOpen} onOpenChange={toggleOpen}>
         <CommandInput placeholder="Search your printing needs..." />
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
@@ -167,18 +180,18 @@ export function SearchBar({ data, products }: SearchProps) {
           <CommandSeparator />
           <CommandGroup heading="Theme">
             <CommandItem
-              onSelect={() => runCommand(() => setTheme("light"))}
+              onSelect={() => runCommand(() => setTheme('light'))}
               className="relative"
             >
               <SunIcon className="mr-2 text-foreground-400 h-4 w-4" />
               <SunIcon className="mr-2 text-foreground-400 h-4 w-4 absolute" />
               Light
             </CommandItem>
-            <CommandItem onSelect={() => runCommand(() => setTheme("dark"))}>
+            <CommandItem onSelect={() => runCommand(() => setTheme('dark'))}>
               <MoonIcon className="mr-2 text-foreground-400 h-4 w-4" />
               Dark
             </CommandItem>
-            <CommandItem onSelect={() => runCommand(() => setTheme("system"))}>
+            <CommandItem onSelect={() => runCommand(() => setTheme('system'))}>
               <LaptopIcon className="mr-2 text-foreground-400 h-4 w-4" />
               System
             </CommandItem>
@@ -186,5 +199,5 @@ export function SearchBar({ data, products }: SearchProps) {
         </CommandList>
       </CommandDialog>
     </>
-  );
+  )
 }
