@@ -5,10 +5,10 @@ import { cn } from "@/lib/utils";
 
 const Newsletter = () => {
   return (
-    <section className="grid grid-cols-2 max-w-5xl mx-auto py-12 px-3 my-9 bg-lime-100 dark:bg-lime-900 sm:rounded-lg">
+    <section className="grid sm:grid-cols-2 max-w-5xl mx-auto py-9 sm:py-12 px-3 my-9 bg-lime-100 dark:bg-lime-900 sm:rounded-lg">
       <div className="">Image</div>
       <div className="space-y-2">
-        <h5 className="text-lime-900 dark:text-lime-100 font-glirock text-2xl">
+        <h5 className="text-lime-900 dark:text-lime-100 font-glirock text-xl sm:text-3xl">
           Join our Newsletter
         </h5>
         <p className="text-sm">
