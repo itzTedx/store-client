@@ -150,7 +150,7 @@ body {
         rgba(100, 200, 200, 0)
       )
       no-repeat 100% 95%,
-    linear-gradient(90deg, #222, #222, #222) no-repeat 100% 95%;
+    linear-gradient(90deg, #6e6e6e, #6e6e6e, #6e6e6e) no-repeat 100% 95%;
   background-size: 100% var(--background-size), 0 var(--background-size);
   background-repeat: no-repeat;
   transition: background-size 400ms;

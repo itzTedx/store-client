@@ -4,33 +4,32 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
   Navbar as NextNav,
-} from '@nextui-org/react'
-import Image from 'next/image'
-import Link from 'next/link'
+} from "@nextui-org/react";
+import Image from "next/image";
+import Link from "next/link";
 
-import getCategories from '@/actions/get-categories'
-import { cn } from '@/lib/utils'
+import getCategories from "@/actions/get-categories";
+import { cn } from "@/lib/utils";
 
+import getAllProducts from "@/actions/get-all-products";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/ui/accordion'
-import { Button } from '@/components/ui/button'
-import { Separator } from '../ui/separator'
-import { ModeToggle } from './ModeToggle'
-import NavbarActions from './NavbarActions'
-import { ProfileActions } from './ProfileActions'
-import { SearchBar } from './SearchBarv2'
-import { DropdownMenu } from './dropdown-navbar'
-import { useState } from 'react'
-import Helpline from './Helpline'
-import getAllProducts from '@/actions/get-all-products'
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import { Separator } from "../ui/separator";
+import Helpline from "./Helpline";
+import { ModeToggle } from "./ModeToggle";
+import NavbarActions from "./NavbarActions";
+import { ProfileActions } from "./ProfileActions";
+import { SearchBar } from "./SearchBarv2";
+import { DropdownMenu } from "./dropdown-navbar";
 
 const Navbar = async () => {
-  const categories = await getCategories()
-  const products = await getAllProducts()
+  const categories = await getCategories();
+  const products = await getAllProducts();
 
   return (
     <>
@@ -141,7 +140,7 @@ const Navbar = async () => {
                   <li>
                     <Button
                       className={cn(
-                        'bg-transparent px-0 py-0 text-red-600 h-0'
+                        "bg-transparent px-0 py-0 text-red-600 h-0"
                       )}
                     >
                       Log Out
@@ -158,7 +157,9 @@ const Navbar = async () => {
             <NavbarItem>
               <Link href="/about">About us</Link>
             </NavbarItem>
-            <NavbarItem>Contact</NavbarItem>
+            <NavbarItem>
+              <Link href="/contact">Contact</Link>
+            </NavbarItem>
           </div>
         </NavbarMenu>
       </NextNav>
@@ -166,7 +167,7 @@ const Navbar = async () => {
         <DropdownMenu data={categories} />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

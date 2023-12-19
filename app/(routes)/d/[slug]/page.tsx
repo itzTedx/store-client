@@ -7,7 +7,7 @@ import Breadcrumb from "@/components/ui/breadcrumb";
 import ProductTab from "../../_components/ProductTab";
 import { Faq } from "../../_components/Faq";
 import Image from "next/image";
-import PopularProduct from "@/app/(routes)/about/_components/PopularProduct";
+import PopularProduct from "@/app/(routes)/_components/PopularProduct";
 import getAllProducts from "@/actions/get-all-products";
 import getCategoryById from "@/actions/get-category-by-id";
 

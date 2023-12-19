@@ -1,43 +1,43 @@
-'use client'
+"use client";
 
-import getProduct from '@/actions/get-product'
-import CartItem from '@/components/CartItem'
-import Summary from '@/components/Summary'
-import Container from '@/components/ui/container'
-import Skeleton from '@/components/ui/skeleton'
-import useCart from '@/hooks/use-cart'
-import { Loader2 } from 'lucide-react'
-import { useSearchParams, useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
-import toast from 'react-hot-toast'
+import getProduct from "@/actions/get-product";
+import CartItem from "@/components/CartItem";
+import Summary from "@/components/Summary";
+import Container from "@/components/ui/container";
+import Skeleton from "@/components/ui/skeleton";
+import useCart from "@/hooks/use-cart";
+import { Loader2 } from "lucide-react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const CartPage = () => {
-  const router = useRouter()
-  const searchParams = useSearchParams()
-  const [isMounted, setIsMounted] = useState(false)
-  const cart = useCart()
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [isMounted, setIsMounted] = useState(false);
+  const cart = useCart();
 
   useEffect(() => {
-    setIsMounted(true)
-  }, [])
+    setIsMounted(true);
+  }, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const addByUrl = searchParams.get('add')
-      if (!addByUrl) {
-        return
-      }
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const addByUrl = searchParams.get("add");
+  //     if (!addByUrl) {
+  //       return;
+  //     }
 
-      const product = await getProduct(addByUrl)
-      if (!product) {
-        return toast.error('No Product found')
-      }
-      cart.addItem(product)
-    }
+  //     const product = await getProduct(addByUrl);
+  //     if (!product) {
+  //       return toast.error("No Product found");
+  //     }
+  //     cart.addItem(product);
+  //   };
 
-    fetchData()
-    router.push('/cart')
-  }, [cart, searchParams, router])
+  //   fetchData();
+  //   router.push("/cart");
+  // }, [cart, searchParams, router]);
 
   if (!isMounted) {
     return (
@@ -48,14 +48,14 @@ const CartPage = () => {
             <Loader2 className="w-6 h-6 stroke-2 animate-spin text-primary-800" />
           </h1>
           <div className="mt-12 lg:grid lg:grid-cols-12 lg:items-start gap-x-12">
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-7 pb-6">
               <Skeleton className="h-24 w-24 rounded-md sm:h-40 sm:w-40" />
             </div>
             <Summary />
           </div>
         </div>
       </Container>
-    )
+    );
   }
 
   return (
@@ -65,9 +65,9 @@ const CartPage = () => {
           Shopping Cart
           {isMounted && cart.items.length > 0 && (
             <span>
-              {'('}
+              {"("}
               {cart.items.length}
-              {')'}
+              {")"}
             </span>
           )}
         </h1>
@@ -83,11 +83,12 @@ const CartPage = () => {
                 ))}
             </ul>
           </div>
+
           <Summary />
         </div>
       </div>
     </Container>
-  )
-}
+  );
+};
 
-export default CartPage
+export default CartPage;

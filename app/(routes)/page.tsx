@@ -6,7 +6,7 @@ import Explore from "./_components/Explore";
 import CategoryList from "@/components/CategoryList";
 import { Button } from "@/components/ui/button";
 import StarterKit from "@/app/(routes)/_components/StarterKit";
-import PopularProduct from "@/app/(routes)/about/_components/PopularProduct";
+import PopularProduct from "@/app/(routes)/_components/PopularProduct";
 import { Suspense } from "react";
 import { Heading } from "@/components/ui/Heading";
 import Image from "next/image";

@@ -1,27 +1,25 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import { X } from 'lucide-react'
+import Image from "next/image";
+import { X } from "lucide-react";
 
-import { Product } from '@/types'
-import IconButton from './ui/icon-button'
-import useCart from '@/hooks/use-cart'
-import Currency from './ui/currency'
-import { Badge } from './ui/badge'
-import { Separator } from './ui/separator'
+import { Product } from "@/types";
+import IconButton from "./ui/icon-button";
+import useCart from "@/hooks/use-cart";
+import Currency from "./ui/currency";
+import { Badge } from "./ui/badge";
+import { Separator } from "./ui/separator";
 
 interface CartItemProps {
-  data: Product
+  data: Product;
 }
 
 const CartItem: React.FC<CartItemProps> = ({ data }) => {
-  const cart = useCart()
+  const cart = useCart();
 
   const onRemove = () => {
-    cart.removeItem(data.id)
-  }
-
-  console.log(data)
+    cart.removeItem(data.id);
+  };
 
   return (
     <>
@@ -58,7 +56,7 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
         </div>
       </li>
     </>
-  )
-}
+  );
+};
 
-export default CartItem
+export default CartItem;
