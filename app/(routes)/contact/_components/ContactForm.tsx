@@ -17,6 +17,7 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import toast from 'react-hot-toast'
 import { sendEmail } from '@/actions/send-email'
+import { useRouter } from 'next/navigation'
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Please enter your name').max(50),
@@ -28,6 +29,8 @@ const contactSchema = z.object({
 export type ContactFormProps = z.infer<typeof contactSchema>
 
 const ContactForm = () => {
+  const router = useRouter()
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
@@ -43,7 +46,9 @@ const ContactForm = () => {
 
     await sendEmail(values)
 
-    toast.success('Form Data Send Sucessfully')
+    toast.success(`Message sent successfully. We${"'"}ll respond you soon`)
+
+    router.refresh()
   }
 
   return (
@@ -83,7 +88,7 @@ const ContactForm = () => {
               <FormItem>
                 <FormLabel>Phone no</FormLabel>
                 <FormControl>
-                  <Input placeholder="+971 12 345 6789" {...field} />
+                  <Input placeholder="+971 12 345 6789" type="tel" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
