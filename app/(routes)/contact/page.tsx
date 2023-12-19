@@ -1,15 +1,25 @@
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import Contact from "./_components/Contact";
+import Newsletter from "@/components/Newsletter";
+import { ArrowBigDown } from "lucide-react";
 
-function Contact() {
+function ContactPage() {
   return (
     <>
-      <div className="container grid grid-cols-3 gap-3 py-12">
-        <div className="col-span-2">Images</div>
-        <div className="">
-          <h1 className="text-3xl font-glirock">We're Here to Help</h1>
-          <p>
+      <div className="container grid sm:grid-cols-3 gap-6 py-12 items-center relative">
+        <div className="col-span-2 grid grid-cols-3 gap-3">
+          <div className="bg-lime-300 rounded-lg p-3">Image</div>
+          <div className="aspect-video bg-lime-300 col-span-2 rounded-lg p-3">
+            Image
+          </div>
+        </div>
+        <div className="space-y-3">
+          <h1 className="text-4xl sm:text-6xl font-glirock text-primary-900">
+            We're Here to Help
+          </h1>
+          <p className="text-lg">
             Have a question or need assistance? <br />
             Call us at{` `}
             <Link
@@ -23,9 +33,15 @@ function Contact() {
             </Link>
           </p>
         </div>
+        <div className="absolute bottom-12 right-12">
+          <ArrowBigDown className="h-12 w-12 stroke-1 text-foreground-200 animate-bounce z-10" />
+          <span className="h-36 w-36 bg-lime-300/20 dark:bg-lime-500/10 absolute -bottom-9 -right-9 blur-2xl rounded-full" />
+        </div>
       </div>
+      <Contact />
+      <Newsletter />
     </>
   );
 }
 
-export default Contact;
+export default ContactPage;
