@@ -81,8 +81,6 @@ export function SearchBar({ data, products }: SearchProps) {
     [onClose]
   )
 
-  console.log(isOpen)
-
   return (
     <>
       <Button

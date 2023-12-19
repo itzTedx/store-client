@@ -1,27 +1,67 @@
-import Billboard from "@/components/Billboard";
-import getBillboard from "@/actions/get-billboard";
-import { Trusted } from "./_components/Trusted";
-import getCategories from "@/actions/get-categories";
-import Explore from "./_components/Explore";
-import CategoryList from "@/components/CategoryList";
-import { Button } from "@/components/ui/button";
-import StarterKit from "@/app/(routes)/_components/StarterKit";
-import PopularProduct from "@/app/(routes)/_components/PopularProduct";
-import { Suspense } from "react";
-import { Heading } from "@/components/ui/Heading";
-import Image from "next/image";
-import Link from "next/link";
-import Portfolio from "./_components/Portfolio";
-import Featured from "./_components/Featured";
-import BlogCard from "./blogs/_components/BlogCard";
+import getBillboard from '@/actions/get-billboard'
+import getCategories from '@/actions/get-categories'
+import PopularProduct from '@/app/(routes)/_components/PopularProduct'
+import StarterKit from '@/app/(routes)/_components/StarterKit'
+import Billboard from '@/components/Billboard'
+import CategoryList from '@/components/CategoryList'
+import { Heading } from '@/components/ui/Heading'
+import { Metadata } from 'next'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Suspense } from 'react'
+import Explore from './_components/Explore'
+import Featured from './_components/Featured'
+import Portfolio from './_components/Portfolio'
+import { Trusted } from './_components/Trusted'
+import BlogCard from './blogs/_components/BlogCard'
+import { siteConfig } from '@/config/site'
 
 // export const revalidate = 300;
-export const dynamic = "force-static";
+export const dynamic = 'force-static'
+
+export const metadata: Metadata = {
+  title: { default: siteConfig.name, template: `%s | ${siteConfig.shortName}` },
+  description: siteConfig.description,
+  keywords: ['Digital', 'Print', 'Signboard', 'Customized', 'Corporate Gifts'],
+  authors: [
+    {
+      name: siteConfig.shortName,
+      url: siteConfig.url,
+    },
+  ],
+  creator: siteConfig.shortName,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'white' },
+    { media: '(prefers-color-scheme: dark)', color: 'black' },
+  ],
+  openGraph: {
+    type: 'website',
+    locale: 'en_AE',
+    alternateLocale: 'en_US',
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    siteName: siteConfig.name,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+    creator: '@digitaldesk_uae',
+  },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon-16x16.png',
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: `${siteConfig.url}/site.webmanifest`,
+}
 
 const HomePage = async () => {
-  const billboard = await getBillboard("b356ae0a-c51c-47e5-86c6-baae568ef665");
+  const billboard = await getBillboard('b356ae0a-c51c-47e5-86c6-baae568ef665')
   // const products = await getProducts({ isFeatured: true })
-  const categories = await getCategories();
+  const categories = await getCategories()
 
   return (
     <>
@@ -38,7 +78,7 @@ const HomePage = async () => {
       <Featured />
 
       <div aria-label="Products">
-        <Suspense fallback={"Loading..."}>
+        <Suspense fallback={'Loading...'}>
           {categories.slice(0, 3).map((category) => (
             <section
               key={category.id}
@@ -56,7 +96,7 @@ const HomePage = async () => {
         <div aria-label="Popular Products">
           <PopularProduct />
         </div>
-        <Suspense fallback={"Loading..."}>
+        <Suspense fallback={'Loading...'}>
           {categories.slice(3, categories.length).map((category) => (
             <section
               key={category.id}
@@ -135,7 +175,7 @@ const HomePage = async () => {
         <StarterKit />
       </section>
     </>
-  );
-};
+  )
+}
 
-export default HomePage;
+export default HomePage
