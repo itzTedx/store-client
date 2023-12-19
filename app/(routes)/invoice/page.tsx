@@ -2,6 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Download, Printer, ShoppingBag } from "lucide-react";
 import React from "react";
 
+export const dynamic = "force-static";
+
 const InvoicePage = () => {
   const timeElapsed = Date.now();
   const today = new Date(timeElapsed);

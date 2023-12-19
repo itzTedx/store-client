@@ -8,6 +8,8 @@ import { Trusted } from "../_components/Trusted";
 import Commitment from "./_components/Commitment";
 import Portfolio from "../_components/Portfolio";
 
+export const dynamic = "force-static";
+
 function About() {
   return (
     <>

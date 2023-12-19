@@ -41,7 +41,7 @@ const BottomNav = () => {
               layoutId="pill-tab"
               transition={{ type: "spring", duration: 0.5 }}
               className={cn(
-                "absolute inset-0 z-0 bg-gradient-to-br rounded-full",
+                "absolute inset-0 z-0 bg-gradient-to-br rounded-md",
                 scrollDirection === "up"
                   ? "from-primary-600/70 to-primary-400/70 "
                   : "bg-primary-500/20"
@@ -60,13 +60,13 @@ const BottomNav = () => {
               "transition-all relative",
               pathname === "/shop" ? "stroke-2 text-primary-800" : "stroke-1"
             )}
-          />{" "}
+          />
           {pathname === "/search" && (
             <motion.span
               layoutId="pill-tab"
               transition={{ type: "spring", duration: 0.5 }}
               className={cn(
-                "absolute inset-0 z-0 bg-gradient-to-br rounded-full",
+                "absolute inset-0 z-0 bg-gradient-to-br rounded-md",
                 scrollDirection === "up"
                   ? "from-primary-600/70 to-primary-400/70 "
                   : "bg-primary-500/20"
@@ -91,7 +91,7 @@ const BottomNav = () => {
               layoutId="pill-tab"
               transition={{ type: "spring", duration: 0.5 }}
               className={cn(
-                "absolute inset-0 z-0 bg-gradient-to-br rounded-full",
+                "absolute inset-0 z-0 bg-gradient-to-br rounded-md",
                 scrollDirection === "up"
                   ? "from-primary-600/70 to-primary-400/70 "
                   : "bg-primary-500/20"
@@ -116,7 +116,7 @@ const BottomNav = () => {
               layoutId="pill-tab"
               transition={{ type: "spring", duration: 0.5 }}
               className={cn(
-                "absolute inset-0 z-0 bg-gradient-to-br rounded-full",
+                "absolute inset-0 z-0 bg-gradient-to-br rounded-md",
                 scrollDirection === "up"
                   ? "from-primary-600/70 to-primary-400/70 "
                   : "bg-primary-500/20"

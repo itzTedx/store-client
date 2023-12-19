@@ -1,7 +1,7 @@
-import React from 'react'
+export const dynamic = "force-static";
 
 const AccountPage = () => {
-  return <div>AccountPage</div>
-}
+  return <div>AccountPage</div>;
+};
 
-export default AccountPage
+export default AccountPage;

@@ -1,4 +1,4 @@
-import React from "react";
+export const dynamic = "force-static";
 
 function TermsCondition() {
   return <div>TermsCondition</div>;

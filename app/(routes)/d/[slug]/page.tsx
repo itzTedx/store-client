@@ -10,6 +10,7 @@ import Image from "next/image";
 import PopularProduct from "@/app/(routes)/_components/PopularProduct";
 import getAllProducts from "@/actions/get-all-products";
 import getCategoryById from "@/actions/get-category-by-id";
+import { notFound } from "next/navigation";
 
 interface ProductPageProps {
   params: {
@@ -27,6 +28,8 @@ export async function generateStaticParams() {
 
 const ProductPage = async ({ params }: ProductPageProps) => {
   const product = await getProduct(params.slug);
+  if (!product) return notFound();
+
   const category = await getCategoryById(product.subcategory.categoryId);
 
   const suggestedProducts = product.subcategory.products;

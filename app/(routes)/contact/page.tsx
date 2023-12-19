@@ -5,6 +5,8 @@ import Contact from "./_components/Contact";
 import Newsletter from "@/components/Newsletter";
 import { ArrowBigDown } from "lucide-react";
 
+export const dynamic = "force-static";
+
 function ContactPage() {
   return (
     <>

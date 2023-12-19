@@ -1,3 +1,4 @@
+import getCategories from "@/actions/get-categories";
 import getCategory from "@/actions/get-category";
 import getSubcategory from "@/actions/get-subcategory";
 import Breadcrumb from "@/components/ui/breadcrumb";
@@ -10,6 +11,16 @@ interface SubCategoryPageProps {
     slug: string;
     subcategorySlug: string;
   };
+}
+
+export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+  const categories = await getCategories();
+
+  return categories.map((category) =>
+    category.subcategory.map((sub) => sub.slug)
+  );
 }
 
 export async function generateMetadata({

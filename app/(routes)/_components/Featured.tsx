@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 const features = [
   {
@@ -18,7 +19,7 @@ const features = [
 
 const Featured = () => {
   return (
-    <section className="container grid sm:grid-cols-2 gap-6 md:gap-12 sm:py-24 px-3 lg:px-6">
+    <section className="max-w-6xl mx-auto grid sm:grid-cols-2 gap-6 md:gap-12 py-9 sm:py-24 px-3 lg:px-6">
       <div className="relative aspect-video sm:aspect-[3/4] md:aspect-square">
         <Image
           fill
@@ -37,9 +38,11 @@ const Featured = () => {
             shiny coating of Spot UV. Even though subtle, the slick shine is
             encapsulating and highly impressive.
           </p>
-          <Button className="font-semibold rounded-full">Order Now</Button>
+          <Button className="font-semibold rounded-full" asChild>
+            <Link href="/d/spot-uv-business-card">Order Now</Link>
+          </Button>
         </div>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid-cols-2 gap-4 hidden sm:grid">
           {features.map(({ imgSrc, title, description }, i) => (
             <div key={i}>
               <div className="p-2">
