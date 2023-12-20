@@ -1,36 +1,36 @@
-import Currency from './ui/currency'
-import { Button } from './ui/button'
-import useCart from '@/hooks/use-cart'
-import { redirect, useSearchParams } from 'next/navigation'
-import axios from 'axios'
-import { useEffect } from 'react'
-import toast from 'react-hot-toast'
+import Currency from "./ui/currency";
+import { Button } from "./ui/button";
+import useCart from "@/hooks/use-cart";
+import { redirect, useSearchParams } from "next/navigation";
+import axios from "axios";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 const Summary = () => {
-  const searchParams = useSearchParams()
+  const searchParams = useSearchParams();
 
-  const items = useCart((state) => state.items)
-  const removeAll = useCart((state) => state.removeAll)
+  const items = useCart((state) => state.items);
+  const removeAll = useCart((state) => state.removeAll);
 
   useEffect(() => {
-    if (searchParams.get('success')) {
-      toast.success('Payment completed.')
-      removeAll()
-      redirect(`/my-orders`)
+    if (searchParams.get("success")) {
+      toast.success("Payment completed.");
+      removeAll();
+      redirect(`/my-orders`);
     }
 
-    if (searchParams.get('canceled')) {
-      toast.error('Something went wrong.')
+    if (searchParams.get("canceled")) {
+      toast.error("Something went wrong.");
     }
-  }, [searchParams, removeAll])
+  }, [searchParams, removeAll]);
 
   const totalPrice = items.reduce((total, item) => {
-    return total + Number(item.discountPrice)
-  }, 0)
+    return total + Number(item.discountPrice);
+  }, 0);
 
-  const taxPrice = totalPrice * 0.05
+  const taxPrice = totalPrice * 0.05;
 
-  const grandTotal = taxPrice + totalPrice
+  const grandTotal = taxPrice + totalPrice;
 
   const onCheckout = async () => {
     const response = await axios.post(
@@ -39,26 +39,28 @@ const Summary = () => {
         productIds: items.map((item) => item.id),
       },
       { withCredentials: false }
-    )
+    );
 
-    window.location = response.data.url
-  }
+    window.location = response.data.url;
+  };
 
   return (
     <div className="mt-15 sticky top-20 rounded-lg bg-gray-50 dark:bg-gray-900 px-4 py-6 sm:p-6 lg:col-span-5 lg; mt-0 lg:p-8">
-      <h2 className="text-lg font-medium text-foreground">Order Summary</h2>
+      <h2 className="text-lg text-foreground">Order Summary</h2>
       <div className="mt-6 space-y-4">
         <div className="flex items-center justify-between border-t pt-4">
-          <div className="text-base font-medium">Order Total</div>
+          <div className="text-base">Order Total</div>
           <Currency value={totalPrice} />
         </div>
         <div className="flex items-center justify-between border-t pt-4">
-          <div className="text-base font-medium">Tax 5%</div>
+          <div className="text-base">Tax 5%</div>
           <Currency value={taxPrice} />
         </div>
         <div className="flex items-center justify-between border-t  pt-4">
           <div className="text-base font-medium">Grand Total</div>
-          <Currency value={grandTotal} />
+          <span className="font-bold">
+            <Currency value={grandTotal} />
+          </span>
         </div>
       </div>
       <Button
@@ -69,7 +71,7 @@ const Summary = () => {
         Checkout
       </Button>
     </div>
-  )
-}
+  );
+};
 
-export default Summary
+export default Summary;

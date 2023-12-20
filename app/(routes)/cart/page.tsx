@@ -2,11 +2,13 @@
 
 import CartItem from "@/components/CartItem";
 import Summary from "@/components/Summary";
+import { Button } from "@/components/ui/button";
 import Container from "@/components/ui/container";
+import IconButton from "@/components/ui/icon-button";
 import Skeleton from "@/components/ui/skeleton";
 import useCart from "@/hooks/use-cart";
 import { useIsMounted } from "@/hooks/use-is-mounted";
-import { Loader2 } from "lucide-react";
+import { ArrowLeft, Loader2 } from "lucide-react";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -75,16 +77,24 @@ const CartPage = () => {
   return (
     <Container>
       <div className="px-4 py-6 md:py-16 sm:px-6 lg:px-8">
-        <h1 className="text-2xl font-bold flex gap-x-2">
-          Shopping Cart
-          {isMounted && cart.items.length > 0 && (
-            <span>
-              {"("}
-              {cart.items.length}
-              {")"}
-            </span>
-          )}
-        </h1>
+        <div className="flex gap-2 items-center">
+          <IconButton
+            icon={<ArrowLeft className="w-5 h-5" />}
+            onClick={() => router.back()}
+            className="block md:hidden"
+          />
+
+          <h1 className="text-2xl font-bold flex gap-x-2">
+            Shopping Cart
+            {isMounted && cart.items.length > 0 && (
+              <span>
+                {"("}
+                {cart.items.length}
+                {")"}
+              </span>
+            )}
+          </h1>
+        </div>
         <div className="mt-12 lg:grid lg:grid-cols-12 lg:items-start gap-x-12">
           <div className="lg:col-span-7">
             <ul>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useIsMounted } from "@/hooks/use-is-mounted";
 
 interface CurrencyProps {
   value?: string | number;
@@ -8,17 +8,13 @@ interface CurrencyProps {
 }
 
 const Currency: React.FC<CurrencyProps> = ({ value = 0, fraction = 2 }) => {
-  const [isMounted, setIsMounted] = useState(false);
+  const isMounted = useIsMounted();
 
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "AED",
     minimumFractionDigits: fraction,
   });
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   if (!isMounted) {
     return null;
