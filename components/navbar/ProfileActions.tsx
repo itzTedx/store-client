@@ -35,22 +35,27 @@ export const ProfileActions = () => {
           My Account <ChevronDown size={16} aria-hidden />
         </span>
       </div>
-      {/* <ShadDrop>
-    <DropdownMenuTrigger className="hidden md:flex">
-      <Image
-        src="/icons/account.svg"
-        width={40}
-        height={40}
-        alt="My Account"
-      />
-      <div className="">
-        <p className="text-sm">Hello, Digital</p>
-        <Button variant="ghost" className="h-auto p-0 font-bold">
-          My Account <ChevronDown size={16} />
-        </Button>
-      </div>
-    </DropdownMenuTrigger>
-  </ShadDrop> */}
     </Button>
   );
 };
+//  <ShadDrop>
+//    <DropdownMenuTrigger className="hidden md:flex">
+//      <Image
+//        src="/icons/account.svg"
+//        width={40}
+//        height={40}
+//        alt="My Account"
+//        aria-hidden
+//        className="shrink-0"
+//      />
+//      <div className="hidden lg:block">
+//        <p className="text-xs text-left" aria-label="Hello Digital">
+//          Hello, Digital
+//        </p>
+//        <span className="flex text-sm font-semibold text-primary-800">
+//          My Account <ChevronDown size={16} aria-hidden />
+//        </span>
+//      </div>
+//    </DropdownMenuTrigger>
+//    <DropdownMenuContent align="start">Hell</DropdownMenuContent>
+//  </ShadDrop>;

@@ -1,22 +1,18 @@
-'use client'
+"use client";
 
-import { Loader2 } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { Loader2 } from "lucide-react";
+import { useEffect, useState } from "react";
 
-import { Button } from '@/components/ui/button'
-import useCart from '@/hooks/use-cart'
-import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { Button } from "@/components/ui/button";
+import useCart from "@/hooks/use-cart";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useIsMounted } from "@/hooks/use-is-mounted";
 
 const NavbarActions = () => {
-  const [isMounted, setIsMounted] = useState(false)
-
-  const cart = useCart()
-  const router = useRouter()
-
-  useEffect(() => {
-    setIsMounted(true)
-  }, [])
+  const cart = useCart();
+  const router = useRouter();
+  const isMounted = useIsMounted();
 
   // const items = cart.items.map((item) => item)
 
@@ -28,7 +24,7 @@ const NavbarActions = () => {
     return (
       <>
         <Button
-          onClick={() => router.push('/cart')}
+          onClick={() => router.push("/cart")}
           className="hidden sm:flex items-center md:px-4 py-4"
           variant="ghost"
           aria-label="cart"
@@ -50,13 +46,13 @@ const NavbarActions = () => {
           </div> */}
         </Button>
       </>
-    )
+    );
   }
 
   return (
     <>
       <Button
-        onClick={() => router.push('/cart')}
+        onClick={() => router.push("/cart")}
         className="hidden sm:flex items-center md:px-2 py-4"
         variant="ghost"
         aria-label="Cart"
@@ -68,7 +64,7 @@ const NavbarActions = () => {
           <span
             className="absolute top-0 right-0 text-[8px] sm:text-[10px] font-semibold rounded-full border-sky-500 border-1.5 bg-gray-100 text-black h-3 w-3 sm:h-4 sm:w-4 flex items-center justify-center"
             aria-label={`${cart.items.length} ${
-              cart.items.length > 1 ? 'items' : 'item'
+              cart.items.length > 1 ? "items" : "item"
             } in the cart`}
           >
             {cart.items.length}
@@ -102,7 +98,7 @@ const NavbarActions = () => {
         </div>
       </Button> */}
     </>
-  )
-}
+  );
+};
 
-export default NavbarActions
+export default NavbarActions;

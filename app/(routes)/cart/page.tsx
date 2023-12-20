@@ -1,15 +1,14 @@
 "use client";
 
-import getProduct from "@/actions/get-product";
 import CartItem from "@/components/CartItem";
 import Summary from "@/components/Summary";
 import Container from "@/components/ui/container";
 import Skeleton from "@/components/ui/skeleton";
 import useCart from "@/hooks/use-cart";
 import { Loader2 } from "lucide-react";
-import { useSearchParams, useRouter } from "next/navigation";
+import Image from "next/image";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 
 const CartPage = () => {
   const router = useRouter();
@@ -51,12 +50,30 @@ const CartPage = () => {
             <div className="lg:col-span-7 pb-6">
               <Skeleton className="h-24 w-24 rounded-md sm:h-40 sm:w-40" />
             </div>
-            <Summary />
           </div>
         </div>
       </Container>
     );
   }
+
+  if (isMounted && cart.items.length === 0)
+    return (
+      <Container>
+        <div className="px-4 py-6 md:py-16 sm:px-6 lg:px-8">
+          <h1 className="text-2xl font-bold flex gap-x-2">
+            Empty Shopping Cart
+          </h1>
+          <div className="mt-12 grid place-content-center">
+            <div className="w-full h-40 relative saturate-0 mx-auto">
+              <Image src="/icons/cart.svg" fill alt="" />
+            </div>
+            <div className="text-muted-foreground mb-6">
+              Explore our wide variety of printing services
+            </div>
+          </div>
+        </div>
+      </Container>
+    );
 
   return (
     <Container>
