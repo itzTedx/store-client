@@ -1,10 +1,10 @@
-'use client'
+"use client";
 
-import * as z from 'zod'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
+import * as z from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
 
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
@@ -12,43 +12,41 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@/components/ui/form'
-import { Input } from '@/components/ui/input'
-import { Textarea } from '@/components/ui/textarea'
-import toast from 'react-hot-toast'
-import { sendEmail } from '@/actions/send-email'
-import { useRouter } from 'next/navigation'
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import toast from "react-hot-toast";
+import { sendEmail } from "@/actions/send-email";
+import { useRouter } from "next/navigation";
 
 const contactSchema = z.object({
-  name: z.string().min(2, 'Please enter your name').max(50),
+  name: z.string().min(2, "Please enter your name").max(50),
   email: z.string().email().optional(),
   phone: z.string().min(10).max(14),
-  message: z.string().min(1).max(256, 'Exceed the limit'),
-})
+  message: z.string().min(1).max(256, "Exceed the limit"),
+});
 
-export type ContactFormProps = z.infer<typeof contactSchema>
+export type ContactFormProps = z.infer<typeof contactSchema>;
 
 const ContactForm = () => {
-  const router = useRouter()
+  const router = useRouter();
 
-  // 1. Define your form.
   const form = useForm<z.infer<typeof contactSchema>>({
     resolver: zodResolver(contactSchema),
     defaultValues: {
-      name: '',
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
     },
-  })
+  });
 
-  // 2. Define a submit handler.
   async function onSubmit(values: ContactFormProps) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
+    await sendEmail(values);
 
-    await sendEmail(values)
+    toast.success(`Message sent successfully. We${"'"}ll respond you soon`);
 
-    toast.success(`Message sent successfully. We${"'"}ll respond you soon`)
-
-    router.refresh()
+    form.reset();
   }
 
   return (
@@ -113,7 +111,7 @@ const ContactForm = () => {
         </Button>
       </form>
     </Form>
-  )
-}
+  );
+};
 
-export default ContactForm
+export default ContactForm;

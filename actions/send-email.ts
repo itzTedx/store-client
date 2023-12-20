@@ -1,18 +1,24 @@
-'use server'
+"use server";
 
-import { ContactFormProps } from '@/app/(routes)/contact/_components/ContactForm'
-import { Resend } from 'resend'
+import { ContactFormProps } from "@/app/(routes)/contact/_components/ContactForm";
+import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const sendEmail = async (values: ContactFormProps) => {
-  const { name, email, phone, message } = values
-  console.log('Running on server and the', name)
+  const { name, email, phone, message } = values;
+  console.log("Running on server and the", name);
 
-  resend.emails.send({
-    from: 'Contact <sales@digitaldesk.ae>',
-    to: 'melwinafs@gmail.com',
-    subject: 'Message from contact form',
-    text: message,
-  })
-}
+  try {
+    await resend.emails.send({
+      from: `${name} <sales@digitaldesk.ae>`,
+      reply_to: email,
+      to: "melwinafs@gmail.com",
+      cc: "digitaldeskpc@gmail.com",
+      subject: `Message from ${name}`,
+      text: message,
+    });
+  } catch (e) {
+    console.log(e);
+  }
+};

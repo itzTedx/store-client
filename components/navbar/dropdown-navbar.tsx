@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
-import * as React from 'react'
-import Link from 'next/link'
+import * as React from "react";
+import Link from "next/link";
 
-import { cn } from '@/lib/utils'
+import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,18 +12,18 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
-} from '@/components/ui/navigation-menu'
-import { usePathname } from 'next/navigation'
-import { Category } from '@/types'
-import { Separator } from '../ui/separator'
-import Image from 'next/image'
+} from "@/components/ui/navigation-menu";
+import { usePathname } from "next/navigation";
+import { Category } from "@/types";
+import { Separator } from "../ui/separator";
+import Image from "next/image";
 
 interface MainNavProps {
-  data: Category[]
+  data: Category[];
 }
 
 export function DropdownMenu({ data }: MainNavProps) {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   const routes = data.map((route) => ({
     href: `/${route.slug}`,
@@ -31,7 +31,7 @@ export function DropdownMenu({ data }: MainNavProps) {
     active: pathname === `/${route.slug}`,
     subcategory: route.subcategory,
     billboard: route?.billboard,
-  }))
+  }));
 
   return (
     <NavigationMenu
@@ -50,7 +50,7 @@ export function DropdownMenu({ data }: MainNavProps) {
             </NavigationMenuTrigger>
 
             <NavigationMenuContent className="">
-              <ul className="grid gap-3 p-6 md:w-[100dvw] lg:w-[880px] lg:grid-cols-[.80fr_1fr_1fr] mx-auto">
+              <ul className="grid gap-3 p-6 md:w-[100dvw] lg:w-[880px] md:grid-cols-[.80fr_1fr_1fr] mx-auto">
                 {route.billboard ? (
                   <li className="row-span-6">
                     <NavigationMenuLink asChild>
@@ -87,7 +87,7 @@ export function DropdownMenu({ data }: MainNavProps) {
                     >
                       {sub.description}
                     </ListItem>
-                  )
+                  );
                 })}
               </ul>
             </NavigationMenuContent>
@@ -140,12 +140,12 @@ export function DropdownMenu({ data }: MainNavProps) {
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>
-  )
+  );
 }
 
 const ListItem = React.forwardRef<
-  React.ElementRef<'a'>,
-  React.ComponentPropsWithoutRef<'a'>
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
 >(({ className, title, children, ...props }, ref) => {
   return (
     <li>
@@ -153,7 +153,7 @@ const ListItem = React.forwardRef<
         <a
           ref={ref}
           className={cn(
-            'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
           {...props}
@@ -165,6 +165,6 @@ const ListItem = React.forwardRef<
         </a>
       </NavigationMenuLink>
     </li>
-  )
-})
-ListItem.displayName = 'ListItem'
+  );
+});
+ListItem.displayName = "ListItem";
