@@ -1,41 +1,45 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import { MouseEventHandler } from 'react'
-import { Expand, ShoppingBag, ShoppingCart } from 'lucide-react'
-import { useRouter } from 'next/navigation'
+import Image from "next/image";
+import { MouseEventHandler } from "react";
+import { Expand, ShoppingBag, ShoppingCart } from "lucide-react";
+import { useRouter } from "next/navigation";
 
-import Currency from '@/components/ui/currency'
-import IconButton from '@/components/ui/icon-button'
-import usePreviewModal from '@/hooks/use-preview-modal'
-import useCart from '@/hooks/use-cart'
-import { Product } from '@/types'
-import Link from 'next/link'
+import Currency from "@/components/ui/currency";
+import IconButton from "@/components/ui/icon-button";
+import usePreviewModal from "@/hooks/use-preview-modal";
+import useCart from "@/hooks/use-cart";
+import { Product } from "@/types";
+import Link from "next/link";
+import { Badge } from "./badge";
+import { useIsMounted } from "@/hooks/use-is-mounted";
 
 interface ProductCard {
-  data: Product
+  data: Product;
 }
 
 const ProductCard: React.FC<ProductCard> = ({ data }) => {
-  const previewModal = usePreviewModal()
-  const cart = useCart()
-  const router = useRouter()
+  const previewModal = usePreviewModal();
+  const cart = useCart();
+  const router = useRouter();
+
+  const isMounted = useIsMounted();
 
   const handleClick = () => {
-    router.push(`/d/${data?.slug}`)
-  }
+    router.push(`/d/${data?.slug}`);
+  };
 
   const onPreview: MouseEventHandler<HTMLButtonElement> = (event) => {
-    event.stopPropagation()
+    event.stopPropagation();
 
-    previewModal.onOpen(data)
-  }
+    previewModal.onOpen(data);
+  };
 
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = (event) => {
-    event.stopPropagation()
+    event.stopPropagation();
 
-    cart.addItem(data)
-  }
+    cart.addItem(data);
+  };
 
   return (
     <div
@@ -80,21 +84,40 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
         </div>
       </div>
       {/* Price & Reiew */}
-      <div className="flex justify-between items-center">
-        <div className="font-bold">
-          <Currency
-            value={data.discountPrice ? data.discountPrice : data.actualPrice}
-          />
+      <div className="flex justify-between items-end">
+        <div className="flex gap-1.5 items-center">
+          <div className="font-bold">
+            <Currency
+              value={
+                data.discountPrice > 0 ? data.discountPrice : data.actualPrice
+              }
+            />
+          </div>
+          {isMounted && data.discountPrice > 0 ? (
+            <Badge variant="destructive">
+              Save{` `}
+              <Currency
+                value={data.actualPrice - data.discountPrice}
+                fraction={0}
+              />
+            </Badge>
+          ) : null}
+
+          {/* {data.discountPrice ? (
+            <div className="text-xs text-muted-foreground line-through">
+              <Currency value={data.actualPrice} />
+            </div>
+          ) : null} */}
         </div>
-        <div className="flex items-center gap-2 dark:hover:text-lime-500 hover:text-lime-900 text-sm transition">
+        {/* <div className="flex items-center gap-2 dark:hover:text-lime-500 hover:text-lime-900 text-sm transition">
           Buy Now
           <div className="p-1.5 bg-lime-300 dark:bg-lime-400 rounded-full text-lime-900 ">
             <ShoppingBag className="w-4 h-4" />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProductCard
+export default ProductCard;

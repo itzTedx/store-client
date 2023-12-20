@@ -5,6 +5,7 @@ import Summary from "@/components/Summary";
 import Container from "@/components/ui/container";
 import Skeleton from "@/components/ui/skeleton";
 import useCart from "@/hooks/use-cart";
+import { useIsMounted } from "@/hooks/use-is-mounted";
 import { Loader2 } from "lucide-react";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -13,12 +14,8 @@ import { useEffect, useState } from "react";
 const CartPage = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [isMounted, setIsMounted] = useState(false);
   const cart = useCart();
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
+  const isMounted = useIsMounted();
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -90,9 +87,6 @@ const CartPage = () => {
         </h1>
         <div className="mt-12 lg:grid lg:grid-cols-12 lg:items-start gap-x-12">
           <div className="lg:col-span-7">
-            {isMounted && cart.items.length === 0 && (
-              <p className="text-neutral-500 mb-6">No items added to cart</p>
-            )}
             <ul>
               {isMounted &&
                 cart.items.map((data) => (

@@ -9,6 +9,7 @@ import useCart from "@/hooks/use-cart";
 import Currency from "./ui/currency";
 import { Badge } from "./ui/badge";
 import { Separator } from "./ui/separator";
+import Link from "next/link";
 
 interface CartItemProps {
   data: Product;
@@ -34,9 +35,13 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
             />
           </div>
           <div className="col-span-2 sm:col-span-1 space-y-2 sm:space-y-3 flex flex-col justify-between px-3 sm:px-0 sm:py-4">
-            <div className="">
-              <Badge variant="outline">{data.subcategory?.name}</Badge>
-              <p className="text-lg font-bold">{data.name}</p>
+            <div className="flex flex-col">
+              <Badge variant="outline" className="w-fit">
+                {data.subcategory?.name}
+              </Badge>
+              <Link href={`/d/${data.slug}`} className="text-lg font-bold">
+                {data.name}
+              </Link>
 
               <div className="mt-1 flex text-sm gap-3 ">
                 <p className="text-gray-500 shrink-0">

@@ -1,31 +1,31 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState } from "react";
 
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
-import 'swiper/css'
+import "swiper/css";
 
-import Skeleton from '@/components/ui/skeleton'
-import { popularProducts } from '@/constants/popular-products'
-import { cn } from '@/lib/utils'
+import Skeleton from "@/components/ui/skeleton";
+import { popularProducts } from "@/constants/popular-products";
+import { cn } from "@/lib/utils";
 
 interface PopularProductProps {
-  className?: string
+  className?: string;
 }
 
 const PopularProduct = ({ className }: PopularProductProps) => {
-  const [isMounted, setIsMounted] = useState(false)
+  const [isMounted, setIsMounted] = useState(false);
   useEffect(() => {
-    setIsMounted(true)
-  }, [])
+    setIsMounted(true);
+  }, []);
 
   return (
     <div className="container px-3">
-      <h3 className={cn('py-6 text-3xl text-center font-glirock', className)}>
+      <h3 className={cn("py-6 text-3xl text-center font-glirock", className)}>
         Our Popular Products
       </h3>
 
@@ -34,6 +34,10 @@ const PopularProduct = ({ className }: PopularProductProps) => {
           spaceBetween={16}
           slidesPerView={2}
           breakpoints={{
+            640: {
+              slidesPerView: 3,
+              spaceBetween: 20,
+            },
             1024: {
               slidesPerView: 4,
               spaceBetween: 24,
@@ -78,7 +82,7 @@ const PopularProduct = ({ className }: PopularProductProps) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default PopularProduct
+export default PopularProduct;

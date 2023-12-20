@@ -2,24 +2,27 @@
 
 import { ChevronDown, ShoppingCart } from "lucide-react";
 
-import { Product } from "@/types";
+import { Category, Product } from "@/types";
 import Currency from "./ui/currency";
 import { Button } from "./ui/button";
 import { MouseEventHandler } from "react";
 import useCart from "@/hooks/use-cart";
 import { toPlural } from "@/lib/utils";
+import { Badge } from "./ui/badge";
 
 interface InfoProps {
   data: Product;
+  category: Category;
 }
 
-const Info = ({ data }: InfoProps) => {
+const Info = ({ data, category }: InfoProps) => {
   const cart = useCart();
 
   const onAddToCart: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.stopPropagation();
 
     cart.addItem(data);
+    console.log(data);
   };
 
   return (
@@ -60,15 +63,22 @@ const Info = ({ data }: InfoProps) => {
         <div className="flex justify-between">
           <div className="">- 1 +</div>
           <div className="flex gap-3">
-            <p className="flex text-xs font-bold bg-red-500 items-center px-3 text-red-50">
-              Save{` `}
-              <Currency
-                value={data.actualPrice - data.discountPrice}
-                fraction={0}
-              />
-            </p>
+            {data.discountPrice > 0 ? (
+              <Badge variant="destructive">
+                Save{` `}
+                <Currency
+                  value={data.actualPrice - data.discountPrice}
+                  fraction={0}
+                />
+              </Badge>
+            ) : null}
+
             <h6 className="font-bold">
-              <Currency value={data.discountPrice} />
+              <Currency
+                value={
+                  data.discountPrice > 0 ? data.discountPrice : data.actualPrice
+                }
+              />
             </h6>
           </div>
         </div>
