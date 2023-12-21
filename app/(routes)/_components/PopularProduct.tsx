@@ -1,31 +1,29 @@
-"use client";
+'use client'
 
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image'
+import Link from 'next/link'
 
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from 'swiper/react'
 // Import Swiper styles
-import "swiper/css";
+import 'swiper/css'
 
-import Skeleton from "@/components/ui/skeleton";
-import { useIsMounted } from "@/hooks/use-is-mounted";
-import { cn } from "@/lib/utils";
-import { Product } from "@/types";
+import Skeleton from '@/components/ui/skeleton'
+import { useIsMounted } from '@/hooks/use-is-mounted'
+import { cn } from '@/lib/utils'
+import { Product } from '@/types'
 
 interface PopularProductProps {
-  className?: string;
-  data: Product[];
+  className?: string
+  data: Product[]
 }
 
 const PopularProduct = ({ className, data }: PopularProductProps) => {
-  const isMounted = useIsMounted();
-
-  console.log(data);
+  const isMounted = useIsMounted()
 
   return (
     <div className="container px-3">
-      <h3 className={cn("py-6 text-3xl text-center font-glirock", className)}>
+      <h3 className={cn('py-6 text-3xl text-center font-glirock', className)}>
         Our Popular Products
       </h3>
 
@@ -82,7 +80,7 @@ const PopularProduct = ({ className, data }: PopularProductProps) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default PopularProduct;
+export default PopularProduct
