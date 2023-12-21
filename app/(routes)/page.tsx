@@ -14,8 +14,8 @@ import Portfolio from "./_components/Portfolio";
 import { Trusted } from "./_components/Trusted";
 import BlogCard from "./blogs/_components/BlogCard";
 
-// export const revalidate = 300;
-export const dynamic = "force-static";
+export const revalidate = 20;
+// export const dynamic = "force-static";
 
 const HomePage = async () => {
   const billboard = await getBillboard("b356ae0a-c51c-47e5-86c6-baae568ef665");

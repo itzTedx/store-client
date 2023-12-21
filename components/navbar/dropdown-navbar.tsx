@@ -52,17 +52,17 @@ export function DropdownMenu({ data }: MainNavProps) {
             <NavigationMenuContent className="">
               <ul className="grid gap-3 p-6 md:w-[100dvw] lg:w-[880px] md:grid-cols-[.80fr_1fr_1fr] mx-auto">
                 {route.billboard ? (
-                  <li className="row-span-6">
+                  <li className="row-span-6 aspect-[3/4]">
                     <NavigationMenuLink asChild>
                       <Link
-                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/10 to-background/80 p-6 no-underline outline-none focus:shadow-md relative overflow-hidden group"
+                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/10 to-background/80 p-6 no-underline outline-none focus:shadow-md relative overflow-hidden group "
                         href={route.href}
                       >
                         <Image
                           src={route.billboard.imageUrl}
                           fill
                           alt="Level up your Impression with Spot UV Business card"
-                          className="object-cover object-center transition scale-100 group-hover:scale-105 contrast-75 group-hover:contrast-100"
+                          className="object-cover object-center transition scale-100 group-hover:scale-105 contrast-100 group-hover:contrast-125 brightness-[.85] group-hover:brightness-90 saturate-100 group-hover:saturate-150"
                         />
 
                         <div className="mb-1 mt-4 relative z-10 text-lg leading-tight font-bold">
@@ -105,22 +105,22 @@ export function DropdownMenu({ data }: MainNavProps) {
             Links
           </NavigationMenuTrigger>
           <NavigationMenuContent className="relative z-[9999999]">
-            <ul className="grid gap-3 p-6 md:w-screen mx-auto lg:w-[880px] lg:grid-cols-[.80fr_1fr_1fr] ">
+            <ul className="grid gap-3 p-6 md:w-screen mx-auto lg:w-[880px] grid-cols-3 ">
               <NavigationMenuLink
                 href="/blogs"
-                className="hover:bg-muted p-3 rounded-md"
+                className="hover:bg-muted p-3 rounded-md aspect-[3/4] bg-primary-50 flex items-end text-lg font-bold"
               >
                 Blog
               </NavigationMenuLink>
               <NavigationMenuLink
                 href="/about"
-                className="hover:bg-muted p-3 rounded-md"
+                className="hover:bg-muted p-3 rounded-md aspect-[3/4] bg-primary-50 flex items-end text-lg font-bold"
               >
                 About us
               </NavigationMenuLink>
               <NavigationMenuLink
                 href="/contact"
-                className="hover:bg-muted p-3 rounded-md"
+                className="hover:bg-muted p-3 rounded-md aspect-[3/4] bg-primary-50 flex items-end text-lg font-bold"
               >
                 Contact
               </NavigationMenuLink>
