@@ -1,3 +1,4 @@
+import GlowButton from "@/components/ui/GlowButton";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
@@ -38,9 +39,10 @@ const Featured = () => {
             shiny coating of Spot UV. Even though subtle, the slick shine is
             encapsulating and highly impressive.
           </p>
-          <Button className="font-semibold rounded-full" asChild>
+          <GlowButton href="/d/spot-uv-business-card">Order Now</GlowButton>
+          {/* <Button className="font-semibold rounded-full" asChild>
             <Link href="/d/spot-uv-business-card">Order Now</Link>
-          </Button>
+          </Button> */}
         </div>
         <div className="grid-cols-2 gap-4 hidden sm:grid">
           {features.map(({ imgSrc, title, description }, i) => (

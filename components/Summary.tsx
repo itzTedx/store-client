@@ -45,7 +45,7 @@ const Summary = () => {
   };
 
   return (
-    <div className="mt-15 sticky top-20 rounded-lg bg-gray-50 dark:bg-gray-900 px-4 py-6 sm:p-6 lg:col-span-5 lg; mt-0 lg:p-8">
+    <div className="mt-15 sticky top-20 rounded-lg bg-gray-50 dark:bg-gray-900 px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
       <h2 className="text-lg text-foreground">Order Summary</h2>
       <div className="mt-6 space-y-4">
         <div className="flex items-center justify-between border-t pt-4">
@@ -66,7 +66,8 @@ const Summary = () => {
       <Button
         disabled={items.length === 0}
         onClick={onCheckout}
-        className="w-full mt-6 font-bold text-lg"
+        className="w-full mt-9 font-bold text-lg"
+        variant="bounce"
       >
         Checkout
       </Button>

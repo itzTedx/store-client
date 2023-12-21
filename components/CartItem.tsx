@@ -34,8 +34,11 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
             />
           </div>
           <div className="col-span-2 sm:col-span-1 space-y-2 sm:space-y-3 flex flex-col justify-between px-3 sm:px-0 sm:py-4">
-            <div className="flex flex-col sm:gap-1">
-              <Badge variant="outline" className="w-fit">
+            <div className="flex flex-col sm:gap-2">
+              <Badge
+                variant="outline"
+                className="w-fit truncate tracking-normal"
+              >
                 {data.subcategory?.name}
               </Badge>
               <Link
@@ -45,7 +48,7 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
                 {data.name}
               </Link>
 
-              <div className="mt-1 flex text-sm gap-3 ">
+              <div className="flex text-sm gap-3 ">
                 <p className="text-gray-500 shrink-0">
                   Quantity: {data.quantity?.name}
                 </p>

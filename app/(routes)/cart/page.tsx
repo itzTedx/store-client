@@ -2,7 +2,6 @@
 
 import CartItem from "@/components/CartItem";
 import Summary from "@/components/Summary";
-import { Button } from "@/components/ui/button";
 import Container from "@/components/ui/container";
 import IconButton from "@/components/ui/icon-button";
 import Skeleton from "@/components/ui/skeleton";
@@ -11,7 +10,6 @@ import { useIsMounted } from "@/hooks/use-is-mounted";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
 
 const CartPage = () => {
   const router = useRouter();

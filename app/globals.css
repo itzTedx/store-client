@@ -21,7 +21,7 @@ body {
     --primary: 199 89% 48%;
     --primary-foreground: 210 20% 98%;
 
-    --secondary: 85 85% 35%;
+    --secondary: 84 81% 44%;
     --secondary-foreground: 220.9 39.3% 11%;
 
     --muted: 220 14.3% 95.9%;
@@ -166,4 +166,26 @@ body {
 .text-stroke {
   text-shadow: -1px -1px 0 #a3e635, 1px -1px 0 #a3e635, -1px 1px 0 #a3e635,
     1px 1px 0 #a3e635;
+}
+
+.glowing-btn {
+  @apply relative flex items-center justify-center px-9 py-3 bg-foreground-100 rounded-full text-foreground-800 hover:text-lime-600 hover:[text-shadow:_0_0_15px_#a3e635,0_0_40px_#a3e635] transition-all hover:before:opacity-100 overflow-hidden after:absolute after:inset-[2px] after:bg-foreground-100 after:rounded-full;
+}
+
+.glowing-btn::before {
+  /* @apply absolute -translate-x-1/2 -translate-y-1/2 bg-[radial-gradient(rgb(132_204_22),transparent,transparent)] h-52 w-52 transition-all opacity-0; */
+  content: "";
+  position: absolute;
+  inset: 2px;
+
+  background: radial-gradient(rgb(132 204 22), transparent, transparent);
+  width: 150px;
+  height: 150px;
+  opacity: 0;
+
+  transform: translate(-50%, -50%);
+  transition: 0.5s, top 0s, left 0s;
+
+  top: var(--y);
+  left: var(--x);
 }

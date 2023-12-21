@@ -4,32 +4,32 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
   Navbar as NextNav,
-} from '@nextui-org/react'
-import Image from 'next/image'
-import Link from 'next/link'
+} from "@nextui-org/react";
+import Image from "next/image";
+import Link from "next/link";
 
-import getCategories from '@/actions/get-categories'
-import { cn } from '@/lib/utils'
+import getCategories from "@/actions/get-categories";
+import { cn } from "@/lib/utils";
 
-import getAllProducts from '@/actions/get-all-products'
+import getAllProducts from "@/actions/get-all-products";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '@/components/ui/accordion'
-import { Button } from '@/components/ui/button'
-import { Separator } from '../ui/separator'
-import Helpline from './Helpline'
-import { ModeToggle } from './ModeToggle'
-import NavbarActions from './NavbarActions'
-import { ProfileActions } from './ProfileActions'
-import { SearchBar } from './SearchBarv2'
-import { DropdownMenu } from './dropdown-navbar'
+} from "@/components/ui/accordion";
+import { Button } from "@/components/ui/button";
+import { Separator } from "../ui/separator";
+import Helpline from "./Helpline";
+import { ModeToggle } from "./ModeToggle";
+import NavbarActions from "./NavbarActions";
+import { ProfileActions } from "./ProfileActions";
+import { SearchBar } from "./SearchBarv2";
+import { DropdownMenu } from "./dropdown-navbar";
 
 const Navbar = async () => {
-  const categories = await getCategories()
-  const products = await getAllProducts()
+  const categories = await getCategories();
+  const products = await getAllProducts();
 
   return (
     <>
@@ -65,10 +65,16 @@ const Navbar = async () => {
             />
           </Link>
           <div className="flex ml-auto gap-x-3">
-            <div className="md:hidden">
+            <div className="md:hidden flex items-center">
+              {/* <Button variant="bounce" className="mr-2 font-bold">
+                Log-in
+              </Button> */}
               <ModeToggle />
             </div>
-            <SearchBar data={categories} products={products} />
+
+            <div className="hidden md:block">
+              <SearchBar data={categories} products={products} />
+            </div>
             <div className="ml-auto">
               <Button
                 variant="ghost"
@@ -139,7 +145,7 @@ const Navbar = async () => {
                   <li>
                     <Button
                       className={cn(
-                        'bg-transparent px-0 py-0 text-red-600 h-0'
+                        "bg-transparent px-0 py-0 text-red-600 h-0"
                       )}
                     >
                       Log Out
@@ -166,7 +172,7 @@ const Navbar = async () => {
         <DropdownMenu data={categories} />
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

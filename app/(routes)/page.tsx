@@ -13,6 +13,7 @@ import Featured from "./_components/Featured";
 import Portfolio from "./_components/Portfolio";
 import { Trusted } from "./_components/Trusted";
 import BlogCard from "./blogs/_components/BlogCard";
+import GlowButton from "@/components/ui/GlowButton";
 
 export const revalidate = 300;
 export const dynamic = "force-static";

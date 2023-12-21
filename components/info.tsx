@@ -83,10 +83,11 @@ const Info = ({ data, category }: InfoProps) => {
           </div>
         </div>
 
-        <div className="flex items-center gap-x-3">
+        <div className="flex items-center justify-center gap-x-3">
           <Button
+            variant="bounce"
             onClick={onAddToCart}
-            className="rounded-full bg-black border-transparent px-5 py-3 disabled:cursor-not-allowed disabled:opacity-50 text-white hover:opacity-90 transition flex items-center gap-2 w-full text-lg font-semi-bold"
+            className="rounded-full transition gap-2 text-lg font-semibold"
           >
             Add to Cart
             <ShoppingCart size={16} className="stroke-2" />
