@@ -1,5 +1,6 @@
 import getBillboard from "@/actions/get-billboard";
 import getCategories from "@/actions/get-categories";
+import getFeaturedProducts from "@/actions/get-featured-products";
 import PopularProduct from "@/app/(routes)/_components/PopularProduct";
 import StarterKit from "@/app/(routes)/_components/StarterKit";
 import Billboard from "@/components/Billboard";
@@ -13,14 +14,13 @@ import Featured from "./_components/Featured";
 import Portfolio from "./_components/Portfolio";
 import { Trusted } from "./_components/Trusted";
 import BlogCard from "./blogs/_components/BlogCard";
-import GlowButton from "@/components/ui/GlowButton";
 
 export const revalidate = 300;
 export const dynamic = "force-static";
 
 const HomePage = async () => {
   const billboard = await getBillboard("b356ae0a-c51c-47e5-86c6-baae568ef665");
-  // const products = await getProducts({ isFeatured: true })
+  const popular = await getFeaturedProducts({ isFeatured: true });
   const categories = await getCategories();
 
   return (
@@ -54,7 +54,7 @@ const HomePage = async () => {
           ))}
         </Suspense>
         <div aria-label="Popular Products">
-          <PopularProduct />
+          <PopularProduct data={popular} />
         </div>
         <Suspense fallback={"Loading..."}>
           {categories.slice(3, categories.length).map((category) => (
