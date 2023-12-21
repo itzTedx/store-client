@@ -1,51 +1,49 @@
-import getCategories from '@/actions/get-categories'
-import getCategory from '@/actions/get-category'
-import getSubcategory from '@/actions/get-subcategory'
-import Breadcrumb from '@/components/ui/breadcrumb'
-import ProductCard from '@/components/ui/product-card'
-import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
+import getCategories from "@/actions/get-categories";
+import getCategory from "@/actions/get-category";
+import getSubcategory from "@/actions/get-subcategory";
+import Breadcrumb from "@/components/ui/breadcrumb";
+import ProductCard from "@/components/ui/product-card";
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 interface SubCategoryPageProps {
   params: {
-    slug: string
-    subcategorySlug: string
-  }
+    slug: string;
+    subcategorySlug: string;
+  };
 }
 
-export const dynamic = 'force-static'
+export const revalidate = 300;
 
 export async function generateStaticParams() {
-  const categories = await getCategories()
+  const categories = await getCategories();
 
   return categories.map((category) =>
     category.subcategory.map((sub) => sub.slug)
-  )
+  );
 }
 
 export async function generateMetadata({
   params,
 }: SubCategoryPageProps): Promise<Metadata> {
   // fetch data
-  const subcategory = await getSubcategory(params.subcategorySlug)
-  const category = await getCategory(params.slug)
+  const subcategory = await getSubcategory(params.subcategorySlug);
+  const category = await getCategory(params.slug);
 
   if (!category) {
-    notFound()
+    notFound();
   }
 
   return {
     title: `${subcategory.name} - ${category.name}`,
     description: subcategory.description,
-  }
+  };
 }
-
-export const revalidate = 300
 
 const SubCategoryPage = async ({ params }: SubCategoryPageProps) => {
   // fetch data
-  const subcategory = await getSubcategory(params.subcategorySlug)
-  const category = await getCategory(params.slug)
+  const subcategory = await getSubcategory(params.subcategorySlug);
+  const category = await getCategory(params.slug);
 
   return (
     <div className="container mb-9 space-y-2">
@@ -56,7 +54,7 @@ const SubCategoryPage = async ({ params }: SubCategoryPageProps) => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SubCategoryPage
+export default SubCategoryPage;

@@ -1,51 +1,51 @@
-import getCategory from '@/actions/get-category'
-import Billboard from '@/components/Billboard'
-import { Metadata } from 'next'
-import Link from 'next/link'
-import Breadcrumb from '@/components/ui/breadcrumb'
-import Image from 'next/image'
-import { notFound } from 'next/navigation'
-import getCategories from '@/actions/get-categories'
+import getCategory from "@/actions/get-category";
+import Billboard from "@/components/Billboard";
+import { Metadata } from "next";
+import Link from "next/link";
+import Breadcrumb from "@/components/ui/breadcrumb";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import getCategories from "@/actions/get-categories";
 
 interface CategoryPageProps {
   params: {
-    slug: string
-  }
+    slug: string;
+  };
   searchParams: {
-    colorId: string
-    sizeId: string
-  }
+    colorId: string;
+    sizeId: string;
+  };
 }
 
-export const dynamic = 'force-static'
+export const revalidate = 300;
 
 export async function generateStaticParams() {
-  const categories = await getCategories()
+  const categories = await getCategories();
 
-  return categories.map((category) => category.slug)
+  return categories.map((category) => category.slug);
 }
 
 export async function generateMetadata({
   params,
 }: CategoryPageProps): Promise<Metadata> {
   // fetch data
-  const category = await getCategory(params.slug)
+  const category = await getCategory(params.slug);
 
   if (!category) {
-    notFound()
+    notFound();
   }
 
   return {
     title: category.billboard.label,
     description: category.billboard.description,
-  }
+  };
 }
 
 const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
-  const category = await getCategory(params.slug)
+  const category = await getCategory(params.slug);
 
   if (!category) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -87,7 +87,7 @@ const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default CategoryPage
+export default CategoryPage;

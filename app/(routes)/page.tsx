@@ -14,7 +14,7 @@ import Portfolio from "./_components/Portfolio";
 import { Trusted } from "./_components/Trusted";
 import BlogCard from "./blogs/_components/BlogCard";
 
-export const revalidate = 20;
+export const revalidate = 300;
 // export const dynamic = "force-static";
 
 const HomePage = async () => {
