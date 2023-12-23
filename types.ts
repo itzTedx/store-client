@@ -73,6 +73,8 @@ export interface Orders {
   phone: string;
   address: string;
 
+  createdAt: string;
+
   orderItems: OrderItems[];
 }
 

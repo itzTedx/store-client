@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Download, Printer, ShoppingBag } from "lucide-react";
+import Image from "next/image";
 import React from "react";
 
 export const dynamic = "force-static";
@@ -14,7 +15,20 @@ const InvoicePage = () => {
         <div className="sm:w-11/12 lg:w-3/4 mx-auto">
           <div className="flex flex-col p-4 sm:p-10 bg-white shadow-md rounded-xl dark:bg-gray-800">
             <div className="flex justify-between">
-              <ShoppingBag />
+              <div className="relative h-20 w-40">
+                <Image
+                  src="/digitaldesk-light.svg"
+                  fill
+                  alt="Digital Desk Logo"
+                  className="dark:hidden"
+                />
+                <Image
+                  src="/digitaldesk-dark.svg"
+                  fill
+                  alt="Digital Desk Logo"
+                  className="hidden dark:block"
+                />
+              </div>
 
               <div className="text-end">
                 <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 dark:text-gray-200">

@@ -1,4 +1,5 @@
 import getOrders from "@/actions/get-orders";
+import Invoice from "@/components/Invoice";
 
 export const dynamic = "force-static";
 
@@ -8,7 +9,7 @@ export default async function MyOrdersPage({
   searchParams: { [key: string]: string };
 }) {
   const orders = await getOrders(searchParams.orderId);
-  console.log(orders);
+
   if (!orders)
     return (
       <div className="container my-9">
@@ -27,7 +28,9 @@ export default async function MyOrdersPage({
           </span>
         </div>
       </div>
-      <section className=""></section>
+      <section className="">
+        <Invoice data={orders} />
+      </section>
     </>
   );
 }
