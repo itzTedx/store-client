@@ -30,7 +30,9 @@ const Info = ({ data, category }: InfoProps) => {
       <h1 className="text-2xl md:text-3xl font-bold dark:text-gray-200 text-gray-900">
         {data.name}
       </h1>
-      <p className="text-muted-foreground font-light">{data.description}</p>
+      <p className="text-muted-foreground font-light text-pretty">
+        {data.description}
+      </p>
 
       <section className="bg-foreground-100 rounded-md border p-6 sm:p-9 space-y-6">
         <div className="space-y-3">

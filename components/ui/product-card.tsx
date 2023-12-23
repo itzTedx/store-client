@@ -78,7 +78,7 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
           >
             {data.name}
           </Link>
-          <p className="text-sm text-gray-600 leading-tight line-clamp-2 lg:line-clamp-none">
+          <p className="text-sm text-gray-600 leading-tight line-clamp-2 lg:line-clamp-none text-pretty">
             {data.description}
           </p>
         </div>

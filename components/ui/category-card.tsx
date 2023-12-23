@@ -1,10 +1,10 @@
-import { Subcategory } from '@/types'
-import Image from 'next/image'
-import Link from 'next/link'
+import { Subcategory } from "@/types";
+import Image from "next/image";
+import Link from "next/link";
 
 interface CategoryCardProps {
-  data: Subcategory
-  category: string | undefined
+  data: Subcategory;
+  category: string | undefined;
 }
 
 const CategoryCard: React.FC<CategoryCardProps> = ({ data, category }) => {
@@ -26,13 +26,13 @@ const CategoryCard: React.FC<CategoryCardProps> = ({ data, category }) => {
         {/* Description */}
         <figcaption className="space-y-1.5 col-span-3 px-5 sm:px-0">
           <p className="font-semibold">{data.name}</p>
-          <p className="text-sm text-foreground-500 line-clamp-3 lg:line-clamp-none text-light">
+          <p className="text-sm text-foreground-500 line-clamp-3 lg:line-clamp-none text-light text-pretty">
             {data.description}
           </p>
         </figcaption>
       </figure>
     </Link>
-  )
-}
+  );
+};
 
-export default CategoryCard
+export default CategoryCard;
