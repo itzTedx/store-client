@@ -21,6 +21,8 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
     cart.removeItem(data.id);
   };
 
+  const price = data.discountPrice == 0 ? data.actualPrice : data.discountPrice;
+
   return (
     <>
       <li className="py-6 border-b last:border-b-0 first:pt-0">
@@ -54,7 +56,7 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
                 </p>
               </div>
             </div>
-            <Currency value={data.discountPrice} />
+            <Currency value={price} />
           </div>
           <div className="justify-self-end self-start">
             <IconButton icon={<X />} onClick={onRemove} />

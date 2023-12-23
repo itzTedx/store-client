@@ -19,7 +19,6 @@ const GlowButton = ({
       const y = e.pageY - btn.offsetTop;
       btn.style.setProperty("--x", x + "px");
       btn.style.setProperty("--y", y + "px");
-      console.log(y);
     }
   };
 

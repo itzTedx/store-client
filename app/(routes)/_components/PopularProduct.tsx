@@ -1,29 +1,29 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from "next/image";
+import Link from "next/link";
 
 // Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react'
+import { Swiper, SwiperSlide } from "swiper/react";
 // Import Swiper styles
-import 'swiper/css'
+import "swiper/css";
 
-import Skeleton from '@/components/ui/skeleton'
-import { useIsMounted } from '@/hooks/use-is-mounted'
-import { cn } from '@/lib/utils'
-import { Product } from '@/types'
+import Skeleton from "@/components/ui/skeleton";
+import { useIsMounted } from "@/hooks/use-is-mounted";
+import { cn } from "@/lib/utils";
+import { Product } from "@/types";
 
 interface PopularProductProps {
-  className?: string
-  data: Product[]
+  className?: string;
+  data: Product[];
 }
 
 const PopularProduct = ({ className, data }: PopularProductProps) => {
-  const isMounted = useIsMounted()
+  const isMounted = useIsMounted();
 
   return (
     <div className="container px-3">
-      <h3 className={cn('py-6 text-3xl text-center font-glirock', className)}>
+      <h3 className={cn("py-6 text-3xl text-center font-glirock", className)}>
         Our Popular Products
       </h3>
 
@@ -48,8 +48,8 @@ const PopularProduct = ({ className, data }: PopularProductProps) => {
               className="transition-all rounded-md overflow-hidden"
             >
               <Link
-                className="flex aspect-square cursor-grab active:cursor-grabbing select-none flex-col justify-end bg-background/20 sm:bg-transparent bg-gradient-to-b from-background/0 via-background/0 hover:via-background/20 to-background/40 hover:to-background/80 p-6 no-underline outline-none focus:shadow-md relative overflow-hidden group"
-                href="/"
+                className="flex aspect-square cursor-grab active:cursor-grabbing select-none flex-col justify-end bg-background/20 sm:bg-transparent bg-gradient-to-b from-background/0 via-background/0 hover:via-background/20 to-background/40 hover:to-background/80 p-2 md:p-4 lg:p-6 no-underline outline-none focus:shadow-md relative overflow-hidden group"
+                href={`/d/${product.slug}`}
               >
                 <Image
                   src={product.images[0].url}
@@ -58,11 +58,11 @@ const PopularProduct = ({ className, data }: PopularProductProps) => {
                   className="object-cover -z-50 scale-100 group-hover:scale-105 transition-all"
                 />
 
-                <Link href={product.slug} className="justify-start">
+                <Link href={`/d/${product.slug}`} className="justify-start">
                   <div className="mb-1.5 sm:text-lg leading-tight font-bold hover:text-primary transition-colors">
                     {product.name}
                   </div>
-                  <p className="text-[12px] sm:text-sm font-medium text-foreground-700">
+                  <p className="text-[12px] sm:text-sm font-medium text-foreground-700 line-clamp-2 md:line-clamp-3">
                     {product.description}
                   </p>
                 </Link>
@@ -80,7 +80,7 @@ const PopularProduct = ({ className, data }: PopularProductProps) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default PopularProduct
+export default PopularProduct;

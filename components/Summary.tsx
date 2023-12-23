@@ -16,7 +16,9 @@ const Summary = () => {
     if (searchParams.get("success")) {
       toast.success("Payment completed.");
       removeAll();
-      redirect(`/my-orders`);
+      const orderId = searchParams.get("orderId");
+
+      redirect(`/my-orders?orderId=${orderId}`);
     }
 
     if (searchParams.get("canceled")) {
@@ -25,7 +27,10 @@ const Summary = () => {
   }, [searchParams, removeAll]);
 
   const totalPrice = items.reduce((total, item) => {
-    return total + Number(item.discountPrice);
+    return (
+      total +
+      Number(item.discountPrice == 0 ? item.actualPrice : item.discountPrice)
+    );
   }, 0);
 
   const taxPrice = totalPrice * 0.05;

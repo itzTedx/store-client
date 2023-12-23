@@ -22,7 +22,6 @@ const Info = ({ data, category }: InfoProps) => {
     e.stopPropagation();
 
     cart.addItem(data);
-    console.log(data);
   };
 
   return (
