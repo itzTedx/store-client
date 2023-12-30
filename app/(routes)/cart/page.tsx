@@ -2,13 +2,16 @@
 
 import CartItem from "@/components/CartItem";
 import Summary from "@/components/Summary";
+import { buttonVariants } from "@/components/ui/button";
 import Container from "@/components/ui/container";
 import IconButton from "@/components/ui/icon-button";
 import Skeleton from "@/components/ui/skeleton";
 import useCart from "@/hooks/use-cart";
 import { useIsMounted } from "@/hooks/use-is-mounted";
+import { cn } from "@/lib/utils";
 import { ArrowLeft, Loader2 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 
 const CartPage = () => {
@@ -64,9 +67,17 @@ const CartPage = () => {
             <div className="w-full h-40 relative saturate-0 mx-auto">
               <Image src="/icons/cart.svg" fill alt="" />
             </div>
-            <div className="text-muted-foreground mb-6">
+            <Link
+              className={cn(
+                buttonVariants({
+                  variant: "link",
+                }),
+                "text-muted-foreground mb-6 px-0"
+              )}
+              href="/shop"
+            >
               Explore our wide variety of printing services
-            </div>
+            </Link>
           </div>
         </div>
       </Container>

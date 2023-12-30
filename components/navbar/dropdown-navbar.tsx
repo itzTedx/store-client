@@ -61,6 +61,8 @@ export function DropdownMenu({ data }: MainNavProps) {
                         <Image
                           src={route.billboard.imageUrl}
                           fill
+                          quality={30}
+                          priority={true}
                           alt="Level up your Impression with Spot UV Business card"
                           className="object-cover object-center transition scale-100 group-hover:scale-105 contrast-100 group-hover:contrast-125 brightness-[.85] group-hover:brightness-90 saturate-100 group-hover:saturate-150"
                         />
@@ -101,9 +103,7 @@ export function DropdownMenu({ data }: MainNavProps) {
           aria-label="About us"
           className="pl-3 hidden md:block lg:hidden relative"
         >
-          <NavigationMenuTrigger className="bg-foreground-100">
-            Links
-          </NavigationMenuTrigger>
+          <NavigationMenuTrigger>Links</NavigationMenuTrigger>
           <NavigationMenuContent className="relative z-[9999999]">
             <ul className="grid gap-3 p-6 md:w-screen mx-auto lg:w-[880px] grid-cols-3 ">
               <NavigationMenuLink

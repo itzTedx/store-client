@@ -30,9 +30,9 @@ const Billboard: React.FC<BillboardProps> = ({ data }) => {
           </p>
           <div className="flex justify-between col-span-2 gap-3">
             <Link
-              href="/products"
+              href="/"
               title="Order Now"
-              className="px-6 py-3 bg-lime-500 shadow-[0_0_0_1.5px_#000] border-black rounded-full font-bold hover:shadow-[0_0_0_1.5px_#000,0_7px_0_1.5px_#000] hover:translate-y-[-10px] dark:bg-lime-400 dark:text-gray-950 dark:hover:shadow-[0_0_0_1.5px_#404040,0_7px_0_1.5px_#404040] transition-[transform,box-shadow,background] ease-btn-bounce duration-300 w-full md:w-auto text-center"
+              className="px-6 py-3 bg-lime-500 shadow-[0_0_0_1.5px_#000] border-black rounded-full font-bold hover:shadow-[0_0_0_1.5px_#000,0_7px_0_1.5px_#000] hover:translate-y-[-10px] dark:bg-lime-400 dark:text-gray-950 dark:hover:shadow-[0_0_0_1.5px_#404040,0_7px_0_1.5px_#404040] transition-[transform,box-shadow,background] ease-btn-bounce duration-300 w-full md:w-auto text-center active:translate-y-[-5px] active:shadow-[0_0_0_1.3px_#000,0_5px_0_1.5px_#000]"
             >
               Order Now
             </Link>

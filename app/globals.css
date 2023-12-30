@@ -2,9 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   padding-bottom: constant(safe-area-inset-top);
   padding-bottom: env(safe-area-inset-top);
+}
+
+::selection {
+  @apply bg-lime-400 text-green-950;
+}
+
+/* width */
+::-webkit-scrollbar {
+  @apply w-[14px];
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  @apply bg-background;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @apply bg-foreground-300 rounded-full transition-all;
+  border: 3px solid hsl(var(--background));
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-foreground-400;
 }
 
 @layer base {
