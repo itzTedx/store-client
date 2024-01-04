@@ -2,6 +2,7 @@ import "./globals.css";
 
 import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 import { albert, glirock } from "@/app/fonts/fonts";
 import { cn } from "@/lib/utils";
@@ -64,6 +65,7 @@ export default function DomLayout({ children }: { children: React.ReactNode }) {
         )}
       >
         {children}
+        <SpeedInsights />
         <Analytics />
       </body>
     </html>
