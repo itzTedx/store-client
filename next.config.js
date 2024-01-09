@@ -3,13 +3,13 @@
 const withPWA = require("@ducanh2912/next-pwa").default({
   dest: "public/pwa",
   disable: process.env.NODE_ENV === "development",
-  // register: true,
-  // scope: "/app",
-  // sw: "service-worker.js",
+  register: true,
+  scope: "/app",
+  sw: "service-worker.js",
   //...
 });
 
-const nextConfig = withPWA({
+const nextConfig = {
   images: {
     remotePatterns: [
       {
@@ -18,6 +18,7 @@ const nextConfig = withPWA({
       },
     ],
   },
-});
+  output: "standalone",
+};
 
-module.exports = nextConfig;
+module.exports = withPWA(nextConfig);
