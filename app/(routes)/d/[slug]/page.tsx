@@ -35,7 +35,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
 
   const category = await getCategoryById(product.subcategory.categoryId);
 
-  const suggestedProducts = product.subcategory.products;
+  const suggestedProducts = product.subcategory.products.slice(0, 4);
 
   return (
     <div className="bg-background">
@@ -69,10 +69,12 @@ const ProductPage = async ({ params }: ProductPageProps) => {
           <Faq />
         </section>
         <PopularProduct data={popular} className="text-left" />
-        <ProductList
-          title="Related products you may like"
-          items={suggestedProducts}
-        />
+        <div className="container px-3 py-9">
+          <ProductList
+            title="Related products you may like"
+            items={suggestedProducts}
+          />
+        </div>
       </div>
     </div>
   );

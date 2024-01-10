@@ -93,7 +93,7 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
               }
             />
           </div>
-          {isMounted && data.discountPrice > 0 ? (
+          {isMounted && data.discountPrice === 0 ? null : (
             <Badge variant="destructive">
               Save{` `}
               <Currency
@@ -101,7 +101,7 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
                 fraction={0}
               />
             </Badge>
-          ) : null}
+          )}
 
           {/* {data.discountPrice ? (
             <div className="text-xs text-muted-foreground line-through">

@@ -86,6 +86,7 @@ export default function Portfolio() {
                   alt={"image"}
                   src={`/images/${project.src}`}
                   className="object-cover rounded-lg"
+                  quality={50}
                 />
               </div>
             </div>
@@ -111,6 +112,7 @@ export default function Portfolio() {
                   alt={"image"}
                   src={`/images/${project.src}`}
                   className="object-cover rounded-lg"
+                  quality={50}
                 />
               </div>
             </div>

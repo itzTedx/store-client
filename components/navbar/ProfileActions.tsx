@@ -11,11 +11,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export const ProfileActions = () => {
+  const isLoggedIn = false;
+
   return (
     <Button
       variant="ghost"
       size="sm"
-      className="flex gap-2"
+      className="flex gap-2 relative"
       id="account"
       aria-label="Account"
     >
@@ -27,14 +29,22 @@ export const ProfileActions = () => {
         aria-hidden
         className="shrink-0"
       />
-      <div className="hidden lg:block">
-        <p className="text-xs text-left" aria-label="Hello Digital">
-          Hello, Digital
-        </p>
-        <span className="flex font-semibold text-primary-800">
-          My Account <ChevronDown size={16} aria-hidden />
-        </span>
-      </div>
+      {isLoggedIn ? (
+        <div className="hidden lg:block">
+          <p className="text-xs text-left" aria-label="Hello Digital">
+            Hello User,
+          </p>
+          <span className="flex font-semibold text-primary-800">
+            My Account <ChevronDown size={16} aria-hidden />
+          </span>
+        </div>
+      ) : (
+        <div className="hidden lg:block">
+          <p className="font-bold text-left" aria-label="Login">
+            Login
+          </p>
+        </div>
+      )}
     </Button>
   );
 };

@@ -61,8 +61,8 @@ const Info = ({ data, category }: InfoProps) => {
           <h3 className="font-semibold">Category:</h3>
           <div>{data?.subcategory?.name}</div>
         </div>
-        <div className="flex justify-between">
-          <div className="">- 1 +</div>
+        <div className="flex justify-end">
+          {/* <div className="">- 1 +</div> */}
           <div className="flex gap-3">
             {data.discountPrice > 0 ? (
               <Badge variant="destructive">

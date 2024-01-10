@@ -1,6 +1,7 @@
 "use client";
 
 import { useIsMounted } from "@/hooks/use-is-mounted";
+import Skeleton from "./skeleton";
 
 interface CurrencyProps {
   value?: string | number;
@@ -17,7 +18,7 @@ const Currency: React.FC<CurrencyProps> = ({ value = 0, fraction = 2 }) => {
   });
 
   if (!isMounted) {
-    return null;
+    return <Skeleton className="w-full h-6" />;
   }
 
   return formatter.format(Number(value));

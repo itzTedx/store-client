@@ -1,13 +1,13 @@
-import { Product } from '@/types'
-import NoResults from '@/components/ui/no-results'
-import ProductCard from './ui/product-card'
-import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { Product } from "@/types";
+import NoResults from "@/components/ui/no-results";
+import ProductCard from "./ui/product-card";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
 interface ProductsListProps {
-  title: string
-  items: Product[]
-  link?: string
+  title: string;
+  items: Product[];
+  link?: string;
 }
 
 const ProductList: React.FC<ProductsListProps> = ({ title, items, link }) => {
@@ -37,7 +37,7 @@ const ProductList: React.FC<ProductsListProps> = ({ title, items, link }) => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ProductList
+export default ProductList;
