@@ -5,6 +5,7 @@ import Breadcrumb from "@/components/ui/breadcrumb";
 import ProductCard from "@/components/ui/product-card";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { BreadcrumbList, WithContext } from "schema-dts";
 
 interface SubCategoryPageProps {
   params: {
@@ -46,8 +47,31 @@ const SubCategoryPage = async ({ params }: SubCategoryPageProps) => {
   const subcategory = await getSubcategory(params.subcategorySlug);
   const category = await getCategory(params.slug);
 
+  //JSON-LD
+  const jsonLd: WithContext<BreadcrumbList> = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: category.name,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: subcategory.name,
+      },
+    ],
+  };
+
   return (
     <div className="container mb-9 space-y-2">
+      {/* Add JSON-LD to your page */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Breadcrumb page={category} subPage={subcategory} />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {subcategory.products.map((product) => (

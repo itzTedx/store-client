@@ -6,6 +6,7 @@ import Breadcrumb from "@/components/ui/breadcrumb";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import getCategories from "@/actions/get-categories";
+import { BreadcrumbList, WithContext } from "schema-dts";
 
 interface CategoryPageProps {
   params: {
@@ -49,8 +50,26 @@ const CategoryPage = async ({ params, searchParams }: CategoryPageProps) => {
     notFound();
   }
 
+  //JSON-LD
+  const jsonLd: WithContext<BreadcrumbList> = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: category.name,
+      },
+    ],
+  };
+
   return (
     <>
+      {/* Add JSON-LD to your page */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Billboard data={category.billboard} />
       <div className="container mx-auto py-3">
         <Breadcrumb page={category} />

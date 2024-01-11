@@ -12,6 +12,7 @@ import getAllProducts from "@/actions/get-all-products";
 import getCategoryById from "@/actions/get-category-by-id";
 import { notFound } from "next/navigation";
 import getFeaturedProducts from "@/actions/get-featured-products";
+import { BreadcrumbList, WithContext } from "schema-dts";
 
 interface ProductPageProps {
   params: {
@@ -37,8 +38,36 @@ const ProductPage = async ({ params }: ProductPageProps) => {
 
   const suggestedProducts = product.subcategory.products.slice(0, 4);
 
+  //JSON-LD
+  const jsonLd: WithContext<BreadcrumbList> = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: category.name,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: product.subcategory.name,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: product.name,
+      },
+    ],
+  };
+
   return (
     <div className="bg-background">
+      {/* Add JSON-LD to your page */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="px-4 sm:px-6 lg:px-8 container space-y-4 md:space-y-12 mb-9">
         <Breadcrumb
           page={category}
