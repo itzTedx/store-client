@@ -56,6 +56,7 @@ const SubCategoryPage = async ({ params }: SubCategoryPageProps) => {
         "@type": "ListItem",
         position: 1,
         name: category.name,
+        item: `${process.env.BASE_URL}/${category.slug}`,
       },
       {
         "@type": "ListItem",
