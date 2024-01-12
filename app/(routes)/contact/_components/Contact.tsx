@@ -11,7 +11,7 @@ const Contact = () => {
               <h2 className="mb-3 font-glirock text-foreground text-3xl sm:text-4xl lg:text-[36px] xl:text-[40px]">
                 Get in touch with us!
               </h2>
-              <p className="mb-9 text-base leading-relaxed text-body-color dark:text-dark-6">
+              <p className="mb-9 text-base leading-relaxed text-body-color dark:text-dark-6 font-circular">
                 Write us a few words about your project and product we&apos;ll
                 get back to you within 24 hours.
               </p>
