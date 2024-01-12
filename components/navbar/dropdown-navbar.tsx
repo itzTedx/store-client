@@ -95,7 +95,7 @@ export function DropdownMenu({ data }: MainNavProps) {
             </NavigationMenuContent>
           </NavigationMenuItem>
         ))}
-        <Separator
+        {/* <Separator
           orientation="vertical"
           className="h-6 hidden md:block lg:hidden"
         />
@@ -126,7 +126,7 @@ export function DropdownMenu({ data }: MainNavProps) {
               </NavigationMenuLink>
             </ul>
           </NavigationMenuContent>
-        </NavigationMenuItem>
+        </NavigationMenuItem> */}
       </NavigationMenuList>
       <Separator orientation="vertical" />
       <NavigationMenuList className="mr-4" aria-label="Company Details">

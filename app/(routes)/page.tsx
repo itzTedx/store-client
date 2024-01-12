@@ -14,6 +14,7 @@ import Featured from "./_components/Featured";
 import Portfolio from "./_components/Portfolio";
 import { Trusted } from "./_components/Trusted";
 import BlogCard from "./blogs/_components/BlogCard";
+import { Organization, WithContext } from "schema-dts";
 
 export const revalidate = 300;
 export const dynamic = "force-static";
@@ -23,8 +24,18 @@ const HomePage = async () => {
   const popular = await getFeaturedProducts({ isFeatured: true });
   const categories = await getCategories();
 
+  const jsonLD: WithContext<Organization> = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+  };
+
   return (
     <>
+      {/* Add JSON-LD to your page */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
+      />
       <Billboard data={billboard} />
       <section
         className="relative z-[1] hidden mt-6 sm:-mt-7 sm:block mb-7"
@@ -72,7 +83,7 @@ const HomePage = async () => {
           ))}
         </Suspense>
       </div>
-      <section aria-label="Splash of Colors" className="overflow-hidden">
+      {/* <section aria-label="Splash of Colors" className="overflow-hidden">
         <Heading title="Splash of Colors" link="blogs" action="All Articles" />
         <div className="grid lg:grid-cols-2 gap-12 container py-9 relative">
           <div
@@ -122,7 +133,7 @@ const HomePage = async () => {
             <BlogCard />
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="w-full overflow-hidden">
         <Portfolio />

@@ -13,6 +13,7 @@ import Info from "@/components/info";
 import Breadcrumb from "@/components/ui/breadcrumb";
 import { Faq } from "../../_components/Faq";
 import ProductTab from "../../_components/ProductTab";
+import { Metadata } from "next";
 
 interface ProductPageProps {
   params: {
@@ -29,6 +30,44 @@ export async function generateStaticParams() {
   return products.map((product) => product.slug);
 }
 
+export async function generateMetadata({
+  params,
+}: ProductPageProps): Promise<Metadata> {
+  // fetch data
+  const product = await getProduct(params.slug);
+
+  if (!product) {
+    notFound();
+  }
+
+  console.log(product);
+
+  return {
+    title: product.metaTitle || product.name,
+    description: product.metaDescription || product.description.slice(0, 120),
+    keywords: product.metaKeywords,
+
+    openGraph: {
+      type: "website",
+      locale: "en_AE",
+      alternateLocale: "en_US",
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/d/${product.slug}`,
+      title: product.metaTitle || product.name,
+      description: product.metaDescription || product.description.slice(0, 120),
+      siteName: product.name,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: product.metaTitle || product.name,
+      description: product.metaDescription || product.description.slice(0, 120),
+      images: product.images.map((image) => image.url),
+      creator: "@digitaldesk_uae",
+    },
+    metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL as string),
+    alternates: { canonical: `/d/${product.slug}` },
+  };
+}
+
 const ProductPage = async ({ params }: ProductPageProps) => {
   const product = await getProduct(params.slug);
   const popular = await getFeaturedProducts({ isFeatured: true });
@@ -39,7 +78,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
   const suggestedProducts = product.subcategory.products.slice(0, 4);
 
   //JSON-LD
-  const jsonLd: WithContext<BreadcrumbList> = {
+  const breadcrumbJsonLD: WithContext<BreadcrumbList> = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
@@ -63,14 +102,29 @@ const ProductPage = async ({ params }: ProductPageProps) => {
     ],
   };
 
+  const productImages = product.images.map((image) => image.url);
+
+  const productJsonLD: WithContext<Product> = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.description,
+    image: productImages,
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "AED",
+      price: product.discountPrice || product.actualPrice,
+    },
+  };
+
   return (
     <div className="bg-background">
       {/* Add JSON-LD to your page */}
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLD) }}
       />
-      <div className="px-4 sm:px-6 lg:px-8 container space-y-4 md:space-y-12 mb-9">
+      <div className="px-4 sm:px-6 lg:px-8 container space-y-4 mb-9">
         <Breadcrumb
           page={category}
           subPage={product.subcategory}
@@ -78,13 +132,20 @@ const ProductPage = async ({ params }: ProductPageProps) => {
         />
         <div className="md:grid md:grid-cols-2 lg:grid-cols-3 md:items-start md:gap-x-8 pb-12 relative">
           <div className="md:sticky md:top-12 lg:col-span-2">
-            <Gallery images={product.images} />
+            {/* Add JSON-LD to your page */}
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify(productJsonLD),
+              }}
+            />
+            <Gallery images={product.images} alt={product.name} />
           </div>
           <div className="mt-10 px-4 sm:mt-16 sm:px-0 md:mt-0">
             <Info data={product} category={category} />
           </div>
         </div>
-        <ProductTab />
+        {/* <ProductTab />
         <section className="grid md:grid-cols-3 md:gap-9 gap-y-9 py-12 sm:py-32 max-w-6xl mx-auto">
           <div className="p-6 bg-primary-50 h-fit">
             <Image
@@ -98,7 +159,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
             <p>Contact our customer service team for any questions you have.</p>
           </div>
           <Faq />
-        </section>
+        </section> */}
         <PopularProduct data={popular} className="text-left" />
         <div className="container px-3 py-9">
           <ProductList

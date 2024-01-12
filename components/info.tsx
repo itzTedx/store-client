@@ -25,19 +25,37 @@ const Info = ({ data, category }: InfoProps) => {
   };
 
   return (
-    <div className="space-y-3 md:space-y-6">
+    <div className="space-y-3">
       <h1 className="text-2xl md:text-3xl font-bold dark:text-gray-200 text-gray-900">
         {data.name}
       </h1>
-      <p className="text-muted-foreground font-light text-pretty">
-        {data.description}
-      </p>
+      <p className="text-muted-foreground text-pretty">{data.description}</p>
+      <div className="flex gap-3 items-center pb-9">
+        <h6 className="font-bold text-2xl">
+          <Currency
+            value={
+              data.discountPrice > 0 ? data.discountPrice : data.actualPrice
+            }
+          />
+        </h6>
+        {data.discountPrice > 0 ? (
+          <Badge variant="destructive">
+            Save{` `}
+            <Currency
+              value={data.actualPrice - data.discountPrice}
+              fraction={0}
+            />
+          </Badge>
+        ) : null}
+      </div>
 
       <section className="bg-foreground-100 rounded-md border p-6 sm:p-9 space-y-6">
         <div className="space-y-3">
           <h3 className="font-semibold">Size:</h3>
           <div className="border rounded-md bg-background px-4 py-3 flex justify-between items-center">
-            <p>{data?.size?.name}</p>
+            <p>
+              {data?.size?.name} - {data.size.value}
+            </p>
             <ChevronDown />
           </div>
         </div>
@@ -58,14 +76,14 @@ const Info = ({ data, category }: InfoProps) => {
           </div>
         </div>
         <div className="flex items-center gap-x-4">
-          <h3 className="font-semibold">Category:</h3>
+          <h3 className="font-semibold">Category :</h3>
           <div>{data?.subcategory?.name}</div>
         </div>
-        <div className="flex justify-end">
-          {/* <div className="">- 1 +</div> */}
+        {/* <div className="flex justify-end">
+         <div className="">- 1 +</div>
           <div className="flex gap-3">
             {data.discountPrice > 0 ? (
-              <Badge variant="destructive">
+              <Badge variant="destructive" className="h-fit my-auto">
                 Save{` `}
                 <Currency
                   value={data.actualPrice - data.discountPrice}
@@ -74,7 +92,7 @@ const Info = ({ data, category }: InfoProps) => {
               </Badge>
             ) : null}
 
-            <h6 className="font-bold">
+            <h6 className="font-bold text-2xl">
               <Currency
                 value={
                   data.discountPrice > 0 ? data.discountPrice : data.actualPrice
@@ -82,7 +100,7 @@ const Info = ({ data, category }: InfoProps) => {
               />
             </h6>
           </div>
-        </div>
+        </div> */}
 
         <div className="flex items-center justify-center gap-x-3">
           <Button

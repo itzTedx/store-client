@@ -8,9 +8,10 @@ import GalleryTab from "./gallery-tab";
 
 interface GalleryProps {
   images: ImageType[];
+  alt: string;
 }
 
-const Gallery = ({ images }: GalleryProps) => {
+const Gallery = ({ images, alt }: GalleryProps) => {
   return (
     <div>
       <Tab.Group as="div" className="flex flex-col-reverse">
@@ -28,13 +29,21 @@ const Gallery = ({ images }: GalleryProps) => {
         <Tab.Panels className="aspect-[4/3] sm:aspect-[3/4] lg:aspect-[4/3] w-full">
           {images.map((image) => (
             <Tab.Panel key={image.id}>
-              <div className="aspect-[4/3] sm:aspect-[3/4] lg:aspect-[4/3] relative h-full w-full sm:rounded-lg overflow-hidden">
+              <div
+                className="aspect-[4/3] sm:aspect-[3/4] lg:aspect-[4/3] relative h-full w-full sm:rounded-lg overflow-hidden"
+                itemScope
+                itemType="https://schema.org/ImageObject"
+              >
                 <Image
                   fill
+                  itemProp="contentUrl"
                   src={image.url}
-                  alt="Images"
+                  alt={alt}
                   className="object-cover object-center"
                 />
+                <span itemProp="creditText" className="hidden">
+                  Labrador PhotoLab
+                </span>
               </div>
             </Tab.Panel>
           ))}

@@ -24,6 +24,9 @@ export interface Product {
   images: Image[];
   timeFrame: number;
   updatedAt: Date;
+  metaTitle: string;
+  metaDescription: string;
+  metaKeywords: string;
 }
 
 export interface Image {
