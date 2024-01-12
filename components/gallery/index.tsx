@@ -26,11 +26,11 @@ const Gallery = ({ images, alt }: GalleryProps) => {
             ""
           )}
         </div>
-        <Tab.Panels className="aspect-[4/3] sm:aspect-[3/4] lg:aspect-[4/3] w-full">
+        <Tab.Panels className="w-full">
           {images.map((image) => (
             <Tab.Panel key={image.id}>
               <div
-                className="aspect-[4/3] sm:aspect-[3/4] lg:aspect-[4/3] relative h-full w-full sm:rounded-lg overflow-hidden"
+                className="aspect-[4/3] sm:aspect-square lg:aspect-[4/3] relative h-full w-full sm:rounded-lg overflow-hidden"
                 itemScope
                 itemType="https://schema.org/ImageObject"
               >
@@ -40,9 +40,10 @@ const Gallery = ({ images, alt }: GalleryProps) => {
                   src={image.url}
                   alt={alt}
                   className="object-cover object-center"
+                  quality={50}
                 />
                 <span itemProp="creditText" className="hidden">
-                  Labrador PhotoLab
+                  Digital Desk
                 </span>
               </div>
             </Tab.Panel>
