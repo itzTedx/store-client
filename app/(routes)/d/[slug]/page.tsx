@@ -1,18 +1,18 @@
-import getCategory from "@/actions/get-category";
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import { BreadcrumbList, Product, WithContext } from "schema-dts";
+
+import getAllProducts from "@/actions/get-all-products";
+import getCategoryById from "@/actions/get-category-by-id";
+import getFeaturedProducts from "@/actions/get-featured-products";
 import getProduct from "@/actions/get-product";
+import PopularProduct from "@/app/(routes)/_components/PopularProduct";
 import ProductList from "@/components/ProductList";
 import Gallery from "@/components/gallery";
 import Info from "@/components/info";
 import Breadcrumb from "@/components/ui/breadcrumb";
-import ProductTab from "../../_components/ProductTab";
 import { Faq } from "../../_components/Faq";
-import Image from "next/image";
-import PopularProduct from "@/app/(routes)/_components/PopularProduct";
-import getAllProducts from "@/actions/get-all-products";
-import getCategoryById from "@/actions/get-category-by-id";
-import { notFound } from "next/navigation";
-import getFeaturedProducts from "@/actions/get-featured-products";
-import { BreadcrumbList, WithContext } from "schema-dts";
+import ProductTab from "../../_components/ProductTab";
 
 interface ProductPageProps {
   params: {
