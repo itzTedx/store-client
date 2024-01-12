@@ -1,14 +1,10 @@
 import getAllProducts from "@/actions/get-all-products";
-import getAllSubcategories from "@/actions/get-all-subcategories";
 import getCategories from "@/actions/get-categories";
-import getCategoryById from "@/actions/get-category-by-id";
-import { sub } from "date-fns";
 import { MetadataRoute } from "next";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const products = await getAllProducts();
   const categories = await getCategories();
-  const subcategories = await getAllSubcategories();
 
   const productEntries: MetadataRoute.Sitemap = products.map(
     ({ slug, updatedAt }) => ({
@@ -21,20 +17,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${process.env.NEXT_PUBLIC_BASE_URL}/${slug}`,
       lastModified: updatedAt,
     })
-  );
-  const subcategoriesEntries: MetadataRoute.Sitemap = subcategories.map(
-    ({ slug, updatedAt, categoryId }) => {
-      const category = categories.filter((category) =>
-        category.id.includes(categoryId)
-      );
-
-      return {
-        url: `${process.env.NEXT_PUBLIC_BASE_URL}/${category.filter((cat) =>
-          cat.id.includes(categoryId)
-        )}/${slug}`,
-        lastModified: updatedAt,
-      };
-    }
   );
 
   return [
