@@ -1,6 +1,6 @@
-'use client'
+"use client";
 
-import { isAppleDevice } from '@react-aria/utils'
+import { isAppleDevice } from "@react-aria/utils";
 import {
   BookDown,
   Building2,
@@ -16,8 +16,8 @@ import {
   ShoppingBag,
   SunIcon,
   User2,
-} from 'lucide-react'
-import { useCallback, useEffect, useState } from 'react'
+} from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
 
 import {
   CommandDialog,
@@ -27,59 +27,59 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from '@/components/ui/command'
-import { Category, Product } from '@/types'
-import { useTheme } from 'next-themes'
-import { useRouter } from 'next/navigation'
-import { Button } from '../ui/button'
-import useSearchToggle from '@/store/use-search-toggle'
+} from "@/components/ui/command";
+import { Category, Product } from "@/types";
+import { useTheme } from "next-themes";
+import { useRouter } from "next/navigation";
+import { Button } from "../ui/button";
+import useSearchToggle from "@/store/use-search-toggle";
 
 interface SearchProps {
-  data: Category[]
-  products: Product[]
+  data: Category[];
+  products: Product[];
 }
 
 export function SearchBar({ data, products }: SearchProps) {
-  const router = useRouter()
+  const router = useRouter();
 
-  const { theme, setTheme } = useTheme()
+  const { theme, setTheme } = useTheme();
 
-  const isOpen = useSearchToggle((state) => state.isOpen)
-  const onOpen = useSearchToggle((state) => state.onOpen)
-  const toggleOpen = useSearchToggle((state) => state.toggleOpen)
-  const onClose = useSearchToggle((state) => state.onClose)
+  const isOpen = useSearchToggle((state) => state.isOpen);
+  const onOpen = useSearchToggle((state) => state.onOpen);
+  const toggleOpen = useSearchToggle((state) => state.toggleOpen);
+  const onClose = useSearchToggle((state) => state.onClose);
 
-  const [open, setOpen] = useState(false)
-  const [commandKey, setCommandKey] = useState<'Ctrl' | 'Cmd'>('Ctrl')
+  const [open, setOpen] = useState(false);
+  const [commandKey, setCommandKey] = useState<"Ctrl" | "Cmd">("Ctrl");
 
-  const category = data.map((cat) => cat.subcategory)
+  const category = data.map((cat) => cat.subcategory);
 
   useEffect(() => {
-    setCommandKey(isAppleDevice() ? 'Cmd' : 'Ctrl')
-  }, [])
+    setCommandKey(isAppleDevice() ? "Cmd" : "Ctrl");
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      const hotkey = isAppleDevice() ? 'metaKey' : 'ctrlKey'
-      if (e.key === 'k' && e[hotkey]) {
-        e.preventDefault()
+      const hotkey = isAppleDevice() ? "metaKey" : "ctrlKey";
+      if (e.key === "k" && e[hotkey]) {
+        e.preventDefault();
         // setOpen((open) => !open)
-        toggleOpen()
+        toggleOpen();
       }
-    }
+    };
 
-    document.addEventListener('keydown', handleKeyDown)
-    return () => document.removeEventListener('keydown', handleKeyDown)
-  }, [toggleOpen])
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [toggleOpen]);
 
   const runCommand = useCallback(
     (command: () => unknown) => {
       // setOpen(false)
-      onClose()
-      command()
+      onClose();
+      command();
     },
     [onClose]
-  )
+  );
 
   return (
     <>
@@ -178,18 +178,18 @@ export function SearchBar({ data, products }: SearchProps) {
           <CommandSeparator />
           <CommandGroup heading="Theme">
             <CommandItem
-              onSelect={() => runCommand(() => setTheme('light'))}
+              onSelect={() => runCommand(() => setTheme("light"))}
               className="relative"
             >
               <SunIcon className="mr-2 text-foreground-400 h-4 w-4" />
               <SunIcon className="mr-2 text-foreground-400 h-4 w-4 absolute" />
               Light
             </CommandItem>
-            <CommandItem onSelect={() => runCommand(() => setTheme('dark'))}>
+            <CommandItem onSelect={() => runCommand(() => setTheme("dark"))}>
               <MoonIcon className="mr-2 text-foreground-400 h-4 w-4" />
               Dark
             </CommandItem>
-            <CommandItem onSelect={() => runCommand(() => setTheme('system'))}>
+            <CommandItem onSelect={() => runCommand(() => setTheme("system"))}>
               <LaptopIcon className="mr-2 text-foreground-400 h-4 w-4" />
               System
             </CommandItem>
@@ -197,5 +197,5 @@ export function SearchBar({ data, products }: SearchProps) {
         </CommandList>
       </CommandDialog>
     </>
-  )
+  );
 }

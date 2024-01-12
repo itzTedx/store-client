@@ -47,13 +47,13 @@ const ProductPage = async ({ params }: ProductPageProps) => {
         "@type": "ListItem",
         position: 1,
         name: category.name,
-        item: `${process.env.BASE_URL}/${category.slug}`,
+        item: `${process.env.NEXT_PUBLIC_BASE_URL}/${category.slug}`,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: product.subcategory.name,
-        item: `${process.env.BASE_URL}/${product.subcategory.slug}`,
+        item: `${process.env.NEXT_PUBLIC_BASE_URL}/${product.subcategory.slug}`,
       },
       {
         "@type": "ListItem",

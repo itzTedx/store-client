@@ -44,6 +44,7 @@ export interface Category {
   billboard: Billboard;
   slug: string;
   subcategory: Subcategory[];
+  updatedAt: Date;
 }
 
 export interface Subcategory {
@@ -53,6 +54,7 @@ export interface Subcategory {
   slug: string;
   categoryId: string;
   products: Product[];
+  updatedAt: Date;
 }
 
 export interface Size {
