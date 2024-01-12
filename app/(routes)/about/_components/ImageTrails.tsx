@@ -94,7 +94,7 @@ export const MouseImageTrail = ({
       {
         opacity: [1, 0],
       },
-      { ease: "linear", duration: 0.5, delay: 2.5 }
+      { ease: "linear", duration: 0.5, delay: 5 }
     );
 
     imageRenderCount.current = imageRenderCount.current + 1;

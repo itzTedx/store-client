@@ -52,7 +52,7 @@ export function DropdownMenu({ data }: MainNavProps) {
             <NavigationMenuContent className="">
               <ul className="grid gap-3 p-6 md:w-[100dvw] lg:w-[880px] md:grid-cols-[.80fr_1fr_1fr] mx-auto">
                 {route.billboard ? (
-                  <li className="row-span-6 aspect-[3/4]">
+                  <li className="row-span-6">
                     <NavigationMenuLink asChild>
                       <Link
                         className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/10 to-background/80 p-6 no-underline outline-none focus:shadow-md relative overflow-hidden group "
@@ -61,8 +61,7 @@ export function DropdownMenu({ data }: MainNavProps) {
                         <Image
                           src={route.billboard.imageUrl}
                           fill
-                          quality={30}
-                          priority={true}
+                          quality={10}
                           alt="Level up your Impression with Spot UV Business card"
                           className="object-cover object-center transition scale-100 group-hover:scale-105 contrast-100 group-hover:contrast-125 brightness-[.85] group-hover:brightness-90 saturate-100 group-hover:saturate-150"
                         />

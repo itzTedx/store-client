@@ -13,8 +13,8 @@ export const dynamic = "force-static";
 function About() {
   return (
     <>
-      <MouseImageTrail
-        renderImageBuffer={10}
+      {/* <MouseImageTrail
+        renderImageBuffer={50}
         rotationRange={25}
         images={[
           "/images/bottle.webp",
@@ -31,9 +31,9 @@ function About() {
           "/images/Instant-lh.jpg",
           "/images/Laptop-Sticker.jpg",
         ]}
-      >
-        <AboutHero />
-      </MouseImageTrail>
+      > */}
+      <AboutHero />
+      {/* </MouseImageTrail> */}
       <section className="relative grid mb-9 ms:mb-0">
         <ParallaxText baseVelocity={-3}>Ink, Innovation, Impact</ParallaxText>
         <div className="container relative md:my-24 order-2 md:order-1">

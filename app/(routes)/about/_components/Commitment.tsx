@@ -1,8 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, stagger } from "framer-motion";
 
 import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
 
 const Commitment = () => {
   return (
@@ -25,48 +26,71 @@ const Commitment = () => {
 
       <div className="gap-3 md:gap-9 grid grid-cols-4 px-3 md:px-16 md:py-6">
         <motion.div
-          initial={{ y: 200 }}
-          whileInView={{ y: 1 }}
-          viewport={{ once: false }}
+          initial={{ y: 201 }}
+          whileInView={{ y: 0 }}
+          viewport={{ once: true }}
           transition={{
-            duration: 0.5,
+            duration: 0.3,
           }}
-          className="aspect-[3/4] bg-lime-500 rounded-lg p-3"
+          className="aspect-[3/4] bg-lime-500 rounded-lg p-3 overflow-hidden relative"
         >
-          Hello
+          <Image
+            src="/images/Catalogue.jpg"
+            fill
+            alt=""
+            className="object-cover"
+          />
         </motion.div>
         <motion.div
-          initial={{ y: 200 }}
-          whileInView={{ y: 38 }}
-          viewport={{ once: false }}
+          initial={{ y: 230 }}
+          whileInView={{ y: 0 }}
+          viewport={{ once: true }}
           transition={{
-            duration: 0.5,
+            duration: 0.3,
+            delay: 0.1,
           }}
-          className="aspect-[3/4] bg-lime-500 rounded-lg p-3"
+          className="aspect-[3/4] bg-lime-500 rounded-lg p-3 overflow-hidden relative"
         >
-          Hello
+          <Image
+            src="/images/Laptop-Sticker.jpg"
+            fill
+            alt=""
+            className="object-cover"
+          />
         </motion.div>
         <motion.div
-          initial={{ y: 200 }}
-          whileInView={{ y: -20 }}
-          viewport={{ once: false }}
+          initial={{ y: 180 }}
+          whileInView={{ y: 0 }}
+          viewport={{ once: true }}
           transition={{
-            duration: 0.5,
+            duration: 0.3,
+            delay: 0.2,
           }}
-          className="aspect-[3/4] bg-lime-500 rounded-lg p-3"
+          className="aspect-[3/4] bg-lime-500 rounded-lg p-3 overflow-hidden relative"
         >
-          Hello
+          <Image
+            src="/images/bottle.webp"
+            fill
+            alt=""
+            className="object-cover"
+          />
         </motion.div>
         <motion.div
-          initial={{ y: 200 }}
-          whileInView={{ y: 42 }}
-          viewport={{ once: false }}
+          initial={{ y: 242 }}
+          whileInView={{ y: 0 }}
+          viewport={{ once: true }}
           transition={{
-            duration: 0.5,
+            duration: 0.3,
+            delay: 0.1,
           }}
-          className="aspect-[3/4] bg-lime-500 rounded-lg p-3"
+          className="aspect-[3/4] bg-lime-500 rounded-lg p-3 overflow-hidden relative"
         >
-          Hello
+          <Image
+            src="/images/rollup.jpg"
+            fill
+            alt=""
+            className="object-cover"
+          />
         </motion.div>
       </div>
     </section>

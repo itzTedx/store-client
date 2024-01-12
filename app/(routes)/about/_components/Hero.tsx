@@ -5,9 +5,9 @@ import Link from "next/link";
 function AboutHero() {
   return (
     <>
-      <section className="bg-[url('/bg-hero.webp')] dark:bg-[url('/hero-dark.webp')] bg-cover w-full h-[70vh] relative">
+      <section className="bg-[url('/bg-hero.webp')] dark:bg-[url('/hero-dark.webp')] bg-cover w-full h-[75vh] relative">
         <div className="text-center space-y-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
-          <h1 className="text-6xl sm:text-7xl md:text-9xl font-extrabold leading-tighter">
+          <h1 className="text-6xl sm:text-7xl md:text-8xl font-extrabold leading-tighter">
             We <span className="text-lime-500">print</span>
             <br />
             <span className="font-glirock font-medium">everything</span>
