@@ -58,14 +58,14 @@ const PopularProduct = ({ className, data }: PopularProductProps) => {
                   className="object-cover -z-50 scale-100 group-hover:scale-105 transition-all"
                 />
 
-                <Link href={`/d/${product.slug}`} className="justify-start">
+                <div className="justify-start">
                   <div className="mb-1.5 sm:text-lg leading-tight font-bold hover:text-primary transition-colors">
                     {product.name}
                   </div>
                   <p className="text-[12px] sm:text-sm font-medium text-foreground-700 line-clamp-2 md:line-clamp-3">
                     {product.description}
                   </p>
-                </Link>
+                </div>
               </Link>
             </SwiperSlide>
           ))}

@@ -37,11 +37,8 @@ const HomePage = async () => {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
       />
       <Billboard data={billboard} />
-      <section
-        className="relative z-[1] hidden mt-6 sm:-mt-7 sm:block mb-7"
-        title="Explore our popular products"
-      >
-        <Explore />
+      <section className="relative z-[1] hidden mt-6 sm:-mt-7 sm:block mb-7">
+        <Explore data={popular} />
       </section>
 
       <Trusted />

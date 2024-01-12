@@ -1,6 +1,7 @@
 "use client";
 
 import { useAnimate } from "framer-motion";
+import Image from "next/image";
 import React, { MouseEventHandler, ReactNode, useRef } from "react";
 
 export const MouseImageTrail = ({
@@ -108,10 +109,12 @@ export const MouseImageTrail = ({
       {children}
 
       {images.map((img, index) => (
-        <img
+        <Image
           className="pointer-events-none absolute left-0 top-0 h-48 w-auto rounded-xl border-2 border-black bg-neutral-900 object-cover opacity-0 -z-[9999999999]"
           src={img}
           alt={`Mouse move image ${index}`}
+          height={320}
+          width={200}
           key={index}
           data-mouse-move-index={index}
         />

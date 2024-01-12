@@ -40,8 +40,6 @@ export async function generateMetadata({
     notFound();
   }
 
-  console.log(product);
-
   return {
     title: product.metaTitle || product.name,
     description: product.metaDescription || product.description.slice(0, 120),

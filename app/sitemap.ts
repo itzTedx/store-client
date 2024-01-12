@@ -28,7 +28,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         category.id.includes(categoryId)
       );
 
-      console.log("Category", category);
       return {
         url: `${process.env.NEXT_PUBLIC_BASE_URL}/${category.filter((cat) =>
           cat.id.includes(categoryId)

@@ -20,6 +20,7 @@ export default function RootLayout({
       enableSystem
       storageKey="theme"
     >
+      <ToastProvider />
       <NextTopLoader
         color="#2299DD"
         initialPosition={0.08}
@@ -36,7 +37,6 @@ export default function RootLayout({
         zIndex={99999999999}
         showAtBottom={false}
       />
-      <ToastProvider />
       <ModalProvider />
       {/* <WelcomeModal /> */}
       <Navbar />

@@ -29,16 +29,19 @@ const PreviewModal = () => {
   return (
     <Modal open={previewModal.isOpen} onClose={previewModal.onClose}>
       <div className="grid w-full grid-cols-1 items-start gap-x-6 gap-y-3 md:gap-y-8 sm:grid-cols-12 lg:gap-x-8">
-        <div className="sm:col-span-4 lg:col-span-5">
-          <Gallery images={product.images} />
+        <div className="sm:col-span-5 lg:col-span-6">
+          <Gallery images={product.images} alt={product.name} />
         </div>
-        <div className="sm:col-span-8 lg:col-span-7 space-y-3">
-          {/* <Info data={product} /> */}
-          <h2 className="text-3xl font-bold">{product.name}</h2>
-          <p className="font-light">{product.description}</p>
+        <div className="sm:col-span-7 lg:col-span-6 flex flex-col justify-between items-center h-full">
+          {/* <Info data={product} category={product.category} /> */}
+          <div className="space-y-3">
+            <h2 className="text-3xl font-bold">{product.name}</h2>
+            <p className="text-sm">{product.description}</p>
+            <span></span>
+          </div>
           <Button
             onClick={onAddToCart}
-            className="rounded-full bg-black border-transparent px-5 py-3 disabled:cursor-not-allowed disabled:opacity-50 text-white hover:opacity-90 transition flex items-center gap-2 w-full text-lg font-semi-bold"
+            className="px-6 py-3 bg-lime-500 shadow-[0_0_0_1.5px_#000] border-black rounded-full font-bold hover:shadow-[0_0_0_1.5px_#000,0_7px_0_1.5px_#000] hover:translate-y-[-10px] dark:bg-lime-400 dark:text-gray-950 dark:hover:shadow-[0_0_0_1.5px_#404040,0_7px_0_1.5px_#404040] transition-[transform,box-shadow,background] ease-btn-bounce duration-300 w-full md:w-fit text-center active:translate-y-[-5px] active:shadow-[0_0_0_1.3px_#000,0_5px_0_1.5px_#000] gap-2 text-foreground mb-3"
           >
             Add to Cart
             <ShoppingCart size={16} className="stroke-2" />

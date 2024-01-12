@@ -19,6 +19,6 @@ export const sendEmail = async (values: ContactFormProps) => {
       text: message,
     });
   } catch (e) {
-    console.log(e);
+    console.error(e);
   }
 };

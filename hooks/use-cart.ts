@@ -25,8 +25,6 @@ const useCart = create(
 
         set({ items: [...get().items, data] });
 
-        console.log(data);
-
         toast.success("Item added to cart");
       },
       removeItem: (id: string) => {
