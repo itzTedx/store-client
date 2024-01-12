@@ -23,6 +23,7 @@ export interface Product {
   quantity: Quantity;
   images: Image[];
   timeFrame: number;
+  updatedAt: Date;
 }
 
 export interface Image {

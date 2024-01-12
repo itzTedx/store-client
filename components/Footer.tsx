@@ -1,13 +1,13 @@
-import Link from 'next/link'
-import { buttonVariants } from './ui/button'
-import { footerNav } from '@/constants/footer'
-import { cn } from '@/lib/utils'
-import Image from 'next/image'
-import { SocialIcons } from './SocialIcons'
+import Link from "next/link";
+import { buttonVariants } from "./ui/button";
+import { footerNav } from "@/lib/constants/footer";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
+import { SocialIcons } from "./SocialIcons";
 
 const Footer = () => {
-  const currentDate = new Date()
-  const currentYear = currentDate.getFullYear()
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
   return (
     <footer className="border-t mt-auto" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
@@ -95,7 +95,7 @@ const Footer = () => {
         </div>
         <div className="text-center text-xs text-foreground-400 flex flex-col md:flex-row items-center justify-between border-t py-4">
           <div className="">
-            &copy; {currentYear} Digital Desk General Trading L.L.C.{' '}
+            &copy; {currentYear} Digital Desk General Trading L.L.C.{" "}
             <span>All rights Reserved</span>
           </div>
           <div className="text-muted-foreground">
@@ -103,9 +103,9 @@ const Footer = () => {
               href="/privacy"
               className={cn(
                 buttonVariants({
-                  variant: 'link',
-                  size: 'sm',
-                  className: 'text-foreground-400',
+                  variant: "link",
+                  size: "sm",
+                  className: "text-foreground-400",
                 })
               )}
             >
@@ -115,9 +115,9 @@ const Footer = () => {
               href="/terms-conditions"
               className={cn(
                 buttonVariants({
-                  variant: 'link',
-                  size: 'sm',
-                  className: 'text-foreground-400',
+                  variant: "link",
+                  size: "sm",
+                  className: "text-foreground-400",
                 })
               )}
             >
@@ -127,7 +127,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;
