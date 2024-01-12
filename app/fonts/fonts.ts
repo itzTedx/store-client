@@ -19,29 +19,29 @@ export const argesta = localFont({
   variable: "--font-argesta",
 });
 
-export const circular = localFont({
-  src: [
-    {
-      path: "./circularxx/CircularXXWeb-book.woff2",
-      weight: "350",
-      style: "normal",
-    },
-    {
-      path: "./circularxx/CircularXXWeb-Regular.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "./circularxx/CircularXXWeb-medium.woff2",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "./circularxx/CircularXXWeb-bold.woff2",
-      weight: "700",
-      style: "normal",
-    },
-  ],
-  display: "swap",
-  variable: "--font-circular",
-});
+// export const circular = localFont({
+//   src: [
+//     {
+//       path: "./circularxx/CircularXXWeb-book.woff2",
+//       weight: "350",
+//       style: "normal",
+//     },
+//     {
+//       path: "./circularxx/CircularXXWeb-Regular.woff2",
+//       weight: "400",
+//       style: "normal",
+//     },
+//     {
+//       path: "./circularxx/CircularXXWeb-medium.woff2",
+//       weight: "500",
+//       style: "normal",
+//     },
+//     {
+//       path: "./circularxx/CircularXXWeb-bold.woff2",
+//       weight: "700",
+//       style: "normal",
+//     },
+//   ],
+//   display: "swap",
+//   variable: "--font-circular",
+// });

@@ -20,7 +20,7 @@ const config: Config = {
       fontFamily: {
         albert: ["var(--font-albert)"],
         glirock: ["var(--font-glirock)"],
-        circular: ["var(--font-circular)"],
+        // circular: ["var(--font-circular)"],
       },
       colors: {
         border: "hsl(var(--border))",
