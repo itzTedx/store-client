@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ContactForm from "./ContactForm";
 
 const Contact = () => {
@@ -34,10 +35,16 @@ const Contact = () => {
                     <h4 className="mb-1 text-xl font-bold text-dark dark:text-white">
                       Our Location
                     </h4>
-                    <p className="text-sm">
-                      Shop 3, Bin Suwailem Building, Damascus Street, Al Qusais,
-                      Dubai, UAE.
-                    </p>
+                    <Link
+                      href="https://maps.app.goo.gl/EvkN3k2kEQPEErHSA"
+                      target="_blank"
+                      className="hover:text-primary-400 transition-colors"
+                    >
+                      <p className="text-sm">
+                        Shop 3, Bin Suwailem Building, Damascus Street, Al
+                        Qusais, Dubai, UAE.
+                      </p>
+                    </Link>
                   </div>
                 </div>
                 <div className="mb-8 flex w-full max-w-[370px]">
