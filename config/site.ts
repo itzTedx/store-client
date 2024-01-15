@@ -1,14 +1,14 @@
-import { SiteConfig } from '@/types'
+import { SiteConfig } from "@/types";
 
 export const siteConfig: SiteConfig = {
-  name: 'Digital Desk - Design, Printing, and Advertising services',
-  shortName: 'Digitaldesk',
+  name: "Digital Desk - Design, Printing, and Advertising services",
+  shortName: "Digitaldesk",
   description:
-    'Cost effective digital printing and advertising services for businesses to promote products/services through print and digital media.',
+    "Cost effective digital printing and advertising services for businesses to promote products/services through print and digital media.",
 
-  url: 'https://digitaldesk.vercel.app',
-  ogImage: 'https://www.digitaldesk.ae/wp-content/uploads/2022/08/ds8.jpg',
+  url: "https://test.digitaldesk.ae",
+  ogImage: "https://www.digitaldesk.ae/wp-content/uploads/2022/08/ds8.jpg",
   links: {
-    twitter: 'https://twitter.com/digitaldesk_uae',
+    twitter: "https://twitter.com/digitaldesk_uae",
   },
-}
+};
