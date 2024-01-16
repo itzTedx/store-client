@@ -67,14 +67,14 @@ const SubCategoryPage = async ({ params }: SubCategoryPageProps) => {
   };
 
   return (
-    <div className="container mb-9 space-y-2">
+    <div className="container mb-9">
       {/* Add JSON-LD to your page */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Breadcrumb page={category} subPage={subcategory} />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-3">
         {subcategory.products.map((product) => (
           <ProductCard data={product} key={product.id} />
         ))}

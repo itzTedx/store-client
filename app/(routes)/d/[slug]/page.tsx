@@ -122,7 +122,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLD) }}
       />
-      <div className="px-4 sm:px-6 lg:px-8 container space-y-4 mb-9">
+      <div className="sm:px-6 lg:px-8 container space-y-4 mb-9">
         <Breadcrumb
           page={category}
           subPage={product.subcategory}
@@ -139,7 +139,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
             />
             <Gallery images={product.images} alt={product.name} />
           </div>
-          <div className="mt-10 px-4 sm:mt-16 sm:px-0 md:mt-0">
+          <div className="mt-3 sm:mt-16 sm:px-0 md:mt-0">
             <Info data={product} category={category} />
           </div>
         </div>

@@ -15,7 +15,7 @@ const Gallery = ({ images, alt }: GalleryProps) => {
   return (
     <div>
       <Tab.Group as="div" className="flex flex-col-reverse">
-        <div className="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
+        <div className="mx-auto mt-6 w-full max-w-2xl sm:block lg:max-w-none">
           {images.length > 1 ? (
             <Tab.List className="grid grid-cols-4 gap-6">
               {images.map((image) => (
@@ -30,7 +30,7 @@ const Gallery = ({ images, alt }: GalleryProps) => {
           {images.map((image) => (
             <Tab.Panel key={image.id}>
               <div
-                className="aspect-[4/3] sm:aspect-square lg:aspect-[4/3] relative h-full w-full sm:rounded-lg overflow-hidden"
+                className="aspect-[4/3] sm:aspect-square lg:aspect-[4/3] relative h-full w-full rounded-lg overflow-hidden"
                 itemScope
                 itemType="https://schema.org/ImageObject"
               >

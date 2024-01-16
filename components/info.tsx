@@ -26,18 +26,18 @@ const Info = ({ data, category }: InfoProps) => {
 
   return (
     <div className="space-y-3">
-      <h1 className="text-2xl md:text-3xl font-bold dark:text-gray-200 text-gray-900">
+      <h1 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary-600">
         {data.name}
       </h1>
       <p className="text-muted-foreground text-pretty">{data.description}</p>
-      <div className="flex gap-3 items-center pb-9">
-        <h6 className="font-bold text-2xl">
+      <div className="flex gap-3 items-center pb-3 sm:pb-9">
+        <span className="font-bold text-2xl">
           <Currency
             value={
               data.discountPrice > 0 ? data.discountPrice : data.actualPrice
             }
           />
-        </h6>
+        </span>
         {data.discountPrice > 0 ? (
           <Badge variant="destructive">
             Save{` `}

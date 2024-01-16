@@ -84,7 +84,7 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
         </div>
       </div>
       {/* Price & Reiew */}
-      <div className="flex justify-between items-end">
+      <div className="flex justify-between items-center">
         <div className="flex gap-1.5 items-center">
           <div className="font-bold">
             <Currency
@@ -93,28 +93,19 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
               }
             />
           </div>
+
           {isMounted && data.discountPrice === 0 ? null : (
-            <Badge variant="destructive">
-              Save{` `}
-              <Currency
-                value={data.actualPrice - data.discountPrice}
-                fraction={0}
-              />
+            <Badge variant="destructive" className="">
+              <span className="sm:mr-1 hidden sm:block">Save</span>
+              <div className="line-through sm:no-underline">
+                <Currency
+                  value={data.actualPrice - data.discountPrice}
+                  fraction={0}
+                />
+              </div>
             </Badge>
           )}
-
-          {/* {data.discountPrice ? (
-            <div className="text-xs text-muted-foreground line-through">
-              <Currency value={data.actualPrice} />
-            </div>
-          ) : null} */}
         </div>
-        {/* <div className="flex items-center gap-2 dark:hover:text-lime-500 hover:text-lime-900 text-sm transition">
-          Buy Now
-          <div className="p-1.5 bg-lime-300 dark:bg-lime-400 rounded-full text-lime-900 ">
-            <ShoppingBag className="w-4 h-4" />
-          </div>
-        </div> */}
       </div>
     </div>
   );
