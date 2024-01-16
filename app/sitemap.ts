@@ -2,6 +2,8 @@ import getAllProducts from "@/actions/get-all-products";
 import getCategories from "@/actions/get-categories";
 import { MetadataRoute } from "next";
 
+export const revalidate = 30;
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const products = await getAllProducts();
   const categories = await getCategories();
