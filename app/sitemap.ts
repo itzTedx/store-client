@@ -1,6 +1,7 @@
+import { MetadataRoute } from "next";
+
 import getAllProducts from "@/actions/get-all-products";
 import getCategories from "@/actions/get-categories";
-import { MetadataRoute } from "next";
 
 export const revalidate = 1;
 

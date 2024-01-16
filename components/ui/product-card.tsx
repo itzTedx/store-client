@@ -48,14 +48,14 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
     >
       {/* Image & actions */}
       <div className="">
-        <div className="aspect-[4/3] relative overflow-hidden">
+        <div className="aspect-[4/3] relative rounded-md overflow-hidden">
           <Link href={`/d/${data.slug}`}>
             {data.images && (
               <Image
                 src={data.images?.[0]?.url}
                 alt=""
                 fill
-                className="object-cover hover:scale-105 transition rounded-md"
+                className="object-cover hover:scale-105 transition "
               />
             )}
           </Link>

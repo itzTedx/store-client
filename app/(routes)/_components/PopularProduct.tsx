@@ -22,7 +22,7 @@ const PopularProduct = ({ className, data }: PopularProductProps) => {
   const isMounted = useIsMounted();
 
   return (
-    <div className="container px-3">
+    <div className="">
       <h3 className={cn("py-6 text-3xl text-center font-glirock", className)}>
         Our Popular Products
       </h3>

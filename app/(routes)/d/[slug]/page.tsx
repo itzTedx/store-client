@@ -159,7 +159,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
           <Faq />
         </section> */}
         <PopularProduct data={popular} className="text-left" />
-        <div className="container px-3 py-9">
+        <div className="py-9">
           <ProductList
             title="Related products you may like"
             items={suggestedProducts}

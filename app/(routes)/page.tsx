@@ -61,7 +61,7 @@ const HomePage = async () => {
             </section>
           ))}
         </Suspense>
-        <div aria-label="Popular Products">
+        <div aria-label="Popular Products" className="container">
           <PopularProduct data={popular} />
         </div>
         <Suspense fallback={"Loading..."}>

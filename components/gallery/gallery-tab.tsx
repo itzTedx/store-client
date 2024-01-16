@@ -19,13 +19,13 @@ const GalleryTab = ({ image }: GalleryTabProps) => {
               src={image.url}
               alt=""
               className="object-cover object-center"
-              quality={5}
+              quality={50}
             />
           </span>
           <span
             className={cn(
               "absolute inset-0 rounded-md ring-2 ring-offset-2",
-              selected ? "ring-black" : "ring-transparent"
+              selected ? "ring-secondary" : "ring-transparent"
             )}
           />
         </div>
