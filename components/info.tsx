@@ -23,7 +23,7 @@ const Info = ({ data, category }: InfoProps) => {
     e.stopPropagation();
 
     cart.addItem(data);
-    useCartDrawer((state) => state.isOpen);
+    // useCartDrawer((state) => state.isOpen);
   };
 
   return (
