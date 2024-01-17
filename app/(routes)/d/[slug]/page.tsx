@@ -21,7 +21,7 @@ interface ProductPageProps {
   };
 }
 
-export const revalidate = 300;
+export const revalidate = 30;
 export const dynamic = "force-static";
 
 export async function generateStaticParams() {
