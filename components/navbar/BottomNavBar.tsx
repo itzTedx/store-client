@@ -5,12 +5,23 @@ import { usePathname, useRouter } from "next/navigation";
 
 import { motion } from "framer-motion";
 
-import { useScrollingEffect } from "@/hooks/use-scroll";
-import { cn } from "@/lib/utils";
-import { Button } from "../ui/button";
-import useSearchToggle from "@/store/use-search-toggle";
 import useCart from "@/hooks/use-cart";
 import { useIsMounted } from "@/hooks/use-is-mounted";
+import { useScrollingEffect } from "@/hooks/use-scroll";
+import { cn } from "@/lib/utils";
+import useSearchToggle from "@/store/use-search-toggle";
+import { Button } from "../ui/button";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "../ui/drawer";
+import CartDrawer from "./CartDrawer";
 
 const BottomNav = () => {
   const router = useRouter();
@@ -76,36 +87,49 @@ const BottomNav = () => {
           </span>
           {isOpen && <Span scrollDirection="up" />}
         </Button>
-        <Button
-          onClick={() => router.push("/cart")}
-          variant="ghost"
-          className="flex gap-1.5 items-center relative px-4"
-        >
-          <div className="relative z-10">
-            <ShoppingBag
-              className={cn(
-                "transition-all relative ",
-                pathname === "/cart" ? "stroke-2" : "stroke-1"
-              )}
-            />
-            {isMounted && cart.items.length ? (
-              <>
-                <span className="w-4 h-4 bg-lime-400 border-background dark:border-foreground border-[2.5px] absolute rounded-full -top-1 -right-1 z-50" />
-                <span className="w-3 h-3 bg-lime-400 opacity-50 animate-ping absolute rounded-full -top-[2px] -right-[2px] z-50" />
-              </>
-            ) : null}
-          </div>
-          <span
-            className={cn(
-              pathname === "/cart" &&
-                "font-bold text-background dark:text-foreground z-10",
-              "hidden sm:block"
-            )}
-          >
-            Cart
-          </span>
-          {pathname === "/cart" && <Span scrollDirection="up" />}
-        </Button>
+        <Drawer>
+          <DrawerTrigger asChild>
+            <Button
+              // onClick={() => router.push("/cart")}
+              variant="ghost"
+              className="flex gap-1.5 items-center relative px-4"
+            >
+              <div className="relative z-10">
+                <ShoppingBag
+                  className={cn(
+                    "transition-all relative ",
+                    pathname === "/cart" ? "stroke-2" : "stroke-1"
+                  )}
+                />
+                {isMounted && cart.items.length ? (
+                  <>
+                    <span className="w-4 h-4 bg-lime-400 border-background dark:border-foreground border-[2.5px] absolute rounded-full -top-1 -right-1 z-50" />
+                    <span className="w-3 h-3 bg-lime-400 opacity-50 animate-ping absolute rounded-full -top-[2px] -right-[2px] z-50" />
+                  </>
+                ) : null}
+              </div>
+              <span
+                className={cn(
+                  pathname === "/cart" &&
+                    "font-bold text-background dark:text-foreground z-10",
+                  "hidden sm:block"
+                )}
+              >
+                Cart
+              </span>
+              {pathname === "/cart" && <Span scrollDirection="up" />}
+            </Button>
+          </DrawerTrigger>
+          <DrawerContent>
+            <div className="mx-auto w-full max-w-sm">
+              <DrawerHeader>
+                <DrawerTitle>Shopping Cart</DrawerTitle>
+              </DrawerHeader>
+              <CartDrawer />
+            </div>
+          </DrawerContent>
+        </Drawer>
+
         <Button
           onClick={() => router.push("/account")}
           variant="ghost"

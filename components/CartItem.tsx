@@ -21,7 +21,8 @@ const CartItem: React.FC<CartItemProps> = ({ data }) => {
     cart.removeItem(data.id);
   };
 
-  const price = data.discountPrice == 0 ? data.actualPrice : data.discountPrice;
+  const price =
+    data.discountPrice === 0 ? data.actualPrice : data.discountPrice;
 
   return (
     <>
