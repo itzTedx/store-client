@@ -9,6 +9,7 @@ import { MouseEventHandler } from "react";
 import useCart from "@/hooks/use-cart";
 import { toPlural } from "@/lib/utils";
 import { Badge } from "./ui/badge";
+import useCartDrawer from "@/store/use-cart-drawer";
 
 interface InfoProps {
   data: Product;
@@ -22,6 +23,7 @@ const Info = ({ data, category }: InfoProps) => {
     e.stopPropagation();
 
     cart.addItem(data);
+    useCartDrawer((state) => state.isOpen);
   };
 
   return (

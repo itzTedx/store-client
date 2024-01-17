@@ -13,15 +13,13 @@ import useSearchToggle from "@/store/use-search-toggle";
 import { Button } from "../ui/button";
 import {
   Drawer,
-  DrawerClose,
   DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
 } from "../ui/drawer";
 import CartDrawer from "./CartDrawer";
+import useCartDrawer from "@/store/use-cart-drawer";
 
 const BottomNav = () => {
   const router = useRouter();
@@ -33,6 +31,8 @@ const BottomNav = () => {
   const isOpen = useSearchToggle((state) => state.isOpen);
 
   const cart = useCart();
+
+  const cartOnOpen = useCartDrawer((state) => state.onOpen);
 
   const navClass =
     scrollDirection === "up"
@@ -87,10 +87,9 @@ const BottomNav = () => {
           </span>
           {isOpen && <Span scrollDirection="up" />}
         </Button>
-        <Drawer>
+        <Drawer onOpenChange={cartOnOpen}>
           <DrawerTrigger asChild>
             <Button
-              // onClick={() => router.push("/cart")}
               variant="ghost"
               className="flex gap-1.5 items-center relative px-4"
             >

@@ -39,9 +39,11 @@ const CartDrawer = () => {
             </Link>
           </div>
         </div>
-        <DrawerClose asChild className="mx-auto w-full mb-4">
-          <Button variant="outline">Continue Shopping</Button>
-        </DrawerClose>
+        <DrawerFooter>
+          <DrawerClose asChild className="mx-auto">
+            <Button variant="outline">Continue Shopping</Button>
+          </DrawerClose>
+        </DrawerFooter>
       </>
     );
   }
@@ -52,13 +54,14 @@ const CartDrawer = () => {
           cart.items.map((data) => <CartItem data={data} key={data.id} />)}
       </ul>
       <DrawerFooter>
-        <Button variant="bounce">Checkout</Button>
-        <Button onClick={() => router.push("/cart")} variant="outline">
-          View Cart
-        </Button>
         <DrawerClose asChild>
-          <Button variant="outline" size="sm">
+          <Button variant="ghost" size="sm">
             Continue Shopping
+          </Button>
+        </DrawerClose>
+        <DrawerClose asChild>
+          <Button onClick={() => router.push("/cart")} variant="bounce">
+            View Cart
           </Button>
         </DrawerClose>
       </DrawerFooter>
