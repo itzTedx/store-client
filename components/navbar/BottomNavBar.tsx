@@ -41,9 +41,7 @@ const BottomNav = () => {
           <Home
             className={cn(
               "transition-all relative z-10 shrink-0",
-              pathname === "/"
-                ? "stroke-2 text-background dark:text-foreground"
-                : "stroke-1"
+              pathname === "/" ? "stroke-2" : "stroke-1"
             )}
           />{" "}
           <span
@@ -65,9 +63,7 @@ const BottomNav = () => {
           <Search
             className={cn(
               "transition-all relative z-10 shrink-0",
-              pathname === "/shop"
-                ? "stroke-2 text-background dark:text-foreground"
-                : "stroke-1"
+              pathname === "/shop" ? "stroke-2" : "stroke-1"
             )}
           />{" "}
           <span
@@ -89,9 +85,7 @@ const BottomNav = () => {
             <ShoppingBag
               className={cn(
                 "transition-all relative ",
-                pathname === "/cart"
-                  ? "stroke-2 text-background dark:text-foreground"
-                  : "stroke-1"
+                pathname === "/cart" ? "stroke-2" : "stroke-1"
               )}
             />
             {isMounted && cart.items.length ? (
@@ -120,9 +114,7 @@ const BottomNav = () => {
           <User2
             className={cn(
               "transition-all relative z-10",
-              pathname === "/account"
-                ? "stroke-2 text-background dark:text-foreground"
-                : "stroke-1"
+              pathname === "/account" ? "stroke-2" : "stroke-1"
             )}
           />
           <span
@@ -149,9 +141,9 @@ const Span = ({ scrollDirection }: { scrollDirection: string }) => {
       layoutId="pill-tab"
       transition={{ type: "spring", duration: 0.5 }}
       className={cn(
-        "absolute inset-0 z-0 bg-gradient-to-br rounded-full sm:rounded-lg",
+        "absolute inset-y-0 -top-3 z-0 h-2 w-2 bg-gradient-to-br rounded-full sm:rounded-lg ring-2",
         scrollDirection === "up"
-          ? "from-sky-500/80 to-primary-400/80 "
+          ? "from-sky-500/80 to-primary-400/80 ring-background"
           : "bg-primary-500/20"
       )}
     />

@@ -94,10 +94,12 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
             />
           </div>
 
-          {isMounted && data.discountPrice === 0 ? null : (
+          {isMounted && data.discountPrice === null ? null : (
             <Badge variant="destructive" className="">
-              <span className="sm:mr-1 hidden sm:block">Save</span>
-              <div className="line-through sm:no-underline">
+              <span className="sm:mr-1 hidden sm:block tracking-tighter">
+                Save
+              </span>
+              <div className="line-through sm:no-underline tracking-tight">
                 <Currency
                   value={data.actualPrice - data.discountPrice}
                   fraction={0}
