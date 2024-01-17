@@ -14,8 +14,7 @@ interface SubCategoryPageProps {
   };
 }
 
-export const revalidate = 300;
-export const dynamic = "force-dynamic";
+export const revalidate = 30;
 
 export async function generateStaticParams() {
   const categories = await getCategories();
