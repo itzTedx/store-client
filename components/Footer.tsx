@@ -4,10 +4,14 @@ import { footerNav } from "@/lib/constants/footer";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { SocialIcons } from "./SocialIcons";
+import getFeaturedProducts from "@/actions/get-featured-products";
 
-const Footer = () => {
+const Footer = async () => {
   const currentDate = new Date();
   const currentYear = currentDate.getFullYear();
+
+  const popular = await getFeaturedProducts({ isFeatured: true });
+
   return (
     <footer className="border-t mt-auto" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
@@ -42,20 +46,19 @@ const Footer = () => {
             className="grid grid-cols-2 md:grid-cols-3 col-span-2"
             role="navigation"
           >
-            {footerNav.map((nav, i) => (
-              <div key={i} className="space-y-4">
-                <h5 className="font-semibold text-primary">
-                  <Link href={nav.link}>{nav.heading}</Link>
-                </h5>
-                <ul className="space-y-2">
-                  {nav.items.map((item, i) => (
-                    <li className="text-foreground-800" key={i}>
-                      <Link href={item.link}>{item.name}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+            <div className="space-y-4">
+              <h5 className="font-semibold text-primary">
+                <Link href="/">Popular Products</Link>
+              </h5>
+
+              <ul className="space-y-2">
+                {popular.map((nav, i) => (
+                  <li className="text-foreground-800" key={i}>
+                    <Link href={`/d/${nav.slug}`}>{nav.name}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
             <div className="space-y-4">
               <h5 className="font-semibold text-primary">Contact</h5>

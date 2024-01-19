@@ -32,7 +32,7 @@ export const Magnetic = ({
       ref={ref}
       onMouseMove={mouseMove}
       onMouseLeave={onMouseLeave}
-      animate={{ x, y, rotate: x }}
+      animate={{ x, y }}
       transition={{ type: "spring", stiffness, damping: 15, mass: 0.2 }}
       className="cursor-pointer w-fit"
     >

@@ -10,6 +10,41 @@ const withPWA = require("@ducanh2912/next-pwa").default({
 });
 
 const nextConfig = {
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
+  async redirects() {
+    return [
+      // Social redirect
+      {
+        source: "/instagram",
+        destination: "https://www.instagram.com/digitaldesk.uae/",
+        permanent: true,
+      },
+      {
+        source: "/facebook",
+        destination: "https://www.instagram.com/digitaldesk.uae/",
+        permanent: true,
+      },
+      {
+        source: "/pinterest",
+        destination: "https://www.instagram.com/digitaldesk.uae/",
+        permanent: true,
+      },
+      {
+        source: "/twitter",
+        destination: "https://www.instagram.com/digitaldesk.uae/",
+        permanent: true,
+      },
+      {
+        source: "/youtube",
+        destination: "https://www.instagram.com/digitaldesk.uae/",
+        permanent: true,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
