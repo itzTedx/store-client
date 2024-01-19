@@ -16,27 +16,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 const CartPage = () => {
   const router = useRouter();
-  const searchParams = useSearchParams();
   const cart = useCart();
   const isMounted = useIsMounted();
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const addByUrl = searchParams.get("add");
-  //     if (!addByUrl) {
-  //       return;
-  //     }
-
-  //     const product = await getProduct(addByUrl);
-  //     if (!product) {
-  //       return toast.error("No Product found");
-  //     }
-  //     cart.addItem(product);
-  //   };
-
-  //   fetchData();
-  //   router.push("/cart");
-  // }, [cart, searchParams, router]);
 
   if (!isMounted) {
     return (
