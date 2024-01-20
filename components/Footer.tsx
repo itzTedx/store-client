@@ -43,7 +43,7 @@ const Footer = async () => {
             <SocialIcons />
           </div>
           <nav
-            className="grid grid-cols-2 md:grid-cols-3 col-span-2"
+            className="grid grid-cols-2 md:grid-cols-3 gap-2 col-span-2 text-sm sm:text-base"
             role="navigation"
           >
             <div className="space-y-4">
@@ -86,7 +86,7 @@ const Footer = async () => {
                 </li>
                 <li>
                   <Link
-                    className="hover:text-lime-600 transition-colors"
+                    className="hover:text-lime-600 transition-colors text-xs sm:text-base"
                     href="mailto:print.digitaldesk@gmail.com"
                   >
                     print.digitaldesk@gmail.com
