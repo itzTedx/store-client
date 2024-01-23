@@ -11,7 +11,14 @@ import { siteConfig } from "@/config/site";
 export const metadata: Metadata = {
   title: siteConfig.name,
   description: siteConfig.description,
-  keywords: ["Digital", "Print", "Signboard", "Customized", "Corporate Gifts"],
+  keywords: [
+    "Digital",
+    "Print",
+    "Signboard",
+    "Customized",
+    "Corporate Gifts",
+    "stickers",
+  ],
   authors: [
     {
       name: siteConfig.shortName,

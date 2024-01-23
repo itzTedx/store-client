@@ -129,7 +129,15 @@ export function SearchBar({ data, products }: SearchProps) {
           <CommandSeparator />
           <CommandGroup heading="All products">
             {products.map((product, i) => (
-              <CommandItem key={i}>{product.name}</CommandItem>
+              <CommandItem
+                key={i}
+                className="hover:cursor-pointer"
+                onSelect={() =>
+                  runCommand(() => router.push(`/d/${product.slug}`))
+                }
+              >
+                {product.name}
+              </CommandItem>
             ))}
           </CommandGroup>
           <CommandSeparator />
