@@ -53,7 +53,8 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
             {data.images && (
               <Image
                 src={data.images?.[0]?.url}
-                alt=""
+                alt={data.name}
+                title={data.name}
                 fill
                 className="object-cover hover:scale-105 transition "
               />
@@ -75,6 +76,7 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
           <Link
             href={`/d/${data.slug}`}
             className="font-bold hover:text-lime-500 transition"
+            title={data.name}
           >
             {data.name}
           </Link>

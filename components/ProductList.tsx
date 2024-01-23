@@ -24,6 +24,7 @@ const ProductList: React.FC<ProductsListProps> = ({ title, items, link }) => {
           <Link
             href={`/category/${link}`}
             className="flex gap-2 items-center hover:text-lime-500 text-xs sm:text-sm hover:font-semibold transition-all flex-1 justify-end"
+            title="Explore More"
           >
             Explore More <ArrowRight size={16} />
           </Link>
