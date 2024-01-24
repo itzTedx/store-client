@@ -80,7 +80,7 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
           >
             {data.name}
           </Link>
-          <p className="text-sm text-gray-600 leading-tight line-clamp-2 lg:line-clamp-none text-pretty">
+          <p className="text-sm text-gray-600 leading-tight line-clamp-2 lg:line-clamp-3 text-pretty">
             {data.description}
           </p>
         </div>
