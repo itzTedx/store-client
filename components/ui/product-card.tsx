@@ -96,7 +96,7 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
             />
           </div>
 
-          {isMounted && data.discountPrice === null ? null : (
+          {isMounted && data.discountPrice > 0 ? (
             <Badge variant="destructive" className="">
               <span className="sm:mr-1 hidden sm:block tracking-tighter">
                 Save
@@ -108,7 +108,7 @@ const ProductCard: React.FC<ProductCard> = ({ data }) => {
                 />
               </div>
             </Badge>
-          )}
+          ) : null}
         </div>
       </div>
     </div>
