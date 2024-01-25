@@ -67,20 +67,20 @@ const Info = ({ data, category }: InfoProps) => {
             {data?.quantity?.name}
           </div>
         </div>
-        <div className="space-y-3">
+        {/* <div className="space-y-3">
           <h3 className="font-semibold">Lamination:</h3>
           <div className="border px-4 py-3 rounded-md">Matte</div>
-        </div>
+        </div> */}
         <div className="space-y-4">
           <h3 className="font-semibold">Timeframe:</h3>
           <div className="border px-4 py-3 rounded-md">
             {data?.timeFrame} {toPlural("Working Day", data?.timeFrame)}
           </div>
         </div>
-        <div className="flex items-center gap-x-4">
+        {/* <div className="flex items-center gap-x-4">
           <h3 className="font-semibold">Category :</h3>
           <div>{data?.subcategory?.name}</div>
-        </div>
+        </div> */}
         {/* <div className="flex justify-end">
          <div className="">- 1 +</div>
           <div className="flex gap-3">

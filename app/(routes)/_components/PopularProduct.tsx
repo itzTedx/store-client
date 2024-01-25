@@ -52,7 +52,7 @@ const PopularProduct = ({ className, data }: PopularProductProps) => {
           {data.map((product, i) => (
             <CarouselItem
               key={i}
-              className="basis-1/2 md:basis-1/3 lg:basis-1/4 overflow-hidden rounded-md"
+              className="basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4 overflow-hidden rounded-md"
             >
               <div className="p-1">
                 <Link
