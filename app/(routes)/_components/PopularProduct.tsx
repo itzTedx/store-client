@@ -67,10 +67,10 @@ const PopularProduct = ({ className, data }: PopularProductProps) => {
                   />
 
                   <div className="justify-start">
-                    <div className="mb-1.5 sm:text-lg leading-3 font-bold hover:text-primary transition-colors">
+                    <div className="mb-1.5 sm:text-lg leading-3 font-bold hover:text-primary transition-colors line-clamp-1">
                       {product.name}
                     </div>
-                    <p className="text-[12px] sm:text-sm font-medium text-foreground-700 line-clamp-2 md:line-clamp-3">
+                    <p className="text-[12px] sm:text-sm font-medium text-foreground-700 line-clamp-2">
                       {product.description}
                     </p>
                   </div>
