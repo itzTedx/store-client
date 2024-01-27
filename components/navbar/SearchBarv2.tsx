@@ -28,11 +28,11 @@ import {
   CommandList,
   CommandSeparator,
 } from "@/components/ui/command";
+import useSearchToggle from "@/store/use-search-toggle";
 import { Category, Product } from "@/types";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { Button } from "../ui/button";
-import useSearchToggle from "@/store/use-search-toggle";
 
 interface SearchProps {
   data: Category[];
@@ -49,10 +49,7 @@ export function SearchBar({ data, products }: SearchProps) {
   const toggleOpen = useSearchToggle((state) => state.toggleOpen);
   const onClose = useSearchToggle((state) => state.onClose);
 
-  const [open, setOpen] = useState(false);
   const [commandKey, setCommandKey] = useState<"Ctrl" | "Cmd">("Ctrl");
-
-  const category = data.map((cat) => cat.subcategory);
 
   useEffect(() => {
     setCommandKey(isAppleDevice() ? "Cmd" : "Ctrl");
