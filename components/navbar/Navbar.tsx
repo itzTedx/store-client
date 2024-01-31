@@ -26,6 +26,8 @@ import NavbarActions from "./NavbarActions";
 import { ProfileActions } from "./ProfileActions";
 import { SearchBar } from "./SearchBarv2";
 import { DropdownMenu } from "./dropdown-navbar";
+import Logo from "@/components/ui/Logo";
+import { Suspense } from "react";
 
 const Navbar = async () => {
   const categories = await getCategories();
@@ -47,22 +49,7 @@ const Navbar = async () => {
             className="relative col-span-2 sm:col-auto h-14 w-44 shrink-0"
             title="Go to homepage"
           >
-            <Image
-              src="/digitaldesk-dark.svg"
-              fill
-              alt="Digital Desk Logo"
-              className="object-contain dark:block hidden"
-              role="logo"
-              aria-hidden
-            />
-            <Image
-              src="/digitaldesk-light.svg"
-              fill
-              alt="Digital Desk Logo"
-              className="object-contain dark:hidden block"
-              role="logo"
-              aria-hidden
-            />
+            <Logo />
           </Link>
           <div className="flex ml-auto gap-x-3">
             <div className="md:hidden flex items-center">
@@ -93,11 +80,11 @@ const Navbar = async () => {
             <ModeToggle />
             <Separator orientation="vertical" className="h-6" />
             <Helpline />
-            <ProfileActions />
+            {/* <ProfileActions /> */}
 
-            <div className="">
+            <Suspense>
               <NavbarActions />
-            </div>
+            </Suspense>
           </div>
         </div>
 

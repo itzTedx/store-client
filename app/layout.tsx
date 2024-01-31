@@ -15,6 +15,7 @@ export const metadata: Metadata = {
     "Digital",
     "Print",
     "Signboard",
+    "advertisement",
     "Customized",
     "Corporate Gifts",
     "stickers",
