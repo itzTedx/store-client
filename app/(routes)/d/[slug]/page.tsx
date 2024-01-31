@@ -49,6 +49,7 @@ export async function generateMetadata({
       type: "website",
       locale: "en_AE",
       alternateLocale: "en_US",
+      images: product.images.map((image) => image.url),
       url: `${process.env.NEXT_PUBLIC_BASE_URL}/d/${product.slug}`,
       title: product.metaTitle || product.name,
       description: product.metaDescription || product.description.slice(0, 120),
