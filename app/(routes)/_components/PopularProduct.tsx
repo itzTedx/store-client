@@ -79,8 +79,10 @@ const PopularProduct = ({ className, data }: PopularProductProps) => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <div className="flex gap-1 justify-end mt-2">
+          <CarouselPrevious />
+          <CarouselNext />
+        </div>
       </Carousel>
 
       {/* {isMounted ? (

@@ -10,6 +10,7 @@ import useCart from "@/hooks/use-cart";
 import { toPlural } from "@/lib/utils";
 import { Badge } from "./ui/badge";
 import useCartDrawer from "@/store/use-cart-drawer";
+import Link from "next/link";
 
 interface InfoProps {
   data: Product;
@@ -58,7 +59,7 @@ const Info = ({ data, category }: InfoProps) => {
             <p>
               {data?.size?.name} - {data.size.value}
             </p>
-            <ChevronDown />
+            {/* <ChevronDown /> */}
           </div>
         </div>
         <div className="space-y-3">
@@ -104,11 +105,21 @@ const Info = ({ data, category }: InfoProps) => {
           </div>
         </div> */}
 
-        <div className="flex items-center justify-center gap-x-3">
+        <div className="flex items-center flex-col-reverse justify-center gap-3">
+          <Button
+            variant="link"
+            onClick={onAddToCart}
+            className="transition gap-2 font-semibold px-0"
+            asChild
+          >
+            <Link href={`/`} title="Enquire in Whatsapp">
+              Enquire in Whatsapp
+            </Link>
+          </Button>
           <Button
             variant="bounce"
             onClick={onAddToCart}
-            className="rounded-full transition gap-2 text-lg font-semibold"
+            className=" transition gap-2 font-semibold"
           >
             Add to Cart
             <ShoppingCart size={16} className="stroke-2" />

@@ -17,9 +17,9 @@ const buttonVariants = cva(
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-animation",
+        link: "text-foreground underline-animation",
         bounce:
-          "px-6 py-3 bg-lime-500 shadow-[0_0_0_1.5px_#000] border-black rounded-full font-bold hover:shadow-[0_0_0_1.5px_#000,0_7px_0_1.5px_#000] hover:translate-y-[-10px]  dark:bg-lime-400 dark:text-gray-950 dark:hover:shadow-[0_0_0_1.5px_#404040,0_7px_0_1.5px_#404040] transition-[transform,box-shadow,background] ease-btn-bounce duration-300",
+          "px-6 py-3 bg-lime-500 shadow-[0_0_0_1.5px_#000] border-black font-bold hover:shadow-[0_0_0_1.5px_#000,0_7px_0_1.5px_#000] hover:translate-y-[-10px]  dark:bg-lime-400 dark:text-gray-950 dark:hover:shadow-[0_0_0_1.5px_#404040,0_7px_0_1.5px_#404040] transition-[transform,box-shadow,background] ease-btn-bounce duration-300",
       },
       size: {
         default: "h-10 px-6 py-2",

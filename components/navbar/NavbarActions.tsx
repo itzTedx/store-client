@@ -1,13 +1,10 @@
 "use client";
 
-import { Loader2 } from "lucide-react";
-import { useEffect, useState } from "react";
-
 import { Button } from "@/components/ui/button";
 import useCart from "@/hooks/use-cart";
+import { useIsMounted } from "@/hooks/use-is-mounted";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useIsMounted } from "@/hooks/use-is-mounted";
 
 const NavbarActions = () => {
   const cart = useCart();
@@ -25,7 +22,7 @@ const NavbarActions = () => {
       <>
         <Button
           onClick={() => router.push("/cart")}
-          className="hidden sm:flex items-center md:px-4 py-4"
+          className="hidden sm:flex items-center md:px-2 py-4"
           variant="ghost"
           aria-label="cart"
         >
@@ -33,19 +30,26 @@ const NavbarActions = () => {
             <div className="relative h-8 w-8 sm:w-10 sm:h-10">
               <Image src="/icons/cart.svg" fill alt="Cart" />
             </div>
-            <span className="absolute top-0 right-0 text-[8px] sm:text-[10px] font-semibold rounded-full border-sky-500 border-1.5 bg-gray-100 h-3 w-3 sm:h-4 sm:w-4 flex items-center justify-center">
-              <Loader2 className="w-full h-full animate-spin text-sky-800" />
-            </span>
           </div>
-          {/* <div className="ml-2 text-sm hidden md:block">
-            <p className="text-left">My Cart</p>
-            <div className="flex items-center font-bold">
-              <Loader2 className="w-4 h-4 mr-2 animate-spin text-sky-800" /> AED{" "}
-              <ChevronDown size={16} />
-            </div>
-          </div> */}
         </Button>
       </>
+    );
+  }
+
+  if (isMounted && cart.items.length === 0) {
+    return (
+      <Button
+        onClick={() => router.push("/cart")}
+        className="hidden sm:flex items-center md:px-2 py-4"
+        variant="ghost"
+        aria-label="Cart"
+      >
+        <div className="relative">
+          <div className="relative h-8 w-8 sm:w-10 sm:h-10">
+            <Image src="/icons/cart.svg" fill alt="Cart" aria-hidden />
+          </div>
+        </div>
+      </Button>
     );
   }
 
