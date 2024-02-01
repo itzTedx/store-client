@@ -13,8 +13,8 @@ export const sendEmail = async (values: ContactFormProps) => {
     await resend.emails.send({
       from: `${name} <sales@digitaldesk.ae>`,
       reply_to: email,
-      to: "melwinafs@gmail.com",
-      cc: "digitaldeskpc@gmail.com",
+      to: "print.digitaldesk@gmail.com",
+      // cc: "moiz@digitaldesk.ae",
       subject: `Message from ${name}`,
       text: message,
     });
