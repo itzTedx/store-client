@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { SocialIcons } from "./SocialIcons";
 import getFeaturedProducts from "@/actions/get-featured-products";
+import { Suspense } from "react";
 
 const Footer = async () => {
   const currentDate = new Date();
@@ -46,17 +47,24 @@ const Footer = async () => {
             className="grid grid-cols-2 md:grid-cols-3 gap-2 col-span-2 text-sm sm:text-base"
             role="navigation"
           >
-            <div className="space-y-4">
+            <div className="space-y-4 col-span-2">
               <h5 className="font-semibold text-primary">
                 <Link href="/">Popular Products</Link>
               </h5>
 
               <ul className="space-y-2">
-                {popular.map((nav, i) => (
-                  <li className="text-foreground-800" key={i}>
-                    <Link href={`/d/${nav.slug}`}>{nav.name}</Link>
-                  </li>
-                ))}
+                <Suspense>
+                  {popular.map((nav, i) => (
+                    <li key={i}>
+                      <Link
+                        href={`/d/${nav.slug}`}
+                        className="text-foreground-800 hover:text-primary-600 transition-colors"
+                      >
+                        {nav.name}
+                      </Link>
+                    </li>
+                  ))}
+                </Suspense>
               </ul>
             </div>
 
@@ -69,16 +77,18 @@ const Footer = async () => {
                 </li>
                 <li>
                   <p>Call us now</p>
-                  <div className="flex flex-col font-bold ">
+                  <div className="flex flex-col font-bold">
                     <Link
-                      className="hover:text-lime-600 transition-colors"
-                      href="tel:+971501625053"
+                      className="hover:text-primary-600 transition-colors"
+                      href="tel:+97142520300"
+                      rel="nofollow"
                     >
-                      +971 50 162 5053
+                      +971 4 252 0300
                     </Link>
                     <Link
-                      className="hover:text-lime-600 transition-colors"
+                      className="hover:text-primary-600 transition-colors"
                       href="tel:+971501625053"
+                      rel="nofollow"
                     >
                       +971 50 162 5053
                     </Link>
@@ -86,7 +96,7 @@ const Footer = async () => {
                 </li>
                 <li>
                   <Link
-                    className="hover:text-lime-600 transition-colors text-xs sm:text-base"
+                    className="hover:text-primary-600 transition-colors text-xs sm:text-base"
                     href="mailto:print.digitaldesk@gmail.com"
                   >
                     print.digitaldesk@gmail.com

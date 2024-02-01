@@ -13,6 +13,8 @@ export const SocialIcons = () => {
         <div className="flex gap-3 text-white">
           <Link
             href="/facebook"
+            rel="nofollow"
+            target="_blank"
             className="aspect-square bg-[#1877F2] rounded flex items-center justify-center text-xl font-bold p-1.5 w-8 h-8"
           >
             <Facebook />
@@ -20,6 +22,8 @@ export const SocialIcons = () => {
 
           <Link
             href="/instagram"
+            rel="nofollow"
+            target="_blank"
             className="aspect-square bg-gradient-to-tr from-orange-500 via-pink-500 to-violet-600 rounded flex items-center justify-center text-xl font-bold p-1.5 w-8 h-8"
           >
             <Instagram />
@@ -27,12 +31,16 @@ export const SocialIcons = () => {
 
           <Link
             href="/pinterest"
+            rel="nofollow"
+            target="_blank"
             className="aspect-square bg-[#CB2027] rounded flex items-center justify-center text-xl font-bold p-1.5 w-8 h-8"
           >
             <Pin />
           </Link>
           <Link
             href="/threads"
+            rel="nofollow"
+            target="_blank"
             className="aspect-square bg-black rounded flex items-center justify-center text-xl font-bold p-1.5 w-8 h-8"
           >
             <svg
@@ -50,6 +58,8 @@ export const SocialIcons = () => {
 
           <Link
             href="/twitter"
+            rel="nofollow"
+            target="_blank"
             className="aspect-square bg-white text-black rounded flex items-center justify-center text-xl font-bold p-1.5 w-8 h-8"
           >
             <Twitter />
@@ -57,6 +67,8 @@ export const SocialIcons = () => {
 
           <Link
             href="/youtube"
+            rel="nofollow"
+            target="_blank"
             className="aspect-square bg-[#B00] rounded flex items-center justify-center text-xl font-bold p-1.5 w-8 h-8"
           >
             <Youtube />
@@ -67,6 +79,8 @@ export const SocialIcons = () => {
           <Magnetic>
             <Link
               href="/facebook"
+              rel="nofollow"
+              target="_blank"
               className="aspect-square bg-[#1877F2] rounded flex items-center justify-center text-xl font-bold p-1.5 w-8 h-8"
             >
               <Facebook />
@@ -75,6 +89,8 @@ export const SocialIcons = () => {
           <Magnetic>
             <Link
               href="/instagram"
+              rel="nofollow"
+              target="_blank"
               className="aspect-square bg-gradient-to-tr from-orange-500 via-pink-500 to-violet-600 rounded flex items-center justify-center text-xl font-bold p-1.5 w-8 h-8"
             >
               <Instagram />
@@ -83,6 +99,8 @@ export const SocialIcons = () => {
           <Magnetic>
             <Link
               href="/threads"
+              rel="nofollow"
+              target="_blank"
               className="aspect-square bg-black rounded flex items-center justify-center text-xl font-bold p-1.5 w-8 h-8"
             >
               <svg
@@ -102,6 +120,8 @@ export const SocialIcons = () => {
           <Magnetic>
             <Link
               href="/pinterest"
+              rel="nofollow"
+              target="_blank"
               className="aspect-square bg-[#CB2027] rounded flex items-center justify-center text-xl font-bold p-1.5 w-8 h-8"
             >
               <Pin />
@@ -110,6 +130,8 @@ export const SocialIcons = () => {
           <Magnetic>
             <Link
               href="/twitter"
+              rel="nofollow"
+              target="_blank"
               className="aspect-square bg-white text-black rounded flex items-center justify-center text-xl font-bold p-1.5 w-8 h-8"
             >
               <Twitter />
@@ -118,6 +140,8 @@ export const SocialIcons = () => {
           <Magnetic>
             <Link
               href="/youtube"
+              rel="nofollow"
+              target="_blank"
               className="aspect-square bg-[#B00] rounded flex items-center justify-center text-xl font-bold p-1.5 w-8 h-8"
             >
               <Youtube />
