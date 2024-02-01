@@ -78,12 +78,7 @@ const StarterKit = () => {
           </BounceCard>
           <BounceCard className="col-span-12 md:col-span-4">
             <CardTitle>Letterhead</CardTitle>
-            <motion.div
-              initial={{ y: 120, rotate: 0 }}
-              whileInView={{ y: 0 }}
-              whileHover={{ rotate: 2, y: 16 }}
-              className="absolute bottom-0 left-4 right-4 top-20 translate-y-8 rounded-t-2xl bg-gradient-to-br from-pink-400 to-red-400 p-4 transition-transform duration-[250ms] group-hover:translate-y-4 group-hover:rotate-[2deg] overflow-hidden"
-            >
+            <div className="absolute bottom-0 left-4 right-4 top-20 translate-y-8 rounded-t-2xl bg-gradient-to-br from-pink-400 to-red-400 p-4 transition-transform duration-[250ms] group-hover:translate-y-4 group-hover:rotate-[2deg] overflow-hidden">
               <span className="block text-center font-semibold text-red-50">
                 <Image
                   src="/images/Letterhead.jpg"
@@ -92,7 +87,7 @@ const StarterKit = () => {
                   className="z-0 object-cover"
                 />
               </span>
-            </motion.div>
+            </div>
           </BounceCard>
         </div>
       </section>

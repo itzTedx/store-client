@@ -15,6 +15,7 @@ import Portfolio from "./_components/Portfolio";
 import { Trusted } from "./_components/Trusted";
 import BlogCard from "./blogs/_components/BlogCard";
 import { Organization, WithContext } from "schema-dts";
+import { siteConfig } from "@/config/site";
 
 export const revalidate = 300;
 export const dynamic = "force-static";
@@ -27,6 +28,40 @@ const HomePage = async () => {
   const jsonLD: WithContext<Organization> = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `${siteConfig.url}/about`,
+    name: siteConfig.shortName,
+    logo: `${siteConfig.url}/apple-touch-icon.png`,
+    description: siteConfig.description,
+
+    url: siteConfig.url,
+    legalName: "Digital Desk General Trading L.L.C.",
+    alternateName: ["Digitaldesk, DD, Digital Print"],
+    knowsAbout: [
+      "Digital Printing",
+      "Offset Printing",
+      "Corporate Gifts",
+      "Promotional Gifts",
+      "Exhition & Event Printing Services",
+    ],
+    image: siteConfig.ogImage,
+    sameAs: [
+      "https://www.instagram.com/digitaldesk.uae/",
+      "https://www.linkedin.com/company/digitaldesk-uae/",
+      "https://www.threads.net/@digitaldesk.uae",
+      "https://twitter.com/digitaldesk_uae",
+      "https://www.facebook.com/digitaldesk.uae",
+    ],
+
+    email: "sales@digitaldesk.ae",
+    telephone: "+971-4-252-0300",
+
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Shop 3, Bin Suwailem Building, Damascus Street",
+      addressLocality: "Al Qusais",
+      addressCountry: "AE",
+      addressRegion: "Dubai",
+    },
   };
 
   return (
