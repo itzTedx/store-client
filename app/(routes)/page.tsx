@@ -71,17 +71,21 @@ const HomePage = async () => {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLD) }}
       />
-      <Billboard data={billboard} />
-      <section className="relative z-[1] hidden mt-6 sm:-mt-7 sm:block mb-7">
-        <Explore data={popular} />
-      </section>
+      <Suspense>
+        <Billboard data={billboard} />
+      </Suspense>
+      <Suspense>
+        <section className="relative z-[1] hidden mt-6 sm:-mt-7 sm:block mb-7">
+          <Explore data={popular} />
+        </section>
+      </Suspense>
 
       <Trusted />
 
       <Featured />
 
       <div aria-label="Products">
-        <Suspense fallback={"Loading..."}>
+        <Suspense>
           {categories.slice(0, 3).map((category) => (
             <section
               key={category.id}
@@ -95,11 +99,11 @@ const HomePage = async () => {
               />
             </section>
           ))}
-        </Suspense>
-        <div aria-label="Popular Products" className="container">
-          <PopularProduct data={popular} />
-        </div>
-        <Suspense fallback={"Loading..."}>
+
+          <div aria-label="Popular Products" className="container">
+            <PopularProduct data={popular} />
+          </div>
+
           {categories.slice(3, categories.length).map((category) => (
             <section
               key={category.id}
