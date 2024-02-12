@@ -6,7 +6,7 @@ export const siteConfig: SiteConfig = {
   description:
     "Cost effective digital printing and advertising services for businesses to promote products/services through print and digital media.",
 
-  url: "https://test.digitaldesk.ae",
+  url: "https://www.digitaldesk.ae",
   ogImage: "https://www.digitaldesk.ae/wp-content/uploads/2022/08/ds8.jpg",
   links: {
     twitter: "https://twitter.com/digitaldesk_uae",
