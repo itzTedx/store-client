@@ -113,6 +113,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
       "@type": "Offer",
       priceCurrency: "AED",
       price: product.discountPrice || product.actualPrice,
+      availability: "InStock",
     },
   };
 

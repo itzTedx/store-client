@@ -43,6 +43,10 @@ const nextConfig = {
         destination: "https://www.instagram.com/digitaldesk.uae/",
         permanent: true,
       },
+      {
+        source: "/shop/digital-printing-signage/signage/flex-board",
+        destination: "https://www.digitaldesk.ae/d/flex-board",
+      },
     ];
   },
   images: {
