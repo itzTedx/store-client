@@ -46,6 +46,7 @@ const nextConfig = {
       {
         source: "/shop/digital-printing-signage/signage/flex-board",
         destination: "https://www.digitaldesk.ae/d/flex-board",
+        permanent: true,
       },
     ];
   },
